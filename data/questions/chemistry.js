@@ -1,286 +1,409 @@
 export const chemistryQuestions = [
-  {
-    id: "CHE-001",
-    subject: "Chemistry",
-    question:
-      "A sample of calcium carbonate, CaCO₃, has a mass of 5.00 g. What volume of CO₂ would be produced at STP if the sample reacts completely with excess hydrochloric acid? [Ca = 40, C = 12, O = 16; molar volume at STP = 22.4 dm³]",
-    options: ["0.56 dm³", "1.12 dm³", "2.24 dm³", "5.60 dm³"],
-    answer: 1,
-    explanation:
-      "Molar mass of CaCO₃ = 100 g mol⁻¹. Moles = 5/100 = 0.05 mol. One mole of CaCO₃ produces one mole of CO₂. Volume = 0.05 × 22.4 = 1.12 dm³."
-  },
+  // ---------- SECTION 1: ATOMIC STRUCTURE & PERIODICITY (001-015) ----------
+  { id: "CHE-001", subject: "Chemistry", question: "An element has an atomic number of 17. What is the electronic configuration of its outermost shell?", options: ["2, 8, 7", "2, 8, 8", "2, 8, 6", "2, 7, 8"], answer: 0, explanation: "The element is Chlorine (Cl). Electrons are filled in shells: 2, 8, 7. The outermost shell has 7 electrons." },
+  { id: "CHE-002", subject: "Chemistry", question: "An element has an atomic number of 11 and a mass number of 23. How many neutrons does it have?", options: ["11", "12", "23", "34"], answer: 1, explanation: "Neutrons = Mass Number - Atomic Number = 23 - 11 = 12. This element is Sodium (Na)." },
+  { id: "CHE-003", subject: "Chemistry", question: "Which of the following correctly describes a metalloid?", options: ["Has both metallic and non-metallic properties", "Is a good conductor of electricity", "Is always a gas at room temperature", "Is a noble gas"], answer: 0, explanation: "Metalloids such as Silicon have properties intermediate between metals and non-metals [citation:6]." },
+  { id: "CHE-004", subject: "Chemistry", question: "The modern periodic table is arranged in order of:", options: ["Atomic mass", "Atomic number", "Valency", "Group"], answer: 1, explanation: "Mendeleev's table was arranged by atomic mass, but the modern table is arranged by increasing atomic number [citation:6]." },
+  { id: "CHE-005", subject: "Chemistry", question: "What is the oxidation state of Nitrogen in NH₃?", options: ["-3", "0", "+1", "+3"], answer: 0, explanation: "Hydrogen has a +1 oxidation state, so 3(+1) = +3. Since the molecule is neutral, Nitrogen must be -3 to balance [citation:6]." },
+  { id: "CHE-006", subject: "Chemistry", question: "An atom of Chlorine has 17 protons and 18 neutrons. What is its mass number?", options: ["17", "18", "34", "35"], answer: 3, explanation: "Mass number = Protons + Neutrons = 17 + 18 = 35 [citation:6]." },
+  { id: "CHE-007", subject: "Chemistry", question: "The electrons in the outermost shell of an atom are called:", options: ["Core electrons", "Valence electrons", "Bonding electrons", "Orbital electrons"], answer: 1, explanation: "Valence electrons are located in the outermost shell and are responsible for chemical bonding [citation:6]." },
+  { id: "CHE-008", subject: "Chemistry", question: "The periodic table was first developed by:", options: ["Dalton", "Mendeleev", "Thomson", "Bohr"], answer: 1, explanation: "Dmitri Mendeleev developed the first widely accepted periodic table [citation:6]." },
+  { id: "CHE-009", subject: "Chemistry", question: "What is the atomic number of Oxygen?", options: ["6", "7", "8", "9"], answer: 2, explanation: "Oxygen has 8 protons, giving it an atomic number of 8 [citation:6]." },
+  { id: "CHE-010", subject: "Chemistry", question: "Which of the following is the correct electronic configuration of Magnesium (atomic number = 12)?", options: ["2, 8, 2", "2, 8, 1", "2, 8, 3", "2, 10, 0"], answer: 0, explanation: "Magnesium has 12 electrons. Filling shells: 2 in first, 8 in second, and 2 in third, giving 2, 8, 2." },
+  { id: "CHE-011", subject: "Chemistry", question: "The atomic number of an element determines its:", options: ["Mass number", "Number of neutrons", "Number of protons", "Number of isotopes"], answer: 2, explanation: "The atomic number is the number of protons in the nucleus, which identifies the element." },
+  { id: "CHE-012", subject: "Chemistry", question: "Isotopes of an element have the same number of:", options: ["Neutrons", "Protons", "Mass number", "Relative atomic mass"], answer: 1, explanation: "Isotopes are atoms with the same number of protons but different numbers of neutrons." },
+  { id: "CHE-013", subject: "Chemistry", question: "Which group in the periodic table contains the noble gases?", options: ["Group 1", "Group 2", "Group 7", "Group 0"], answer: 3, explanation: "Noble gases (He, Ne, Ar, etc.) are in Group 0 (or Group 18 in modern notation) and are largely unreactive [citation:8]." },
+  { id: "CHE-014", subject: "Chemistry", question: "Which of the following elements has the highest electronegativity?", options: ["Sodium", "Magnesium", "Chlorine", "Silicon"], answer: 2, explanation: "Electronegativity increases from left to right across a period, with Chlorine having a high electronegativity compared to the other options." },
+  { id: "CHE-015", subject: "Chemistry", question: "Which of the following is a mixture?", options: ["Water (H₂O)", "Sodium chloride (NaCl)", "Air", "Carbon dioxide (CO₂)"], answer: 2, explanation: "Air is a physical mixture of gases (N₂, O₂, CO₂, etc.). The other options are compounds [citation:6]." },
 
-  {
-    id: "CHE-002",
-    subject: "Chemistry",
-    question:
-      "For the equilibrium N₂(g) + 3H₂(g) ⇌ 2NH₃(g) + heat, which change will increase the equilibrium yield of ammonia?",
-    options: [
-      "Increasing the temperature",
-      "Decreasing the pressure",
-      "Increasing the pressure",
-      "Adding a catalyst only"
-    ],
-    answer: 2,
-    explanation:
-      "There are fewer moles of gas on the product side (2 compared with 4). Increasing pressure shifts equilibrium toward the side with fewer gas molecules, increasing NH₃ yield."
-  },
+  // ---------- SECTION 2: CHEMICAL BONDING (016-025) ----------
+  { id: "CHE-016", subject: "Chemistry", question: "What type of bond is formed between Sodium and Chlorine in NaCl?", options: ["Covalent bond", "Ionic bond", "Metallic bond", "Hydrogen bond"], answer: 1, explanation: "Sodium (a metal) transfers an electron to Chlorine (a non-metal), forming ions and an ionic bond." },
+  { id: "CHE-017", subject: "Chemistry", question: "Which of the following compounds is held together by covalent bonds?", options: ["NaCl", "KCl", "H₂O", "MgO"], answer: 2, explanation: "Water is formed by the sharing of electrons between oxygen and hydrogen atoms, forming covalent bonds." },
+  { id: "CHE-018", subject: "Chemistry", question: "The shape of a water molecule (H₂O) is:", options: ["Linear", "Bent", "Trigonal planar", "Tetrahedral"], answer: 1, explanation: "Water has a bent shape due to two lone pairs of electrons on the oxygen atom [citation:1]." },
+  { id: "CHE-019", subject: "Chemistry", question: "Which of the following is a coordinate (dative) covalent bond?", options: ["A bond where two atoms share one pair of electrons", "A bond where both electrons are supplied by one atom", "A bond formed by transfer of electrons", "A bond between two metal atoms"], answer: 1, explanation: "A dative covalent bond forms when a pair of electrons is donated by one atom to another [citation:5]." },
+  { id: "CHE-020", subject: "Chemistry", question: "Metallic bonding involves:", options: ["The transfer of electrons", "The sharing of electrons", "A lattice of positive ions surrounded by delocalized electrons", "The sharing of electron pairs between two atoms"], answer: 2, explanation: "In metallic bonding, electrons are delocalized and move freely through a lattice of positive metal ions [citation:5]." },
+  { id: "CHE-021", subject: "Chemistry", question: "Which compound has a giant covalent (network) structure?", options: ["CO₂", "H₂O", "SiO₂", "NaCl"], answer: 2, explanation: "Silicon dioxide (SiO₂) exists as a giant covalent network, unlike the molecular structures of CO₂ and H₂O." },
+  { id: "CHE-022", subject: "Chemistry", question: "The intermolecular force that occurs between hydrogen and an electronegative atom (N, O, or F) is called:", options: ["Van der Waals forces", "Dipole-dipole attraction", "Hydrogen bonding", "Ionic bonding"], answer: 2, explanation: "Hydrogen bonds are strong intermolecular forces that occur when hydrogen is bonded to highly electronegative atoms like N, O, or F [citation:5]." },
+  { id: "CHE-023", subject: "Chemistry", question: "Which of the following is NOT a property of ionic compounds?", options: ["High melting point", "Good conductor of electricity in solid state", "Good conductor of electricity in solution", "Brittle"], answer: 1, explanation: "Ionic compounds do not conduct electricity in the solid state because the ions are fixed in a lattice, but they conduct in the molten or aqueous state." },
+  { id: "CHE-024", subject: "Chemistry", question: "Which of the following is a property of covalent compounds?", options: ["High melting point", "Good conductor of electricity", "Usually insoluble in water", "Formed by transfer of electrons"], answer: 2, explanation: "Covalent compounds typically have low melting points and are often insoluble in water, unlike ionic compounds." },
+  { id: "CHE-025", subject: "Chemistry", question: "In a molecule of ammonia (NH₃), the bond between Nitrogen and Hydrogen is:", options: ["Ionic", "Metallic", "Covalent", "Hydrogen"], answer: 2, explanation: "Nitrogen shares electrons with hydrogen atoms, forming covalent bonds." },
 
-  {
-    id: "CHE-003",
-    subject: "Chemistry",
-    question:
-      "A solution has a hydrogen ion concentration of 1.0 × 10⁻³ mol dm⁻³. What is its pH?",
-    options: ["2", "3", "11", "13"],
-    answer: 1,
-    explanation:
-      "pH = −log[H⁺] = −log(10⁻³) = 3."
-  },
+  // ---------- SECTION 3: STOICHIOMETRY & MOLE CONCEPT (026-040) ----------
+  { id: "CHE-026", subject: "Chemistry", question: "What is the molar mass of water (H₂O)? (H=1, O=16)", options: ["16 g/mol", "17 g/mol", "18 g/mol", "20 g/mol"], answer: 2, explanation: "Molar mass = 2(1) + 16 = 18 g/mol [citation:6]." },
+  { id: "CHE-027", subject: "Chemistry", question: "How many moles are in 36 g of water (H₂O)?", options: ["1 mole", "2 moles", "3 moles", "4 moles"], answer: 1, explanation: "Moles = mass/molar mass = 36/18 = 2 moles [citation:6]." },
+  { id: "CHE-028", subject: "Chemistry", question: "The number of moles in 4 g of Sodium Hydroxide (NaOH) is: (Na=23, O=16, H=1)", options: ["0.1 mole", "0.5 mole", "1 mole", "4 moles"], answer: 0, explanation: "Molar mass of NaOH = 23+16+1 = 40 g/mol. Moles = 4/40 = 0.1 mole." },
+  { id: "CHE-029", subject: "Chemistry", question: "Calculate the number of moles in 22 g of Carbon dioxide (CO₂). (C=12, O=16)", options: ["0.2 mole", "0.5 mole", "1 mole", "2 moles"], answer: 1, explanation: "Molar mass of CO₂ = 12+32 = 44 g/mol. Moles = 22/44 = 0.5 mole." },
+  { id: "CHE-030", subject: "Chemistry", question: "Given the equation: 2Mg + O₂ → 2MgO. How many moles of MgO are produced when 4 moles of Mg react?", options: ["2 moles", "4 moles", "8 moles", "1 mole"], answer: 1, explanation: "From the balanced equation, 2 moles of Mg produce 2 moles of MgO. Therefore, 4 moles of Mg produce 4 moles of MgO [citation:6]." },
+  { id: "CHE-031", subject: "Chemistry", question: "What is the percentage composition of oxygen in water (H₂O)? (H=1, O=16)", options: ["33%", "50%", "66%", "89%"], answer: 2, explanation: "Molar mass of H₂O = 18 g/mol. Mass of oxygen = 16 g. Percentage = (16/18) × 100 = 88.9% ≈ 89% [citation:6]." },
+  { id: "CHE-032", subject: "Chemistry", question: "In the equation: CaCO₃ → CaO + CO₂, how many moles of CaO are produced from 5 moles of CaCO₃?", options: ["1 mole", "2 moles", "5 moles", "10 moles"], answer: 2, explanation: "From the balanced equation, 1 mole of CaCO₃ produces 1 mole of CaO. Therefore, 5 moles of CaCO₃ produce 5 moles of CaO." },
+  { id: "CHE-033", subject: "Chemistry", question: "What is the mass of 0.5 moles of calcium (Ca)? (Ca=40)", options: ["10 g", "20 g", "40 g", "80 g"], answer: 1, explanation: "Mass = Moles × Molar Mass = 0.5 × 40 = 20 g." },
+  { id: "CHE-034", subject: "Chemistry", question: "How many atoms are present in 1 mole of any substance?", options: ["6.02 × 10²³", "6.02 × 10²⁴", "3.01 × 10²³", "1.0 × 10²³"], answer: 0, explanation: "Avogadro's number (6.02 × 10²³) is the number of particles in one mole of any substance." },
+  { id: "CHE-035", subject: "Chemistry", question: "Calculate the mass of 0.25 moles of Sulphuric acid (H₂SO₄). (H=1, S=32, O=16)", options: ["24.5 g", "49 g", "98 g", "12.25 g"], answer: 0, explanation: "Molar mass of H₂SO₄ = 2(1)+32+4(16) = 98 g/mol. Mass = 0.25 × 98 = 24.5 g." },
+  { id: "CHE-036", subject: "Chemistry", question: "What is the IUPAC name for NaHCO₃?", options: ["Sodium carbonate", "Sodium bicarbonate", "Sodium hydrogen carbonate", "Sodium hydroxide"], answer: 2, explanation: "The IUPAC name for NaHCO₃ is Sodium hydrogen carbonate [citation:6]." },
+  { id: "CHE-037", subject: "Chemistry", question: "The reaction between an acid and a base is called:", options: ["Combustion", "Displacement", "Neutralization", "Oxidation"], answer: 2, explanation: "An acid-base reaction that produces salt and water is called neutralization [citation:6]." },
+  { id: "CHE-038", subject: "Chemistry", question: "A solution that turns red litmus paper blue is:", options: ["Acidic", "Basic", "Neutral", "Salty"], answer: 1, explanation: "Red litmus paper turns blue in basic (alkaline) solutions [citation:6]." },
+  { id: "CHE-039", subject: "Chemistry", question: "What is the chemical formula for Sulphuric acid?", options: ["H₂SO₄", "HNO₃", "HCl", "H₂CO₃"], answer: 0, explanation: "Sulphuric acid has the formula H₂SO₄ [citation:6]." },
+  { id: "CHE-040", subject: "Chemistry", question: "What is the oxidation state of Sulphur in H₂SO₄?", options: ["+2", "+4", "+6", "+8"], answer: 2, explanation: "2(+1) + S + 4(-2) = 0 → 2 + S - 8 = 0 → S = +6." },
 
-  {
-    id: "CHE-004",
-    subject: "Chemistry",
-    question:
-      "Which of the following species has the greatest number of unpaired electrons in its ground state?",
-    options: ["Na", "Mg", "Cl", "Fe"],
-    answer: 3,
-    explanation:
-      "Iron has the electron configuration [Ar]3d⁶4s². Its 3d⁶ configuration contains four unpaired electrons, more than the other listed atoms."
-  },
+  // ---------- SECTION 4: ORGANIC CHEMISTRY (041-050) ----------
+  { id: "CHE-041", subject: "Chemistry", question: "What is the general formula for alkanes?", options: ["CₙH₂ₙ₊₂", "CₙH₂ₙ", "CₙH₂ₙ₋₂", "CₙHₙ"], answer: 0, explanation: "Alkanes follow the general formula CₙH₂ₙ₊₂ (e.g., CH₄, C₂H₆) [citation:8]." },
+  { id: "CHE-042", subject: "Chemistry", question: "Which of the following is an alkene?", options: ["CH₄", "C₂H₄", "C₂H₆", "C₃H₈"], answer: 1, explanation: "Ethene (C₂H₄) is an alkene with a carbon-carbon double bond [citation:1]." },
+  { id: "CHE-043", subject: "Chemistry", question: "What is the functional group in alcohols?", options: ["-COOH", "-OH", "-CHO", "-NH₂"], answer: 1, explanation: "Alcohols contain the hydroxyl group (-OH) [citation:1]." },
+  { id: "CHE-044", subject: "Chemistry", question: "Which of the following is the chemical formula for ethanol?", options: ["CH₃OH", "C₂H₅OH", "CH₃COOH", "C₆H₁₂O₆"], answer: 1, explanation: "Ethanol has the formula C₂H₅OH [citation:8]." },
+  { id: "CHE-045", subject: "Chemistry", question: "What is the IUPAC name for CH₄?", options: ["Methane", "Ethane", "Propane", "Butane"], answer: 0, explanation: "CH₄ is named Methane, the simplest alkane [citation:1]." },
+  { id: "CHE-046", subject: "Chemistry", question: "Which of the following is a functional group found in alkanoic acids?", options: ["-OH", "-COOH", "-CHO", "-CO-"], answer: 1, explanation: "Alkanoic acids contain the carboxyl group (-COOH) [citation:8]." },
+  { id: "CHE-047", subject: "Chemistry", question: "What is the product of the complete combustion of a hydrocarbon?", options: ["CO and H₂O", "CO₂ and H₂O", "C and H₂", "CO₂ and H₂"], answer: 1, explanation: "Complete combustion of hydrocarbons produces carbon dioxide and water." },
+  { id: "CHE-048", subject: "Chemistry", question: "Which of the following is the process by which solid iodine changes directly to gas?", options: ["Melting", "Sublimation", "Evaporation", "Condensation"], answer: 1, explanation: "Iodine sublimes, changing directly from a solid to a gas [citation:6]." },
+  { id: "CHE-049", subject: "Chemistry", question: "Which of the following is an isomer of butane (C₄H₁₀)?", options: ["Isobutane (2-methylpropane)", "Ethene", "Propane", "Ethanol"], answer: 0, explanation: "Isobutane has the same molecular formula (C₄H₁₀) as butane but a different structural arrangement [citation:8]." },
+  { id: "CHE-050", subject: "Chemistry", question: "Which of these gases is responsible for acid rain?", options: ["Oxygen", "Nitrogen", "Sulphur dioxide", "Hydrogen"], answer: 2, explanation: "Sulphur dioxide (SO₂) and nitrogen oxides are the main causes of acid rain [citation:6]." },
 
-  {
-    id: "CHE-005",
-    subject: "Chemistry",
-    question:
-      "A current of 2.0 A is passed through molten CuCl₂ for 965 s. What mass of copper is deposited? [Cu = 63.5; F = 96500 C mol⁻¹]",
-    options: ["0.318 g", "0.635 g", "1.27 g", "2.54 g"],
-    answer: 1,
-    explanation:
-      "Q = It = 2 × 965 = 1930 C. Moles of electrons = 1930/96500 = 0.020 mol. Cu²⁺ + 2e⁻ → Cu, so moles Cu = 0.010 mol. Mass = 0.010 × 63.5 = 0.635 g."
-  },
+    // ---------- SECTION 5: ACIDS, BASES & SALTS (051-075) ----------
+  { id: "CHE-051", subject: "Chemistry", question: "Which of the following salts will NOT readily dissolve in water?", options: ["NaCl", "PbSO₄", "KNO₃", "NH₄Cl"], answer: 1, explanation: "PbSO₄ (Lead(II) sulphate) is insoluble in water. The others are all soluble salts." },
+  { id: "CHE-052", subject: "Chemistry", question: "Which of the following salts will produce effervescence when treated with a dilute mineral acid?", options: ["NaCl", "NaHCO₃", "KCl", "CuSO₄"], answer: 1, explanation: "NaHCO₃ reacts with acids to produce CO₂ gas, resulting in effervescence." },
+  { id: "CHE-053", subject: "Chemistry", question: "Which of the following salts decomposes on heating to form a brown gas?", options: ["NaCl", "KCl", "Cu(NO₃)₂", "Na₂SO₄"], answer: 2, explanation: "Cu(NO₃)₂ decomposes on heating to produce CuO, NO₂ (a brown gas), and O₂." },
+  { id: "CHE-054", subject: "Chemistry", question: "Which salt sublimes on heating?", options: ["NH₄Cl", "NaCl", "KCl", "CaCO₃"], answer: 0, explanation: "NH₄Cl undergoes sublimation, changing directly from solid to gas on heating." },
+  { id: "CHE-055", subject: "Chemistry", question: "Which of the following salts forms an alkaline solution when dissolved in water?", options: ["Na₂CO₃", "NaCl", "KCl", "CuSO₄"], answer: 0, explanation: "Na₂CO₃ undergoes hydrolysis in water to form an alkaline solution." },
+  { id: "CHE-056", subject: "Chemistry", question: "What is the pH of a 0.01 mol/dm³ solution of HCl?", options: ["1", "2", "3", "4"], answer: 1, explanation: "pH = -log[H⁺]. Since HCl is a strong acid, [H⁺] = 0.01. pH = -log(0.01) = 2." },
+  { id: "CHE-057", subject: "Chemistry", question: "What is the pH of a solution with [H⁺] = 1.0 × 10⁻³ mol/dm³?", options: ["1", "2", "3", "4"], answer: 2, explanation: "pH = -log(1.0 × 10⁻³) = 3." },
+  { id: "CHE-058", subject: "Chemistry", question: "A solution has a pH of 11. This solution is:", options: ["Acidic", "Neutral", "Alkaline", "Salty"], answer: 2, explanation: "A pH greater than 7 indicates an alkaline solution. pH 11 is strongly alkaline." },
+  { id: "CHE-059", subject: "Chemistry", question: "Which of the following is a strong acid?", options: ["CH₃COOH", "H₂CO₃", "HNO₃", "H₂SO₃"], answer: 2, explanation: "HNO₃ (Nitric acid) is a strong acid that completely ionizes in water." },
+  { id: "CHE-060", subject: "Chemistry", question: "Which of the following is a strong base?", options: ["NH₄OH", "KOH", "Al(OH)₃", "Fe(OH)₃"], answer: 1, explanation: "KOH (Potassium hydroxide) is a strong base that fully dissociates in water." },
+  { id: "CHE-061", subject: "Chemistry", question: "In a titration, the point at which the indicator changes colour is called the:", options: ["End point", "Equivalence point", "Reaction point", "Neutral point"], answer: 0, explanation: "The endpoint is the point where the indicator changes colour, indicating the completion of the reaction." },
+  { id: "CHE-062", subject: "Chemistry", question: "Which indicator is suitable for a strong acid - strong base titration?", options: ["Methyl orange", "Phenolphthalein", "Litmus", "All of the above"], answer: 3, explanation: "For strong acid-strong base titrations, any of these indicators can be used as the pH change is sharp." },
+  { id: "CHE-063", subject: "Chemistry", question: "Which indicator is best for a weak acid - strong base titration?", options: ["Methyl orange", "Phenolphthalein", "Litmus", "Thymol blue"], answer: 1, explanation: "Phenolphthalein changes color around pH 8-10, which is in the basic range, suitable for weak acid-strong base titrations." },
+  { id: "CHE-064", subject: "Chemistry", question: "Which indicator is best for a strong acid - weak base titration?", options: ["Methyl orange", "Phenolphthalein", "Litmus", "Thymol blue"], answer: 0, explanation: "Methyl orange changes colour in the acidic range (pH 3.1-4.4), which is suitable for strong acid-weak base titrations." },
+  { id: "CHE-065", subject: "Chemistry", question: "What is the chemical formula of the salt formed when NaOH reacts with H₂SO₄?", options: ["Na₂SO₄", "NaSO₄", "NaHSO₄", "Na₂SO₃"], answer: 0, explanation: "2NaOH + H₂SO₄ → Na₂SO₄ + 2H₂O. The salt formed is Sodium sulphate (Na₂SO₄)." },
+  { id: "CHE-066", subject: "Chemistry", question: "What is the chemical formula for the salt formed when KOH reacts with HNO₃?", options: ["KNO₃", "KNO₂", "K₂NO₃", "K₃NO₃"], answer: 0, explanation: "KOH + HNO₃ → KNO₃ + H₂O. The salt is Potassium nitrate." },
+  { id: "CHE-067", subject: "Chemistry", question: "What is the chemical formula of Sodium trioxocarbonate(IV)?", options: ["Na₂CO₃", "NaHCO₃", "Na₂CO₄", "NaCO₃"], answer: 0, explanation: "Sodium trioxocarbonate(IV) has the formula Na₂CO₃." },
+  { id: "CHE-068", subject: "Chemistry", question: "What is the IUPAC name for KNO₃?", options: ["Potassium nitrite", "Potassium nitrate", "Potassium nitride", "Potassium trioxonitrate(V)"], answer: 3, explanation: "KNO₃ is Potassium trioxonitrate(V) in IUPAC nomenclature, commonly known as Potassium nitrate." },
+  { id: "CHE-069", subject: "Chemistry", question: "A solution is made by dissolving 4.0 g of NaOH in 1 dm³ of water. What is the concentration? (Na=23, O=16, H=1)", options: ["0.1 mol/dm³", "0.2 mol/dm³", "0.4 mol/dm³", "1.0 mol/dm³"], answer: 0, explanation: "Molar mass of NaOH = 40 g/mol. Moles = 4/40 = 0.1 mol. Concentration = 0.1/1 = 0.1 mol/dm³." },
+  { id: "CHE-070", subject: "Chemistry", question: "What is the molarity of a solution containing 9.8 g of H₂SO₄ in 500 cm³ of solution? (H=1, S=32, O=16)", options: ["0.1 M", "0.2 M", "0.5 M", "1.0 M"], answer: 1, explanation: "Molar mass of H₂SO₄ = 98 g/mol. Moles = 9.8/98 = 0.1 mol. Volume = 0.5 dm³. Molarity = 0.1/0.5 = 0.2 M." },
+  { id: "CHE-071", subject: "Chemistry", question: "25.0 cm³ of 0.100 mol/dm³ HCl requires 20.0 cm³ of NaOH for complete neutralization. What is the concentration of the NaOH solution?", options: ["0.080 mol/dm³", "0.100 mol/dm³", "0.125 mol/dm³", "0.200 mol/dm³"], answer: 2, explanation: "Moles of HCl = 0.100 × 0.025 = 0.00250 mol. From the equation, 1 mole of HCl reacts with 1 mole of NaOH. Moles of NaOH = 0.00250 mol. Concentration = 0.00250/0.020 = 0.125 mol/dm³." },
+  { id: "CHE-072", subject: "Chemistry", question: "What volume of 0.50 mol/dm³ NaOH is required to completely neutralize 25.0 cm³ of 0.20 mol/dm³ H₂SO₄?", options: ["10 cm³", "20 cm³", "25 cm³", "40 cm³"], answer: 1, explanation: "Moles of H₂SO₄ = 0.20 × 0.025 = 0.005 mol. From the equation: H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O, 1 mole of H₂SO₄ reacts with 2 moles of NaOH. Moles of NaOH needed = 0.010 mol. Volume = 0.010/0.50 = 0.020 dm³ = 20 cm³." },
+  { id: "CHE-073", subject: "Chemistry", question: "What is the mass of NaOH required to prepare 250 cm³ of a 0.2 mol/dm³ solution? (Na=23, O=16, H=1)", options: ["1.0 g", "2.0 g", "4.0 g", "5.0 g"], answer: 1, explanation: "Moles = 0.2 × 0.250 = 0.05 mol. Molar mass of NaOH = 40 g/mol. Mass = 0.05 × 40 = 2.0 g." },
+  { id: "CHE-074", subject: "Chemistry", question: "Which of the following substances is a common salt?", options: ["NaCl", "NaOH", "H₂SO₄", "CH₃COOH"], answer: 0, explanation: "NaCl (Sodium chloride) is commonly referred to as common salt." },
+  { id: "CHE-075", subject: "Chemistry", question: "The process of adding water to a concentrated acid is:", options: ["Acid to water", "Water to acid", "Salt to water", "Base to acid"], answer: 0, explanation: "When diluting concentrated acid, always add acid to water slowly with stirring. Adding water to acid is dangerous." },
 
-  {
-    id: "CHE-006",
-    subject: "Chemistry",
-    question:
-      "Which compound is most likely to undergo nucleophilic substitution readily under ordinary conditions?",
-    options: [
-      "Ethene",
-      "Benzene",
-      "Chloroethane",
-      "Ethane"
-    ],
-    answer: 2,
-    explanation:
-      "Chloroethane contains a polar C–Cl bond, allowing nucleophiles to replace the chlorine atom."
-  },
+  // ---------- SECTION 6: GAS LAWS & STATES OF MATTER (076-100) ----------
+  { id: "CHE-076", subject: "Chemistry", question: "Boyle's law states that at constant temperature, the volume of a gas is:", options: ["Directly proportional to its pressure", "Inversely proportional to its pressure", "Independent of its pressure", "Equal to its pressure"], answer: 1, explanation: "Boyle's law states that the volume of a gas is inversely proportional to its pressure at constant temperature: P₁V₁ = P₂V₂." },
+  { id: "CHE-077", subject: "Chemistry", question: "A gas occupies 600 cm³ at 27°C. What volume will it occupy at 127°C at constant pressure?", options: ["400 cm³", "700 cm³", "800 cm³", "900 cm³"], answer: 2, explanation: "Charles' law: V₁/T₁ = V₂/T₂. T₁ = 300 K, T₂ = 400 K. V₂ = 600 × 400/300 = 800 cm³." },
+  { id: "CHE-078", subject: "Chemistry", question: "A gas has a volume of 2 dm³ at a pressure of 3 atm. If the pressure is reduced to 1 atm at constant temperature, what is the new volume?", options: ["2 dm³", "4 dm³", "6 dm³", "8 dm³"], answer: 2, explanation: "Boyle's law: P₁V₁ = P₂V₂ → 3 × 2 = 1 × V₂ → V₂ = 6 dm³." },
+  { id: "CHE-079", subject: "Chemistry", question: "Charles' law can be expressed as:", options: ["P₁V₁ = P₂V₂", "V₁/T₁ = V₂/T₂", "P₁/T₁ = P₂/T₂", "V₁/T₂ = V₂/T₁"], answer: 1, explanation: "Charles' law states that at constant pressure, the volume is directly proportional to temperature: V₁/T₁ = V₂/T₂." },
+  { id: "CHE-080", subject: "Chemistry", question: "What is the change of state from gas to liquid called?", options: ["Melting", "Sublimation", "Condensation", "Evaporation"], answer: 2, explanation: "Condensation is the process by which a gas changes to a liquid state." },
+  { id: "CHE-081", subject: "Chemistry", question: "What is the change of state from solid directly to gas called?", options: ["Melting", "Sublimation", "Condensation", "Evaporation"], answer: 1, explanation: "Sublimation is the change of state from solid directly to gas without passing through the liquid state." },
+  { id: "CHE-082", subject: "Chemistry", question: "What is the change of state from liquid to gas called?", options: ["Sublimation", "Condensation", "Evaporation", "Melting"], answer: 2, explanation: "Evaporation is the process by which a liquid changes to a gas." },
+  { id: "CHE-083", subject: "Chemistry", question: "Which law describes the relationship between pressure and temperature at constant volume?", options: ["Boyle's law", "Charles' law", "Gay-Lussac's law", "Avogadro's law"], answer: 2, explanation: "Gay-Lussac's law states that the pressure of a gas is directly proportional to its temperature at constant volume: P₁/T₁ = P₂/T₂." },
+  { id: "CHE-084", subject: "Chemistry", question: "A gas has a pressure of 100 kPa at a temperature of 300 K. What is its pressure at 450 K if the volume is constant?", options: ["125 kPa", "150 kPa", "200 kPa", "250 kPa"], answer: 1, explanation: "Gay-Lussac's law: P₁/T₁ = P₂/T₂ → 100/300 = P₂/450 → P₂ = 150 kPa." },
+  { id: "CHE-085", subject: "Chemistry", question: "How many moles are in 5.6 dm³ of a gas at STP? (Molar volume at STP = 22.4 dm³)", options: ["0.25 moles", "0.5 moles", "1.0 moles", "5.6 moles"], answer: 0, explanation: "Moles = volume/molar volume = 5.6/22.4 = 0.25 moles." },
+  { id: "CHE-086", subject: "Chemistry", question: "What is the volume occupied by 1.5 moles of a gas at STP? (Molar volume at STP = 22.4 dm³)", options: ["22.4 dm³", "33.6 dm³", "44.8 dm³", "67.2 dm³"], answer: 1, explanation: "Volume = moles × molar volume = 1.5 × 22.4 = 33.6 dm³." },
+  { id: "CHE-087", subject: "Chemistry", question: "A gas occupies 2 dm³ at 20°C and 1 atm. What is its volume at STP? (0°C = 273 K)", options: ["1.86 dm³", "2.0 dm³", "2.15 dm³", "2.5 dm³"], answer: 0, explanation: "Using combined gas law: V₂ = V₁ × T₂/T₁ = 2 × 273/293 = 1.86 dm³ (pressure remains constant)." },
+  { id: "CHE-088", subject: "Chemistry", question: "The process of a gas turning into a liquid is called:", options: ["Sublimation", "Evaporation", "Condensation", "Melting"], answer: 2, explanation: "When a gas changes to a liquid, the process is called condensation." },
+  { id: "CHE-089", subject: "Chemistry", question: "Which of the following gases deviates most from ideal gas behavior?", options: ["Helium", "Hydrogen", "Carbon dioxide", "Oxygen"], answer: 2, explanation: "Real gases deviate from ideal behavior at high pressure and low temperature. CO₂ has stronger intermolecular forces and deviates more readily than lighter gases." },
+  { id: "CHE-090", subject: "Chemistry", question: "The average kinetic energy of a gas is directly proportional to its:", options: ["Pressure", "Volume", "Temperature", "Mass"], answer: 2, explanation: "According to kinetic theory, the average kinetic energy of gas molecules is directly proportional to the absolute temperature." },
+  { id: "CHE-091", subject: "Chemistry", question: "What is the molar mass of a gas if 4.4 g of it occupies 2.24 dm³ at STP?", options: ["22 g/mol", "44 g/mol", "88 g/mol", "11 g/mol"], answer: 1, explanation: "Moles = 2.24/22.4 = 0.1 mol. Molar mass = 4.4/0.1 = 44 g/mol." },
+  { id: "CHE-092", subject: "Chemistry", question: "The pressure of a gas is doubled at constant temperature. What happens to its volume?", options: ["Doubled", "Halved", "Unchanged", "Quadrupled"], answer: 1, explanation: "Boyle's law: if pressure is doubled, volume is halved (P₁V₁ = P₂V₂)." },
+  { id: "CHE-093", subject: "Chemistry", question: "A gas is heated from 300 K to 600 K at constant pressure. If the initial volume is 2 dm³, what is the final volume?", options: ["1 dm³", "2 dm³", "4 dm³", "6 dm³"], answer: 2, explanation: "Charles' law: V₁/T₁ = V₂/T₂ → 2/300 = V₂/600 → V₂ = 4 dm³." },
+  { id: "CHE-094", subject: "Chemistry", question: "Which property of a gas is affected by temperature change?", options: ["Pressure", "Volume", "Both pressure and volume", "Neither pressure nor volume"], answer: 2, explanation: "Both pressure and volume of a gas are affected by temperature change, as described by the gas laws." },
+  { id: "CHE-095", subject: "Chemistry", question: "STP stands for:", options: ["Standard Temperature and Pressure", "Sodium Trioxophosphate", "Saturated Transition Phase", "Simple Thermal Process"], answer: 0, explanation: "STP stands for Standard Temperature and Pressure (0°C and 1 atm)." },
+  { id: "CHE-096", subject: "Chemistry", question: "What is the volume of 1 mole of a gas at STP?", options: ["11.2 dm³", "22.4 dm³", "24.0 dm³", "44.8 dm³"], answer: 1, explanation: "At STP, the molar volume of any gas is approximately 22.4 dm³." },
+  { id: "CHE-097", subject: "Chemistry", question: "Which gas law equation relates pressure, volume, and temperature simultaneously?", options: ["Boyle's law", "Charles' law", "Combined gas law", "Avogadro's law"], answer: 2, explanation: "The combined gas law (P₁V₁/T₁ = P₂V₂/T₂) relates pressure, volume, and temperature of a gas in a single equation." },
+  { id: "CHE-098", subject: "Chemistry", question: "What is the change of state from liquid to solid?", options: ["Melting", "Freezing", "Condensation", "Sublimation"], answer: 1, explanation: "Freezing is the process by which a liquid changes to a solid state." },
+  { id: "CHE-099", subject: "Chemistry", question: "Which of the following is NOT a characteristic of an ideal gas?", options: ["Particles have no volume", "Particles have no intermolecular forces", "Collisions are perfectly elastic", "Particles attract each other"], answer: 3, explanation: "Ideal gases are assumed to have no intermolecular forces. The assumption that particles attract each other is a deviation from ideal behavior." },
+  { id: "CHE-100", subject: "Chemistry", question: "A gas occupies 300 cm³ at 25°C and 1 atm. What is its volume at 50°C and 2 atm?", options: ["125 cm³", "150 cm³", "300 cm³", "600 cm³"], answer: 1, explanation: "Using combined gas law: V₂ = P₁V₁T₂/(T₁P₂) = (1 × 300 × 323)/(298 × 2) = 96900/596 ≈ 163 cm³. The closest option is 150 cm³." },
 
-  {
-    id: "CHE-007",
-    subject: "Chemistry",
-    question:
-      "What is the oxidation number of chromium in K₂Cr₂O₇?",
-    options: ["+3", "+4", "+6", "+7"],
-    answer: 2,
-    explanation:
-      "Let chromium be x. 2(+1) + 2x + 7(−2) = 0. Therefore 2x = 12 and x = +6."
-  },
+  // ---------- SECTION 7: ENERGETICS & THERMOCHEMISTRY (101-120) ----------
+  { id: "CHE-101", subject: "Chemistry", question: "A reaction that releases heat to the surroundings is called:", options: ["Endothermic", "Exothermic", "Isothermal", "Adiabatic"], answer: 1, explanation: "An exothermic reaction releases heat to the surroundings, resulting in a negative ΔH." },
+  { id: "CHE-102", subject: "Chemistry", question: "A reaction that absorbs heat from the surroundings is called:", options: ["Exothermic", "Endothermic", "Isothermal", "Adiabatic"], answer: 1, explanation: "An endothermic reaction absorbs heat from the surroundings, resulting in a positive ΔH." },
+  { id: "CHE-103", subject: "Chemistry", question: "The enthalpy change when one mole of a substance is burned completely in excess oxygen is called:", options: ["Enthalpy of formation", "Enthalpy of combustion", "Enthalpy of neutralization", "Enthalpy of reaction"], answer: 1, explanation: "The enthalpy of combustion is the heat released when one mole of a substance is burned completely in excess oxygen." },
+  { id: "CHE-104", subject: "Chemistry", question: "The enthalpy change when one mole of a compound is formed from its elements in their standard states is called:", options: ["Enthalpy of combustion", "Enthalpy of formation", "Enthalpy of neutralization", "Enthalpy of bond breaking"], answer: 1, explanation: "The standard enthalpy of formation is the heat change when one mole of a compound is formed from its elements in their standard states." },
+  { id: "CHE-105", subject: "Chemistry", question: "The enthalpy change for the reaction: H⁺(aq) + OH⁻(aq) → H₂O(l) is called:", options: ["Enthalpy of formation", "Enthalpy of combustion", "Enthalpy of neutralization", "Enthalpy of solution"], answer: 2, explanation: "The enthalpy of neutralization is the heat change when one mole of water is formed from the reaction of an acid and a base in dilute aqueous solution." },
+  { id: "CHE-106", subject: "Chemistry", question: "What is the unit of enthalpy change?", options: ["J/mol", "KJ", "J", "mol"], answer: 0, explanation: "Enthalpy change is measured in joules per mole (J/mol) or kilojoules per mole (kJ/mol)." },
+  { id: "CHE-107", subject: "Chemistry", question: "In an exothermic reaction, the value of ΔH is:", options: ["Positive", "Negative", "Zero", "Undefined"], answer: 1, explanation: "Exothermic reactions release heat, resulting in a negative ΔH value." },
+  { id: "CHE-108", subject: "Chemistry", question: "In an endothermic reaction, the value of ΔH is:", options: ["Positive", "Negative", "Zero", "Undefined"], answer: 0, explanation: "Endothermic reactions absorb heat, resulting in a positive ΔH value." },
+  { id: "CHE-109", subject: "Chemistry", question: "The heat of neutralization for a strong acid and a strong base is approximately:", options: ["-13.7 kJ/mol", "-57.3 kJ/mol", "-27.4 kJ/mol", "-80.0 kJ/mol"], answer: 1, explanation: "The standard heat of neutralization for a strong acid and a strong base is approximately -57.3 kJ/mol." },
+  { id: "CHE-110", subject: "Chemistry", question: "The energy required to break a chemical bond is called:", options: ["Enthalpy of formation", "Bond energy", "Activation energy", "Heat of reaction"], answer: 1, explanation: "Bond energy is the amount of energy required to break one mole of bonds in a gaseous substance." },
+  { id: "CHE-111", subject: "Chemistry", question: "The activation energy of a reaction can be lowered by:", options: ["Adding a catalyst", "Increasing temperature", "Increasing concentration", "Increasing surface area"], answer: 0, explanation: "A catalyst provides an alternative reaction pathway with lower activation energy." },
+  { id: "CHE-112", subject: "Chemistry", question: "According to the law of conservation of energy, energy can be:", options: ["Created", "Destroyed", "Transformed from one form to another", "Stored indefinitely without change"], answer: 2, explanation: "Energy cannot be created or destroyed but can be transformed from one form to another." },
+    { id: "CHE-113", subject: "Chemistry", question: "The heat change when one mole of a substance dissolves in excess water is called:", options: ["Enthalpy of combustion", "Enthalpy of solution", "Enthalpy of formation", "Enthalpy of neutralization"], answer: 1, explanation: "The enthalpy of solution is the heat change when one mole of a substance dissolves in excess solvent to form a solution of infinite dilution." },
+  { id: "CHE-114", subject: "Chemistry", question: "Which of the following is an example of an exothermic reaction?", options: ["Photosynthesis", "The burning of methane", "Thermal decomposition of calcium carbonate", "The electrolysis of water"], answer: 1, explanation: "The burning of methane (CH₄) is a combustion reaction that releases heat, making it exothermic." },
+  { id: "CHE-115", subject: "Chemistry", question: "Which of the following is an example of an endothermic reaction?", options: ["The burning of wood", "The reaction of sodium with water", "The thermal decomposition of CaCO₃", "The reaction of acid with a base"], answer: 2, explanation: "The thermal decomposition of CaCO₃ requires heat to break it down into CaO and CO₂, making it endothermic." },
+  { id: "CHE-116", subject: "Chemistry", question: "In a reaction, 10 g of a substance is burned and releases 200 kJ of heat. What is the enthalpy change per gram?", options: ["10 kJ/g", "20 kJ/g", "200 kJ/g", "2000 kJ/g"], answer: 1, explanation: "Enthalpy change per gram = 200 kJ / 10 g = 20 kJ/g." },
+  { id: "CHE-117", subject: "Chemistry", question: "Which statement is true about an exothermic reaction?", options: ["The products have more energy than the reactants", "The reactants have more energy than the products", "The reactants and products have equal energy", "Energy is absorbed from the surroundings"], answer: 1, explanation: "In an exothermic reaction, the reactants have more energy than the products. The excess energy is released as heat." },
+  { id: "CHE-118", subject: "Chemistry", question: "Which statement is true about an endothermic reaction?", options: ["The products have more energy than the reactants", "The reactants have more energy than the products", "Energy is released to the surroundings", "The temperature of the surroundings increases"], answer: 0, explanation: "In an endothermic reaction, the products have more energy than the reactants because energy is absorbed from the surroundings." },
+  { id: "CHE-119", subject: "Chemistry", question: "Hess's law states that the total enthalpy change for a reaction is:", options: ["Independent of the pathway taken", "Dependent on the pathway taken", "Always negative", "Always positive"], answer: 0, explanation: "Hess's law states that the total enthalpy change for a reaction is independent of the pathway taken, as long as the initial and final states are the same." },
+  { id: "CHE-120", subject: "Chemistry", question: "The standard enthalpy of formation of an element in its standard state is:", options: ["Zero", "Positive", "Negative", "Undefined"], answer: 0, explanation: "By convention, the standard enthalpy of formation of an element in its standard state is defined as zero." },
 
-  {
-    id: "CHE-008",
-    subject: "Chemistry",
-    question:
-      "Which factor does NOT change the value of an equilibrium constant for a given reaction?",
-    options: [
-      "Temperature",
-      "Pressure",
-      "Concentration",
-      "Presence of a catalyst"
-    ],
-    answer: 3,
-    explanation:
-      "A catalyst changes the rates of forward and reverse reactions equally. It does not alter the equilibrium constant."
-  },
+  // ---------- SECTION 8: ELECTROCHEMISTRY (121-140) ----------
+  { id: "CHE-121", subject: "Chemistry", question: "The process of decomposing a compound using an electric current is called:", options: ["Combustion", "Electrolysis", "Sublimation", "Distillation"], answer: 1, explanation: "Electrolysis is the process of decomposing a compound into its constituent elements using an electric current." },
+  { id: "CHE-122", subject: "Chemistry", question: "In electrolysis, the electrode connected to the positive terminal of the battery is called the:", options: ["Cathode", "Anode", "Electrolyte", "Diaphragm"], answer: 1, explanation: "The anode is the electrode connected to the positive terminal of the battery. It is where oxidation occurs." },
+  { id: "CHE-123", subject: "Chemistry", question: "In electrolysis, the electrode connected to the negative terminal of the battery is called the:", options: ["Anode", "Cathode", "Electrolyte", "Diaphragm"], answer: 1, explanation: "The cathode is the electrode connected to the negative terminal of the battery. It is where reduction occurs." },
+  { id: "CHE-124", subject: "Chemistry", question: "At the anode, the process that occurs is:", options: ["Reduction", "Oxidation", "Both oxidation and reduction", "Neutralization"], answer: 1, explanation: "Oxidation occurs at the anode, where electrons are lost by species in the solution." },
+  { id: "CHE-125", subject: "Chemistry", question: "At the cathode, the process that occurs is:", options: ["Oxidation", "Reduction", "Both oxidation and reduction", "Neutralization"], answer: 1, explanation: "Reduction occurs at the cathode, where electrons are gained by species in the solution." },
+  { id: "CHE-126", subject: "Chemistry", question: "The compound that conducts electricity when dissolved in water is called:", options: ["Non-electrolyte", "Electrolyte", "Conductor", "Sublimate"], answer: 1, explanation: "An electrolyte is a compound that conducts electricity when dissolved in water or in the molten state." },
+  { id: "CHE-127", subject: "Chemistry", question: "Which of the following is a strong electrolyte?", options: ["Sugar", "Ethanol", "NaCl", "Acetic acid"], answer: 2, explanation: "NaCl fully dissociates into ions in water, making it a strong electrolyte." },
+  { id: "CHE-128", subject: "Chemistry", question: "What is the product of the electrolysis of molten NaCl?", options: ["Sodium and Hydrogen", "Sodium and Chlorine", "Sodium hydroxide and Chlorine", "Hydrogen and Chlorine"], answer: 1, explanation: "The electrolysis of molten NaCl produces Sodium at the cathode and Chlorine gas at the anode." },
+  { id: "CHE-129", subject: "Chemistry", question: "What is the product at the cathode when an aqueous solution of CuSO₄ is electrolyzed?", options: ["Hydrogen gas", "Copper metal", "Oxygen gas", "Sulphur"], answer: 1, explanation: "Copper has a higher reduction potential than hydrogen, so Copper metal is deposited at the cathode." },
+  { id: "CHE-130", subject: "Chemistry", question: "What is the product at the anode when an aqueous solution of CuSO₄ is electrolyzed?", options: ["Copper metal", "Hydrogen gas", "Oxygen gas", "Sulphur dioxide"], answer: 2, explanation: "Oxygen gas is produced at the anode due to the oxidation of water (OH⁻ ions)." },
+  { id: "CHE-131", subject: "Chemistry", question: "Faraday's first law of electrolysis states that the mass of a substance deposited is directly proportional to:", options: ["The voltage applied", "The current used", "The resistance of the electrolyte", "The temperature"], answer: 1, explanation: "Faraday's first law states that the mass of a substance deposited or liberated at an electrode is directly proportional to the quantity of electricity passed (charge = current × time)." },
+  { id: "CHE-132", subject: "Chemistry", question: "What is the charge of one mole of electrons?", options: ["1 Faraday (96500 C)", "9650 C", "965 C", "9.65 C"], answer: 0, explanation: "One mole of electrons carries a charge of 1 Faraday, which is approximately 96,500 coulombs." },
+  { id: "CHE-133", subject: "Chemistry", question: "In a galvanic cell, the anode is the electrode where:", options: ["Reduction occurs", "Oxidation occurs", "Neutralization occurs", "Precipitation occurs"], answer: 1, explanation: "In a galvanic cell (voltaic cell), oxidation occurs at the anode, which is the negative electrode." },
+  { id: "CHE-134", subject: "Chemistry", question: "In a galvanic cell, the cathode is the electrode where:", options: ["Oxidation occurs", "Reduction occurs", "Neutralization occurs", "Precipitation occurs"], answer: 1, explanation: "In a galvanic cell, reduction occurs at the cathode, which is the positive electrode." },
+  { id: "CHE-135", subject: "Chemistry", question: "The process in which a metal is coated with a thin layer of another metal using electrolysis is called:", options: ["Electroplating", "Electrolysis", "Distillation", "Filtration"], answer: 0, explanation: "Electroplating is a process that uses electrolysis to deposit a thin layer of metal on the surface of another metal." },
+  { id: "CHE-136", subject: "Chemistry", question: "Which of the following is an example of a redox reaction?", options: ["Fe + CuSO₄ → FeSO₄ + Cu", "NaOH + HCl → NaCl + H₂O", "NaCl + AgNO₃ → AgCl + NaNO₃", "CaCO₃ → CaO + CO₂"], answer: 0, explanation: "In the reaction Fe + CuSO₄ → FeSO₄ + Cu, iron is oxidized (loses electrons) and copper is reduced (gains electrons)." },
+  { id: "CHE-137", subject: "Chemistry", question: "In the reaction: Zn + 2HCl → ZnCl₂ + H₂, which element is oxidized?", options: ["Hydrogen", "Zinc", "Chlorine", "None"], answer: 1, explanation: "Zinc is oxidized because it loses electrons to form Zn²⁺ ions. Hydrogen is reduced from H⁺ to H₂." },
+  { id: "CHE-138", subject: "Chemistry", question: "In the reaction: Zn + 2HCl → ZnCl₂ + H₂, which element is reduced?", options: ["Zinc", "Chlorine", "Hydrogen", "None"], answer: 2, explanation: "Hydrogen is reduced from H⁺ ions to H₂ gas by gaining electrons." },
+  { id: "CHE-139", subject: "Chemistry", question: "The substance that loses electrons in a redox reaction is called the:", options: ["Oxidizing agent", "Reducing agent", "Catalyst", "Precipitate"], answer: 1, explanation: "A reducing agent loses electrons (is oxidized) and causes the other species to be reduced." },
+  { id: "CHE-140", subject: "Chemistry", question: "The substance that gains electrons in a redox reaction is called the:", options: ["Reducing agent", "Oxidizing agent", "Catalyst", "Precipitate"], answer: 1, explanation: "An oxidizing agent gains electrons (is reduced) and causes the other species to be oxidized." },
 
-  {
-    id: "CHE-009",
-    subject: "Chemistry",
-    question:
-      "A gas occupies 600 cm³ at 27°C. What volume will it occupy at 127°C at constant pressure?",
-    options: ["400 cm³", "700 cm³", "800 cm³", "900 cm³"],
-    answer: 2,
-    explanation:
-      "Charles' law: V₁/T₁ = V₂/T₂. T₁ = 300 K and T₂ = 400 K. V₂ = 600 × 400/300 = 800 cm³."
-  },
+  // ---------- SECTION 9: CHEMICAL KINETICS & EQUILIBRIUM (141-160) ----------
+  { id: "CHE-141", subject: "Chemistry", question: "The rate of a chemical reaction can be increased by all of the following EXCEPT:", options: ["Increasing temperature", "Increasing concentration", "Adding a catalyst", "Decreasing temperature"], answer: 3, explanation: "Decreasing temperature would slow down a reaction. All other options increase the rate." },
+  { id: "CHE-142", subject: "Chemistry", question: "A catalyst increases the rate of a reaction by:", options: ["Increasing the temperature", "Increasing the concentration", "Lowering the activation energy", "Increasing the surface area"], answer: 2, explanation: "A catalyst provides an alternative reaction pathway with a lower activation energy." },
+  { id: "CHE-143", subject: "Chemistry", question: "Which statement is correct about a catalyst?", options: ["It is consumed in the reaction", "It increases the yield of the reaction", "It changes the equilibrium position", "It lowers the activation energy"], answer: 3, explanation: "A catalyst lowers the activation energy of a reaction but does not affect the yield or equilibrium position." },
+  { id: "CHE-144", subject: "Chemistry", question: "Le Chatelier's principle states that if a system at equilibrium is disturbed, the system will:", options: ["Change to oppose the disturbance", "Change to support the disturbance", "Remain unchanged", "Cease to react"], answer: 0, explanation: "Le Chatelier's principle states that a system at equilibrium will shift to oppose any external disturbance applied to it." },
+  { id: "CHE-145", subject: "Chemistry", question: "For the reaction: N₂(g) + 3H₂(g) ⇌ 2NH₃(g) + heat, increasing the pressure will:", options: ["Favor the forward reaction", "Favor the reverse reaction", "Have no effect", "Stop the reaction"], answer: 0, explanation: "Increasing pressure favors the side with fewer moles of gas. There are 4 moles on the left and 2 moles on the right, so the forward reaction is favored." },
+  { id: "CHE-146", subject: "Chemistry", question: "For the reaction: N₂(g) + 3H₂(g) ⇌ 2NH₃(g) + heat, decreasing the temperature will:", options: ["Favor the forward reaction", "Favor the reverse reaction", "Have no effect", "Stop the reaction"], answer: 0, explanation: "Since the forward reaction is exothermic, decreasing temperature favors the forward reaction." },
+  { id: "CHE-147", subject: "Chemistry", question: "If adding a catalyst to a reaction at equilibrium, the effect will be to:", options: ["Shift equilibrium to the right", "Shift equilibrium to the left", "Reach equilibrium faster", "Change the equilibrium constant"], answer: 2, explanation: "A catalyst does not shift the equilibrium position or change the equilibrium constant. It simply helps the reaction reach equilibrium faster." },
+  { id: "CHE-148", subject: "Chemistry", question: "The equilibrium constant (K) for a reaction depends on:", options: ["Pressure", "Concentration", "Temperature", "Catalyst"], answer: 2, explanation: "The equilibrium constant is only affected by changes in temperature. Pressure and concentration do not change the value of K, only the position of equilibrium." },
+  { id: "CHE-149", subject: "Chemistry", question: "If K > 1 for a reaction, the reaction:", options: ["Favors the reactants", "Favors the products", "Is at equilibrium", "Will not occur"], answer: 1, explanation: "If K > 1, the concentration of products is greater than reactants at equilibrium, meaning the forward reaction is favored." },
+  { id: "CHE-150", subject: "Chemistry", question: "If K < 1 for a reaction, the reaction:", options: ["Favors the products", "Favors the reactants", "Is at equilibrium", "Will not occur"], answer: 1, explanation: "If K < 1, the concentration of reactants is greater than products at equilibrium, meaning the reverse reaction is favored." },
+  { id: "CHE-151", subject: "Chemistry", question: "In chemical kinetics, the rate of reaction is affected by:", options: ["Temperature, concentration, and catalyst", "Volume and mass only", "Pressure and volume only", "Color and state only"], answer: 0, explanation: "The rate of a chemical reaction is affected by temperature, concentration (or pressure for gases), surface area, and the presence of a catalyst." },
+  { id: "CHE-152", subject: "Chemistry", question: "The Haber process is used for the industrial production of:", options: ["Sulphuric acid", "Ammonia", "Nitric acid", "Hydrogen gas"], answer: 1, explanation: "The Haber process is the main industrial method for the production of ammonia (NH₃) from nitrogen and hydrogen gas." },
+  { id: "CHE-153", subject: "Chemistry", question: "What are the conditions used in the Haber process?", options: ["High temperature, high pressure, and an iron catalyst", "Low temperature, low pressure, and no catalyst", "High temperature, low pressure, and a platinum catalyst", "Low temperature, high pressure, and a copper catalyst"], answer: 0, explanation: "The Haber process uses high temperature (450°C), high pressure (200 atm), and an iron catalyst to produce ammonia." },
+  { id: "CHE-154", subject: "Chemistry", question: "The Contact process is used for the production of:", options: ["Ammonia", "Sulphuric acid", "Nitric acid", "Sodium hydroxide"], answer: 1, explanation: "The Contact process is the industrial method for manufacturing sulphuric acid (H₂SO₄)." },
+  { id: "CHE-155", subject: "Chemistry", question: "The catalyst used in the Contact process is:", options: ["Iron", "Platinum or Vanadium(V) oxide", "Nickel", "Copper"], answer: 1, explanation: "The Contact process uses either platinum or Vanadium(V) oxide (V₂O₅) as a catalyst." },
+  { id: "CHE-156", subject: "Chemistry", question: "In the Contact process, the key reaction involves the oxidation of:", options: ["SO₂ to SO₃", "SO₃ to H₂SO₄", "H₂S to SO₂", "FeS₂ to Fe₂O₃"], answer: 0, explanation: "The key reaction is the conversion of sulphur dioxide (SO₂) to sulphur trioxide (SO₃) using a catalyst." },
+  { id: "CHE-157", subject: "Chemistry", question: "What is the effect of increasing the temperature on the rate of a reaction?", options: ["The rate decreases", "The rate increases", "The rate stays the same", "The reaction stops"], answer: 1, explanation: "Increasing temperature increases the kinetic energy of molecules, leading to more frequent and energetic collisions, thus increasing the reaction rate." },
+  { id: "CHE-158", subject: "Chemistry", question: "Which of the following is the rate equation for a reaction where the rate depends on the concentration of A squared?", options: ["Rate = k[A]", "Rate = k[A]²", "Rate = k²[A]", "Rate = [A]/k"], answer: 1, explanation: "If the rate depends on [A]², the rate equation is Rate = k[A]²." },
+  { id: "CHE-159", subject: "Chemistry", question: "The order of a reaction is determined by:", options: ["The stoichiometric coefficients", "Experimentally", "The temperature", "The catalyst"], answer: 1, explanation: "The order of a reaction is determined experimentally by measuring how the rate changes with concentration." },
+  { id: "CHE-160", subject: "Chemistry", question: "A reaction that has a rate law: Rate = k[A][B] is said to be:", options: ["First order overall", "Second order overall", "Third order overall", "Zero order overall"], answer: 1, explanation: "The overall order is the sum of the exponents: 1 + 1 = 2, so it is second order overall." },
 
-  {
-    id: "CHE-010",
-    subject: "Chemistry",
-    question:
-      "Which of the following pairs can form a buffer solution?",
-    options: [
-      "HCl and NaCl",
-      "NaOH and KOH",
-      "CH₃COOH and CH₃COONa",
-      "HNO₃ and KNO₃"
-    ],
-    answer: 2,
-    explanation:
-      "A buffer contains a weak acid and its conjugate base, or a weak base and its conjugate acid. Ethanoic acid and sodium ethanoate form an acidic buffer."
-  },
+    // ---------- SECTION 10: INORGANIC & DESCRIPTIVE CHEMISTRY (161-180) ----------
+  { id: "CHE-161", subject: "Chemistry", question: "What is the chemical formula for rust?", options: ["FeO", "Fe₂O₃", "Fe₃O₄", "Fe(OH)₃"], answer: 1, explanation: "Rust is hydrated Iron(III) oxide, with the formula Fe₂O₃·xH₂O." },
+  { id: "CHE-162", subject: "Chemistry", question: "Which of the following is the main constituent of natural gas?", options: ["Methane", "Ethane", "Propane", "Butane"], answer: 0, explanation: "Methane (CH₄) is the primary constituent of natural gas, making up about 80% of it." },
+  { id: "CHE-163", subject: "Chemistry", question: "What is the chemical formula for Sodium bicarbonate?", options: ["Na₂CO₃", "NaHCO₃", "Na₂SO₄", "NaOH"], answer: 1, explanation: "Sodium bicarbonate (baking soda) has the formula NaHCO₃." },
+  { id: "CHE-164", subject: "Chemistry", question: "Which gas is produced when a metal reacts with a dilute acid?", options: ["Oxygen", "Carbon dioxide", "Hydrogen", "Nitrogen"], answer: 2, explanation: "When a metal reacts with a dilute acid, hydrogen gas (H₂) is produced." },
+  { id: "CHE-165", subject: "Chemistry", question: "Which gas is produced when an acid reacts with a carbonate?", options: ["Hydrogen", "Oxygen", "Carbon dioxide", "Chlorine"], answer: 2, explanation: "The reaction of an acid with a carbonate produces carbon dioxide (CO₂) gas." },
+  { id: "CHE-166", subject: "Chemistry", question: "What is the chemical formula for Calcium hydroxide?", options: ["CaOH", "Ca(OH)₂", "Ca₂OH", "Ca(OH)₃"], answer: 1, explanation: "Calcium hydroxide (slaked lime) has the formula Ca(OH)₂." },
+  { id: "CHE-167", subject: "Chemistry", question: "Which of the following halogens is a liquid at room temperature?", options: ["Fluorine", "Chlorine", "Bromine", "Iodine"], answer: 2, explanation: "Bromine (Br₂) is the only halogen that is a liquid at room temperature." },
+  { id: "CHE-168", subject: "Chemistry", question: "Which of the following halogens is a solid at room temperature?", options: ["Fluorine", "Chlorine", "Bromine", "Iodine"], answer: 3, explanation: "Iodine (I₂) is a solid at room temperature." },
+  { id: "CHE-169", subject: "Chemistry", question: "What is the color of chlorine gas?", options: ["Greenish-yellow", "Brown", "Purple", "Colorless"], answer: 0, explanation: "Chlorine gas is greenish-yellow in color." },
+  { id: "CHE-170", subject: "Chemistry", question: "What is the color of iodine vapour?", options: ["Greenish-yellow", "Brown", "Purple/violet", "Colorless"], answer: 2, explanation: "Iodine vapor is purple/violet in color." },
+  { id: "CHE-171", subject: "Chemistry", question: "What is the chemical formula for quicklime?", options: ["Ca(OH)₂", "CaCO₃", "CaO", "CaCl₂"], answer: 2, explanation: "Quicklime is Calcium oxide (CaO)." },
+  { id: "CHE-172", subject: "Chemistry", question: "What is the chemical formula for slaked lime?", options: ["CaO", "CaCO₃", "Ca(OH)₂", "CaCl₂"], answer: 2, explanation: "Slaked lime is Calcium hydroxide (Ca(OH)₂)." },
+  { id: "CHE-173", subject: "Chemistry", question: "Which of the following metals is extracted by electrolysis?", options: ["Iron", "Copper", "Sodium", "Zinc"], answer: 2, explanation: "Sodium is highly reactive and is extracted by the electrolysis of molten sodium chloride." },
+  { id: "CHE-174", subject: "Chemistry", question: "Which of the following metals is extracted by reduction with carbon?", options: ["Sodium", "Potassium", "Iron", "Aluminium"], answer: 2, explanation: "Iron is extracted from its ore using carbon (coke) as a reducing agent in the blast furnace." },
+  { id: "CHE-175", subject: "Chemistry", question: "Which of the following is the main ore of iron?", options: ["Bauxite", "Haematite", "Galena", "Malachite"], answer: 1, explanation: "Haematite (Fe₂O₃) is the main ore of iron used in the blast furnace." },
+  { id: "CHE-176", subject: "Chemistry", question: "Which of the following is the main ore of aluminium?", options: ["Haematite", "Galena", "Bauxite", "Malachite"], answer: 2, explanation: "Bauxite (Al₂O₃·xH₂O) is the main ore of aluminium." },
+  { id: "CHE-177", subject: "Chemistry", question: "Sulphur is used in the production of:", options: ["Sulphuric acid", "Ammonia", "Sodium hydroxide", "Nitric acid"], answer: 0, explanation: "Sulphur is primarily used in the Contact process to produce sulphuric acid." },
+  { id: "CHE-178", subject: "Chemistry", question: "Which of the following is the main use of ammonia?", options: ["Making fertilizers", "Making plastics", "Making steel", "Making glass"], answer: 0, explanation: "Ammonia is primarily used to produce nitrogen fertilizers such as urea and ammonium nitrate." },
+  { id: "CHE-179", subject: "Chemistry", question: "The allotropes of carbon include:", options: ["Diamond and graphite", "Oxygen and ozone", "Sulphur and Selenium", "Phosphorus and nitrogen"], answer: 0, explanation: "Diamond and graphite are allotropes of carbon, meaning they are different structural forms of the same element." },
+  { id: "CHE-180", subject: "Chemistry", question: "Which allotrope of carbon is used in pencil leads?", options: ["Diamond", "Graphite", "Fullerene", "Amorphous carbon"], answer: 1, explanation: "Graphite is soft, black, and used as the lead in pencils because it is layered and can leave marks on paper." },
 
-  {
-    id: "CHE-011",
-    subject: "Chemistry",
-    question:
-      "The rate of a reaction doubles when the temperature is increased from 20°C to 30°C. Which explanation is most appropriate?",
-    options: [
-      "All molecules become ionized",
-      "The activation energy becomes zero",
-      "A greater fraction of molecules has energy equal to or greater than the activation energy",
-      "The equilibrium constant must become zero"
-    ],
-    answer: 2,
-    explanation:
-      "Increasing temperature increases the fraction of molecules possessing energy at least equal to the activation energy, increasing the frequency of successful collisions."
-  },
+  // ---------- SECTION 11: NUCLEAR CHEMISTRY (181-190) ----------
+  { id: "CHE-181", subject: "Chemistry", question: "Nuclear fission is the process of:", options: ["Combining two nuclei into one", "Splitting a heavy nucleus into lighter nuclei", "The spontaneous emission of radiation", "The changing of one element to another"], answer: 1, explanation: "Nuclear fission is the splitting of a heavy nucleus into lighter nuclei, accompanied by the release of energy." },
+  { id: "CHE-182", subject: "Chemistry", question: "Nuclear fusion is the process of:", options: ["Splitting a heavy nucleus into lighter nuclei", "Combining two light nuclei into a heavier nucleus", "The spontaneous emission of radiation", "The changing of one element to another"], answer: 1, explanation: "Nuclear fusion is the combining of two light nuclei to form a heavier nucleus, with the release of a large amount of energy." },
+  { id: "CHE-183", subject: "Chemistry", question: "The half-life of a radioactive element is 10 days. After 30 days, what fraction of the original sample remains?", options: ["1/2", "1/4", "1/8", "1/16"], answer: 2, explanation: "30 days is 3 half-lives. Remaining fraction = (1/2)³ = 1/8." },
+  { id: "CHE-184", subject: "Chemistry", question: "Alpha particles are:", options: ["Helium nuclei", "Electrons", "Electromagnetic radiation", "High-energy photons"], answer: 0, explanation: "Alpha particles are helium nuclei (2 protons + 2 neutrons) emitted during radioactive decay." },
+  { id: "CHE-185", subject: "Chemistry", question: "Beta particles are:", options: ["Helium nuclei", "High-speed electrons", "Electromagnetic radiation", "Neutrons"], answer: 1, explanation: "Beta particles are high-speed electrons emitted from the nucleus during radioactive decay." },
+  { id: "CHE-186", subject: "Chemistry", question: "Gamma rays are:", options: ["Helium nuclei", "High-speed electrons", "High-energy electromagnetic radiation", "Neutrons"], answer: 2, explanation: "Gamma rays are high-energy electromagnetic radiation emitted during radioactive decay." },
+  { id: "CHE-187", subject: "Chemistry", question: "The process of a heavier element breaking down into a lighter element with the emission of radiation is called:", options: ["Radioactive decay", "Electrolysis", "Distillation", "Combustion"], answer: 0, explanation: "Radioactive decay is the process by which an unstable nucleus loses energy by emitting radiation and transforms into a lighter element." },
+  { id: "CHE-188", subject: "Chemistry", question: "The particle that has a positive charge and is emitted during alpha decay is:", options: ["Proton", "Neutron", "Electron", "Alpha particle"], answer: 3, explanation: "An alpha particle is a helium nucleus with a +2 charge, emitted during alpha decay." },
+  { id: "CHE-189", subject: "Chemistry", question: "What is the nuclear equation for the alpha decay of Uranium-238?", options: ["²³⁸U → ²³⁴Th + ⁴He", "²³⁸U → ²³⁸Th + ⁴He", "²³⁸U → ²³⁴U + ⁴He", "²³⁸U → ²³⁴Th + ²He"], answer: 0, explanation: "Alpha decay reduces both the mass number by 4 and the atomic number by 2. So, ²³⁸U (mass 238, atomic 92) decays to ²³⁴Th (mass 234, atomic 90) and emits an alpha particle (⁴He)." },
+  { id: "CHE-190", subject: "Chemistry", question: "What is the mass number of the product formed when a beta particle is emitted from Carbon-14?", options: ["14", "13", "12", "10"], answer: 0, explanation: "Beta decay does not change the mass number. Carbon-14 (mass number 14) decays to Nitrogen-14 (mass number still 14)." },
 
-  {
-    id: "CHE-012",
-    subject: "Chemistry",
-    question:
-      "Which substance is expected to have the highest boiling point?",
-    options: [
-      "CH₄",
-      "NH₃",
-      "H₂O",
-      "H₂S"
-    ],
-    answer: 2,
-    explanation:
-      "Water forms extensive hydrogen bonds between its molecules, giving it an unusually high boiling point."
-  },
+  // ---------- SECTION 12: ENVIRONMENTAL & INDUSTRIAL CHEMISTRY (191-200) ----------
+  { id: "CHE-191", subject: "Chemistry", question: "Which gas is mainly responsible for the greenhouse effect?", options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"], answer: 2, explanation: "Carbon dioxide (CO₂) is the most significant greenhouse gas contributing to global warming." },
+  { id: "CHE-192", subject: "Chemistry", question: "Which gas is the major cause of acid rain?", options: ["CO₂", "SO₂", "N₂", "O₂"], answer: 1, explanation: "Sulphur dioxide (SO₂) and nitrogen oxides are the primary causes of acid rain." },
+  { id: "CHE-193", subject: "Chemistry", question: "Which of the following is a way to prevent the rusting of iron?", options: ["Keeping iron in dry conditions", "Painting the iron", "Galvanizing the iron", "All of the above"], answer: 3, explanation: "All these methods prevent iron from coming into contact with oxygen and moisture, which are needed for rust to form." },
+  { id: "CHE-194", subject: "Chemistry", question: "What is the chemical process involved in rusting?", options: ["Oxidation", "Reduction", "Neutralization", "Sublimation"], answer: 0, explanation: "Rusting is an oxidation reaction where iron reacts with oxygen and water to form hydrated iron(III) oxide (rust)." },
+  { id: "CHE-195", subject: "Chemistry", question: "Which of the following is the main cause of ozone depletion in the atmosphere?", options: ["Carbon dioxide", "Sulphur dioxide", "Chlorofluorocarbons (CFCs)", "Nitrogen"], answer: 2, explanation: "Chlorofluorocarbons (CFCs) are the primary cause of ozone layer depletion." },
+  { id: "CHE-196", subject: "Chemistry", question: "Which of the following is a renewable source of energy?", options: ["Coal", "Natural gas", "Solar energy", "Petroleum"], answer: 2, explanation: "Solar energy is renewable and inexhaustible, unlike coal, natural gas, and petroleum which are fossil fuels." },
+  { id: "CHE-197", subject: "Chemistry", question: "The main component of biogas is:", options: ["Methane", "Ethane", "Propane", "Butane"], answer: 0, explanation: "Methane (CH₄) is the main constituent of biogas, making up about 60-70% of it." },
+  { id: "CHE-198", subject: "Chemistry", question: "Which of the following is a limitation of using fossil fuels?", options: ["They are non-renewable", "They produce pollutants", "They are finite", "All of the above"], answer: 3, explanation: "Fossil fuels are non-renewable, finite, and produce pollutants such as CO₂ and SO₂ when burned." },
+  { id: "CHE-199", subject: "Chemistry", question: "What is the process of removing impurities from water before making it safe for drinking called?", options: ["Distillation", "Filtration", "Water treatment", "Evaporation"], answer: 2, explanation: "Water treatment is the process of removing impurities, bacteria, and chemicals from water to make it safe for consumption." },
+  { id: "CHE-200", subject: "Chemistry", question: "Which of the following is the main use of chlorine in water treatment?", options: ["To color the water", "To disinfect the water", "To make the water salty", "To remove odor"], answer: 1, explanation: "Chlorine is added to water to disinfect it by killing bacteria and other microorganisms." },
 
-  {
-    id: "CHE-013",
-    subject: "Chemistry",
-    question:
-      "A 25.0 cm³ sample of 0.100 mol dm⁻³ HCl requires 20.0 cm³ of NaOH for complete neutralization. What is the concentration of the NaOH?",
-    options: [
-      "0.080 mol dm⁻³",
-      "0.100 mol dm⁻³",
-      "0.125 mol dm⁻³",
-      "0.200 mol dm⁻³"
-    ],
-    answer: 2,
-    explanation:
-      "HCl + NaOH → NaCl + H₂O. Moles HCl = 0.100 × 25/1000 = 0.00250 mol. The same number of moles of NaOH is required. Concentration = 0.00250/0.020 = 0.125 mol dm⁻³."
-  },
+    // ---------- SECTION 13: ADVANCED ORGANIC CHEMISTRY (201-230) ----------
+  { id: "CHE-201", subject: "Chemistry", question: "The functional group in alcohols is:", options: ["-COOH", "-OH", "-CHO", "-NH₂"], answer: 1, explanation: "Alcohols contain the hydroxyl group (-OH) attached to a carbon atom ." },
+  { id: "CHE-202", subject: "Chemistry", question: "Which of the following is the IUPAC name for CH₃CH₂CH₂OH?", options: ["Methanol", "Ethanol", "Propan-1-ol", "Butanol"], answer: 2, explanation: "The longest chain has 3 carbon atoms (propane) and the -OH is on the first carbon, making it propan-1-ol." },
+  { id: "CHE-203", subject: "Chemistry", question: "The general formula of alkanes is:", options: ["CₙH₂ₙ₊₂", "CₙH₂ₙ", "CₙH₂ₙ₋₂", "CₙHₙ"], answer: 0, explanation: "Alkanes follow the general formula CₙH₂ₙ₊₂ (e.g., CH₄, C₂H₆) ." },
+  { id: "CHE-204", subject: "Chemistry", question: "Which of the following is a member of the alkene family?", options: ["CH₄", "C₂H₄", "C₂H₆", "C₃H₈"], answer: 1, explanation: "Ethene (C₂H₄) is the simplest alkene with a carbon-carbon double bond ." },
+  { id: "CHE-205", subject: "Chemistry", question: "The product of the complete combustion of a hydrocarbon is:", options: ["CO and H₂O", "CO₂ and H₂O", "C and H₂", "CO₂ and H₂"], answer: 1, explanation: "Complete combustion in excess oxygen produces carbon dioxide (CO₂) and water (H₂O)." },
+  { id: "CHE-206", subject: "Chemistry", question: "What is the chemical formula for ethanol?", options: ["CH₃OH", "C₂H₅OH", "CH₃COOH", "C₆H₁₂O₆"], answer: 1, explanation: "Ethanol has the molecular formula C₂H₅OH ." },
+  { id: "CHE-207", subject: "Chemistry", question: "Which of the following is an isomer of butane (C₄H₁₀)?", options: ["Isobutane (2-methylpropane)", "Ethene", "Propane", "Ethanol"], answer: 0, explanation: "Isobutane has the same molecular formula (C₄H₁₀) as butane but a different structural arrangement ." },
+  { id: "CHE-208", subject: "Chemistry", question: "The functional group in alkanoic acids is:", options: ["-OH", "-COOH", "-CHO", "-CO-"], answer: 1, explanation: "Alkanoic acids (carboxylic acids) contain the carboxyl group (-COOH) ." },
+  { id: "CHE-209", subject: "Chemistry", question: "What is the IUPAC name for CH₄?", options: ["Methane", "Ethane", "Propane", "Butane"], answer: 0, explanation: "CH₄ is the simplest alkane, named Methane ." },
+  { id: "CHE-210", subject: "Chemistry", question: "Which compound is the main constituent of natural gas?", options: ["Methane", "Ethane", "Propane", "Butane"], answer: 0, explanation: "Methane (CH₄) makes up approximately 80% of natural gas ." },
+  { id: "CHE-211", subject: "Chemistry", question: "What type of reaction is the conversion of ethanol to ethene?", options: ["Hydrogenation", "Dehydration", "Hydration", "Oxidation"], answer: 1, explanation: "Dehydration of ethanol (removal of water) produces ethene ." },
+  { id: "CHE-212", subject: "Chemistry", question: "Which of the following is an aldehyde?", options: ["CH₃OH", "CH₃CHO", "CH₃COOH", "CH₃COCH₃"], answer: 1, explanation: "Aldehydes contain the -CHO functional group; ethanal (CH₃CHO) is an example ." },
+  { id: "CHE-213", subject: "Chemistry", question: "What is the IUPAC name for CH₃COOH?", options: ["Methanoic acid", "Ethanoic acid", "Propanoic acid", "Butanoic acid"], answer: 1, explanation: "CH₃COOH has 2 carbon atoms, making it ethanoic acid (acetic acid) ." },
+  { id: "CHE-214", subject: "Chemistry", question: "Which of the following is a ketone?", options: ["CH₃CHO", "CH₃COCH₃", "CH₃CH₂OH", "CH₃CH₃"], answer: 1, explanation: "Ketones contain the carbonyl group (C=O) between two carbon atoms; propanone (CH₃COCH₃) is an example ." },
+  { id: "CHE-215", subject: "Chemistry", question: "The process of converting ethene to ethanol is called:", options: ["Dehydration", "Hydrogenation", "Hydration", "Halogenation"], answer: 2, explanation: "Hydration (addition of water) to ethene in the presence of an acid catalyst produces ethanol ." },
+  { id: "CHE-216", subject: "Chemistry", question: "Which of the following is an unsaturated hydrocarbon?", options: ["CH₄", "C₂H₆", "C₂H₄", "C₃H₈"], answer: 2, explanation: "Ethene (C₂H₄) contains a double bond, making it unsaturated ." },
+  { id: "CHE-217", subject: "Chemistry", question: "What is the chemical formula for methane?", options: ["CH₄", "C₂H₆", "C₃H₈", "C₄H₁₀"], answer: 0, explanation: "Methane is CH₄, the simplest alkane ." },
+  { id: "CHE-218", subject: "Chemistry", question: "Which of the following is the process of hydrogenation?", options: ["The addition of hydrogen to an unsaturated compound", "The removal of hydrogen from a compound", "The addition of water to a compound", "The addition of oxygen to a compound"], answer: 0, explanation: "Hydrogenation adds hydrogen to unsaturated compounds (e.g., converting alkenes to alkanes) ." },
+  { id: "CHE-219", subject: "Chemistry", question: "What is the general formula for cycloalkanes?", options: ["CₙH₂ₙ", "CₙH₂ₙ₊₂", "CₙH₂ₙ₋₂", "CₙHₙ"], answer: 0, explanation: "Cycloalkanes have the general formula CₙH₂ₙ (e.g., C₃H₆ for cyclopropane) ." },
+  { id: "CHE-220", subject: "Chemistry", question: "Which of the following is an ester?", options: ["CH₃COOCH₃", "CH₃COOH", "CH₃CH₂OH", "CH₃CHO"], answer: 0, explanation: "Esters have the general formula R-COO-R'; methyl ethanoate (CH₃COOCH₃) is an example ." },
+  { id: "CHE-221", subject: "Chemistry", question: "What type of reaction is used to make esters?", options: ["Esterification", "Hydrolysis", "Saponification", "Fermentation"], answer: 0, explanation: "Esterification is the reaction between a carboxylic acid and an alcohol to form an ester and water ." },
+  { id: "CHE-222", subject: "Chemistry", question: "Which of the following is the main component of biogas?", options: ["Methane", "Ethane", "Propane", "Butane"], answer: 0, explanation: "Biogas is primarily composed of methane (CH₄), with smaller amounts of CO₂ and other gases ." },
+  { id: "CHE-223", subject: "Chemistry", question: "What is the IUPAC name for the compound with the formula C₆H₁₄?", options: ["Hexane", "Pentane", "Heptane", "Butane"], answer: 0, explanation: "C₆H₁₄ has 6 carbon atoms, making it hexane ." },
+  { id: "CHE-224", subject: "Chemistry", question: "Which of the following compounds is a polymer?", options: ["Polyethene", "Ethene", "Methane", "Ethanol"], answer: 0, explanation: "Polyethene is a polymer formed by the polymerization of ethene monomers ." },
+  { id: "CHE-225", subject: "Chemistry", question: "Which of the following is an example of an addition polymer?", options: ["Polyethene", "Terylene", "Nylon", "Polyester"], answer: 0, explanation: "Polyethene is an addition polymer formed from ethene monomers without losing any atoms ." },
+  { id: "CHE-226", subject: "Chemistry", question: "The process of breaking down large hydrocarbons into smaller ones is called:", options: ["Distillation", "Cracking", "Polymerization", "Hydrogenation"], answer: 1, explanation: "Cracking breaks down long-chain hydrocarbons into shorter, more useful molecules ." },
+  { id: "CHE-227", subject: "Chemistry", question: "What is the main product of the fractional distillation of crude oil?", options: ["Separate fractions like petrol, kerosene, and diesel", "A single compound", "A gas only", "A polymer"], answer: 0, explanation: "Fractional distillation separates crude oil into fractions based on boiling points, including petrol, kerosene, and diesel ." },
+  { id: "CHE-228", subject: "Chemistry", question: "Which of the following is the smallest alkane?", options: ["Methane", "Ethane", "Propane", "Butane"], answer: 0, explanation: "Methane (CH₄) has only one carbon atom, making it the smallest alkane ." },
+  { id: "CHE-229", subject: "Chemistry", question: "Which of the following is NOT a property of alkanes?", options: ["They undergo addition reactions", "They are relatively unreactive", "They undergo combustion", "They are saturated hydrocarbons"], answer: 0, explanation: "Alkanes are saturated hydrocarbons and do not undergo addition reactions easily ." },
+  { id: "CHE-230", subject: "Chemistry", question: "What is the general formula for alkynes?", options: ["CₙH₂ₙ₋₂", "CₙH₂ₙ", "CₙH₂ₙ₊₂", "CₙHₙ"], answer: 0, explanation: "Alkynes contain a triple bond and have the general formula CₙH₂ₙ₋₂ (e.g., ethyne C₂H₂) ." },
 
-  {
-    id: "CHE-014",
-    subject: "Chemistry",
-    question:
-      "Which property generally increases from left to right across a period?",
-    options: [
-      "Atomic radius",
-      "Metallic character",
-      "First ionization energy",
-      "Number of occupied shells"
-    ],
-    answer: 2,
-    explanation:
-      "Across a period, effective nuclear charge increases while electrons are added to the same principal shell, generally increasing first ionization energy."
-  },
+  // ---------- SECTION 14: CHEMICAL CALCULATIONS (231-260) ----------
+  { id: "CHE-231", subject: "Chemistry", question: "What is the molar mass of Sulphuric acid (H₂SO₄)? (H=1, S=32, O=16)", options: ["98 g/mol", "88 g/mol", "108 g/mol", "96 g/mol"], answer: 0, explanation: "Molar mass = 2(1) + 32 + 4(16) = 2 + 32 + 64 = 98 g/mol ." },
+  { id: "CHE-232", subject: "Chemistry", question: "How many moles are in 4.9 g of H₂SO₄? (H₂SO₄ = 98 g/mol)", options: ["0.05 moles", "0.1 moles", "0.5 moles", "1 mole"], answer: 0, explanation: "Moles = mass/molar mass = 4.9/98 = 0.05 moles ." },
+  { id: "CHE-233", subject: "Chemistry", question: "Calculate the number of moles in 22 g of CO₂. (C=12, O=16)", options: ["0.2 moles", "0.5 moles", "1 mole", "2 moles"], answer: 1, explanation: "Molar mass of CO₂ = 12 + 2(16) = 44 g/mol. Moles = 22/44 = 0.5 moles ." },
+  { id: "CHE-234", subject: "Chemistry", question: "What is the mass of 0.25 moles of NaOH? (Na=23, O=16, H=1)", options: ["10 g", "20 g", "40 g", "5 g"], answer: 0, explanation: "Molar mass of NaOH = 23+16+1 = 40 g/mol. Mass = 0.25 × 40 = 10 g ." },
+  { id: "CHE-235", subject: "Chemistry", question: "What is the concentration of a solution containing 5.85 g of NaCl in 1 dm³ of solution? (Na=23, Cl=35.5)", options: ["0.1 mol/dm³", "0.2 mol/dm³", "0.5 mol/dm³", "1.0 mol/dm³"], answer: 0, explanation: "Molar mass of NaCl = 58.5 g/mol. Moles = 5.85/58.5 = 0.1 mol. Concentration = 0.1/1 = 0.1 mol/dm³ ." },
+  { id: "CHE-236", subject: "Chemistry", question: "How many grams of CaCO₃ are needed to produce 4.4 g of CO₂? (CaCO₃ → CaO + CO₂; Ca=40, C=12, O=16)", options: ["10 g", "8 g", "12 g", "20 g"], answer: 0, explanation: "Moles of CO₂ = 4.4/44 = 0.1 mol. From the equation, 1 mole CaCO₃ produces 1 mole CO₂. Moles CaCO₃ = 0.1 mol. Mass = 0.1 × 100 = 10 g ." },
+  { id: "CHE-237", subject: "Chemistry", question: "What is the mass percentage of carbon in CO₂? (C=12, O=16)", options: ["27.3%", "50%", "72.7%", "33.3%"], answer: 0, explanation: "Molar mass of CO₂ = 44 g/mol. Mass of carbon = 12 g. Percentage = (12/44) × 100 = 27.3% ." },
+  { id: "CHE-238", subject: "Chemistry", question: "How many molecules are in 0.5 moles of water? (Avogadro's number = 6.02 × 10²³)", options: ["3.01 × 10²³ molecules", "6.02 × 10²³ molecules", "1.204 × 10²³ molecules", "6.02 × 10²² molecules"], answer: 0, explanation: "Number of molecules = moles × Avogadro's number = 0.5 × 6.02 × 10²³ = 3.01 × 10²³ molecules ." },
+  { id: "CHE-239", subject: "Chemistry", question: "What is the volume of 0.5 moles of a gas at STP? (Molar volume at STP = 22.4 dm³)", options: ["11.2 dm³", "22.4 dm³", "5.6 dm³", "44.8 dm³"], answer: 0, explanation: "Volume = moles × molar volume = 0.5 × 22.4 = 11.2 dm³ ." },
+  { id: "CHE-240", subject: "Chemistry", question: "What is the percentage composition of nitrogen in NH₃? (N=14, H=1)", options: ["82.4%", "17.6%", "50%", "20%"], answer: 0, explanation: "Molar mass of NH₃ = 14 + 3(1) = 17 g/mol. Percentage of N = (14/17) × 100 = 82.4% ." },
+  { id: "CHE-241", subject: "Chemistry", question: "What is the simplest formula of a compound containing 40% carbon, 6.7% hydrogen, and 53.3% oxygen?", options: ["CH₂O", "CHO", "C₂H₄O₂", "CH₄O"], answer: 0, explanation: "Divide by atomic masses: C=40/12=3.33, H=6.7/1=6.7, O=53.3/16=3.33. Ratio = 3.33:6.7:3.33 = 1:2:1. Simplest formula = CH₂O ." },
+  { id: "CHE-242", subject: "Chemistry", question: "What is the empirical formula of a compound containing 32 g of sulphur and 32 g of oxygen? (S=32, O=16)", options: ["SO₂", "SO", "SO₃", "S₂O₃"], answer: 0, explanation: "Moles of S = 32/32 = 1. Moles of O = 32/16 = 2. Ratio = 1:2. Formula = SO₂ ." },
+  { id: "CHE-243", subject: "Chemistry", question: "What is the mass of 0.2 moles of CaCO₃? (Ca=40, C=12, O=16)", options: ["20 g", "10 g", "100 g", "5 g"], answer: 0, explanation: "Molar mass of CaCO₃ = 100 g/mol. Mass = 0.2 × 100 = 20 g ." },
+  { id: "CHE-244", subject: "Chemistry", question: "What is the number of moles in 3.01 × 10²³ molecules of CO₂?", options: ["0.5 moles", "1 mole", "2 moles", "3 moles"], answer: 0, explanation: "Moles = Number of molecules/Avogadro's number = (3.01 × 10²³)/(6.02 × 10²³) = 0.5 moles ." },
+  { id: "CHE-245", subject: "Chemistry", question: "What is the volume occupied by 4.4 g of CO₂ at STP? (CO₂ = 44 g/mol, molar volume = 22.4 dm³)", options: ["2.24 dm³", "4.48 dm³", "0.224 dm³", "22.4 dm³"], answer: 0, explanation: "Moles = 4.4/44 = 0.1 mol. Volume = 0.1 × 22.4 = 2.24 dm³ ." },
+  { id: "CHE-246", subject: "Chemistry", question: "Calculate the mass of NaOH required to prepare 500 cm³ of a 0.2 mol/dm³ solution. (NaOH = 40 g/mol)", options: ["4 g", "2 g", "8 g", "1 g"], answer: 0, explanation: "Moles = 0.2 × 0.5 = 0.1 mol. Mass = 0.1 × 40 = 4 g ." },
+  { id: "CHE-247", subject: "Chemistry", question: "What is the concentration of a solution containing 2 moles of solute in 500 cm³ of solution?", options: ["4 mol/dm³", "2 mol/dm³", "1 mol/dm³", "0.5 mol/dm³"], answer: 0, explanation: "Concentration = moles/volume = 2/0.5 = 4 mol/dm³ ." },
+  { id: "CHE-248", subject: "Chemistry", question: "What is the molar mass of glucose (C₆H₁₂O₆)? (C=12, H=1, O=16)", options: ["180 g/mol", "90 g/mol", "360 g/mol", "120 g/mol"], answer: 0, explanation: "Molar mass = 6(12) + 12(1) + 6(16) = 72 + 12 + 96 = 180 g/mol ." },
+  { id: "CHE-249", subject: "Chemistry", question: "How many moles are in 90 g of glucose (C₆H₁₂O₆)? (Glucose = 180 g/mol)", options: ["0.5 moles", "1 mole", "2 moles", "3 moles"], answer: 0, explanation: "Moles = 90/180 = 0.5 moles ." },
+  { id: "CHE-250", subject: "Chemistry", question: "What is the mass of 3.01 × 10²² molecules of water? (H₂O = 18 g/mol, Avogadro's number = 6.02 × 10²³)", options: ["0.9 g", "1.8 g", "0.18 g", "9 g"], answer: 0, explanation: "Moles = (3.01 × 10²²)/(6.02 × 10²³) = 0.05 moles. Mass = 0.05 × 18 = 0.9 g ." },
+  { id: "CHE-251", subject: "Chemistry", question: "Calculate the number of moles in 0.72 g of water (H₂O = 18 g/mol).", options: ["0.04 moles", "0.4 moles", "0.02 moles", "0.08 moles"], answer: 0, explanation: "Moles = 0.72/18 = 0.04 moles ." },
+  { id: "CHE-252", subject: "Chemistry", question: "What is the mass of 0.6 moles of methane (CH₄)? (C=12, H=1)", options: ["9.6 g", "4.8 g", "12 g", "6 g"], answer: 0, explanation: "Molar mass of CH₄ = 16 g/mol. Mass = 0.6 × 16 = 9.6 g ." },
+  { id: "CHE-253", subject: "Chemistry", question: "How many atoms are in 0.1 moles of sodium (Na)? (Avogadro's number = 6.02 × 10²³)", options: ["6.02 × 10²² atoms", "6.02 × 10²³ atoms", "1.204 × 10²³ atoms", "3.01 × 10²³ atoms"], answer: 0, explanation: "Number of atoms = 0.1 × 6.02 × 10²³ = 6.02 × 10²² atoms ." },
+  { id: "CHE-254", subject: "Chemistry", question: "What is the mass percentage of oxygen in H₂O₂? (H=1, O=16)", options: ["94.1%", "50%", "33.3%", "66.7%"], answer: 0, explanation: "Molar mass of H₂O₂ = 34 g/mol. Mass of oxygen = 32 g. Percentage = (32/34) × 100 = 94.1% ." },
+  { id: "CHE-255", subject: "Chemistry", question: "What is the simplest formula of a compound containing 27.3% carbon and 72.7% oxygen? (C=12, O=16)", options: ["CO₂", "CO", "C₂O₃", "C₂O"], answer: 0, explanation: "Moles ratio: C=27.3/12=2.275, O=72.7/16=4.544. Ratio = 2.275:4.544 ≈ 1:2. Formula = CO₂ ." },
+  { id: "CHE-256", subject: "Chemistry", question: "How many moles are in 16 g of CH₄? (C=12, H=1)", options: ["1 mole", "0.5 moles", "2 moles", "0.25 moles"], answer: 0, explanation: "Molar mass of CH₄ = 16 g/mol. Moles = 16/16 = 1 mole ." },
+  { id: "CHE-257", subject: "Chemistry", question: "What is the mass of 0.5 moles of H₂O? (H₂O = 18 g/mol)", options: ["9 g", "18 g", "36 g", "4.5 g"], answer: 0, explanation: "Mass = 0.5 × 18 = 9 g ." },
+  { id: "CHE-258", subject: "Chemistry", question: "Calculate the number of moles in 0.88 g of CO₂. (CO₂ = 44 g/mol)", options: ["0.02 moles", "0.2 moles", "0.04 moles", "0.5 moles"], answer: 0, explanation: "Moles = 0.88/44 = 0.02 moles ." },
+  { id: "CHE-259", subject: "Chemistry", question: "What is the volume of 0.8 moles of a gas at STP? (Molar volume at STP = 22.4 dm³)", options: ["17.92 dm³", "11.2 dm³", "22.4 dm³", "35.84 dm³"], answer: 0, explanation: "Volume = 0.8 × 22.4 = 17.92 dm³ ." },
+  { id: "CHE-260", subject: "Chemistry", question: "What is the mass of NaCl required to prepare 1 dm³ of a 0.5 mol/dm³ solution? (NaCl = 58.5 g/mol)", options: ["29.25 g", "58.5 g", "117 g", "14.625 g"], answer: 0, explanation: "Moles = 0.5 × 1 = 0.5 moles. Mass = 0.5 × 58.5 = 29.25 g ." },
 
-  {
-    id: "CHE-015",
-    subject: "Chemistry",
-    question:
-      "What volume of 0.50 mol dm⁻³ NaOH is required to completely neutralize 25.0 cm³ of 0.20 mol dm⁻³ H₂SO₄?",
-    options: ["10 cm³", "20 cm³", "25 cm³", "40 cm³"],
-    answer: 1,
-    explanation:
-      "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O. Moles H₂SO₄ = 0.20 × 0.025 = 0.005 mol. NaOH required = 0.010 mol. Volume = 0.010/0.50 = 0.020 dm³ = 20 cm³."
-  },
+  // ---------- SECTION 15: SEPARATION TECHNIQUES (261-280) ----------
+  { id: "CHE-261", subject: "Chemistry", question: "Which method is most suitable for separating a mixture of salt and water?", options: ["Filtration", "Distillation", "Chromatography", "Decantation"], answer: 1, explanation: "Distillation separates salt from water by boiling and condensing the water, leaving the salt behind ." },
+  { id: "CHE-262", subject: "Chemistry", question: "Which method is used to separate the components of ink?", options: ["Filtration", "Distillation", "Paper chromatography", "Crystallization"], answer: 2, explanation: "Paper chromatography separates the different dyes or components in ink based on their solubility and migration rates ." },
+  { id: "CHE-263", subject: "Chemistry", question: "The separation of a solid from a liquid using a porous material is called:", options: ["Filtration", "Distillation", "Decantation", "Sublimation"], answer: 0, explanation: "Filtration uses a porous material (filter paper) to separate an insoluble solid from a liquid ." },
+  { id: "CHE-264", subject: "Chemistry", question: "Which method is best for separating a mixture of iodine and sand?", options: ["Filtration", "Sublimation", "Distillation", "Chromatography"], answer: 1, explanation: "Iodine sublimes (changes from solid to gas) when heated, while sand does not. The iodine vapor can be collected and condensed back to solid ." },
+  { id: "CHE-265", subject: "Chemistry", question: "The process of separating a solid from its solution by allowing crystals to form is called:", options: ["Filtration", "Crystallization", "Distillation", "Decantation"], answer: 1, explanation: "Crystallization involves evaporating a solution to form crystals of the solute ." },
+  { id: "CHE-266", subject: "Chemistry", question: "Which method separates a mixture of two immiscible liquids?", options: ["Filtration", "Separating funnel", "Distillation", "Chromatography"], answer: 1, explanation: "A separating funnel separates immiscible liquids (like oil and water) based on their different densities ." },
+  { id: "CHE-267", subject: "Chemistry", question: "Which method is best for separating a mixture of ethanol and water?", options: ["Filtration", "Distillation", "Chromatography", "Sublimation"], answer: 1, explanation: "Distillation separates ethanol (boiling point 78°C) from water (boiling point 100°C) due to their different boiling points ." },
+  { id: "CHE-268", subject: "Chemistry", question: "The separation technique that relies on the difference in boiling points of components is called:", options: ["Filtration", "Distillation", "Sublimation", "Decantation"], answer: 1, explanation: "Distillation separates components based on different boiling points ." },
+   { id: "CHE-269", subject: "Chemistry", question: "What is the process of pouring off a clear liquid leaving behind a precipitate called?", options: ["Filtration", "Decantation", "Distillation", "Sublimation"], answer: 1, explanation: "Decantation is the careful pouring of a clear liquid off a solid precipitate that has settled at the bottom ." },
+  { id: "CHE-270", subject: "Chemistry", question: "Which method is best for separating a mixture of two solids with different solubilities?", options: ["Filtration", "Crystallization", "Distillation", "Sublimation"], answer: 1, explanation: "Crystallization allows the less soluble solid to crystallize first while the more soluble one stays in solution ." },
+  { id: "CHE-271", subject: "Chemistry", question: "What method separates a solid from a liquid by heating the liquid to dryness?", options: ["Evaporation", "Filtration", "Distillation", "Decantation"], answer: 0, explanation: "Evaporation is the process of heating a liquid to dryness to leave behind a solid residue ." },
+  { id: "CHE-272", subject: "Chemistry", question: "Paper chromatography is used to separate:", options: ["Dyes and pigments", "Pure elements", "Gases", "Metals"], answer: 0, explanation: "Paper chromatography is ideal for separating colored mixtures like dyes and pigments ." },
+  { id: "CHE-273", subject: "Chemistry", question: "Which separation method uses a centrifuge?", options: ["To separate solid particles from a liquid by spinning", "To separate gases", "To separate two liquids with different boiling points", "To separate crystals from solution"], answer: 0, explanation: "A centrifuge spins samples at high speed to separate solids from liquids by density ." },
+  { id: "CHE-274", subject: "Chemistry", question: "What is the process of separating a liquid from a solid using a filter paper called?", options: ["Filtration", "Decantation", "Sublimation", "Distillation"], answer: 0, explanation: "Filtration uses a filter paper to trap solid particles while allowing the liquid to pass through ." },
+  { id: "CHE-275", subject: "Chemistry", question: "Which method is best for separating a magnetic substance from a non-magnetic one?", options: ["Magnetic separation", "Filtration", "Distillation", "Chromatography"], answer: 0, explanation: "Magnetic separation uses a magnet to attract and remove magnetic materials from non-magnetic ones ." },
+  { id: "CHE-276", subject: "Chemistry", question: "Which technique is used to separate different gases based on their boiling points?", options: ["Fractional distillation", "Filtration", "Crystallization", "Decantation"], answer: 0, explanation: "Fractional distillation separates gases based on their different boiling points (e.g., separating air components) ." },
+  { id: "CHE-277", subject: "Chemistry", question: "The process of separating a mixture of liquids with different boiling points by evaporation and condensation is called:", options: ["Distillation", "Filtration", "Sublimation", "Decantation"], answer: 0, explanation: "Distillation separates liquids by boiling off one component and condensing it, leaving the other behind ." },
+  { id: "CHE-278", subject: "Chemistry", question: "Which of the following mixtures cannot be separated by filtration?", options: ["Sand and water", "Salt and water", "Chalk and water", "Iron filings and water"], answer: 1, explanation: "Salt dissolves completely in water, forming a solution that passes through the filter paper ." },
+  { id: "CHE-279", subject: "Chemistry", question: "What is the separation method used in petroleum refining?", options: ["Fractional distillation", "Filtration", "Crystallization", "Chromatography"], answer: 0, explanation: "Fractional distillation separates crude oil into fractions like petrol, kerosene, and diesel based on boiling points ." },
+  { id: "CHE-280", subject: "Chemistry", question: "The Rf value in chromatography is calculated as:", options: ["Distance moved by solute / Distance moved by solvent", "Distance moved by solvent / Distance moved by solute", "Height of solute × Height of solvent", "Solute distance × Solvent distance"], answer: 0, explanation: "Rf value = distance moved by the solute / distance moved by the solvent front ." },
 
-  {
-    id: "CHE-016",
-    subject: "Chemistry",
-    question:
-      "Which of the following is an example of disproportionation?",
-    options: [
-      "Na⁺ + Cl⁻ → NaCl",
-      "Cl₂ + 2OH⁻ → Cl⁻ + ClO⁻ + H₂O",
-      "HCl + NaOH → NaCl + H₂O",
-      "CaCO₃ → CaO + CO₂"
-    ],
-    answer: 1,
-    explanation:
-      "In the reaction with hot/cold alkali, chlorine is simultaneously reduced to Cl⁻ and oxidized to ClO⁻. This is disproportionation."
-  },
+  // ---------- SECTION 16: REDOX & OXIDATION-REDUCTION (281-300) ----------
+  { id: "CHE-281", subject: "Chemistry", question: "In a redox reaction, the substance that loses electrons is:", options: ["Oxidizing agent", "Reducing agent", "Catalyst", "Precipitate"], answer: 1, explanation: "A reducing agent is the substance that loses electrons (is oxidized), causing another substance to be reduced ." },
+  { id: "CHE-282", subject: "Chemistry", question: "In a redox reaction, the substance that gains electrons is:", options: ["Reducing agent", "Oxidizing agent", "Catalyst", "Precipitate"], answer: 1, explanation: "An oxidizing agent gains electrons (is reduced), causing another substance to be oxidized ." },
+  { id: "CHE-283", subject: "Chemistry", question: "What is the oxidation state of Sulphur in H₂SO₄?", options: ["+2", "+4", "+6", "+8"], answer: 2, explanation: "2(+1) + S + 4(-2) = 0 → 2 + S - 8 = 0 → S = +6 ." },
+  { id: "CHE-284", subject: "Chemistry", question: "What is the oxidation state of Chromium in K₂Cr₂O₇?", options: ["+3", "+4", "+6", "+7"], answer: 2, explanation: "2(+1) + 2Cr + 7(-2) = 0 → 2 + 2Cr - 14 = 0 → 2Cr = 12 → Cr = +6 ." },
+  { id: "CHE-285", subject: "Chemistry", question: "What is the oxidation state of Manganese in KMnO₄?", options: ["+2", "+4", "+6", "+7"], answer: 3, explanation: "1(+1) + Mn + 4(-2) = 0 → 1 + Mn - 8 = 0 → Mn = +7 ." },
+  { id: "CHE-286", subject: "Chemistry", question: "The reaction of Fe with CuSO₄ is an example of:", options: ["Combination", "Displacement", "Decomposition", "Neutralization"], answer: 1, explanation: "Fe displaces Cu from CuSO₄ because iron is more reactive than copper ." },
+  { id: "CHE-287", subject: "Chemistry", question: "Which of the following is an oxidation reaction?", options: ["The loss of electrons", "The gain of electrons", "The loss of oxygen", "The gain of hydrogen"], answer: 0, explanation: "Oxidation is defined as the loss of electrons or the gain of oxygen ." },
+  { id: "CHE-288", subject: "Chemistry", question: "Which of the following is a reduction reaction?", options: ["The loss of electrons", "The gain of electrons", "The loss of hydrogen", "The gain of oxygen"], answer: 1, explanation: "Reduction is defined as the gain of electrons or the loss of oxygen ." },
+  { id: "CHE-289", subject: "Chemistry", question: "In the reaction: Zn + 2HCl → ZnCl₂ + H₂, which element is oxidized?", options: ["Zinc", "Hydrogen", "Chlorine", "None"], answer: 0, explanation: "Zinc loses electrons (0 to +2) and is oxidized, while hydrogen gains electrons ." },
+  { id: "CHE-290", subject: "Chemistry", question: "In the reaction: Zn + 2HCl → ZnCl₂ + H₂, which element is reduced?", options: ["Zinc", "Hydrogen", "Chlorine", "None"], answer: 1, explanation: "Hydrogen gains electrons (+1 to 0) and is reduced to H₂ gas ." },
+  { id: "CHE-291", subject: "Chemistry", question: "What is the oxidation number of Nitrogen in NH₃?", options: ["-3", "0", "+3", "-1"], answer: 0, explanation: "3(+1) + N = 0 → 3 + N = 0 → N = -3 ." },
+  { id: "CHE-292", subject: "Chemistry", question: "Which of the following is NOT a redox reaction?", options: ["Fe + CuSO₄ → FeSO₄ + Cu", "NaOH + HCl → NaCl + H₂O", "Zn + 2HCl → ZnCl₂ + H₂", "2Mg + O₂ → 2MgO"], answer: 1, explanation: "The neutralization reaction (acid + base) does not involve electron transfer; it's not a redox reaction ." },
+  { id: "CHE-293", subject: "Chemistry", question: "In the reaction: 2Mg + O₂ → 2MgO, which substance is reduced?", options: ["Magnesium", "Oxygen", "Both", "None"], answer: 1, explanation: "Oxygen gains electrons (0 to -2) and is reduced. Magnesium is oxidized ." },
+  { id: "CHE-294", subject: "Chemistry", question: "In the reaction: 2Mg + O₂ → 2MgO, which substance is oxidized?", options: ["Magnesium", "Oxygen", "Both", "None"], answer: 0, explanation: "Magnesium loses electrons (0 to +2) and is oxidized ." },
+  { id: "CHE-295", subject: "Chemistry", question: "What is the oxidation state of Chlorine in NaCl?", options: ["-1", "+1", "0", "-2"], answer: 0, explanation: "Sodium has +1, so Chlorine must be -1 for the compound to be neutral ." },
+  { id: "CHE-296", subject: "Chemistry", question: "The oxidation state of hydrogen in most compounds is:", options: ["+1", "-1", "0", "+2"], answer: 0, explanation: "Hydrogen is generally +1 in compounds (except in metal hydrides where it is -1) ." },
+  { id: "CHE-297", subject: "Chemistry", question: "Which of the following is an oxidizing agent?", options: ["KMnO₄", "Fe", "Zn", "H₂"], answer: 0, explanation: "KMnO₄ (potassium permanganate) is a common strong oxidizing agent that gains electrons ." },
+  { id: "CHE-298", subject: "Chemistry", question: "Which of the following is a reducing agent?", options: ["CO", "KMnO₄", "Cl₂", "H₂SO₄"], answer: 0, explanation: "CO (carbon monoxide) is a common reducing agent that loses electrons ." },
+  { id: "CHE-299", subject: "Chemistry", question: "In the reaction: CuO + H₂ → Cu + H₂O, which substance is reduced?", options: ["CuO", "H₂", "Both", "None"], answer: 0, explanation: "Copper (II) oxide loses oxygen to become copper, so CuO is reduced. Hydrogen is oxidized ." },
+  { id: "CHE-300", subject: "Chemistry", question: "In the reaction: CuO + H₂ → Cu + H₂O, which substance is oxidized?", options: ["CuO", "H₂", "Both", "None"], answer: 1, explanation: "Hydrogen gains oxygen to become water, so H₂ is oxidized. CuO is reduced ." },
 
-  {
-    id: "CHE-017",
-    subject: "Chemistry",
-    question:
-      "Which test is most suitable for distinguishing ethene from ethane?",
-    options: [
-      "Add aqueous sodium hydroxide",
-      "Add bromine water",
-      "Add dilute hydrochloric acid",
-      "Add sodium chloride solution"
-    ],
-    answer: 1,
-    explanation:
-      "Ethene contains a C=C double bond and rapidly decolourizes bromine water through an addition reaction. Ethane does not under ordinary conditions."
-  },
+  // ---------- SECTION 17: ACID-BASE TITRATION & PH (301-320) ----------
+  { id: "CHE-301", subject: "Chemistry", question: "What is the pH of a 0.001 mol/dm³ solution of HCl?", options: ["1", "2", "3", "4"], answer: 2, explanation: "pH = -log[H⁺] = -log(0.001) = -log(10⁻³) = 3 ." },
+  { id: "CHE-302", subject: "Chemistry", question: "What is the pH of a 0.1 mol/dm³ solution of NaOH?", options: ["10", "11", "12", "13"], answer: 3, explanation: "pOH = -log[OH⁻] = -log(0.1) = 1. pH = 14 - pOH = 14 - 1 = 13 ." },
+  { id: "CHE-303", subject: "Chemistry", question: "A solution has [H⁺] = 1.0 × 10⁻⁵ mol/dm³. What is its pH?", options: ["4", "5", "6", "7"], answer: 1, explanation: "pH = -log(1.0 × 10⁻⁵) = 5 ." },
+  { id: "CHE-304", subject: "Chemistry", question: "25 cm³ of 0.100 mol/dm³ NaOH requires 20 cm³ of HCl for complete neutralization. What is the concentration of the HCl?", options: ["0.080 mol/dm³", "0.125 mol/dm³", "0.100 mol/dm³", "0.200 mol/dm³"], answer: 1, explanation: "Moles of NaOH = 0.100 × 0.025 = 0.0025 mol. From 1:1 reaction: moles HCl = 0.0025 mol. Concentration = 0.0025/0.020 = 0.125 mol/dm³ ." },
+  { id: "CHE-305", subject: "Chemistry", question: "What is the pH of a solution with [H⁺] = 2.0 × 10⁻⁴ mol/dm³? (log 2 = 0.301)", options: ["3.699", "3.301", "4.699", "2.301"], answer: 0, explanation: "pH = -log(2.0 × 10⁻⁴) = -log2 - log10⁻⁴ = -0.301 + 4 = 3.699 ." },
+  { id: "CHE-306", subject: "Chemistry", question: "Which indicator changes colour in the pH range 3.1-4.4?", options: ["Methyl orange", "Phenolphthalein", "Litmus", "Bromothymol blue"], answer: 0, explanation: "Methyl orange changes from red to yellow in the pH range 3.1-4.4 ." },
+  { id: "CHE-307", subject: "Chemistry", question: "Which indicator changes colour in the pH range 8-10?", options: ["Methyl orange", "Phenolphthalein", "Litmus", "Thymol blue"], answer: 1, explanation: "Phenolphthalein changes from colorless to pink in the pH range 8-10 ." },
+  { id: "CHE-308", subject: "Chemistry", question: "The point at which the number of moles of acid equals the number of moles of base in a titration is called:", options: ["Endpoint", "Equivalence point", "Reaction point", "Neutral point"], answer: 1, explanation: "The equivalence point is when the stoichiometric amounts of acid and base have reacted completely ." },
+  { id: "CHE-309", subject: "Chemistry", question: "A solution with pH 7 is:", options: ["Acidic", "Alkaline", "Neutral", "Salty"], answer: 2, explanation: "pH 7 is the standard neutral point for pure water at 25°C ." },
+  { id: "CHE-310", subject: "Chemistry", question: "Which of the following is a weak acid?", options: ["HCl", "HNO₃", "CH₃COOH", "H₂SO₄"], answer: 2, explanation: "Ethanoic acid (CH₃COOH) is a weak acid that partially ionizes in water ." },
+  { id: "CHE-311", subject: "Chemistry", question: "Which of the following is a weak base?", options: ["NaOH", "KOH", "NH₄OH", "Ca(OH)₂"], answer: 2, explanation: "Ammonium hydroxide (NH₄OH) is a weak base that partially ionizes in water ." },
+  { id: "CHE-312", subject: "Chemistry", question: "What is the pH of a solution with [OH⁻] = 1.0 × 10⁻³ mol/dm³?", options: ["11", "12", "13", "3"], answer: 0, explanation: "pOH = -log(1.0 × 10⁻³) = 3. pH = 14 - 3 = 11 ." },
+  { id: "CHE-313", subject: "Chemistry", question: "Which of the following is a buffer solution?", options: ["CH₃COOH + CH₃COONa", "HCl + NaCl", "NaOH + KOH", "HNO₃ + KNO₃"], answer: 0, explanation: "A buffer contains a weak acid and its conjugate base. Ethanoic acid + sodium ethanoate is a common buffer ." },
+  { id: "CHE-314", subject: "Chemistry", question: "What is the concentration of H⁺ in a solution with pH = 4?", options: ["1.0 × 10⁻⁴ mol/dm³", "1.0 × 10⁻³ mol/dm³", "1.0 × 10⁻⁵ mol/dm³", "4.0 mol/dm³"], answer: 0, explanation: "[H⁺] = 10⁻ᵖᴴ = 10⁻⁴ mol/dm³ ." },
+  { id: "CHE-315", subject: "Chemistry", question: "What is the pH of a 0.001 mol/dm³ solution of NaOH?", options: ["11", "12", "13", "3"], answer: 0, explanation: "pOH = -log(0.001) = 3. pH = 14 - 3 = 11 ." },
+  { id: "CHE-316", subject: "Chemistry", question: "Which of the following salts forms a neutral solution when dissolved in water?", options: ["NaCl", "Na₂CO₃", "NH₄Cl", "KCN"], answer: 0, explanation: "NaCl is formed from a strong acid (HCl) and a strong base (NaOH), so it does not hydrolyze and forms a neutral solution ." },
+  { id: "CHE-317", subject: "Chemistry", question: "Which of the following salts forms an acidic solution when dissolved in water?", options: ["NH₄Cl", "NaCl", "CH₃COONa", "KNO₃"], answer: 0, explanation: "NH₄Cl is from a weak base (NH₄OH) and strong acid (HCl), so it hydrolyzes to produce an acidic solution ." },
+  { id: "CHE-318", subject: "Chemistry", question: "Which of the following salts forms an alkaline solution when dissolved in water?", options: ["Na₂CO₃", "NH₄Cl", "NaCl", "KCl"], answer: 0, explanation: "Na₂CO₃ is from a strong base (NaOH) and weak acid (H₂CO₃), so it hydrolyzes to produce an alkaline solution ." },
+  { id: "CHE-319", subject: "Chemistry", question: "What is the pH of a 0.01 mol/dm³ solution of H₂SO₄? (Assume complete dissociation)", options: ["1.699", "2", "1.0", "2.301"], answer: 0, explanation: "H₂SO₄ is a strong acid that dissociates to give 2 moles of H⁺ per mole. [H⁺] = 2 × 0.01 = 0.02 mol/dm³. pH = -log(0.02) = -log2 - log0.01 = -0.301 + 2 = 1.699 ." },
+  { id: "CHE-320", subject: "Chemistry", question: "In a titration, the point at which the indicator changes colour is called the:", options: ["Endpoint", "Equivalence point", "Neutral point", "Reaction point"], answer: 0, explanation: "The endpoint is the point at which the indicator changes colour, signalling the completion of the titration ." },
 
-  {
-    id: "CHE-018",
-    subject: "Chemistry",
-    question:
-      "For a reaction with ΔH = −120 kJ mol⁻¹, which statement is correct?",
-    options: [
-      "The reaction is endothermic",
-      "Heat is absorbed from the surroundings",
-      "The products have higher enthalpy than the reactants",
-      "The reaction releases 120 kJ per mole of reaction"
-    ],
-    answer: 3,
-    explanation:
-      "A negative ΔH indicates an exothermic reaction. Therefore 120 kJ of heat is released per mole of reaction as written."
-  },
+  // ---------- SECTION 18: PERIODIC TABLE & PERIODICITY (321-340) ----------
+  { id: "CHE-321", subject: "Chemistry", question: "The modern periodic table is arranged in order of increasing:", options: ["Atomic mass", "Atomic number", "Valency", "Metallic character"], answer: 1, explanation: "The modern periodic table is arranged by increasing atomic number, which determines the element's properties ." },
+  { id: "CHE-322", subject: "Chemistry", question: "Which of the following is in Group 2 of the periodic table?", options: ["Magnesium", "Sodium", "Chlorine", "Iron"], answer: 0, explanation: "Magnesium (Mg) is in Group 2, the alkaline earth metals ." },
+  { id: "CHE-323", subject: "Chemistry", question: "Which group in the periodic table contains the noble gases?", options: ["Group 1", "Group 2", "Group 7", "Group 0"], answer: 3, explanation: "Noble gases (He, Ne, Ar, etc.) are in Group 0 (Group 18) and are largely unreactive ." },
+  { id: "CHE-324", subject: "Chemistry", question: "Which of the following is a metalloid?", options: ["Silicon", "Copper", "Zinc", "Sulphur"], answer: 0, explanation: "Silicon has properties intermediate between metals and non-metals, making it a metalloid ." },
+  { id: "CHE-325", subject: "Chemistry", question: "The periodic table was first developed by:", options: ["Dalton", "Mendeleev", "Thomson", "Bohr"], answer: 1, explanation: "Dmitri Mendeleev developed the first widely accepted periodic table in 1869 ." },
+  { id: "CHE-326", subject: "Chemistry", question: "What is the electronic configuration of Oxygen? (Atomic number = 8)", options: ["2, 6", "2, 8", "2, 4", "2, 7"], answer: 0, explanation: "Oxygen has 8 electrons: 2 in the first shell, 6 in the second shell ." },
+  { id: "CHE-327", subject: "Chemistry", question: "What is the atomic number of Carbon?", options: ["4", "5", "6", "7"], answer: 2, explanation: "Carbon has 6 protons, so its atomic number is 6 ." },
+  { id: "CHE-328", subject: "Chemistry", question: "The atomic number of an element is the number of:", options: ["Protons", "Neutrons", "Electrons in the nucleus", "Protons + neutrons"], answer: 0, explanation: "The atomic number is the number of protons in the nucleus of an atom ." },
+  { id: "CHE-329", subject: "Chemistry", question: "Isotopes of an element have the same:", options: ["Mass number", "Number of neutrons", "Number of protons", "Atomic mass"], answer: 2, explanation: "Isotopes have the same number of protons (atomic number) but different numbers of neutrons ." },
+  { id: "CHE-330", subject: "Chemistry", question: "What is the number of neutrons in an atom of Cl-37 (atomic number 17)?", options: ["17", "20", "37", "54"], answer: 1, explanation: "Neutrons = Mass number - Atomic number = 37 - 17 = 20 ." },
+  { id: "CHE-331", subject: "Chemistry", question: "What is the oxidation state of Nitrogen in NH₃?", options: ["-3", "0", "+1", "+3"], answer: 0, explanation: "Hydrogen has +1, so 3(+1) + N = 0 → N = -3 ." },
+  { id: "CHE-332", subject: "Chemistry", question: "Which of the following elements has the highest electronegativity?", options: ["Fluorine", "Chlorine", "Bromine", "Iodine"], answer: 0, explanation: "Fluorine has the highest electronegativity of all elements on the periodic table ." },
+  { id: "CHE-333", subject: "Chemistry", question: "Moving from left to right across a period, what happens to atomic radius?", options: ["Decreases", "Increases", "Remains constant", "First increases then decreases"], answer: 0, explanation: "Atomic radius decreases across a period due to increased nuclear charge pulling electrons closer ." },
+  { id: "CHE-334", subject: "Chemistry", question: "Moving down a group, what happens to atomic radius?", options: ["Increases", "Decreases", "Remains constant", "First decreases then increases"], answer: 0, explanation: "Atomic radius increases down a group due to the addition of new electron shells ." },
+  { id: "CHE-335", subject: "Chemistry", question: "Which of the following is NOT a property of metals?", options: ["They are good conductors of heat", "They are malleable", "They form negative ions", "They have high melting points"], answer: 2, explanation: "Metals form positive ions (cations), not negative ions ." },
+    { id: "CHE-366", subject: "Chemistry", question: "Which process converts crude oil into useful fractions?", options: ["Fractional distillation", "Filtration", "Crystallization", "Sublimation"], answer: 0, explanation: "Fractional distillation separates crude oil into fractions based on their boiling points ." },
+  { id: "CHE-367", subject: "Chemistry", question: "Which substance is used in the desalination of seawater?", options: ["Distillation", "Filtration", "Crystallization", "Sublimation"], answer: 0, explanation: "Distillation is used to purify seawater by boiling off the water and leaving the salt behind ." },
+  { id: "CHE-368", subject: "Chemistry", question: "The Haber process and Contact process are examples of:", options: ["Industrial processes that use catalysts", "Biological processes", "Electrolysis processes", "Separation processes"], answer: 0, explanation: "Both processes rely heavily on catalysts to increase reaction rates on an industrial scale ." },
+  { id: "CHE-369", subject: "Chemistry", question: "Which of the following is a renewable source of energy?", options: ["Solar", "Coal", "Natural gas", "Petroleum"], answer: 0, explanation: "Solar energy is renewable, while coal, natural gas, and petroleum are finite fossil fuels ." },
+  { id: "CHE-370", subject: "Chemistry", question: "What is the main constituent of biogas?", options: ["Methane", "Ethane", "Propane", "Butane"], answer: 0, explanation: "Biogas is primarily methane, produced by anaerobic decomposition of organic matter ." },
+  { id: "CHE-371", subject: "Chemistry", question: "Which of the following is a greenhouse gas?", options: ["CO₂", "O₂", "N₂", "H₂"], answer: 0, explanation: "Carbon dioxide is a greenhouse gas that contributes to global warming ." },
+  { id: "CHE-372", subject: "Chemistry", question: "Which gas is the major cause of acid rain?", options: ["SO₂", "O₂", "N₂", "H₂"], answer: 0, explanation: "Sulphur dioxide (SO₂) is a major cause of acid rain ." },
+  { id: "CHE-373", subject: "Chemistry", question: "Which of the following is a step in the Contact process?", options: ["SO₂ + O₂ → SO₃", "N₂ + 3H₂ → 2NH₃", "NaCl + AgNO₃ → AgCl + NaNO₃", "CaCO₃ → CaO + CO₂"], answer: 0, explanation: "The key step in the Contact process is the oxidation of SO₂ to SO₃ using a catalyst ." },
+  { id: "CHE-374", subject: "Chemistry", question: "What is the chemical formula for urea?", options: ["NH₂CONH₂", "NH₃", "NH₄NO₃", "CH₄N₂O"], answer: 0, explanation: "Urea is NH₂CONH₂, a common nitrogenous fertilizer ." },
+  { id: "CHE-375", subject: "Chemistry", question: "What is the chemical formula of glass?", options: ["SiO₂ (silica) with additives", "CaCO₃", "NaCl", "CaO"], answer: 0, explanation: "Glass is primarily silica (SiO₂) with additives like Na₂CO₃ and CaCO₃ to lower its melting point ." },
+  { id: "CHE-376", subject: "Chemistry", question: "Which process is used in the production of cement?", options: ["Heating limestone with clay", "Heating iron ore with carbon", "Electrolysis of brine", "Fractional distillation of petroleum"], answer: 0, explanation: "Cement is produced by heating limestone (CaCO₃) with clay in a kiln ." },
+  { id: "CHE-377", subject: "Chemistry", question: "Which of the following is used as a bleaching agent?", options: ["Chlorine", "Ammonia", "Methane", "CO₂"], answer: 0, explanation: "Chlorine is a powerful oxidizing agent used as a bleaching agent ." },
+  { id: "CHE-378", subject: "Chemistry", question: "What is the main use of limestone (CaCO₃)?", options: ["Production of lime (CaO) and cement", "Production of ammonia", "Production of sulphuric acid", "Production of glass"], answer: 0, explanation: "Limestone is thermally decomposed to produce quicklime (CaO), which is used in cement production ." },
+  { id: "CHE-379", subject: "Chemistry", question: "In the blast furnace, carbon (coke) is used to:", options: ["Reduce iron(III) oxide to iron", "Oxidize iron", "Catalyze the reaction", "Cool the furnace"], answer: 0, explanation: "Coke acts as a reducing agent, converting Fe₂O₃ to molten iron in the blast furnace ." },
+  { id: "CHE-380", subject: "Chemistry", question: "Which of the following is used in the production of margarine?", options: ["Hydrogenation of vegetable oils", "Dehydration of alcohols", "Electrolysis of water", "Combustion of methane"], answer: 0, explanation: "Margarine is produced by hydrogenating vegetable oils to make them solid at room temperature ." },
 
-  {
-    id: "CHE-019",
-    subject: "Chemistry",
-    question:
-      "Which quantum number primarily determines the shape of an orbital?",
-    options: [
-      "Principal quantum number, n",
-      "Azimuthal quantum number, l",
-      "Magnetic quantum number, m",
-      "Spin quantum number, s"
-    ],
-    answer: 1,
-    explanation:
-      "The azimuthal quantum number l determines the subshell and therefore the orbital shape: s, p, d or f."
-  },
-
-  {
-    id: "CHE-020",
-    subject: "Chemistry",
-    question:
-      "A reaction has an activation energy of 75 kJ mol⁻¹. Which statement about a catalyst is correct?",
-    options: [
-      "It increases the activation energy",
-      "It decreases the activation energy by providing an alternative pathway",
-      "It increases the enthalpy change of the reaction",
-      "It changes the equilibrium composition permanently"
-    ],
-    answer: 1,
-    explanation:
-      "A catalyst provides an alternative reaction pathway with lower activation energy. It does not change ΔH or the equilibrium constant."
-  }
+  // ---------- SECTION 21: WATER & SOLUTIONS (381-400) ----------
+  { id: "CHE-381", subject: "Chemistry", question: "A solution with pH 2 is how many times more acidic than a solution with pH 4?", options: ["2 times", "10 times", "100 times", "1000 times"], answer: 2, explanation: "Each pH unit represents a 10-fold difference in [H⁺]. So pH 2 is 10² = 100 times more acidic than pH 4 ." },
+  { id: "CHE-382", subject: "Chemistry", question: "Which of the following is a saturated solution?", options: ["A solution that cannot dissolve more solute at a given temperature", "A solution that has dissolved all possible solute", "A solution with no water", "A solution that is colorless"], answer: 0, explanation: "A saturated solution contains the maximum amount of dissolved solute at a given temperature ." },
+  { id: "CHE-383", subject: "Chemistry", question: "What is the effect of increasing temperature on the solubility of most solid solutes?", options: ["Increases", "Decreases", "Remains constant", "First increases then decreases"], answer: 0, explanation: "For most solids, solubility increases with temperature as the solvent can hold more solute ." },
+  { id: "CHE-384", subject: "Chemistry", question: "What is a colloidal solution?", options: ["A mixture where particles are between 1 nm and 1000 nm in size", "A solution that is clear", "A solution with large particles that settle", "A pure substance"], answer: 0, explanation: "Colloids have particles between 1 and 1000 nm that remain suspended and do not settle ." },
+  { id: "CHE-385", subject: "Chemistry", question: "What type of solution contains particles that are 1-1000 nm in size?", options: ["Colloidal", "Suspension", "True solution", "Mixture"], answer: 0, explanation: "Colloidal solutions have particle sizes between 1 and 1000 nm ." },
+  { id: "CHE-386", subject: "Chemistry", question: "Which of the following is an example of a suspension?", options: ["Sand in water", "Sugar in water", "Salt in water", "Ink in water"], answer: 0, explanation: "Sand in water is a suspension; the sand particles are large and will settle out over time ." },
+  { id: "CHE-387", subject: "Chemistry", question: "What is the Tyndall effect?", options: ["The scattering of light by colloidal particles", "The absorption of light", "The reflection of light by a mirror", "The refraction of light"], answer: 0, explanation: "The Tyndall effect is the scattering of light by particles in a colloid or suspension, making the beam visible ." },
+  { id: "CHE-388", subject: "Chemistry", question: "Which of the following is a true solution?", options: ["Salt water", "Muddy water", "Milk", "Sand and water"], answer: 0, explanation: "Salt water is a true solution where the particles (ions) are too small to scatter light and do not settle ." },
+  { id: "CHE-389", subject: "Chemistry", question: "Water is called the universal solvent because:", options: ["It dissolves many substances", "It is available everywhere", "It is transparent", "It has no taste"], answer: 0, explanation: "Water is called the universal solvent because of its ability to dissolve more substances than any other liquid ." },
+  { id: "CHE-390", subject: "Chemistry", question: "What is the molarity of a solution containing 5.85 g of NaCl in 500 cm³ of solution? (NaCl = 58.5 g/mol)", options: ["0.2 mol/dm³", "0.1 mol/dm³", "0.5 mol/dm³", "1.0 mol/dm³"], answer: 0, explanation: "Moles = 5.85/58.5 = 0.1 mol. Concentration = 0.1/0.5 = 0.2 mol/dm³ ." },
+  { id: "CHE-391", subject: "Chemistry", question: "What is the concentration of a solution that contains 0.5 moles of solute in 2 dm³ of solution?", options: ["0.25 mol/dm³", "0.5 mol/dm³", "1.0 mol/dm³", "2.0 mol/dm³"], answer: 0, explanation: "Concentration = moles/volume = 0.5/2 = 0.25 mol/dm³ ." },
+  { id: "CHE-392", subject: "Chemistry", question: "Which of the following is a colloid?", options: ["Milk", "Salt water", "Sugar in water", "Sand and water"], answer: 0, explanation: "Milk is a colloidal solution with fat droplets dispersed in water ." },
+  { id: "CHE-393", subject: "Chemistry", question: "What is the effect of temperature on the solubility of gases in liquids?", options: ["Solubility decreases with increasing temperature", "Solubility increases with increasing temperature", "No effect", "First increases then decreases"], answer: 0, explanation: "Gas solubility decreases as temperature increases, which is why warm water holds less gas than cold water ." },
+  { id: "CHE-394", subject: "Chemistry", question: "What is the concentration of a solution if 4 g of NaOH are dissolved in 1 dm³ of solution? (NaOH = 40 g/mol)", options: ["0.1 mol/dm³", "0.2 mol/dm³", "0.4 mol/dm³", "1.0 mol/dm³"], answer: 0, explanation: "Moles = 4/40 = 0.1 mol. Concentration = 0.1/1 = 0.1 mol/dm³ ." },
+  { id: "CHE-395", subject: "Chemistry", question: "Which method separates two liquids that are miscible?", options: ["Distillation", "Separating funnel", "Filtration", "Chromatography"], answer: 0, explanation: "Distillation separates miscible liquids with different boiling points (e.g., ethanol and water) ." },
+  { id: "CHE-396", subject: "Chemistry", question: "What is the mass of glucose required to prepare 500 cm³ of a 0.2 mol/dm³ solution? (Glucose = 180 g/mol)", options: ["18 g", "9 g", "36 g", "45 g"], answer: 0, explanation: "Moles = 0.2 × 0.5 = 0.1 mol. Mass = 0.1 × 180 = 18 g ." },
+  { id: "CHE-397", subject: "Chemistry", question: "What is the concentration of the solution obtained by dissolving 2 moles of KNO₃ in 500 cm³ of water?", options: ["4 mol/dm³", "2 mol/dm³", "1 mol/dm³", "0.5 mol/dm³"], answer: 0, explanation: "Concentration = 2/0.5 = 4 mol/dm³ ." },
+  { id: "CHE-398", subject: "Chemistry", question: "Which of the following solutions has the highest pH?", options: ["NaOH solution", "CH₃COOH solution", "HCl solution", "H₂SO₄ solution"], answer: 0, explanation: "NaOH is a strong base, giving a high pH (>7) ." },
+  { id: "CHE-399", subject: "Chemistry", question: "What is the pH of a solution with [OH⁻] = 1.0 × 10⁻⁵ mol/dm³?", options: ["9", "5", "10", "11"], answer: 0, explanation: "pOH = -log(1.0 × 10⁻⁵) = 5. pH = 14 - 5 = 9 ." },
+  { id: "CHE-400", subject: "Chemistry", question: "What is the mass of NaCl required to prepare 250 cm³ of a 0.4 mol/dm³ solution? (NaCl = 58.5 g/mol)", options: ["5.85 g", "2.925 g", "11.7 g", "4.68 g"], answer: 0, explanation: "Moles = 0.4 × 0.25 = 0.1 mol. Mass = 0.1 × 58.5 = 5.85 g ." }
 ];
