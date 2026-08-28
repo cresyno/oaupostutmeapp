@@ -5,11 +5,11 @@ import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
 // IMPORT EACH SUBJECT'S QUESTION BANK
-import { aptitude as aptitudeQuestions } from "../../data/questions/aptitude";
-import { mathematics as mathematicsQuestions } from "../../data/questions/mathematics";
-import { chemistry as chemistryQuestions } from "../../data/questions/chemistry";
-import { physics as physicsQuestions } from "../../data/questions/physics";
-import { biology as biologyQuestions } from "../../data/questions/biology";
+import { aptitudeQuestions } from "../../data/questions/aptitude";
+import { mathematicsQuestions } from "../../data/questions/mathematics";
+import { chemistryQuestions } from "../../data/questions/chemistry";
+import { physicsQuestions } from "../../data/questions/physics";
+import { biologyQuestions } from "../../data/questions/biology";
 // Debug: log imported data
 console.log("Aptitude questions:", aptitudeQuestions?.length);
 console.log("Math questions:", mathematicsQuestions?.length);
