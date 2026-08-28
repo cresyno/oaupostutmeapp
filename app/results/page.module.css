@@ -143,3 +143,86 @@
   font-size: 1.2rem;
   color: #6b7280;
   }
+
+.reviewSection {
+  margin-top: 2rem;
+  border-top: 2px solid #e5e7eb;
+  padding-top: 1.5rem;
+}
+
+.reviewCard {
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.reviewNumber {
+  font-weight: 800;
+  color: #1a3a7a;
+}
+
+.reviewCorrect {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+.reviewIncorrect {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+.reviewQuestion {
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.reviewOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.reviewOption {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: #f3f4f6;
+}
+
+.reviewOptionCorrect {
+  background: #dcfce7;
+  color: #166534;
+  border: 1px solid #86efac;
+}
+
+.reviewOptionWrong {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.reviewExplanation {
+  background: #fef9c3;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: #713f12;
+  line-height: 1.5;
+}
+
+.loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #6b7280;
+}
