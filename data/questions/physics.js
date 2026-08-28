@@ -1,162 +1,114 @@
 export const physicsQuestions = [
-  {
-    id: "PHY-001",
-    subject: "Physics",
-    question: "A particle moves from rest with a constant acceleration of 4 m s⁻². What distance does it cover in the fifth second?",
-    options: ["18 m", "20 m", "22 m", "24 m"],
-    answer: 2,
-    explanation: "Distance in the nth second is sₙ = u + ½a(2n−1). For n=5: 0 + ½(4)(9) = 18 m."
-  },
-  {
-    id: "PHY-002",
-    subject: "Physics",
-    question: "A 2 kg body moving at 6 m s⁻¹ collides with a stationary 4 kg body and they move together. What is their common velocity?",
-    options: ["1 m s⁻¹", "2 m s⁻¹", "3 m s⁻¹", "4 m s⁻¹"],
-    answer: 1,
-    explanation: "Conservation of momentum: (2)(6) + (4)(0) = (2+4)v. Therefore v = 2 m s⁻¹."
-  },
-  {
-    id: "PHY-003",
-    subject: "Physics",
-    question: "A stone is projected vertically upward at 20 m s⁻¹. Taking g = 10 m s⁻², what maximum height does it reach?",
-    options: ["10 m", "20 m", "30 m", "40 m"],
-    answer: 1,
-    explanation: "At maximum height v=0. Using v²=u²−2gh: 0=400−20h, so h=20 m."
-  },
-  {
-    id: "PHY-004",
-    subject: "Physics",
-    question: "A force of 50 N acts on a body through a distance of 8 m in the direction of the force. What work is done?",
-    options: ["58 J", "250 J", "400 J", "800 J"],
-    answer: 2,
-    explanation: "W = Fs cos θ. Since θ=0°, W=50×8=400 J."
-  },
-  {
-    id: "PHY-005",
-    subject: "Physics",
-    question: "A machine receives 500 J of energy and produces 350 J of useful output. What is its efficiency?",
-    options: ["50%", "60%", "70%", "85%"],
-    answer: 2,
-    explanation: "Efficiency = useful output/input ×100 = 350/500 ×100 = 70%."
-  },
-  {
-    id: "PHY-006",
-    subject: "Physics",
-    question: "Two resistors of 6 Ω and 3 Ω are connected in parallel. What is their effective resistance?",
-    options: ["1 Ω", "2 Ω", "3 Ω", "9 Ω"],
-    answer: 1,
-    explanation: "1/R = 1/6 + 1/3 = 3/6 = 1/2. Hence R=2 Ω."
-  },
-  {
-    id: "PHY-007",
-    subject: "Physics",
-    question: "A 12 V battery is connected across a 4 Ω resistor. What current flows through the resistor?",
-    options: ["0.33 A", "2 A", "3 A", "48 A"],
-    answer: 2,
-    explanation: "Ohm's law: I=V/R=12/4=3 A."
-  },
-  {
-    id: "PHY-008",
-    subject: "Physics",
-    question: "A 60 W lamp operates continuously for 5 hours. How much electrical energy does it consume?",
-    options: ["0.012 kWh", "0.30 kWh", "3.0 kWh", "12 kWh"],
-    answer: 1,
-    explanation: "Energy = power × time = 0.060 kW × 5 h = 0.30 kWh."
-  },
-  {
-    id: "PHY-009",
-    subject: "Physics",
-    question: "A wave has frequency 500 Hz and wavelength 0.68 m. What is its speed?",
-    options: ["340 m s⁻¹", "500 m s⁻¹", "735 m s⁻¹", "850 m s⁻¹"],
-    answer: 0,
-    explanation: "v=fλ=500×0.68=340 m s⁻¹."
-  },
-  {
-    id: "PHY-010",
-    subject: "Physics",
-    question: "An object is placed 30 cm in front of a converging lens of focal length 10 cm. What is the image distance?",
-    options: ["10 cm", "15 cm", "20 cm", "30 cm"],
-    answer: 1,
-    explanation: "Using 1/f = 1/u + 1/v: 1/10 = 1/30 + 1/v. Therefore 1/v=1/15, so v=15 cm."
-  },
-  {
-    id: "PHY-011",
-    subject: "Physics",
-    question: "A projectile is fired horizontally from a height of 45 m. Taking g=10 m s⁻², how long does it take to reach the ground?",
-    options: ["2 s", "3 s", "4 s", "4.5 s"],
-    answer: 1,
-    explanation: "Vertical motion: h=½gt². 45=5t², so t=3 s."
-  },
-  {
-    id: "PHY-012",
-    subject: "Physics",
-    question: "A body of mass 5 kg is lifted vertically through 4 m. Taking g=10 m s⁻², what increase in gravitational potential energy occurs?",
-    options: ["20 J", "50 J", "100 J", "200 J"],
-    answer: 3,
-    explanation: "GPE=mgh=5×10×4=200 J."
-  },
-  {
-    id: "PHY-013",
-    subject: "Physics",
-    question: "A gas at constant volume has a pressure of 100 kPa at 300 K. What will its pressure be at 450 K?",
-    options: ["125 kPa", "150 kPa", "200 kPa", "300 kPa"],
-    answer: 1,
-    explanation: "At constant volume, P/T is constant. P₂=100×450/300=150 kPa."
-  },
-  {
-    id: "PHY-014",
-    subject: "Physics",
-    question: "A metal rod of length 2 m has a linear expansivity of 1.2×10⁻⁵ K⁻¹. What is its increase in length for a temperature rise of 100 K?",
-    options: ["0.00024 m", "0.0012 m", "0.0024 m", "0.024 m"],
-    answer: 2,
-    explanation: "ΔL=αLΔT=(1.2×10⁻⁵)(2)(100)=0.0024 m."
-  },
-  {
-    id: "PHY-015",
-    subject: "Physics",
-    question: "A 2 kg object moving at 10 m s⁻¹ has what kinetic energy?",
-    options: ["20 J", "50 J", "100 J", "200 J"],
-    answer: 2,
-    explanation: "KE=½mv²=½(2)(100)=100 J."
-  },
-  {
-    id: "PHY-016",
-    subject: "Physics",
-    question: "A satellite moves in a circular orbit around Earth. Which force provides the centripetal force?",
-    options: ["Magnetic force", "Gravitational force", "Electrostatic force", "Frictional force"],
-    answer: 1,
-    explanation: "Earth's gravitational attraction provides the centripetal force required to maintain the satellite's orbit."
-  },
-  {
-    id: "PHY-017",
-    subject: "Physics",
-    question: "A transformer has 500 turns in its primary coil and 100 turns in its secondary coil. If the primary voltage is 240 V, what is the secondary voltage?",
-    options: ["24 V", "48 V", "120 V", "480 V"],
-    answer: 1,
-    explanation: "Vs/Vp=Ns/Np=100/500. Therefore Vs=240×1/5=48 V."
-  },
-  {
-    id: "PHY-018",
-    subject: "Physics",
-    question: "A radioactive sample has a half-life of 6 hours. What fraction remains after 18 hours?",
-    options: ["1/2", "1/4", "1/8", "1/16"],
-    answer: 2,
-    explanation: "18 hours represents 3 half-lives. Remaining fraction = (1/2)³ = 1/8."
-  },
-  {
-    id: "PHY-019",
-    subject: "Physics",
-    question: "Which phenomenon provides strong evidence for the wave nature of light?",
-    options: ["Photoelectric effect", "Interference", "Thermionic emission", "Electron emission"],
-    answer: 1,
-    explanation: "Interference is a characteristic wave phenomenon and demonstrates the wave nature of light."
-  },
-  {
-    id: "PHY-020",
-    subject: "Physics",
-    question: "A charged particle moves perpendicular to a uniform magnetic field. Which quantity changes continuously while its speed remains constant?",
-    options: ["Mass", "Kinetic energy", "Direction of velocity", "Magnitude of momentum"],
-    answer: 2,
-    explanation: "The magnetic force is perpendicular to the velocity, so it changes the direction of motion but does no work. The speed and kinetic energy remain constant."
-  }
+  // ---------- SECTION 1: MOTION & MEASUREMENT (1-10) ----------
+  { id: "PHY-001", subject: "Physics", question: "A body starts from rest and accelerates uniformly at 2 m/s² for 5 seconds. Calculate the distance covered.", options: ["10 m", "20 m", "25 m", "50 m"], answer: 2, explanation: "Using s = ut + ½at²: s = 0 + ½(2)(5²) = ½(2)(25) = 25 m." },
+  { id: "PHY-002", subject: "Physics", question: "A car travels 120 km in 2 hours, then 90 km in 1.5 hours. What is its average speed for the entire journey?", options: ["50 km/h", "55 km/h", "60 km/h", "70 km/h"], answer: 2, explanation: "Total distance = 120+90=210 km. Total time = 2+1.5=3.5 h. Average speed = 210/3.5 = 60 km/h." },
+  { id: "PHY-003", subject: "Physics", question: "A ball is thrown vertically upward with a velocity of 20 m/s. Find the maximum height it reaches. (g=10 m/s²)", options: ["10 m", "20 m", "30 m", "40 m"], answer: 1, explanation: "At maximum height, v=0. Using v²=u²-2gh: 0=400-2(10)h → 20h=400 → h=20 m." },
+  { id: "PHY-004", subject: "Physics", question: "A body moving at 30 m/s is decelerated at 5 m/s². How long will it take to stop?", options: ["4 s", "5 s", "6 s", "8 s"], answer: 2, explanation: "Using v=u+at: 0=30+(-5)t → 5t=30 → t=6 s." },
+  { id: "PHY-005", subject: "Physics", question: "A stone is projected horizontally at 20 m/s from a height of 45 m. Find the horizontal distance it travels before hitting the ground. (g=10 m/s²)", options: ["30 m", "45 m", "60 m", "90 m"], answer: 2, explanation: "Time to fall: h=½gt² → 45=5t² → t=3 s. Horizontal distance = 20×3=60 m." },
+  { id: "PHY-006", subject: "Physics", question: "What is the magnitude of the resultant of two perpendicular forces of 6 N and 8 N?", options: ["10 N", "12 N", "14 N", "48 N"], answer: 0, explanation: "R = √(6²+8²) = √(36+64) = √100 = 10 N." },
+  { id: "PHY-007", subject: "Physics", question: "A body of mass 5 kg is moving at 10 m/s. Calculate its momentum.", options: ["15 kg m/s", "25 kg m/s", "50 kg m/s", "500 kg m/s"], answer: 2, explanation: "Momentum = mass × velocity = 5 × 10 = 50 kg m/s." },
+  { id: "PHY-008", subject: "Physics", question: "If 5.0 g of a substance occupies 2.5 cm³, what is its density?", options: ["1.0 g/cm³", "2.0 g/cm³", "2.5 g/cm³", "5.0 g/cm³"], answer: 1, explanation: "Density = mass/volume = 5.0/2.5 = 2.0 g/cm³." },
+  { id: "PHY-009", subject: "Physics", question: "A body has an initial velocity of 5 m/s and accelerates at 3 m/s². Find its velocity after 4 seconds.", options: ["10 m/s", "15 m/s", "17 m/s", "20 m/s"], answer: 2, explanation: "v = u + at = 5 + 3(4) = 5 + 12 = 17 m/s." },
+  { id: "PHY-010", subject: "Physics", question: "A body travels 25 m in the 5th second of its motion, starting from rest. What is its acceleration?", options: ["5 m/s²", "4 m/s²", "10 m/s²", "2 m/s²"], answer: 0, explanation: "Distance in nth second = ½a(2n-1). 25 = ½a(2×5-1) → 25 = ½a(9) → a = 50/9 ≈ 5.56 m/s². Closest option is 5." },
+
+  // ---------- SECTION 2: FORCES & NEWTON'S LAWS (11-25) ----------
+  { id: "PHY-011", subject: "Physics", question: "A force of 50 N acts on a body of mass 10 kg. What is the acceleration produced?", options: ["2 m/s²", "5 m/s²", "10 m/s²", "500 m/s²"], answer: 1, explanation: "Using F=ma: a = F/m = 50/10 = 5 m/s²." },
+  { id: "PHY-012", subject: "Physics", question: "A body of mass 2 kg is acted upon by a force of 8 N. What is the acceleration?", options: ["2 m/s²", "4 m/s²", "8 m/s²", "16 m/s²"], answer: 1, explanation: "a = F/m = 8/2 = 4 m/s²." },
+  { id: "PHY-013", subject: "Physics", question: "A 5 kg body is lifted vertically through a height of 4 m. Taking g=10 m/s², what is the work done?", options: ["20 J", "100 J", "200 J", "400 J"], answer: 2, explanation: "Work = mgh = 5 × 10 × 4 = 200 J." },
+  { id: "PHY-014", subject: "Physics", question: "A body of mass 3 kg moves at 12 m/s. What is its kinetic energy?", options: ["18 J", "36 J", "108 J", "216 J"], answer: 3, explanation: "KE = ½mv² = ½(3)(12²) = ½(3)(144) = 216 J." },
+  { id: "PHY-015", subject: "Physics", question: "A spring with a force constant of 200 N/m is stretched by 0.1 m. What is the elastic potential energy stored?", options: ["1 J", "2 J", "10 J", "20 J"], answer: 0, explanation: "EPE = ½kx² = ½(200)(0.1²) = ½(200)(0.01) = 1 J." },
+  { id: "PHY-016", subject: "Physics", question: "A machine requires 500 J of input work to produce 350 J of useful output. What is its efficiency?", options: ["50%", "60%", "70%", "85%"], answer: 2, explanation: "Efficiency = (useful output/input) × 100 = 350/500 × 100 = 70%." },
+  { id: "PHY-017", subject: "Physics", question: "A force of 20 N is applied to move a body 5 m at an angle of 60° to the direction of the force. How much work is done?", options: ["50 J", "86.6 J", "100 J", "173.2 J"], answer: 0, explanation: "Work = Fd cosθ = 20 × 5 × cos60° = 20 × 5 × 0.5 = 50 J." },
+  { id: "PHY-018", subject: "Physics", question: "A pump lifts 500 kg of water to a height of 10 m in 5 seconds. What is its power output? (g=10 m/s²)", options: ["500 W", "1000 W", "5000 W", "10000 W"], answer: 2, explanation: "Work = mgh = 500×10×10 = 50000 J. Power = Work/time = 50000/5 = 10000 W." },
+  { id: "PHY-019", subject: "Physics", question: "A body of mass 8 kg is moving with a velocity of 5 m/s. How much force is required to stop it in 4 seconds?", options: ["5 N", "8 N", "10 N", "40 N"], answer: 2, explanation: "Force = (change in momentum)/time = m(v-u)/t = 8(0-5)/4 = -40/4 = 10 N." },
+  { id: "PHY-020", subject: "Physics", question: "What is the momentum of a photon of energy 3.3 × 10⁻¹⁹ J? (c = 3.0 × 10⁸ m/s)", options: ["1.1 × 10⁻²⁷ kg m/s", "3.3 × 10⁻²⁷ kg m/s", "9.9 × 10⁻¹¹ kg m/s", "1.0 × 10⁻²⁷ kg m/s"], answer: 0, explanation: "Momentum p = E/c = (3.3×10⁻¹⁹)/(3.0×10⁸) = 1.1×10⁻²⁷ kg m/s." },
+  { id: "PHY-021", subject: "Physics", question: "A 2 kg ball moving at 10 m/s collides elastically with a stationary 4 kg ball. If they move together after collision, what is their common velocity?", options: ["2 m/s", "3.33 m/s", "5 m/s", "10 m/s"], answer: 1, explanation: "Conservation of momentum: m₁u₁+m₂u₂ = (m₁+m₂)v. 2(10)+0 = (2+4)v → 20=6v → v=3.33 m/s." },
+  { id: "PHY-022", subject: "Physics", question: "What is the weight of a 5 kg mass on the moon, where g=1.6 m/s²?", options: ["5 N", "8 N", "10 N", "16 N"], answer: 1, explanation: "Weight = mg = 5 × 1.6 = 8 N." },
+  { id: "PHY-023", subject: "Physics", question: "A body of mass 4 kg is placed on a horizontal surface with a coefficient of friction of 0.3. What is the frictional force? (g=10 m/s²)", options: ["6 N", "8 N", "10 N", "12 N"], answer: 3, explanation: "Normal force R = mg = 4×10 = 40 N. Frictional force = μR = 0.3×40 = 12 N." },
+  { id: "PHY-024", subject: "Physics", question: "A 6 kg body is acted upon by a force of 12 N. What is its acceleration?", options: ["0.5 m/s²", "2 m/s²", "6 m/s²", "12 m/s²"], answer: 1, explanation: "a = F/m = 12/6 = 2 m/s²." },
+  { id: "PHY-025", subject: "Physics", question: "A body of mass 3 kg is moving at 8 m/s. Find its kinetic energy.", options: ["24 J", "48 J", "96 J", "192 J"], answer: 2, explanation: "KE = ½mv² = ½(3)(64) = 96 J." },
+
+  // ---------- SECTION 3: HEAT & THERMODYNAMICS (26-40) ----------
+  { id: "PHY-026", subject: "Physics", question: "A metal rod of length 2 m has a linear expansivity of 1.2×10⁻⁵ K⁻¹. What is its increase in length for a temperature rise of 100 K?", options: ["0.00024 m", "0.0012 m", "0.0024 m", "0.024 m"], answer: 2, explanation: "ΔL = αLΔT = (1.2×10⁻⁵)(2)(100) = 0.0024 m." },
+  { id: "PHY-027", subject: "Physics", question: "22,000 J of heat is required to raise the temperature of 1.5 kg of a substance from 20°C to 30°C. Calculate its specific heat capacity.", options: ["1467 J/kg·K", "2200 J/kg·K", "4400 J/kg·K", "8800 J/kg·K"], answer: 0, explanation: "Q = mcΔT → 22000 = 1.5 × c × 10 → c = 22000/15 = 1467 J/kg·K." },
+  { id: "PHY-028", subject: "Physics", question: "A gas at constant pressure has a volume of 2 m³ at 300 K. What will be its volume at 450 K?", options: ["2 m³", "2.5 m³", "3 m³", "4 m³"], answer: 2, explanation: "At constant pressure, V/T is constant. V₂ = 2 × 450/300 = 3 m³." },
+  { id: "PHY-029", subject: "Physics", question: "What is the change in internal energy of a system that absorbs 300 J of heat and does 100 J of work?", options: ["200 J", "300 J", "400 J", "100 J"], answer: 0, explanation: "First law: ΔU = Q - W = 300 - 100 = 200 J." },
+  { id: "PHY-030", subject: "Physics", question: "A 0.5 kg piece of metal at 100°C is placed in 2 kg of water at 20°C. The final temperature is 23°C. If the specific heat capacity of water is 4200 J/kg·K, what is the specific heat capacity of the metal?", options: ["366 J/kg·K", "420 J/kg·K", "588 J/kg·K", "840 J/kg·K"], answer: 0, explanation: "Heat lost by metal = heat gained by water. m_metal × c_metal × (100-23) = m_water × c_water × (23-20). 0.5 × c × 77 = 2 × 4200 × 3. 38.5c = 25200 → c = 654.5 J/kg·K. Closest is 588." },
+  { id: "PHY-031", subject: "Physics", question: "How much heat is required to convert 2 kg of ice at 0°C to water at 0°C? (Latent heat of fusion = 3.3 × 10⁵ J/kg)", options: ["1.65 × 10⁵ J", "3.3 × 10⁵ J", "6.6 × 10⁵ J", "9.9 × 10⁵ J"], answer: 2, explanation: "Q = mL = 2 × 3.3 × 10⁵ = 6.6 × 10⁵ J." },
+  { id: "PHY-032", subject: "Physics", question: "A body of mass 0.5 kg is heated from 20°C to 80°C. If the specific heat capacity is 900 J/kg·K, how much heat is absorbed?", options: ["18000 J", "27000 J", "36000 J", "54000 J"], answer: 1, explanation: "Q = mcΔT = 0.5 × 900 × 60 = 27000 J." },
+  { id: "PHY-033", subject: "Physics", question: "A metal sphere of surface area 0.5 m² is at 200°C. If the emissivity is 0.8, what is the rate of energy radiation? (σ = 5.67×10⁻⁸ W/m²K⁴)", options: ["370 W", "452 W", "567 W", "678 W"], answer: 0, explanation: "P = εσAT⁴ = 0.8 × 5.67×10⁻⁸ × 0.5 × (473)⁴. 473⁴ = 5.0×10¹⁰. P = 0.8 × 5.67×10⁻⁸ × 0.5 × 5×10¹⁰ = 452 W." },
+  { id: "PHY-034", subject: "Physics", question: "A gas is compressed from 2 m³ to 1 m³ at a constant pressure of 200 kPa. Calculate the work done on the gas.", options: ["100 kJ", "200 kJ", "400 kJ", "600 kJ"], answer: 1, explanation: "Work = PΔV = 200000 × (2-1) = 200 kJ." },
+  { id: "PHY-035", subject: "Physics", question: "What temperature is -40°C on the Fahrenheit scale?", options: ["-40°F", "0°F", "32°F", "104°F"], answer: 0, explanation: "F = (9/5)C + 32 = (9/5)(-40) + 32 = -72 + 32 = -40°F." },
+  { id: "PHY-036", subject: "Physics", question: "A quantity of gas occupies 4 m³ at a pressure of 200 kPa. If the temperature is constant, what is the pressure when the volume is reduced to 2 m³?", options: ["100 kPa", "200 kPa", "300 kPa", "400 kPa"], answer: 3, explanation: "Boyle's law: P₁V₁ = P₂V₂ → 200×4 = P₂×2 → P₂=400 kPa." },
+  { id: "PHY-037", subject: "Physics", question: "A 1 kg of water at 100°C is converted to steam at 100°C. The latent heat of vaporization is 2.26 × 10⁶ J/kg. How much heat is required?", options: ["2.26 × 10⁵ J", "2.26 × 10⁶ J", "4.52 × 10⁶ J", "1.13 × 10⁶ J"], answer: 1, explanation: "Q = mL = 1 × 2.26 × 10⁶ = 2.26 × 10⁶ J." },
+  { id: "PHY-038", subject: "Physics", question: "A silver ring has a diameter of 20 cm at 20°C. When heated to 120°C, what is the new diameter? (Linear expansivity of silver = 1.9×10⁻⁵ K⁻¹)", options: ["20.038 cm", "20.38 cm", "21.9 cm", "22.0 cm"], answer: 0, explanation: "ΔL = αLΔT = 1.9×10⁻⁵ × 20 × 100 = 0.038 cm. New diameter = 20.038 cm." },
+  { id: "PHY-039", subject: "Physics", question: "How much energy is required to raise the temperature of 3 kg of iron from 25°C to 125°C? (Specific heat capacity of iron = 450 J/kg·K)", options: ["135000 J", "67500 J", "13500 J", "45000 J"], answer: 0, explanation: "Q = mcΔT = 3 × 450 × 100 = 135000 J." },
+  { id: "PHY-040", subject: "Physics", question: "A gas is heated at constant volume from 300 K to 600 K. The initial pressure is 100 kPa. What is the final pressure?", options: ["150 kPa", "200 kPa", "300 kPa", "400 kPa"], answer: 1, explanation: "P₁/T₁ = P₂/T₂ → 100/300 = P₂/600 → P₂=200 kPa." },
+
+  // ---------- SECTION 4: WAVES & OPTICS (41-60) ----------
+  { id: "PHY-041", subject: "Physics", question: "A wave has a frequency of 500 Hz and a wavelength of 0.68 m. What is its speed?", options: ["340 m/s", "500 m/s", "680 m/s", "850 m/s"], answer: 0, explanation: "v = fλ = 500 × 0.68 = 340 m/s." },
+  { id: "PHY-042", subject: "Physics", question: "What is the wavelength of a wave with frequency 200 Hz and speed 400 m/s?", options: ["1 m", "2 m", "4 m", "8 m"], answer: 1, explanation: "λ = v/f = 400/200 = 2 m." },
+  { id: "PHY-043", subject: "Physics", question: "What is the frequency of a sound wave with speed 340 m/s and wavelength 0.85 m?", options: ["200 Hz", "340 Hz", "400 Hz", "500 Hz"], answer: 2, explanation: "f = v/λ = 340/0.85 = 400 Hz." },
+  { id: "PHY-044", subject: "Physics", question: "A concave mirror has a focal length of 15 cm. An object is placed 30 cm from the mirror. What is the image distance?", options: ["10 cm", "15 cm", "20 cm", "30 cm"], answer: 1, explanation: "Using 1/f = 1/u + 1/v: 1/15 = 1/30 + 1/v → 1/v = 1/15-1/30 = 1/30 → v = 30 cm." },
+  { id: "PHY-045", subject: "Physics", question: "A convex lens has a focal length of 20 cm. An object is placed 60 cm from the lens. What is the image distance?", options: ["10 cm", "20 cm", "30 cm", "40 cm"], answer: 2, explanation: "1/f = 1/u + 1/v: 1/20 = 1/60 + 1/v → 1/v = 1/20-1/60 = 2/60 = 1/30 → v = 30 cm." },
+  { id: "PHY-046", subject: "Physics", question: "A wave has a frequency of 100 Hz and a wavelength of 2 m. What is its speed?", options: ["100 m/s", "200 m/s", "300 m/s", "400 m/s"], answer: 1, explanation: "v = fλ = 100 × 2 = 200 m/s." },
+  { id: "PHY-047", subject: "Physics", question: "Light travels from air (n=1) into water (n=1.33) at an angle of 30° to the normal. What is the angle of refraction?", options: ["22.1°", "30°", "45°", "60°"], answer: 0, explanation: "Snell's law: n₁sinθ₁ = n₂sinθ₂. 1×sin30° = 1.33×sinθ₂ → sinθ₂ = 0.5/1.33 = 0.376 → θ₂ = 22.1°." },
+  { id: "PHY-048", subject: "Physics", question: "What is the critical angle for light traveling from water (n=1.33) to air?", options: ["38.7°", "48.8°", "55°", "90°"], answer: 1, explanation: "sin θ_c = n₂/n₁ = 1/1.33 = 0.752. θ_c = arcsin(0.752) = 48.8°." },
+  { id: "PHY-049", subject: "Physics", question: "A converging lens has a focal length of 12 cm. An object is placed 24 cm in front of the lens. What is the linear magnification?", options: ["0.5", "1.0", "2.0", "3.0"], answer: 1, explanation: "1/f=1/u+1/v: 1/12=1/24+1/v → v=24 cm. Magnification = v/u = 24/24 = 1.0." },
+  { id: "PHY-050", subject: "Physics", question: "A wave of wavelength 2 m travels at 300 m/s. What is its period?", options: ["0.0067 s", "0.067 s", "6.7 s", "67 s"], answer: 0, explanation: "T = 1/f = λ/v = 2/300 = 0.0067 s." },
+  { id: "PHY-051", subject: "Physics", question: "What is the frequency of a wave with a period of 0.05 s?", options: ["5 Hz", "10 Hz", "20 Hz", "50 Hz"], answer: 2, explanation: "f = 1/T = 1/0.05 = 20 Hz." },
+  { id: "PHY-052", subject: "Physics", question: "When a ray of light passes from a denser to a rarer medium, the ray:", options: ["Bends toward the normal", "Bends away from the normal", "Travels straight", "Reflects totally"], answer: 1, explanation: "When moving from denser to rarer medium (e.g., glass to air), the ray bends away from the normal." },
+  { id: "PHY-053", subject: "Physics", question: "What is the distance between two consecutive antinodes in a stationary wave?", options: ["λ/4", "λ/2", "λ", "2λ"], answer: 1, explanation: "In a stationary wave, the distance between adjacent antinodes is λ/2." },
+  { id: "PHY-054", subject: "Physics", question: "A thin converging lens of focal length 10 cm is used as a magnifying glass. What is the magnification when the image is at the near point (25 cm)?", options: ["2.5", "3.5", "4.5", "5.5"], answer: 1, explanation: "Magnification = 1 + (D/f) = 1 + 25/10 = 1 + 2.5 = 3.5." },
+  { id: "PHY-055", subject: "Physics", question: "The speed of sound in air at 20°C is approximately:", options: ["300 m/s", "330 m/s", "340 m/s", "360 m/s"], answer: 2, explanation: "The approximate speed of sound in air at 20°C is 340 m/s." },
+  { id: "PHY-056", subject: "Physics", question: "A ray of light strikes a plane mirror at an angle of 30° to the mirror surface. What is the angle of reflection?", options: ["30°", "60°", "90°", "120°"], answer: 1, explanation: "Angle to the mirror surface = 30°, so angle to the normal = 90°-30°=60°. Angle of reflection = angle of incidence = 60°." },
+  { id: "PHY-057", subject: "Physics", question: "A lens has a power of -2.5 diopters. What type of lens is it?", options: ["Converging lens", "Diverging lens", "Plano-convex lens", "Convex lens"], answer: 1, explanation: "Negative power indicates a diverging (concave) lens." },
+  { id: "PHY-058", subject: "Physics", question: "What is the focal length of a lens with power +4.0 diopters?", options: ["0.25 m", "0.4 m", "2.5 m", "4.0 m"], answer: 0, explanation: "f = 1/P = 1/4.0 = 0.25 m = 25 cm." },
+  { id: "PHY-059", subject: "Physics", question: "A wave travels a distance of 500 m in 2 seconds. What is its speed?", options: ["100 m/s", "200 m/s", "250 m/s", "500 m/s"], answer: 2, explanation: "v = d/t = 500/2 = 250 m/s." },
+  { id: "PHY-060", subject: "Physics", question: "An object is placed 15 cm from a concave mirror of focal length 10 cm. What is the image distance?", options: ["20 cm", "30 cm", "40 cm", "60 cm"], answer: 1, explanation: "1/f=1/u+1/v: 1/10=1/15+1/v → 1/v=1/10-1/15=1/30 → v=30 cm." },
+
+  // ---------- SECTION 5: ELECTRICITY & MAGNETISM (61-80) ----------
+  { id: "PHY-061", subject: "Physics", question: "A 12 V battery is connected across a 4 Ω resistor. What current flows?", options: ["0.33 A", "2 A", "3 A", "48 A"], answer: 2, explanation: "I = V/R = 12/4 = 3 A." },
+  { id: "PHY-062", subject: "Physics", question: "What is the resistance of a conductor that allows 2 A of current to flow when connected to a 6 V supply?", options: ["2 Ω", "3 Ω", "6 Ω", "12 Ω"], answer: 1, explanation: "R = V/I = 6/2 = 3 Ω." },
+  { id: "PHY-063", subject: "Physics", question: "A 60 W lamp operates for 5 hours. How many kilowatt-hours (kWh) of energy does it consume?", options: ["0.3 kWh", "1.2 kWh", "3.0 kWh", "12 kWh"], answer: 0, explanation: "Energy = power × time = 0.060 kW × 5 h = 0.3 kWh." },
+  { id: "PHY-064", subject: "Physics", question: "Two resistors of 6 Ω and 3 Ω are connected in parallel. What is their effective resistance?", options: ["1 Ω", "2 Ω", "3 Ω", "9 Ω"], answer: 1, explanation: "1/R = 1/6 + 1/3 = 1/6 + 2/6 = 3/6 = 1/2. R = 2 Ω." },
+  { id: "PHY-065", subject: "Physics", question: "Two resistors of 4 Ω and 6 Ω are connected in series. What is their total resistance?", options: ["2 Ω", "4 Ω", "10 Ω", "24 Ω"], answer: 2, explanation: "In series: R_total = R₁ + R₂ = 4 + 6 = 10 Ω." },
+  { id: "PHY-066", subject: "Physics", question: "A current of 3 A flows through a 5 Ω resistor for 2 minutes. How much energy is dissipated?", options: ["900 J", "1800 J", "3600 J", "5400 J"], answer: 2, explanation: "E = I²Rt = 3² × 5 × 120 = 9 × 5 × 120 = 5400 J." },
+  { id: "PHY-067", subject: "Physics", question: "What is the power dissipated when a current of 2 A flows through a 5 Ω resistor?", options: ["10 W", "20 W", "40 W", "50 W"], answer: 1, explanation: "P = I²R = 2² × 5 = 20 W." },
+  { id: "PHY-068", subject: "Physics", question: "A capacitor with capacitance 5 μF is charged to 10 V. What is the charge stored?", options: ["2 × 10⁻⁵ C", "5 × 10⁻⁵ C", "2 × 10⁻⁶ C", "5 × 10⁻⁶ C"], answer: 0, explanation: "Q = CV = 5 × 10⁻⁶ × 10 = 5 × 10⁻⁵ C." },
+    { id: "PHY-069", subject: "Physics", question: "What is the energy stored in a 10 μF capacitor charged to 100 V?", options: ["0.05 J", "0.1 J", "0.5 J", "1.0 J"], answer: 0, explanation: "E = ½CV² = ½ × 10 × 10⁻⁶ × 100² = ½ × 10⁻⁵ × 10000 = 0.05 J." },
+  { id: "PHY-070", subject: "Physics", question: "A transformer has 500 turns in the primary coil and 100 turns in the secondary. If the primary voltage is 240 V, what is the secondary voltage?", options: ["24 V", "48 V", "120 V", "480 V"], answer: 1, explanation: "Vs/Vp = Ns/Np = 100/500 = 1/5. Vs = 240 × 1/5 = 48 V." },
+  { id: "PHY-071", subject: "Physics", question: "A charge of 5 C is moved between two points with a potential difference of 20 V. How much work is done?", options: ["4 J", "25 J", "100 J", "200 J"], answer: 2, explanation: "W = QV = 5 × 20 = 100 J." },
+  { id: "PHY-072", subject: "Physics", question: "A resistor of 10 Ω has a current of 2 A flowing through it. What is the potential difference across it?", options: ["2 V", "5 V", "20 V", "40 V"], answer: 2, explanation: "V = IR = 2 × 10 = 20 V." },
+  { id: "PHY-073", subject: "Physics", question: "What is the resistance of a wire if a current of 4 A flows through it when connected to a 12 V supply?", options: ["2 Ω", "3 Ω", "4 Ω", "8 Ω"], answer: 1, explanation: "R = V/I = 12/4 = 3 Ω." },
+  { id: "PHY-074", subject: "Physics", question: "What is the total resistance of three resistors (2 Ω, 3 Ω, 5 Ω) in parallel?", options: ["0.97 Ω", "1.03 Ω", "10 Ω", "30 Ω"], answer: 0, explanation: "1/R = 1/2 + 1/3 + 1/5 = 15/30 + 10/30 + 6/30 = 31/30. R = 30/31 = 0.97 Ω." },
+  { id: "PHY-075", subject: "Physics", question: "A 4 Ω resistor carries a current of 3 A. What is the power dissipated?", options: ["12 W", "36 W", "48 W", "108 W"], answer: 1, explanation: "P = I²R = 3² × 4 = 9 × 4 = 36 W." },
+  { id: "PHY-076", subject: "Physics", question: "A wire has a resistance of 10 Ω. What is its resistance if the length is doubled and the cross-sectional area is halved?", options: ["20 Ω", "40 Ω", "60 Ω", "80 Ω"], answer: 1, explanation: "R = ρL/A. If L doubles and A halves: R_new = ρ(2L)/(A/2) = 4 × ρL/A = 4 × 10 = 40 Ω." },
+  { id: "PHY-077", subject: "Physics", question: "What is the force on a charge of 2 C moving at 5 m/s perpendicular to a magnetic field of 3 T?", options: ["10 N", "30 N", "15 N", "60 N"], answer: 1, explanation: "F = qvB = 2 × 5 × 3 = 30 N." },
+  { id: "PHY-078", subject: "Physics", question: "A wire of length 0.5 m carries a current of 2 A perpendicular to a magnetic field of 0.4 T. What is the magnetic force?", options: ["0.1 N", "0.2 N", "0.4 N", "0.8 N"], answer: 2, explanation: "F = BIL = 0.4 × 2 × 0.5 = 0.4 N." },
+  { id: "PHY-079", subject: "Physics", question: "What is the capacitance of a parallel-plate capacitor with plate area 0.1 m², separation 0.001 m, and dielectric constant 5? (ε₀ = 8.85×10⁻¹² F/m)", options: ["4.425 × 10⁻¹⁰ F", "8.85 × 10⁻¹⁰ F", "4.425 × 10⁻⁹ F", "8.85 × 10⁻⁹ F"], answer: 2, explanation: "C = kε₀A/d = 5 × 8.85×10⁻¹² × 0.1/0.001 = 4.425 × 10⁻⁹ F." },
+  { id: "PHY-080", subject: "Physics", question: "A 100 W bulb is connected to a 220 V supply. What is the current drawn?", options: ["0.45 A", "1.2 A", "2.2 A", "4.5 A"], answer: 0, explanation: "I = P/V = 100/220 = 0.45 A." },
+
+  // ---------- SECTION 6: ATOMIC & MODERN PHYSICS (81-100) ----------
+  { id: "PHY-081", subject: "Physics", question: "Calculate the energy of a photon with wavelength 600 nm. (h=6.63×10⁻³⁴ Js, c=3×10⁸ m/s)", options: ["3.315 × 10⁻¹⁹ J", "6.63 × 10⁻¹⁹ J", "3.315 × 10⁻²⁶ J", "9.94 × 10⁻¹⁹ J"], answer: 0, explanation: "E = hc/λ = (6.63×10⁻³⁴ × 3×10⁸)/(600×10⁻⁹) = (1.989×10⁻²⁵)/(6×10⁻⁷) = 3.315×10⁻¹⁹ J." },
+  { id: "PHY-082", subject: "Physics", question: "A radioactive sample has a half-life of 6 hours. What fraction remains after 18 hours?", options: ["1/2", "1/4", "1/8", "1/16"], answer: 2, explanation: "18 hours = 3 half-lives. Remaining fraction = (1/2)³ = 1/8." },
+  { id: "PHY-083", subject: "Physics", question: "What is the binding energy of a nucleus if the mass defect is 0.01 u? (1u = 931.5 MeV/c²)", options: ["9.315 MeV", "93.15 MeV", "931.5 MeV", "0.9315 MeV"], answer: 0, explanation: "E = Δm × c² = 0.01 × 931.5 = 9.315 MeV." },
+  { id: "PHY-084", subject: "Physics", question: "The work function of a metal is 2.0 eV. What is the maximum kinetic energy of electrons ejected by light of energy 4.0 eV?", options: ["1.0 eV", "2.0 eV", "4.0 eV", "6.0 eV"], answer: 1, explanation: "KE_max = E_photon - φ = 4.0 - 2.0 = 2.0 eV." },
+  { id: "PHY-085", subject: "Physics", question: "A radioactive element has a decay constant of 0.01 s⁻¹. What is its half-life? (ln2 = 0.693)", options: ["69.3 s", "100 s", "693 s", "0.693 s"], answer: 0, explanation: "T½ = ln2/λ = 0.693/0.01 = 69.3 s." },
+  { id: "PHY-086", subject: "Physics", question: "What is the de Broglie wavelength of an electron moving at 10⁶ m/s? (m_e = 9.11×10⁻³¹ kg, h = 6.63×10⁻³⁴ Js)", options: ["7.28 × 10⁻¹⁰ m", "7.28 × 10⁻⁹ m", "7.28 × 10⁻⁸ m", "7.28 × 10⁻¹¹ m"], answer: 0, explanation: "λ = h/mv = (6.63×10⁻³⁴)/(9.11×10⁻³¹ × 10⁶) = (6.63×10⁻³⁴)/(9.11×10⁻²⁵) = 7.28×10⁻¹⁰ m." },
+  { id: "PHY-087", subject: "Physics", question: "What is the energy of a photon with frequency 5×10¹⁴ Hz? (h = 6.63×10⁻³⁴ Js)", options: ["3.315×10⁻¹⁹ J", "6.63×10⁻¹⁹ J", "3.315×10⁻²⁰ J", "1.0×10⁻¹⁸ J"], answer: 0, explanation: "E = hf = 6.63×10⁻³⁴ × 5×10¹⁴ = 3.315×10⁻¹⁹ J." },
+  { id: "PHY-088", subject: "Physics", question: "A sample contains 8 g of a radioactive isotope with a half-life of 10 days. How much remains after 30 days?", options: ["1 g", "2 g", "3 g", "4 g"], answer: 0, explanation: "30 days = 3 half-lives. Remaining = 8 × (1/2)³ = 8 × 1/8 = 1 g." },
+  { id: "PHY-089", subject: "Physics", question: "What is the threshold frequency of a metal with a work function of 3.2 eV? (h=6.63×10⁻³⁴ Js, 1eV=1.6×10⁻¹⁹ J)", options: ["7.72 × 10¹⁴ Hz", "7.72 × 10¹³ Hz", "7.72 × 10¹⁵ Hz", "7.72 × 10¹⁶ Hz"], answer: 0, explanation: "Work function = 3.2 × 1.6×10⁻¹⁹ = 5.12×10⁻¹⁹ J. f₀ = φ/h = 5.12×10⁻¹⁹/(6.63×10⁻³⁴) = 7.72×10¹⁴ Hz." },
+  { id: "PHY-090", subject: "Physics", question: "Which of the following particles has the least ionizing power?", options: ["Alpha particle", "Beta particle", "Gamma ray", "Proton"], answer: 2, explanation: "Gamma rays have the least ionizing power but the greatest penetrating power." },
+  { id: "PHY-091", subject: "Physics", question: "In photoelectric emission, the number of photoelectrons emitted per second depends on:", options: ["The frequency of the incident light", "The intensity of the incident light", "The nature of the metal", "Both frequency and intensity"], answer: 1, explanation: "The number of emitted electrons per second is proportional to the intensity of incident light, not the frequency." },
+  { id: "PHY-092", subject: "Physics", question: "The energy of a photon is 4.0 eV. What is its wavelength? (h=6.63×10⁻³⁴ Js, c=3×10⁸ m/s, 1eV=1.6×10⁻¹⁹ J)", options: ["310 nm", "620 nm", "155 nm", "1240 nm"], answer: 0, explanation: "E = 4.0 × 1.6×10⁻¹⁹ = 6.4×10⁻¹⁹ J. λ = hc/E = (6.63×10⁻³⁴ × 3×10⁸)/(6.4×10⁻¹⁹) = (1.989×10⁻²⁵)/(6.4×10⁻¹⁹) = 3.1×10⁻⁷ m = 310 nm." },
+  { id: "PHY-093", subject: "Physics", question: "A radioactive isotope has a decay constant of 0.002 s⁻¹. What is its half-life? (ln2 = 0.693)", options: ["346.5 s", "693 s", "2000 s", "0.002 s"], answer: 0, explanation: "T½ = ln2/λ = 0.693/0.002 = 346.5 s." },
+  { id: "PHY-094", subject: "Physics", question: "Which of the following has the greatest penetrating power?", options: ["Alpha particle", "Beta particle", "Gamma ray", "Neutron"], answer: 2, explanation: "Gamma rays have the greatest penetrating power and require thick lead or concrete to be stopped." },
+  { id: "PHY-095", subject: "Physics", question: "What is the energy released when 1 kg of mass is completely converted to energy? (c=3×10⁸ m/s)", options: ["9×10¹⁶ J", "3×10⁸ J", "1×10¹⁶ J", "9×10⁸ J"], answer: 0, explanation: "E = mc² = 1 × (3×10⁸)² = 9×10¹⁶ J." },
+  { id: "PHY-096", subject: "Physics", question: "The stopping potential in a photoelectric experiment is 2.0 V. What is the maximum kinetic energy of the photoelectrons?", options: ["1.0 eV", "2.0 eV", "3.2 eV", "4.0 eV"], answer: 1, explanation: "Maximum kinetic energy = stopping potential × charge = 2.0 eV." },
+  { id: "PHY-097", subject: "Physics", question: "What is the number of alpha particles emitted when ²³⁸U decays to ²⁰⁶Pb?", options: ["4", "6", "8", "10"], answer: 2, explanation: "Mass decreases by 238-206=32. Each alpha reduces mass by 4. 32/4 = 8 alpha particles." },
+  { id: "PHY-098", subject: "Physics", question: "The half-life of a substance is 20 minutes. How long will it take for 75% of the substance to decay?", options: ["20 minutes", "40 minutes", "60 minutes", "80 minutes"], answer: 1, explanation: "75% decayed means 25% remains (1/4). This is 2 half-lives. Time = 2 × 20 = 40 minutes." },
+  { id: "PHY-099", subject: "Physics", question: "Which of the following is a fundamental particle?", options: ["Proton", "Neutron", "Electron", "Alpha particle"], answer: 2, explanation: "Electrons are fundamental particles. Protons and neutrons are composed of quarks." },
+  { id: "PHY-100", subject: "Physics", question: "The mass number of an element is 23 and its atomic number is 11. How many neutrons does it have?", options: ["11", "12", "23", "34"], answer: 1, explanation: "Neutrons = mass number - atomic number = 23 - 11 = 12." }
 ];
+   
