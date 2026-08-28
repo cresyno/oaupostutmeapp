@@ -24,15 +24,11 @@ const SubjectIcon = ({ subjectKey }) => {
     ),
     mathematics: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-        {/* + */}
         <line x1="6" y1="6" x2="12" y2="6"></line>
         <line x1="9" y1="3" x2="9" y2="9"></line>
-        {/* - */}
         <line x1="14" y1="6" x2="20" y2="6"></line>
-        {/* × */}
         <line x1="5" y1="13" x2="11" y2="19"></line>
         <line x1="11" y1="13" x2="5" y2="19"></line>
-        {/* ÷ */}
         <line x1="14" y1="15" x2="20" y2="15"></line>
         <circle cx="17" cy="11" r="1.2" fill="currentColor" stroke="none"></circle>
         <circle cx="17" cy="19" r="1.2" fill="currentColor" stroke="none"></circle>
@@ -58,7 +54,6 @@ const SubjectIcon = ({ subjectKey }) => {
     )
   };
 
-  // Modern gradient backgrounds for the "3D" feel
   const gradients = {
     aptitude: "linear-gradient(135deg, #3b82f6, #1e3a8a)",
     mathematics: "linear-gradient(135deg, #f59e0b, #b45309)",
@@ -68,10 +63,7 @@ const SubjectIcon = ({ subjectKey }) => {
   };
 
   return (
-    <span
-      className={styles.subjectIcon}
-      style={{ background: gradients[subjectKey] || "#333" }}
-    >
+    <span className={styles.subjectIcon} style={{ background: gradients[subjectKey] || "#333" }}>
       {icons[subjectKey] || null}
     </span>
   );
@@ -80,16 +72,13 @@ const SubjectIcon = ({ subjectKey }) => {
 // ---------- SAFE MATH RENDERER ----------
 function MathRenderer({ text }) {
   if (!text) return null;
-
   const parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
-
   return (
     <>
       {parts.map((part, index) => {
         const isMath =
           (part.startsWith("$") && part.endsWith("$")) ||
           (part.startsWith("\\(") && part.endsWith("\\)"));
-
         if (isMath) {
           try {
             let mathString = part;
@@ -99,7 +88,7 @@ function MathRenderer({ text }) {
               mathString = part.slice(2, -2);
             }
             const html = katex.renderToString(mathString, {
-              throwOnError: false, // Never crash, just show raw text
+              throwOnError: false,
               displayMode: false,
             });
             return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
@@ -120,15 +109,12 @@ class ErrorBoundary extends Component {
     super(props);
     this.state = { hasError: false };
   }
-
   static getDerivedStateFromError() {
     return { hasError: true };
   }
-
   componentDidCatch(error, info) {
     console.error("ErrorBoundary caught:", error, info);
   }
-
   render() {
     if (this.state.hasError) {
       return (
@@ -172,29 +158,56 @@ export default function CBTPage() {
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
+  const [isRestored, setIsRestored] = useState(false); // indicates if we restored saved progress
 
-  // Load subjects from localStorage
+  // Load saved progress on mount
   useEffect(() => {
-    const saved = localStorage.getItem("oau-cbt-subjects");
-    if (!saved) {
-      router.push("/");
-      return;
+    const savedProgress = localStorage.getItem("oau-cbt-progress");
+    if (savedProgress) {
+      try {
+        const parsed = JSON.parse(savedProgress);
+        // Only restore if it matches the current selected subjects
+        const savedSubjects = JSON.parse(localStorage.getItem("oau-cbt-subjects") || "[]");
+        if (parsed.subjects && JSON.stringify(parsed.subjects) === JSON.stringify(savedSubjects)) {
+          setSubjects(parsed.subjects || []);
+          setExamQuestions(parsed.examQuestions || []);
+          setSubjectSections(parsed.subjectSections || []);
+          setCurrentIndex(parsed.currentIndex || 0);
+          setAnswers(parsed.answers || {});
+          setTimeLeft(parsed.timeLeft || EXAM_DURATION_SECONDS);
+          setIsRestored(true);
+        } else {
+          // Mismatched subjects – clear old progress and use fresh start
+          localStorage.removeItem("oau-cbt-progress");
+        }
+      } catch (_) {
+        localStorage.removeItem("oau-cbt-progress");
+      }
     }
-    try {
-      const parsed = JSON.parse(saved);
-      if (parsed.length !== 4 || !parsed.includes("aptitude")) {
+
+    // If no saved progress, load subjects from localStorage
+    if (!isRestored) {
+      const saved = localStorage.getItem("oau-cbt-subjects");
+      if (!saved) {
         router.push("/");
         return;
       }
-      setSubjects(parsed);
-    } catch (_) {
-      router.push("/");
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed.length !== 4 || !parsed.includes("aptitude")) {
+          router.push("/");
+          return;
+        }
+        setSubjects(parsed);
+      } catch (_) {
+        router.push("/");
+      }
     }
   }, [router]);
 
-  // Build exam
+  // Build exam if not restored (when subjects are loaded)
   useEffect(() => {
-    if (subjects.length !== 4) return;
+    if (subjects.length !== 4 || isRestored) return;
 
     let allQuestions = [];
     let sections = [];
@@ -205,17 +218,14 @@ export default function CBTPage() {
         setError(`No questions found for ${data?.label || subjectKey}`);
         return;
       }
-
       const shuffled = shuffleArray(data.questions);
       const picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
-
       const enriched = picked.map((q) => ({
         ...q,
         subjectKey,
         subjectLabel: data.label,
         subjectIcon: data.iconKey,
       }));
-
       const startIndex = allQuestions.length;
       const endIndex = startIndex + enriched.length - 1;
       sections.push({
@@ -226,7 +236,6 @@ export default function CBTPage() {
         endIndex,
         count: enriched.length,
       });
-
       allQuestions = [...allQuestions, ...enriched];
     }
 
@@ -238,7 +247,22 @@ export default function CBTPage() {
     setExamQuestions(allQuestions);
     setSubjectSections(sections);
     setError(null);
-  }, [subjects]);
+    setIsRestored(true); // mark as ready
+  }, [subjects, isRestored]);
+
+  // Save progress whenever anything changes
+  useEffect(() => {
+    if (!isRestored || examQuestions.length === 0) return;
+    const progress = {
+      subjects,
+      examQuestions,
+      subjectSections,
+      currentIndex,
+      answers,
+      timeLeft,
+    };
+    localStorage.setItem("oau-cbt-progress", JSON.stringify(progress));
+  }, [subjects, examQuestions, subjectSections, currentIndex, answers, timeLeft, isRestored]);
 
   // Timer
   useEffect(() => {
@@ -272,11 +296,12 @@ export default function CBTPage() {
         timestamp: new Date().toISOString(),
       };
       localStorage.setItem("oau-cbt-result", JSON.stringify(result));
+      localStorage.removeItem("oau-cbt-progress"); // clear saved progress
       router.push("/results");
     }
   }, [submitted, examQuestions, answers, subjects, router]);
 
-  // Refresh protection (beforeunload)
+  // Refresh protection
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       if (!submitted) {
@@ -300,7 +325,7 @@ export default function CBTPage() {
     );
   }
 
-  if (subjects.length === 0 || examQuestions.length === 0) {
+  if (!isRestored || examQuestions.length === 0) {
     return (
       <div className={styles.loading}>
         <p>Loading your exam...</p>
@@ -326,6 +351,14 @@ export default function CBTPage() {
   const handleSubmit = () => {
     if (window.confirm("Are you sure you want to submit your exam?")) {
       setSubmitted(true);
+    }
+  };
+
+  const handleRestart = () => {
+    if (window.confirm("Start a new exam? Your current progress will be lost.")) {
+      localStorage.removeItem("oau-cbt-progress");
+      // Reload the page to start fresh with same subjects
+      window.location.reload();
     }
   };
 
@@ -365,6 +398,13 @@ export default function CBTPage() {
             className={styles.progressBar}
             style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
           />
+        </div>
+
+        {/* Restart button (optional) */}
+        <div className={styles.restartRow}>
+          <button onClick={handleRestart} className={styles.restartButton}>
+            🔄 Restart Exam
+          </button>
         </div>
 
         {/* Subject Tabs */}
@@ -465,4 +505,4 @@ export default function CBTPage() {
       </div>
     </div>
   );
-          }
+    }
