@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
-// DIRECT IMPORT – NO DYNAMIC
+// Imports for LaTeX rendering
 import Latex from "react-katex";
 import "katex/dist/katex.min.css";
 
@@ -54,27 +54,36 @@ function shuffleArray(arr) {
   return a;
 }
 
-// Safe Math Renderer with error handling
+// ---------- SAFE MATH RENDERER (FIXED) ----------
 function MathRenderer({ text }) {
   if (!text) return null;
 
-  // If text contains LaTeX delimiters, render with KaTeX
-  const hasLatex = text.includes("\\") || text.includes("^") || text.includes("_") || 
-                    text.includes("frac") || text.includes("sqrt") || text.includes("begin");
+  // Split text into plain text and LaTeX segments
+  const parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
 
-  if (!hasLatex) {
-    return <span>{text}</span>;
-  }
-
-  try {
-    // Inline math with \( ... \) or $ ... $
-    return <Latex>{text}</Latex>;
-  } catch (error) {
-    console.warn("KaTeX failed for:", text);
-    // Fallback: render as plain text
-    return <span>{text}</span>;
-  }
+  return (
+    <>
+      {parts.map((part, index) => {
+        // If it's a math block (e.g., $x^2$ or \(x^2\))
+        if (
+          (part.startsWith("$") && part.endsWith("$")) ||
+          (part.startsWith("\\(") && part.endsWith("\\)"))
+        ) {
+          try {
+            return <Latex key={index}>{part}</Latex>;
+          } catch (error) {
+            console.warn("KaTeX failed, showing raw:", part);
+            return <span key={index}>{part}</span>;
+          }
+        } else {
+          // Plain text – render as is
+          return <span key={index}>{part}</span>;
+        }
+      })}
+    </>
+  );
 }
+// ------------------------------------------------
 
 export default function CBTPage() {
   const router = useRouter();
@@ -232,10 +241,17 @@ export default function CBTPage() {
     }
   };
 
+  // Jump to a specific question (used by palette and tabs)
+  const goToQuestion = (index) => {
+    if (index >= 0 && index < totalQuestions) {
+      setCurrentIndex(index);
+    }
+  };
+
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        {/* Header */}
+        {/* ---------- HEADER ---------- */}
         <div className={styles.header}>
           <div>
             <div className={styles.title}>OAU POST-UTME CBT</div>
@@ -254,18 +270,30 @@ export default function CBTPage() {
           </div>
         </div>
 
-        {/* Subject Section Header */}
-        {currentSection && (
-          <div className={styles.sectionHeader}>
-            <span className={styles.sectionIcon}>{currentSection.icon}</span>
-            <span className={styles.sectionLabel}>{currentSection.label}</span>
-            <span className={styles.sectionRange}>
-              Questions {currentSection.startIndex + 1} – {currentSection.endIndex + 1}
-            </span>
-          </div>
-        )}
+        {/* ---------- PROGRESS BAR ---------- */}
+        <div className={styles.progressBarWrapper}>
+          <div
+            className={styles.progressBar}
+            style={{ width: `${((currentIndex + 1) / totalQuestions) * 100}%` }}
+          />
+        </div>
 
-        {/* Question with Math Rendering */}
+        {/* ---------- SUBJECT TABS (NEW) ---------- */}
+        <div className={styles.subjectTabs}>
+          {subjectSections.map((section) => (
+            <button
+              key={section.key}
+              className={`${styles.tab} ${
+                currentSection?.key === section.key ? styles.activeTab : ""
+              }`}
+              onClick={() => goToQuestion(section.startIndex)}
+            >
+              {section.icon} {section.label}
+            </button>
+          ))}
+        </div>
+
+        {/* ---------- QUESTION CARD ---------- */}
         <div className={styles.questionCard}>
           <div className={styles.questionText}>
             <MathRenderer text={currentQuestion.question} />
@@ -290,10 +318,10 @@ export default function CBTPage() {
           </div>
         </div>
 
-        {/* Navigation */}
+        {/* ---------- NAVIGATION BUTTONS ---------- */}
         <div className={styles.navigation}>
           <button
-            onClick={() => setCurrentIndex((prev) => prev - 1)}
+            onClick={() => goToQuestion(currentIndex - 1)}
             disabled={currentIndex === 0}
             className={styles.navButton}
           >
@@ -301,7 +329,7 @@ export default function CBTPage() {
           </button>
           {currentIndex < totalQuestions - 1 ? (
             <button
-              onClick={() => setCurrentIndex((prev) => prev + 1)}
+              onClick={() => goToQuestion(currentIndex + 1)}
               className={styles.navButton}
             >
               Next →
@@ -313,7 +341,7 @@ export default function CBTPage() {
           )}
         </div>
 
-        {/* Question Navigator */}
+        {/* ---------- QUESTION PALETTE ---------- */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
@@ -326,7 +354,7 @@ export default function CBTPage() {
               return (
                 <button
                   key={idx}
-                  onClick={() => setCurrentIndex(idx)}
+                  onClick={() => goToQuestion(idx)}
                   className={`${styles.paletteItem} ${
                     isAnswered ? styles.paletteAnswered : ""
                   } ${isCurrent ? styles.paletteCurrent : ""}`}
@@ -354,4 +382,4 @@ export default function CBTPage() {
       </div>
     </div>
   );
-    }
+  }
