@@ -4,9 +4,6 @@ import { useState, useEffect, Component } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 import katex from "katex";
-
-// Imports for LaTeX rendering
-import Latex from "react-katex";
 import "katex/dist/katex.min.css";
 
 // Import question data
@@ -16,35 +13,128 @@ import { chemistryQuestions } from "../../data/questions/chemistry";
 import { physicsQuestions } from "../../data/questions/physics";
 import { biologyQuestions } from "../../data/questions/biology";
 
+// ---------- SVG ICONS ----------
+const SubjectIcon = ({ subjectKey }) => {
+  const icons = {
+    aptitude: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
+        <circle cx="12" cy="12" r="9"></circle>
+      </svg>
+    ),
+    mathematics: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 19h4V5h4v14h4"></path>
+        <path d="M8 12h8"></path>
+      </svg>
+    ),
+    chemistry: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M10 2v6L4 20h16L14 8V2"></path>
+        <line x1="8" y1="16" x2="16" y2="16"></line>
+      </svg>
+    ),
+    physics: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"></path>
+      </svg>
+    ),
+    biology: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22V12"></path>
+        <path d="M12 12C12 8 9 6 5 6C5 10 8 12 12 12Z"></path>
+        <path d="M12 12C12 8 15 6 19 6C19 10 16 12 12 12Z"></path>
+        <path d="M12 2V4"></path>
+      </svg>
+    )
+  };
+  return <span className={styles.subjectIcon}>{icons[subjectKey] || null}</span>;
+};
+
+const TimerIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="13" r="8"></circle>
+    <path d="M12 9v4l2 2"></path>
+    <path d="M9 2h6"></path>
+  </svg>
+);
+
+const CheckIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12"></polyline>
+  </svg>
+);
+
+// ---------- SAFE MATH RENDERER ----------
+function MathRenderer({ text }) {
+  if (!text) return null;
+  const parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
+  return (
+    <>
+      {parts.map((part, index) => {
+        const isMath =
+          (part.startsWith("$") && part.endsWith("$")) ||
+          (part.startsWith("\\(") && part.endsWith("\\)"));
+        if (isMath) {
+          try {
+            let mathString = part;
+            if (part.startsWith("$") && part.endsWith("$")) {
+              mathString = part.slice(1, -1);
+            } else if (part.startsWith("\\(") && part.endsWith("\\)")) {
+              mathString = part.slice(2, -2);
+            }
+            const html = katex.renderToString(mathString, {
+              throwOnError: false,
+              displayMode: false,
+            });
+            return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
+          } catch {
+            return <span key={index}>{part}</span>;
+          }
+        } else {
+          return <span key={index}>{part}</span>;
+        }
+      })}
+    </>
+  );
+}
+
+// ---------- ERROR BOUNDARY (clean, no button) ----------
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error, info) {
+    console.error("ErrorBoundary caught:", error, info);
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: "1rem", background: "#fef2f2", borderRadius: "0.5rem", margin: "1rem 0" }}>
+          <p style={{ color: "#b91c1c", fontWeight: "600" }}>⚠️ This question could not be rendered.</p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
+// ---------- SUBJECT DATA ----------
 const SUBJECT_DATA = {
-  aptitude: {
-    label: "Aptitude",
-    questions: aptitudeQuestions || [],
-    icon: "🧠",
-  },
-  mathematics: {
-    label: "Mathematics",
-    questions: mathematicsQuestions || [],
-    icon: "📐",
-  },
-  chemistry: {
-    label: "Chemistry",
-    questions: chemistryQuestions || [],
-    icon: "🧪",
-  },
-  physics: {
-    label: "Physics",
-    questions: physicsQuestions || [],
-    icon: "⚡",
-  },
-  biology: {
-    label: "Biology",
-    questions: biologyQuestions || [],
-    icon: "🌿",
-  },
+  aptitude: { label: "Aptitude", questions: aptitudeQuestions || [], iconKey: "aptitude" },
+  mathematics: { label: "Mathematics", questions: mathematicsQuestions || [], iconKey: "mathematics" },
+  chemistry: { label: "Chemistry", questions: chemistryQuestions || [], iconKey: "chemistry" },
+  physics: { label: "Physics", questions: physicsQuestions || [], iconKey: "physics" },
+  biology: { label: "Biology", questions: biologyQuestions || [], iconKey: "biology" },
 };
 
 const QUESTIONS_PER_SUBJECT = 10;
+const EXAM_DURATION_SECONDS = 3600; // 1 hour
 
 function shuffleArray(arr) {
   const a = [...arr];
@@ -55,81 +145,6 @@ function shuffleArray(arr) {
   return a;
 }
 
-// ---------- SUPER SAFE MATH RENDERER ----------
-function MathRenderer({ text }) {
-  if (!text) return null;
-
-  const parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
-
-  return (
-    <>
-      {parts.map((part, index) => {
-        const isMath =
-          (part.startsWith("$") && part.endsWith("$")) ||
-          (part.startsWith("\\(") && part.endsWith("\\)"));
-
-        if (isMath) {
-          try {
-            // IMPORTANT: Strip the $ or \( \) delimiters before rendering
-            let mathString = part;
-            if (part.startsWith("$") && part.endsWith("$")) {
-              mathString = part.slice(1, -1);
-            } else if (part.startsWith("\\(") && part.endsWith("\\)")) {
-              mathString = part.slice(2, -2);
-            }
-
-            const html = katex.renderToString(mathString, {
-              throwOnError: false,
-              displayMode: false,
-            });
-            return (
-              <span
-                key={index}
-                dangerouslySetInnerHTML={{ __html: html }}
-              />
-            );
-          } catch (error) {
-            // If even the core katex library fails, just show the raw text
-            return <span key={index}>{part}</span>;
-          }
-        } else {
-          return <span key={index}>{part}</span>;
-        }
-      })}
-    </>
-  );
-}
-// ------------------------------------------------
-
-// ---------- ERROR BOUNDARY (prevents full crash) ----------
-class ErrorBoundary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { hasError: false };
-  }
-
-  static getDerivedStateFromError() {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error, info) {
-    console.error("ErrorBoundary caught:", error, info);
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div style={{ padding: "1rem", background: "#fef2f2", borderRadius: "0.5rem", margin: "1rem 0" }}>
-          <p style={{ color: "#b91c1c", fontWeight: "600" }}>⚠️ This question could not be rendered.</p>
-          <button onClick={() => this.setState({ hasError: false })}>Try again</button>
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-// -------------------------------------------------------
-
 export default function CBTPage() {
   const router = useRouter();
   const [subjects, setSubjects] = useState([]);
@@ -137,10 +152,11 @@ export default function CBTPage() {
   const [subjectSections, setSubjectSections] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [timeLeft, setTimeLeft] = useState(45 * 60);
+  const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
 
+  // Load subjects from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("oau-cbt-subjects");
     if (!saved) {
@@ -159,9 +175,9 @@ export default function CBTPage() {
     }
   }, [router]);
 
+  // Build exam
   useEffect(() => {
     if (subjects.length !== 4) return;
-
     let allQuestions = [];
     let sections = [];
 
@@ -171,41 +187,36 @@ export default function CBTPage() {
         setError(`No questions found for ${data?.label || subjectKey}`);
         return;
       }
-
       const shuffled = shuffleArray(data.questions);
       const picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
-
       const enriched = picked.map((q) => ({
         ...q,
         subjectKey,
         subjectLabel: data.label,
-        subjectIcon: data.icon,
+        subjectIcon: data.iconKey,
       }));
-
       const startIndex = allQuestions.length;
       const endIndex = startIndex + enriched.length - 1;
       sections.push({
         key: subjectKey,
         label: data.label,
-        icon: data.icon,
+        icon: data.iconKey,
         startIndex,
         endIndex,
         count: enriched.length,
       });
-
       allQuestions = [...allQuestions, ...enriched];
     }
-
     if (allQuestions.length === 0) {
       setError("No questions could be loaded.");
       return;
     }
-
     setExamQuestions(allQuestions);
     setSubjectSections(sections);
     setError(null);
   }, [subjects]);
 
+  // Timer
   useEffect(() => {
     if (examQuestions.length === 0 || submitted) return;
     const timer = setInterval(() => {
@@ -221,16 +232,16 @@ export default function CBTPage() {
     return () => clearInterval(timer);
   }, [examQuestions, submitted]);
 
+  // Auto-submit
   useEffect(() => {
     if (submitted && examQuestions.length > 0) {
       let correct = 0;
-      const total = examQuestions.length;
-      for (let i = 0; i < total; i++) {
+      for (let i = 0; i < examQuestions.length; i++) {
         if (answers[i] === examQuestions[i].answer) correct++;
       }
       const result = {
         correct,
-        total,
+        total: examQuestions.length,
         answers,
         questions: examQuestions,
         subjects,
@@ -240,6 +251,18 @@ export default function CBTPage() {
       router.push("/results");
     }
   }, [submitted, examQuestions, answers, subjects, router]);
+
+  // Refresh protection (beforeunload)
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      if (!submitted) {
+        e.preventDefault();
+        e.returnValue = "";
+      }
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [submitted]);
 
   if (error) {
     return (
@@ -283,14 +306,13 @@ export default function CBTPage() {
   };
 
   const goToQuestion = (index) => {
-    if (index >= 0 && index < totalQuestions) {
-      setCurrentIndex(index);
-    }
+    if (index >= 0 && index < totalQuestions) setCurrentIndex(index);
   };
 
   return (
     <div className={styles.page}>
       <div className={styles.container}>
+        {/* Header */}
         <div className={styles.header}>
           <div>
             <div className={styles.title}>OAU POST-UTME CBT</div>
@@ -299,7 +321,7 @@ export default function CBTPage() {
             </div>
           </div>
           <div className={styles.timer}>
-            <span className={styles.timerIcon}>⏱️</span>
+            <TimerIcon />
             <span className={styles.timerText}>
               {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
             </span>
@@ -309,6 +331,7 @@ export default function CBTPage() {
           </div>
         </div>
 
+        {/* Progress Bar */}
         <div className={styles.progressBarWrapper}>
           <div
             className={styles.progressBar}
@@ -316,6 +339,7 @@ export default function CBTPage() {
           />
         </div>
 
+        {/* Subject Tabs */}
         <div className={styles.subjectTabs}>
           {subjectSections.map((section) => (
             <button
@@ -325,11 +349,13 @@ export default function CBTPage() {
               }`}
               onClick={() => goToQuestion(section.startIndex)}
             >
-              {section.icon} {section.label}
+              <SubjectIcon subjectKey={section.icon} />
+              {section.label}
             </button>
           ))}
         </div>
 
+        {/* Question Card */}
         <ErrorBoundary>
           <div className={styles.questionCard}>
             <div className={styles.questionText}>
@@ -356,6 +382,7 @@ export default function CBTPage() {
           </div>
         </ErrorBoundary>
 
+        {/* Navigation */}
         <div className={styles.navigation}>
           <button
             onClick={() => goToQuestion(currentIndex - 1)}
@@ -378,15 +405,13 @@ export default function CBTPage() {
           )}
         </div>
 
+        {/* Palette */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
             {examQuestions.map((_, idx) => {
               const isAnswered = answers[idx] !== undefined;
               const isCurrent = idx === currentIndex;
-              const section = subjectSections.find(
-                (s) => idx >= s.startIndex && idx <= s.endIndex
-              );
               return (
                 <button
                   key={idx}
@@ -394,12 +419,6 @@ export default function CBTPage() {
                   className={`${styles.paletteItem} ${
                     isAnswered ? styles.paletteAnswered : ""
                   } ${isCurrent ? styles.paletteCurrent : ""}`}
-                  style={
-                    section && idx === section.startIndex
-                      ? { borderLeft: "3px solid #2563eb" }
-                      : {}
-                  }
-                  title={`${section?.label || ""} - Q${idx + 1}`}
                 >
                   {idx + 1}
                 </button>
@@ -409,7 +428,7 @@ export default function CBTPage() {
           <div className={styles.paletteLegend}>
             {subjectSections.map((s) => (
               <span key={s.key} className={styles.legendItem}>
-                <span className={styles.legendIcon}>{s.icon}</span>
+                <SubjectIcon subjectKey={s.icon} />
                 {s.label} ({s.startIndex + 1}–{s.endIndex + 1})
               </span>
             ))}
@@ -418,4 +437,4 @@ export default function CBTPage() {
       </div>
     </div>
   );
-}
+      }
