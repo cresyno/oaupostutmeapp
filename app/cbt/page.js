@@ -13,7 +13,7 @@ import { chemistryQuestions } from "../../data/questions/chemistry";
 import { physicsQuestions } from "../../data/questions/physics";
 import { biologyQuestions } from "../../data/questions/biology";
 
-// ---------- SVG ICONS ----------
+// ---------- INTERACTIVE SVG SUBJECT ICONS ----------
 const SubjectIcon = ({ subjectKey }) => {
   const icons = {
     aptitude: (
@@ -57,8 +57,8 @@ const SubjectIcon = ({ subjectKey }) => {
       </svg>
     )
   };
-  
-  // Add subject-specific gradient backgrounds for a "3D" look
+
+  // Modern gradient backgrounds for the "3D" feel
   const gradients = {
     aptitude: "linear-gradient(135deg, #3b82f6, #1e3a8a)",
     mathematics: "linear-gradient(135deg, #f59e0b, #b45309)",
@@ -80,13 +80,16 @@ const SubjectIcon = ({ subjectKey }) => {
 // ---------- SAFE MATH RENDERER ----------
 function MathRenderer({ text }) {
   if (!text) return null;
+
   const parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
+
   return (
     <>
       {parts.map((part, index) => {
         const isMath =
           (part.startsWith("$") && part.endsWith("$")) ||
           (part.startsWith("\\(") && part.endsWith("\\)"));
+
         if (isMath) {
           try {
             let mathString = part;
@@ -96,7 +99,7 @@ function MathRenderer({ text }) {
               mathString = part.slice(2, -2);
             }
             const html = katex.renderToString(mathString, {
-              throwOnError: false,
+              throwOnError: false, // Never crash, just show raw text
               displayMode: false,
             });
             return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
@@ -117,12 +120,15 @@ class ErrorBoundary extends Component {
     super(props);
     this.state = { hasError: false };
   }
+
   static getDerivedStateFromError() {
     return { hasError: true };
   }
+
   componentDidCatch(error, info) {
     console.error("ErrorBoundary caught:", error, info);
   }
+
   render() {
     if (this.state.hasError) {
       return (
@@ -189,6 +195,7 @@ export default function CBTPage() {
   // Build exam
   useEffect(() => {
     if (subjects.length !== 4) return;
+
     let allQuestions = [];
     let sections = [];
 
@@ -198,14 +205,17 @@ export default function CBTPage() {
         setError(`No questions found for ${data?.label || subjectKey}`);
         return;
       }
+
       const shuffled = shuffleArray(data.questions);
       const picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
+
       const enriched = picked.map((q) => ({
         ...q,
         subjectKey,
         subjectLabel: data.label,
         subjectIcon: data.iconKey,
       }));
+
       const startIndex = allQuestions.length;
       const endIndex = startIndex + enriched.length - 1;
       sections.push({
@@ -216,12 +226,15 @@ export default function CBTPage() {
         endIndex,
         count: enriched.length,
       });
+
       allQuestions = [...allQuestions, ...enriched];
     }
+
     if (allQuestions.length === 0) {
       setError("No questions could be loaded.");
       return;
     }
+
     setExamQuestions(allQuestions);
     setSubjectSections(sections);
     setError(null);
@@ -332,7 +345,11 @@ export default function CBTPage() {
             </div>
           </div>
           <div className={styles.timer}>
-            <TimerIcon />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: "5px" }}>
+              <circle cx="12" cy="13" r="8"></circle>
+              <path d="M12 9v4l2 2"></path>
+              <path d="M9 2h6"></path>
+            </svg>
             <span className={styles.timerText}>
               {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
             </span>
@@ -448,4 +465,4 @@ export default function CBTPage() {
       </div>
     </div>
   );
-      }
+          }
