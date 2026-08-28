@@ -4,14 +4,20 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
-// IMPORT EACH SUBJECT'S QUESTION BANK - USING RELATIVE PATHS
+// IMPORT EACH SUBJECT'S QUESTION BANK
 import aptitudeQuestions from "../../data/questions/aptitude";
 import mathematicsQuestions from "../../data/questions/mathematics";
 import chemistryQuestions from "../../data/questions/chemistry";
 import physicsQuestions from "../../data/questions/physics";
 import biologyQuestions from "../../data/questions/biology";
 
-// Map subject keys to their question array and display name
+// Debug: log imported data
+console.log("Aptitude questions:", aptitudeQuestions?.length);
+console.log("Math questions:", mathematicsQuestions?.length);
+console.log("Chemistry questions:", chemistryQuestions?.length);
+console.log("Physics questions:", physicsQuestions?.length);
+console.log("Biology questions:", biologyQuestions?.length);
+
 const SUBJECT_DATA = {
   aptitude: {
     name: "Aptitude",
@@ -45,40 +51,59 @@ export default function CBTPage() {
   const [answers, setAnswers] = useState({});
   const [timeLeft, setTimeLeft] = useState(45 * 60);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
   // Load subjects from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("oau-cbt-subjects");
+    console.log("Raw localStorage data:", saved);
     if (!saved) {
+      console.error("No saved subjects, redirecting to home.");
       router.push("/");
       return;
     }
     try {
       const parsed = JSON.parse(saved);
+      console.log("Parsed subjects:", parsed);
       if (parsed.length !== 4 || !parsed.includes("aptitude")) {
+        console.error("Invalid subjects, redirecting to home.");
         router.push("/");
         return;
       }
       setSubjects(parsed);
-    } catch (_) {
+    } catch (e) {
+      console.error("Error parsing subjects:", e);
       router.push("/");
     }
   }, [router]);
 
   // Build exam from questions
   useEffect(() => {
-    if (subjects.length !== 4) return;
+    if (subjects.length !== 4) {
+      console.log("Subjects not ready yet:", subjects);
+      return;
+    }
 
+    console.log("Building exam for subjects:", subjects);
     let selectedQuestions = [];
+    let missingSubjects = [];
+
     for (const subjectKey of subjects) {
       const data = SUBJECT_DATA[subjectKey];
-      if (!data) continue;
+      if (!data) {
+        console.error(`No data found for subject key: ${subjectKey}`);
+        missingSubjects.push(subjectKey);
+        continue;
+      }
 
       const pool = data.questions;
       if (!Array.isArray(pool) || pool.length === 0) {
         console.warn(`No questions found for ${data.name}`);
+        missingSubjects.push(subjectKey);
         continue;
       }
+
+      console.log(`${data.name} has ${pool.length} questions`);
 
       // Enrich questions with subject info
       const enriched = pool.map((q) => ({
@@ -93,9 +118,21 @@ export default function CBTPage() {
       selectedQuestions = [...selectedQuestions, ...picked];
     }
 
+    if (missingSubjects.length > 0) {
+      setError(`Missing questions for: ${missingSubjects.join(", ")}. Please check your question data.`);
+      return;
+    }
+
+    if (selectedQuestions.length === 0) {
+      setError("No questions could be loaded. Check your question files.");
+      return;
+    }
+
     // Shuffle overall order
     selectedQuestions.sort(() => Math.random() - 0.5);
+    console.log("Final exam has", selectedQuestions.length, "questions");
     setExamQuestions(selectedQuestions);
+    setError(null);
   }, [subjects]);
 
   // Timer
@@ -134,6 +171,18 @@ export default function CBTPage() {
       router.push("/results");
     }
   }, [submitted, examQuestions, answers, subjects, router]);
+
+  if (error) {
+    return (
+      <div className={styles.errorContainer}>
+        <h2>⚠️ Error loading exam</h2>
+        <p>{error}</p>
+        <button onClick={() => router.push("/")} className={styles.errorButton}>
+          Go back to subject selection
+        </button>
+      </div>
+    );
+  }
 
   if (subjects.length === 0 || examQuestions.length === 0) {
     return (
@@ -253,4 +302,4 @@ export default function CBTPage() {
       </div>
     </div>
   );
-      }
+                             }
