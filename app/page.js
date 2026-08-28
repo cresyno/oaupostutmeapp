@@ -318,7 +318,7 @@ export default function Home() {
         <p className={styles.footerCopyright}>
           © {new Date().getFullYear()} OAU CBT Prep. All rights reserved.
         </p>
-      </div>
-        </div>
+            </div>   
+    </div>     
   );
 }
