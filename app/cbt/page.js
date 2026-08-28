@@ -2,14 +2,11 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import dynamic from "next/dynamic";
 import styles from "./page.module.css";
 
-// Import KaTeX component with no SSR
-const Latex = dynamic(() => import("react-katex"), {
-  ssr: false,
-  loading: () => <span>Loading math...</span>,
-});
+// DIRECT IMPORT – NO DYNAMIC
+import Latex from "react-katex";
+import "katex/dist/katex.min.css";
 
 // Import question data
 import { aptitudeQuestions } from "../../data/questions/aptitude";
@@ -18,8 +15,6 @@ import { chemistryQuestions } from "../../data/questions/chemistry";
 import { physicsQuestions } from "../../data/questions/physics";
 import { biologyQuestions } from "../../data/questions/biology";
 
-// Subject order (any order – we'll use the order they were selected)
-// But we'll group them in the order stored in localStorage
 const SUBJECT_DATA = {
   aptitude: {
     label: "Aptitude",
@@ -50,7 +45,6 @@ const SUBJECT_DATA = {
 
 const QUESTIONS_PER_SUBJECT = 10;
 
-// Helper: shuffle array
 function shuffleArray(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -58,6 +52,28 @@ function shuffleArray(arr) {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
+}
+
+// Safe Math Renderer with error handling
+function MathRenderer({ text }) {
+  if (!text) return null;
+
+  // If text contains LaTeX delimiters, render with KaTeX
+  const hasLatex = text.includes("\\") || text.includes("^") || text.includes("_") || 
+                    text.includes("frac") || text.includes("sqrt") || text.includes("begin");
+
+  if (!hasLatex) {
+    return <span>{text}</span>;
+  }
+
+  try {
+    // Inline math with \( ... \) or $ ... $
+    return <Latex>{text}</Latex>;
+  } catch (error) {
+    console.warn("KaTeX failed for:", text);
+    // Fallback: render as plain text
+    return <span>{text}</span>;
+  }
 }
 
 export default function CBTPage() {
@@ -94,8 +110,6 @@ export default function CBTPage() {
   useEffect(() => {
     if (subjects.length !== 4) return;
 
-    // Keep the order from localStorage (which was selected by user)
-    // For each subject, pick 10 random questions (or all if fewer)
     let allQuestions = [];
     let sections = [];
 
@@ -106,17 +120,14 @@ export default function CBTPage() {
         return;
       }
 
-      // Shuffle and pick 10
       const shuffled = shuffleArray(data.questions);
       const picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
 
-      // Enrich with subject info
-      const enriched = picked.map((q, idx) => ({
+      const enriched = picked.map((q) => ({
         ...q,
         subjectKey,
         subjectLabel: data.label,
         subjectIcon: data.icon,
-        // Keep original data
       }));
 
       const startIndex = allQuestions.length;
@@ -206,7 +217,6 @@ export default function CBTPage() {
   const seconds = timeLeft % 60;
   const answeredCount = Object.keys(answers).length;
 
-  // Find current section
   const currentSection = subjectSections.find(
     (s) => currentIndex >= s.startIndex && currentIndex <= s.endIndex
   );
@@ -220,17 +230,6 @@ export default function CBTPage() {
     if (window.confirm("Are you sure you want to submit your exam?")) {
       setSubmitted(true);
     }
-  };
-
-  // Render question with KaTeX
-  const renderMath = (text) => {
-    if (!text) return text;
-    // If the text contains LaTeX delimiters, use KaTeX
-    // We'll render the entire text as inline or display
-    // For simplicity, we'll use <Latex> for the whole block, but we need to handle mixed text.
-    // Better: split by $...$ or \(...\) but for MVP we just wrap whole text in inline mode.
-    // However, for options, we can just use <Latex> inline.
-    return <Latex>{text}</Latex>;
   };
 
   return (
@@ -255,7 +254,7 @@ export default function CBTPage() {
           </div>
         </div>
 
-        {/* Subject Section Header (prominent) */}
+        {/* Subject Section Header */}
         {currentSection && (
           <div className={styles.sectionHeader}>
             <span className={styles.sectionIcon}>{currentSection.icon}</span>
@@ -266,10 +265,10 @@ export default function CBTPage() {
           </div>
         )}
 
-        {/* Question */}
+        {/* Question with Math Rendering */}
         <div className={styles.questionCard}>
           <div className={styles.questionText}>
-            {renderMath(currentQuestion.question)}
+            <MathRenderer text={currentQuestion.question} />
           </div>
           <div className={styles.options}>
             {currentQuestion.options.map((option, idx) => (
@@ -283,7 +282,9 @@ export default function CBTPage() {
                 <span className={styles.optionLetter}>
                   {String.fromCharCode(65 + idx)}
                 </span>
-                <span>{renderMath(option)}</span>
+                <span>
+                  <MathRenderer text={option} />
+                </span>
               </div>
             ))}
           </div>
@@ -312,14 +313,13 @@ export default function CBTPage() {
           )}
         </div>
 
-        {/* Question Navigator with Subject Labels */}
+        {/* Question Navigator */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
-            {examQuestions.map((q, idx) => {
+            {examQuestions.map((_, idx) => {
               const isAnswered = answers[idx] !== undefined;
               const isCurrent = idx === currentIndex;
-              // Find which section this index belongs to
               const section = subjectSections.find(
                 (s) => idx >= s.startIndex && idx <= s.endIndex
               );
@@ -342,7 +342,6 @@ export default function CBTPage() {
               );
             })}
           </div>
-          {/* Subject Legend */}
           <div className={styles.paletteLegend}>
             {subjectSections.map((s) => (
               <span key={s.key} className={styles.legendItem}>
@@ -355,4 +354,4 @@ export default function CBTPage() {
       </div>
     </div>
   );
-      }
+    }
