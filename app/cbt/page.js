@@ -2,19 +2,46 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { questions } from "../../data/questions";
-import { createExam, scoreExam, SUBJECTS } from "../../lib/exam";
-
-const EXAM_TIME = 45 * 60;
+import { createExam, scoreExam } from "../../lib/exam";
 
 export default function CBTPage() {
-  const exam = useMemo(() => createExam(questions), []);
+  const [subjects, setSubjects] = useState(null);
+  const [exam, setExam] = useState(null);
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [timeLeft, setTimeLeft] = useState(EXAM_TIME);
+  const [timeLeft, setTimeLeft] = useState(45 * 60);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    if (submitted) return;
+    try {
+      const saved = localStorage.getItem("oau-cbt-subjects");
+
+      if (!saved) {
+        setSubjects([]);
+        return;
+      }
+
+      const parsed = JSON.parse(saved);
+      setSubjects(parsed);
+    } catch {
+      setSubjects([]);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!subjects || subjects.length !== 4) return;
+
+    try {
+      const generatedExam = createExam(questions, subjects);
+      setExam(generatedExam);
+    } catch (error) {
+      console.error(error);
+      setExam([]);
+    }
+  }, [subjects]);
+
+  useEffect(() => {
+    if (!exam || submitted) return;
 
     const timer = setInterval(() => {
       setTimeLeft((time) => {
@@ -29,13 +56,35 @@ export default function CBTPage() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [submitted]);
+  }, [exam, submitted]);
 
-  if (!exam || exam.length !== 40) {
+  if (subjects === null || exam === null) {
+    return (
+      <main className="loading-page">
+        <h1>Preparing your CBT...</h1>
+        <p>Please wait.</p>
+      </main>
+    );
+  }
+
+  if (subjects.length !== 4 || exam.length !== 40) {
     return (
       <main className="error-page">
-        <h1>CBT unavailable</h1>
-        <p>The question bank needs at least 10 questions per subject.</p>
+        <h1>CBT setup incomplete</h1>
+        <p>
+          Please return to the subject selection page and
+          select exactly 3 optional subjects.
+        </p>
+
+        <button
+          className="primary-button"
+          onClick={() => {
+            localStorage.removeItem("oau-cbt-subjects");
+            window.location.href = "/";
+          }}
+        >
+          Choose Subjects
+        </button>
       </main>
     );
   }
@@ -46,7 +95,9 @@ export default function CBTPage() {
   const minutes = Math.floor(timeLeft / 60)
     .toString()
     .padStart(2, "0");
-  const seconds = (timeLeft % 60).toString().padStart(2, "0");
+  const seconds = (timeLeft % 60)
+    .toString()
+    .padStart(2, "0");
 
   function chooseAnswer(index) {
     if (submitted) return;
@@ -68,6 +119,7 @@ export default function CBTPage() {
         score,
         answers,
         exam,
+        subjects,
         completedAt: new Date().toISOString(),
       })
     );
@@ -90,19 +142,23 @@ export default function CBTPage() {
           </p>
 
           <div className="subject-results">
-            {SUBJECTS.map((subject) => {
+            {subjects.map((subject) => {
               const subjectQuestions = exam.filter(
                 (item) => item.subject === subject
               );
 
               const subjectScore = subjectQuestions.reduce(
                 (total, item) =>
-                  total + (answers[item.id] === item.answer ? 1 : 0),
+                  total +
+                  (answers[item.id] === item.answer ? 1 : 0),
                 0
               );
 
               return (
-                <div className="subject-result" key={subject}>
+                <div
+                  className="subject-result"
+                  key={subject}
+                >
                   <span>{subject}</span>
                   <strong>
                     {subjectScore}/10
@@ -114,7 +170,10 @@ export default function CBTPage() {
 
           <button
             className="primary-button"
-            onClick={() => window.location.reload()}
+            onClick={() => {
+              localStorage.removeItem("oau-cbt-subjects");
+              window.location.href = "/";
+            }}
           >
             Start New CBT
           </button>
@@ -129,7 +188,7 @@ export default function CBTPage() {
         <div>
           <p className="brand">OAU POST-UTME CBT</p>
           <span>
-            Question {current + 1} of {exam.length}
+            Question {current + 1} of 40
           </span>
         </div>
 
@@ -156,19 +215,23 @@ export default function CBTPage() {
 
       <section className="question-card">
         <p className="question-number">
-          QUESTION {String(current + 1).padStart(2, "0")}
+          QUESTION{" "}
+          {String(current + 1).padStart(2, "0")}
         </p>
 
         <h1>{question.question}</h1>
 
         <div className="options">
           {question.options.map((option, index) => {
-            const selected = answers[question.id] === index;
+            const selected =
+              answers[question.id] === index;
 
             return (
               <button
                 key={index}
-                className={`option ${selected ? "selected" : ""}`}
+                className={`option ${
+                  selected ? "selected" : ""
+                }`}
                 onClick={() => chooseAnswer(index)}
               >
                 <span className="option-letter">
@@ -186,7 +249,9 @@ export default function CBTPage() {
         <button
           className="secondary-button"
           disabled={current === 0}
-          onClick={() => setCurrent((value) => value - 1)}
+          onClick={() =>
+            setCurrent((value) => value - 1)
+          }
         >
           Previous
         </button>
@@ -194,12 +259,17 @@ export default function CBTPage() {
         {current < 39 ? (
           <button
             className="primary-button"
-            onClick={() => setCurrent((value) => value + 1)}
+            onClick={() =>
+              setCurrent((value) => value + 1)
+            }
           >
             Next
           </button>
         ) : (
-          <button className="submit-button" onClick={submitExam}>
+          <button
+            className="submit-button"
+            onClick={submitExam}
+          >
             Submit Exam
           </button>
         )}
@@ -212,7 +282,9 @@ export default function CBTPage() {
             className={[
               "question-dot",
               index === current ? "current" : "",
-              answers[item.id] !== undefined ? "answered" : "",
+              answers[item.id] !== undefined
+                ? "answered"
+                : "",
             ].join(" ")}
             onClick={() => setCurrent(index)}
           >
@@ -222,4 +294,4 @@ export default function CBTPage() {
       </section>
     </main>
   );
-      }
+                    }
