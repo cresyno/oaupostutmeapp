@@ -70,8 +70,16 @@ function MathRenderer({ text }) {
 
         if (isMath) {
           try {
-            const html = katex.renderToString(part, {
-              throwOnError: false, // This is the magic line - it prevents crashing
+            // IMPORTANT: Strip the $ or \( \) delimiters before rendering
+            let mathString = part;
+            if (part.startsWith("$") && part.endsWith("$")) {
+              mathString = part.slice(1, -1);
+            } else if (part.startsWith("\\(") && part.endsWith("\\)")) {
+              mathString = part.slice(2, -2);
+            }
+
+            const html = katex.renderToString(mathString, {
+              throwOnError: false,
               displayMode: false,
             });
             return (
