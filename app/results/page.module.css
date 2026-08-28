@@ -226,3 +226,66 @@
   font-size: 1.2rem;
   color: #6b7280;
 }
+/* Subject breakdown section */
+.subjectBreakdown {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.subjectBreakdown h2 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.subjectRow {
+  margin-bottom: 0.75rem;
+}
+
+.subjectInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.subjectIcon {
+  font-size: 1.2rem;
+}
+
+.subjectName {
+  font-weight: 600;
+  flex: 1;
+}
+
+.subjectScore {
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.subjectProgressTrack {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.subjectProgressFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* Loading */
+.loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #6b7280;
+}
