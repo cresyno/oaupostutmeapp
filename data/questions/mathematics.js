@@ -9,7 +9,6 @@ export const mathematicsQuestions = [
     explanation:
       "For a 2 × 2 matrix, det(A) = ad − bc. Therefore, det(A) = (2)(4) − (1)(3) = 5."
   },
-
   {
     id: "MAT-002",
     subject: "Mathematics",
@@ -25,7 +24,6 @@ export const mathematicsQuestions = [
     explanation:
       "Multiply rows of A by columns of B: AB = [[1(2)+2(1), 1(0)+2(3)], [3(2)+4(1), 3(0)+4(3)]] = [[4,6],[10,12]]."
   },
-
   {
     id: "MAT-003",
     subject: "Mathematics",
@@ -41,7 +39,6 @@ export const mathematicsQuestions = [
     explanation:
       "Factorise: 2x² − 7x + 3 = (2x − 1)(x − 3). Hence x = 1/2 or x = 3."
   },
-
   {
     id: "MAT-004",
     subject: "Mathematics",
@@ -52,7 +49,6 @@ export const mathematicsQuestions = [
     explanation:
       "log₂(x − 1) = 3 means x − 1 = 2³ = 8. Therefore x = 9."
   },
-
   {
     id: "MAT-005",
     subject: "Mathematics",
@@ -63,7 +59,6 @@ export const mathematicsQuestions = [
     explanation:
       "Dividing by a fraction means multiplying by its reciprocal: (3/4) × (16/9) = 4/3."
   },
-
   {
     id: "MAT-006",
     subject: "Mathematics",
@@ -74,7 +69,6 @@ export const mathematicsQuestions = [
     explanation:
       "Let the roots be a and a+1. Their sum is 5, giving a = 2 and a+1 = 3. Their product is therefore k = 6."
   },
-
   {
     id: "MAT-007",
     subject: "Mathematics",
@@ -90,17 +84,16 @@ export const mathematicsQuestions = [
     explanation:
       "Using sin²θ + cos²θ = 1: cos²θ = 1 − 9/25 = 16/25. Since θ is acute, cosθ = 4/5."
   },
-
   {
-  id: "MAT-008",
-  subject: "Mathematics",
-  question:
-    "Find the coefficient of $x^2$ in $(2+x)^5$.",
-  options: ["20", "40", "60", "80"],
-  answer: 3,
-  explanation:
-    "The x² term is C(5,2)(2³)x² = 10 × 8x² = 80x². Therefore the coefficient is 80."
-},
+    id: "MAT-008",
+    subject: "Mathematics",
+    question:
+      "Find the coefficient of $x^2$ in $(2+x)^5$.",
+    options: ["20", "40", "60", "80"],
+    answer: 3,
+    explanation:
+      "The x² term is C(5,2)(2³)x² = 10 × 8x² = 80x². Therefore the coefficient is 80."
+  },
   {
     id: "MAT-009",
     subject: "Mathematics",
@@ -111,7 +104,6 @@ export const mathematicsQuestions = [
     explanation:
       "Tₙ = a + (n−1)d = 7 + 14(4) = 63."
   },
-
   {
     id: "MAT-010",
     subject: "Mathematics",
@@ -122,7 +114,6 @@ export const mathematicsQuestions = [
     explanation:
       "Sₙ = a(rⁿ−1)/(r−1) = 3(2⁶−1) = 3(63) = 189."
   },
-
   {
     id: "MAT-011",
     subject: "Mathematics",
@@ -133,7 +124,6 @@ export const mathematicsQuestions = [
     explanation:
       "Gradient = (13−5)/(6−2) = 8/4 = 2."
   },
-
   {
     id: "MAT-012",
     subject: "Mathematics",
@@ -144,7 +134,6 @@ export const mathematicsQuestions = [
     explanation:
       "Completing the square gives (x−3)² + (y+2)² = 25. Therefore the radius is 5."
   },
-
   {
     id: "MAT-013",
     subject: "Mathematics",
@@ -155,7 +144,6 @@ export const mathematicsQuestions = [
     explanation:
       "Factor x²−4 = (x−2)(x+2). Cancelling gives x+2, whose limit as x→2 is 4."
   },
-
   {
     id: "MAT-014",
     subject: "Mathematics",
@@ -166,7 +154,6 @@ export const mathematicsQuestions = [
     explanation:
       "f'(x)=3x²−8x+7. Thus f'(2)=12−16+7=3."
   },
-
   {
     id: "MAT-015",
     subject: "Mathematics",
@@ -177,7 +164,6 @@ export const mathematicsQuestions = [
     explanation:
       "The integral is [x³+x²]₀² = 8+4 = 12."
   },
-
   {
     id: "MAT-016",
     subject: "Mathematics",
@@ -193,7 +179,6 @@ export const mathematicsQuestions = [
     explanation:
       "The possible pairs are (3,6), (4,5), (5,4), and (6,3): 4 outcomes out of 36. Probability = 4/36 = 1/9."
   },
-
   {
     id: "MAT-017",
     subject: "Mathematics",
@@ -204,7 +189,6 @@ export const mathematicsQuestions = [
     explanation:
       "LEVEL has 5 letters, with L repeated twice and E repeated twice. Number = 5!/(2!2!) = 30."
   },
-
   {
     id: "MAT-018",
     subject: "Mathematics",
@@ -215,7 +199,6 @@ export const mathematicsQuestions = [
     explanation:
       "2x−5=7 gives x=6; 2x−5=−7 gives x=−1. Their sum is 5."
   },
-
   {
     id: "MAT-019",
     subject: "Mathematics",
@@ -226,7 +209,6 @@ export const mathematicsQuestions = [
     explanation:
       "Original total = 5×18=90. Remaining total = 4×16=64. Removed number = 90−64=26."
   },
-
   {
     id: "MAT-020",
     subject: "Mathematics",
