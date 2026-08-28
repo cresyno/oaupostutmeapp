@@ -103,7 +103,7 @@ function MathRenderer({ text }) {
   );
 }
 
-// ---------- ERROR BOUNDARY (clean, no button) ----------
+// ---------- ERROR BOUNDARY ----------
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -125,6 +125,108 @@ class ErrorBoundary extends Component {
     }
     return this.props.children;
   }
+}
+
+// ---------- BASIC CALCULATOR COMPONENT ----------
+function BasicCalculator({ onClose }) {
+  const [display, setDisplay] = useState("0");
+  const [previous, setPrevious] = useState(null);
+  const [operator, setOperator] = useState(null);
+  const [waitingForNewNumber, setWaitingForNewNumber] = useState(false);
+
+  const handleDigit = (digit) => {
+    if (waitingForNewNumber) {
+      setDisplay(digit);
+      setWaitingForNewNumber(false);
+    } else {
+      setDisplay(display === "0" ? digit : display + digit);
+    }
+  };
+
+  const handleDecimal = () => {
+    if (waitingForNewNumber) {
+      setDisplay("0.");
+      setWaitingForNewNumber(false);
+    } else if (!display.includes(".")) {
+      setDisplay(display + ".");
+    }
+  };
+
+  const handleOperator = (op) => {
+    const currentNumber = parseFloat(display);
+    if (previous !== null && operator && !waitingForNewNumber) {
+      const result = calculate(previous, currentNumber, operator);
+      setDisplay(String(result));
+      setPrevious(result);
+    } else {
+      setPrevious(currentNumber);
+    }
+    setOperator(op);
+    setWaitingForNewNumber(true);
+  };
+
+  const calculate = (a, b, op) => {
+    switch (op) {
+      case "+": return a + b;
+      case "-": return a - b;
+      case "×": return a * b;
+      case "÷": return b === 0 ? 0 : a / b;
+      default: return b;
+    }
+  };
+
+  const handleEquals = () => {
+    if (operator && previous !== null) {
+      const currentNumber = parseFloat(display);
+      const result = calculate(previous, currentNumber, operator);
+      setDisplay(String(result));
+      setPrevious(null);
+      setOperator(null);
+      setWaitingForNewNumber(true);
+    }
+  };
+
+  const handleClear = () => {
+    setDisplay("0");
+    setPrevious(null);
+    setOperator(null);
+    setWaitingForNewNumber(false);
+  };
+
+  const handleBackspace = () => {
+    if (display.length > 1) {
+      setDisplay(display.slice(0, -1));
+    } else {
+      setDisplay("0");
+    }
+  };
+
+  return (
+    <div className={styles.calculator}>
+      <div className={styles.calcDisplay}>{display}</div>
+      <div className={styles.calcButtons}>
+        <button onClick={handleClear} className={styles.calcBtnOperator}>C</button>
+        <button onClick={handleBackspace} className={styles.calcBtnOperator}>⌫</button>
+        <button onClick={() => handleOperator("÷")} className={styles.calcBtnOperator}>÷</button>
+        <button onClick={() => handleOperator("×")} className={styles.calcBtnOperator}>×</button>
+        <button onClick={() => handleDigit("7")}>7</button>
+        <button onClick={() => handleDigit("8")}>8</button>
+        <button onClick={() => handleDigit("9")}>9</button>
+        <button onClick={() => handleOperator("-")} className={styles.calcBtnOperator}>−</button>
+        <button onClick={() => handleDigit("4")}>4</button>
+        <button onClick={() => handleDigit("5")}>5</button>
+        <button onClick={() => handleDigit("6")}>6</button>
+        <button onClick={() => handleOperator("+")} className={styles.calcBtnOperator}>+</button>
+        <button onClick={() => handleDigit("1")}>1</button>
+        <button onClick={() => handleDigit("2")}>2</button>
+        <button onClick={() => handleDigit("3")}>3</button>
+        <button onClick={handleEquals} className={styles.calcBtnEquals}>=</button>
+        <button onClick={() => handleDigit("0")} className={styles.calcBtnZero}>0</button>
+        <button onClick={handleDecimal}>.</button>
+      </div>
+      <button onClick={onClose} className={styles.calcClose}>Close</button>
+    </div>
+  );
 }
 
 // ---------- SUBJECT DATA ----------
@@ -158,7 +260,8 @@ export default function CBTPage() {
   const [timeLeft, setTimeLeft] = useState(EXAM_DURATION_SECONDS);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
-  const [isRestored, setIsRestored] = useState(false); // indicates if we restored saved progress
+  const [isRestored, setIsRestored] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
 
   // Load saved progress on mount
   useEffect(() => {
@@ -166,7 +269,6 @@ export default function CBTPage() {
     if (savedProgress) {
       try {
         const parsed = JSON.parse(savedProgress);
-        // Only restore if it matches the current selected subjects
         const savedSubjects = JSON.parse(localStorage.getItem("oau-cbt-subjects") || "[]");
         if (parsed.subjects && JSON.stringify(parsed.subjects) === JSON.stringify(savedSubjects)) {
           setSubjects(parsed.subjects || []);
@@ -177,7 +279,6 @@ export default function CBTPage() {
           setTimeLeft(parsed.timeLeft || EXAM_DURATION_SECONDS);
           setIsRestored(true);
         } else {
-          // Mismatched subjects – clear old progress and use fresh start
           localStorage.removeItem("oau-cbt-progress");
         }
       } catch (_) {
@@ -185,7 +286,6 @@ export default function CBTPage() {
       }
     }
 
-    // If no saved progress, load subjects from localStorage
     if (!isRestored) {
       const saved = localStorage.getItem("oau-cbt-subjects");
       if (!saved) {
@@ -205,10 +305,9 @@ export default function CBTPage() {
     }
   }, [router]);
 
-  // Build exam if not restored (when subjects are loaded)
+  // Build exam if not restored
   useEffect(() => {
     if (subjects.length !== 4 || isRestored) return;
-
     let allQuestions = [];
     let sections = [];
 
@@ -247,10 +346,10 @@ export default function CBTPage() {
     setExamQuestions(allQuestions);
     setSubjectSections(sections);
     setError(null);
-    setIsRestored(true); // mark as ready
+    setIsRestored(true);
   }, [subjects, isRestored]);
 
-  // Save progress whenever anything changes
+  // Save progress
   useEffect(() => {
     if (!isRestored || examQuestions.length === 0) return;
     const progress = {
@@ -296,7 +395,7 @@ export default function CBTPage() {
         timestamp: new Date().toISOString(),
       };
       localStorage.setItem("oau-cbt-result", JSON.stringify(result));
-      localStorage.removeItem("oau-cbt-progress"); // clear saved progress
+      localStorage.removeItem("oau-cbt-progress");
       router.push("/results");
     }
   }, [submitted, examQuestions, answers, subjects, router]);
@@ -357,7 +456,6 @@ export default function CBTPage() {
   const handleRestart = () => {
     if (window.confirm("Start a new exam? Your current progress will be lost.")) {
       localStorage.removeItem("oau-cbt-progress");
-      // Reload the page to start fresh with same subjects
       window.location.reload();
     }
   };
@@ -400,7 +498,7 @@ export default function CBTPage() {
           />
         </div>
 
-        {/* Restart button (optional) */}
+        {/* Restart button */}
         <div className={styles.restartRow}>
           <button onClick={handleRestart} className={styles.restartButton}>
             🔄 Restart Exam
@@ -473,7 +571,7 @@ export default function CBTPage() {
           )}
         </div>
 
-        {/* Palette */}
+              {/* Palette */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
@@ -503,6 +601,23 @@ export default function CBTPage() {
           </div>
         </div>
       </div>
+
+      {/* Floating Calculator Button */}
+      {!showCalculator && (
+        <button
+          className={styles.calcFloatingButton}
+          onClick={() => setShowCalculator(true)}
+        >
+          🧮
+        </button>
+      )}
+
+      {/* Calculator Panel */}
+      {showCalculator && (
+        <div className={styles.calcOverlay}>
+          <BasicCalculator onClose={() => setShowCalculator(false)} />
+        </div>
+      )}
     </div>
   );
-    }
+                }
