@@ -215,3 +215,157 @@
   font-size: 1.2rem;
   color: #6b7280;
   }
+
+/* Section Header - very prominent */
+.sectionHeader {
+  background: linear-gradient(135deg, #1a3a7a 0%, #2563eb 100%);
+  color: white;
+  border-radius: 1rem;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  margin-bottom: 0.5rem;
+}
+
+.sectionIcon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.sectionLabel {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  flex: 1;
+}
+
+.sectionRange {
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.2rem 0.8rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+
+/* Question text with math */
+.questionText {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.questionText .katex {
+  font-size: 1.1em;
+}
+
+.option {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.option .katex {
+  font-size: 1em;
+}
+
+/* Palette legend */
+.paletteLegend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: #6b7280;
+  padding-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.legendIcon {
+  font-size: 0.9rem;
+}
+
+/* Palette item styling - show subject boundaries with left border */
+.paletteItem {
+  padding: 0.4rem 0;
+  border: none;
+  border-radius: 0.4rem;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.paletteItem:first-child {
+  border-left: 3px solid #2563eb;
+}
+
+/* For each section start, we apply inline style in JS */
+.paletteItem.paletteAnswered {
+  background: #22c55e;
+  color: white;
+}
+
+.paletteItem.paletteCurrent {
+  ring: 2px solid #2563eb;
+  ring-offset: 2px;
+}
+
+/* Error and loading styles */
+.errorContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: #fef2f2;
+  text-align: center;
+}
+
+.errorContainer h2 {
+  color: #dc2626;
+  margin-bottom: 0.5rem;
+}
+
+.errorContainer p {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.errorButton {
+  padding: 0.75rem 2rem;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #6b7280;
+}
