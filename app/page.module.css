@@ -267,3 +267,101 @@
   padding-top: 0.75rem;
   margin: 0;
 }
+
+/* Name input */
+.nameInputWrapper {
+  margin-bottom: 1rem;
+}
+
+.nameLabel {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.3rem;
+}
+
+.nameInput {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 1rem;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: border-color 0.2s;
+}
+
+.nameInput:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: white;
+}
+
+.nameWarning {
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Optional subject cards - make them more interactive */
+.optionalCard {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+  min-height: 60px;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.optionalCard:hover {
+  border-color: #b0c4de;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 12px rgba(26, 58, 122, 0.08);
+}
+
+.optionalCard.selected {
+  background: #eff6ff;
+  border-color: #3b82f6;
+  box-shadow: 0 8px 16px rgba(59, 130, 246, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Subject icon style (same as CBT page) */
+.subjectIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.subjectIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.subjectIcon:hover,
+.subjectIcon:active {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+/* Start button active state with arrow animation */
+.startButton.active .arrow {
+  transition: transform 0.2s;
+}
+
+.startButton.active:hover .arrow {
+  transform: translateX(4px);
+  }
