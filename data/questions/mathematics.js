@@ -92,16 +92,15 @@ export const mathematicsQuestions = [
   },
 
   {
-    id: "MAT-008",
-    subject: "Mathematics",
-    question:
-      "Find the coefficient of $x^2$ in $(2+x)^5$.",
-    options: ["20", "30", "40", "50"],
-    answer: 1,
-    explanation:
-      "The x² term is C(5,2)(2³)x² = 10 × 8 x² = 80x². Therefore the coefficient is 80."
-  },
-
+  id: "MAT-008",
+  subject: "Mathematics",
+  question:
+    "Find the coefficient of $x^2$ in $(2+x)^5$.",
+  options: ["20", "40", "60", "80"],
+  answer: 3,
+  explanation:
+    "The x² term is C(5,2)(2³)x² = 10 × 8x² = 80x². Therefore the coefficient is 80."
+},
   {
     id: "MAT-009",
     subject: "Mathematics",
