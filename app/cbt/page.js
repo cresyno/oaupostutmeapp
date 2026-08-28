@@ -2,50 +2,69 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
 import styles from "./page.module.css";
 
-// IMPORT EACH SUBJECT'S QUESTION BANK
+// Import KaTeX component with no SSR
+const Latex = dynamic(() => import("react-katex"), {
+  ssr: false,
+  loading: () => <span>Loading math...</span>,
+});
+
+// Import question data
 import { aptitudeQuestions } from "../../data/questions/aptitude";
 import { mathematicsQuestions } from "../../data/questions/mathematics";
 import { chemistryQuestions } from "../../data/questions/chemistry";
 import { physicsQuestions } from "../../data/questions/physics";
 import { biologyQuestions } from "../../data/questions/biology";
-// Debug: log imported data
-console.log("Aptitude questions:", aptitudeQuestions?.length);
-console.log("Math questions:", mathematicsQuestions?.length);
-console.log("Chemistry questions:", chemistryQuestions?.length);
-console.log("Physics questions:", physicsQuestions?.length);
-console.log("Biology questions:", biologyQuestions?.length);
 
+// Subject order (any order – we'll use the order they were selected)
+// But we'll group them in the order stored in localStorage
 const SUBJECT_DATA = {
   aptitude: {
-    name: "Aptitude",
-    questions: aptitudeQuestions,
+    label: "Aptitude",
+    questions: aptitudeQuestions || [],
+    icon: "🧠",
   },
   mathematics: {
-    name: "Mathematics",
-    questions: mathematicsQuestions,
+    label: "Mathematics",
+    questions: mathematicsQuestions || [],
+    icon: "📐",
   },
   chemistry: {
-    name: "Chemistry",
-    questions: chemistryQuestions,
+    label: "Chemistry",
+    questions: chemistryQuestions || [],
+    icon: "🧪",
   },
   physics: {
-    name: "Physics",
-    questions: physicsQuestions,
+    label: "Physics",
+    questions: physicsQuestions || [],
+    icon: "⚡",
   },
   biology: {
-    name: "Biology",
-    questions: biologyQuestions,
+    label: "Biology",
+    questions: biologyQuestions || [],
+    icon: "🌿",
   },
 };
 
 const QUESTIONS_PER_SUBJECT = 10;
 
+// Helper: shuffle array
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function CBTPage() {
   const router = useRouter();
   const [subjects, setSubjects] = useState([]);
   const [examQuestions, setExamQuestions] = useState([]);
+  const [subjectSections, setSubjectSections] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [timeLeft, setTimeLeft] = useState(45 * 60);
@@ -55,82 +74,72 @@ export default function CBTPage() {
   // Load subjects from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("oau-cbt-subjects");
-    console.log("Raw localStorage data:", saved);
     if (!saved) {
-      console.error("No saved subjects, redirecting to home.");
       router.push("/");
       return;
     }
     try {
       const parsed = JSON.parse(saved);
-      console.log("Parsed subjects:", parsed);
       if (parsed.length !== 4 || !parsed.includes("aptitude")) {
-        console.error("Invalid subjects, redirecting to home.");
         router.push("/");
         return;
       }
       setSubjects(parsed);
-    } catch (e) {
-      console.error("Error parsing subjects:", e);
+    } catch (_) {
       router.push("/");
     }
   }, [router]);
 
-  // Build exam from questions
+  // Build exam grouped by subject
   useEffect(() => {
-    if (subjects.length !== 4) {
-      console.log("Subjects not ready yet:", subjects);
-      return;
-    }
+    if (subjects.length !== 4) return;
 
-    console.log("Building exam for subjects:", subjects);
-    let selectedQuestions = [];
-    let missingSubjects = [];
+    // Keep the order from localStorage (which was selected by user)
+    // For each subject, pick 10 random questions (or all if fewer)
+    let allQuestions = [];
+    let sections = [];
 
     for (const subjectKey of subjects) {
       const data = SUBJECT_DATA[subjectKey];
-      if (!data) {
-        console.error(`No data found for subject key: ${subjectKey}`);
-        missingSubjects.push(subjectKey);
-        continue;
+      if (!data || !Array.isArray(data.questions) || data.questions.length === 0) {
+        setError(`No questions found for ${data?.label || subjectKey}`);
+        return;
       }
-
-      const pool = data.questions;
-      if (!Array.isArray(pool) || pool.length === 0) {
-        console.warn(`No questions found for ${data.name}`);
-        missingSubjects.push(subjectKey);
-        continue;
-      }
-
-      console.log(`${data.name} has ${pool.length} questions`);
-
-      // Enrich questions with subject info
-      const enriched = pool.map((q) => ({
-        ...q,
-        subject: data.name,
-        subjectKey: subjectKey,
-      }));
 
       // Shuffle and pick 10
-      const shuffled = [...enriched].sort(() => Math.random() - 0.5);
+      const shuffled = shuffleArray(data.questions);
       const picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
-      selectedQuestions = [...selectedQuestions, ...picked];
+
+      // Enrich with subject info
+      const enriched = picked.map((q, idx) => ({
+        ...q,
+        subjectKey,
+        subjectLabel: data.label,
+        subjectIcon: data.icon,
+        // Keep original data
+      }));
+
+      const startIndex = allQuestions.length;
+      const endIndex = startIndex + enriched.length - 1;
+      sections.push({
+        key: subjectKey,
+        label: data.label,
+        icon: data.icon,
+        startIndex,
+        endIndex,
+        count: enriched.length,
+      });
+
+      allQuestions = [...allQuestions, ...enriched];
     }
 
-    if (missingSubjects.length > 0) {
-      setError(`Missing questions for: ${missingSubjects.join(", ")}. Please check your question data.`);
+    if (allQuestions.length === 0) {
+      setError("No questions could be loaded.");
       return;
     }
 
-    if (selectedQuestions.length === 0) {
-      setError("No questions could be loaded. Check your question files.");
-      return;
-    }
-
-    // Shuffle overall order
-    selectedQuestions.sort(() => Math.random() - 0.5);
-    console.log("Final exam has", selectedQuestions.length, "questions");
-    setExamQuestions(selectedQuestions);
+    setExamQuestions(allQuestions);
+    setSubjectSections(sections);
     setError(null);
   }, [subjects]);
 
@@ -150,7 +159,7 @@ export default function CBTPage() {
     return () => clearInterval(timer);
   }, [examQuestions, submitted]);
 
-  // Auto-submit when time runs out
+  // Auto-submit
   useEffect(() => {
     if (submitted && examQuestions.length > 0) {
       let correct = 0;
@@ -197,6 +206,11 @@ export default function CBTPage() {
   const seconds = timeLeft % 60;
   const answeredCount = Object.keys(answers).length;
 
+  // Find current section
+  const currentSection = subjectSections.find(
+    (s) => currentIndex >= s.startIndex && currentIndex <= s.endIndex
+  );
+
   const handleAnswer = (idx) => {
     if (submitted) return;
     setAnswers((prev) => ({ ...prev, [currentIndex]: idx }));
@@ -208,7 +222,16 @@ export default function CBTPage() {
     }
   };
 
-  const subjectDisplay = currentQuestion.subject || "General";
+  // Render question with KaTeX
+  const renderMath = (text) => {
+    if (!text) return text;
+    // If the text contains LaTeX delimiters, use KaTeX
+    // We'll render the entire text as inline or display
+    // For simplicity, we'll use <Latex> for the whole block, but we need to handle mixed text.
+    // Better: split by $...$ or \(...\) but for MVP we just wrap whole text in inline mode.
+    // However, for options, we can just use <Latex> inline.
+    return <Latex>{text}</Latex>;
+  };
 
   return (
     <div className={styles.page}>
@@ -232,10 +255,22 @@ export default function CBTPage() {
           </div>
         </div>
 
+        {/* Subject Section Header (prominent) */}
+        {currentSection && (
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionIcon}>{currentSection.icon}</span>
+            <span className={styles.sectionLabel}>{currentSection.label}</span>
+            <span className={styles.sectionRange}>
+              Questions {currentSection.startIndex + 1} – {currentSection.endIndex + 1}
+            </span>
+          </div>
+        )}
+
         {/* Question */}
         <div className={styles.questionCard}>
-          <div className={styles.subjectTag}>{subjectDisplay}</div>
-          <div className={styles.questionText}>{currentQuestion.question}</div>
+          <div className={styles.questionText}>
+            {renderMath(currentQuestion.question)}
+          </div>
           <div className={styles.options}>
             {currentQuestion.options.map((option, idx) => (
               <div
@@ -248,7 +283,7 @@ export default function CBTPage() {
                 <span className={styles.optionLetter}>
                   {String.fromCharCode(65 + idx)}
                 </span>
-                <span>{option}</span>
+                <span>{renderMath(option)}</span>
               </div>
             ))}
           </div>
@@ -277,13 +312,17 @@ export default function CBTPage() {
           )}
         </div>
 
-        {/* Question Palette */}
+        {/* Question Navigator with Subject Labels */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
-            {examQuestions.map((_, idx) => {
+            {examQuestions.map((q, idx) => {
               const isAnswered = answers[idx] !== undefined;
               const isCurrent = idx === currentIndex;
+              // Find which section this index belongs to
+              const section = subjectSections.find(
+                (s) => idx >= s.startIndex && idx <= s.endIndex
+              );
               return (
                 <button
                   key={idx}
@@ -291,14 +330,29 @@ export default function CBTPage() {
                   className={`${styles.paletteItem} ${
                     isAnswered ? styles.paletteAnswered : ""
                   } ${isCurrent ? styles.paletteCurrent : ""}`}
+                  style={
+                    section && idx === section.startIndex
+                      ? { borderLeft: "3px solid #2563eb" }
+                      : {}
+                  }
+                  title={`${section?.label || ""} - Q${idx + 1}`}
                 >
                   {idx + 1}
                 </button>
               );
             })}
           </div>
+          {/* Subject Legend */}
+          <div className={styles.paletteLegend}>
+            {subjectSections.map((s) => (
+              <span key={s.key} className={styles.legendItem}>
+                <span className={styles.legendIcon}>{s.icon}</span>
+                {s.label} ({s.startIndex + 1}–{s.endIndex + 1})
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
-                             }
+      }
