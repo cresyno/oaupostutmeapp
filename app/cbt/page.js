@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { questions } from "../../data/questions";
-import { createExam, scoreExam, SUBJECTS } from "../lib/exam";
+import { createExam, scoreExam, SUBJECTS } from "../../lib/exam";
 
 const EXAM_TIME = 45 * 60;
 
