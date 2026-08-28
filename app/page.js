@@ -289,36 +289,37 @@ export default function Home() {
           </button>
         </div>
 
-              {/* ---------- FOOTER ---------- */}
-      <div className={styles.footer}>
-        <div className={styles.footerBrand}>
-          <span className={styles.footerLogo}>🎓</span>
-          <span>OAU CBT Prep</span>
-        </div>
-        <p className={styles.footerText}>
-          Built for OAU aspirants who aim to excel, not just pass.
-        </p>
-
-        {/* Contact Information */}
-        <div className={styles.contactCard}>
-          <div className={styles.contactIcon}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
-              <line x1="2" y1="6" x2="12" y2="14" stroke="white" strokeWidth="2.5"></line>
-              <line x1="22" y1="6" x2="12" y2="14" stroke="white" strokeWidth="2.5"></line>
-              <path d="M22 18l-5-4" stroke="white" strokeWidth="2.5" strokeLinecap="round"></path>
-            </svg>
+        {/* ---------- FOOTER ---------- */}
+        <div className={styles.footer}>
+          <div className={styles.footerBrand}>
+            <span className={styles.footerLogo}>🎓</span>
+            <span>OAU CBT Prep</span>
           </div>
-          <div className={styles.contactInfo}>
-            <span className={styles.contactName}>Taiwo Abraham Feranmi</span>
-            <span className={styles.contactPhone}>📞 09164971382</span>
-          </div>
-        </div>
+          <p className={styles.footerText}>
+            Built for OAU aspirants who aim to excel, not just pass.
+          </p>
 
-        <p className={styles.footerCopyright}>
-          © {new Date().getFullYear()} OAU CBT Prep. All rights reserved.
-        </p>
-            </div>   
-    </div>     
+          {/* Contact Information */}
+          <div className={styles.contactCard}>
+            <div className={styles.contactIcon}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+                <line x1="2" y1="6" x2="12" y2="14" stroke="white" strokeWidth="2.5"></line>
+                <line x1="22" y1="6" x2="12" y2="14" stroke="white" strokeWidth="2.5"></line>
+                <path d="M22 18l-5-4" stroke="white" strokeWidth="2.5" strokeLinecap="round"></path>
+              </svg>
+            </div>
+            <div className={styles.contactInfo}>
+              <span className={styles.contactName}>Taiwo Abraham Feranmi</span>
+              <span className={styles.contactPhone}>📞 09164971382</span>
+            </div>
+          </div>
+
+          <p className={styles.footerCopyright}>
+            © {new Date().getFullYear()} OAU CBT Prep. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </div>
   );
-}
+  }
