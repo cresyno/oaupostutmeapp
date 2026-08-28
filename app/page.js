@@ -319,6 +319,6 @@ export default function Home() {
           © {new Date().getFullYear()} OAU CBT Prep. All rights reserved.
         </p>
       </div>
-    </div>
+        </div>
   );
-  }
+}
