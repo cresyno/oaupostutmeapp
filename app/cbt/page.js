@@ -24,11 +24,15 @@ const SubjectIcon = ({ subjectKey }) => {
     ),
     mathematics: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+        {/* + */}
         <line x1="6" y1="6" x2="12" y2="6"></line>
         <line x1="9" y1="3" x2="9" y2="9"></line>
+        {/* - */}
         <line x1="14" y1="6" x2="20" y2="6"></line>
+        {/* × */}
         <line x1="5" y1="13" x2="11" y2="19"></line>
         <line x1="11" y1="13" x2="5" y2="19"></line>
+        {/* ÷ */}
         <line x1="14" y1="15" x2="20" y2="15"></line>
         <circle cx="17" cy="11" r="1.2" fill="currentColor" stroke="none"></circle>
         <circle cx="17" cy="19" r="1.2" fill="currentColor" stroke="none"></circle>
@@ -239,7 +243,7 @@ const SUBJECT_DATA = {
 };
 
 const QUESTIONS_PER_SUBJECT = 10;
-const EXAM_DURATION_SECONDS = 3600; // 1 hour
+const EXAM_DURATION_SECONDS = 3600;
 
 function shuffleArray(arr) {
   const a = [...arr];
@@ -250,6 +254,43 @@ function shuffleArray(arr) {
   return a;
 }
 
+// ---------- BALANCED APTITUDE SELECTION ----------
+function categorizeAptitudeQuestion(question) {
+  const text = question.question.toLowerCase();
+  
+  const historyKeywords = ["nigeria", "oau", "president", "year", "government", "civic", "independence", "abuja", "lagos", "minister", "senate", "state", "current affairs", "history"];
+  if (historyKeywords.some(k => text.includes(k))) return "history";
+
+  const mathsKeywords = ["sequence", "number", "percentage", "profit", "speed", "distance", "average", "ratio", "algebra", "equation", "solve", "calculate", "km", "sum", "product"];
+  if (mathsKeywords.some(k => text.includes(k))) return "maths";
+
+  return "logic";
+}
+
+function selectBalancedAptitudeQuestions(questionBank, total = 10) {
+  const history = questionBank.filter(q => categorizeAptitudeQuestion(q) === "history");
+  const maths = questionBank.filter(q => categorizeAptitudeQuestion(q) === "maths");
+  const logic = questionBank.filter(q => categorizeAptitudeQuestion(q) === "logic");
+
+  const shufHistory = shuffleArray(history);
+  const shufMaths = shuffleArray(maths);
+  const shufLogic = shuffleArray(logic);
+
+  let selected = [];
+
+  // Guarantee at least 1 from each category (if available)
+  if (shufHistory.length > 0) selected.push(shufHistory[0]);
+  if (shufMaths.length > 0) selected.push(shufMaths[0]);
+  if (shufLogic.length > 0) selected.push(shufLogic[0]);
+
+  // Fill remaining randomly
+  const remainingPool = shuffleArray(questionBank).filter(q => !selected.includes(q));
+  selected = [...selected, ...remainingPool.slice(0, total - selected.length)];
+
+  return shuffleArray(selected);
+}
+
+// ---------- MAIN COMPONENT ----------
 export default function CBTPage() {
   const router = useRouter();
   const [subjects, setSubjects] = useState([]);
@@ -263,7 +304,7 @@ export default function CBTPage() {
   const [isRestored, setIsRestored] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
 
-  // Load saved progress on mount
+  // Load saved progress
   useEffect(() => {
     const savedProgress = localStorage.getItem("oau-cbt-progress");
     if (savedProgress) {
@@ -305,9 +346,10 @@ export default function CBTPage() {
     }
   }, [router]);
 
-  // Build exam if not restored
+  // Build exam
   useEffect(() => {
     if (subjects.length !== 4 || isRestored) return;
+
     let allQuestions = [];
     let sections = [];
 
@@ -317,14 +359,22 @@ export default function CBTPage() {
         setError(`No questions found for ${data?.label || subjectKey}`);
         return;
       }
-      const shuffled = shuffleArray(data.questions);
-      const picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
+
+      let picked;
+      if (subjectKey === "aptitude") {
+        picked = selectBalancedAptitudeQuestions(data.questions, QUESTIONS_PER_SUBJECT);
+      } else {
+        const shuffled = shuffleArray(data.questions);
+        picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
+      }
+
       const enriched = picked.map((q) => ({
         ...q,
         subjectKey,
         subjectLabel: data.label,
         subjectIcon: data.iconKey,
       }));
+
       const startIndex = allQuestions.length;
       const endIndex = startIndex + enriched.length - 1;
       sections.push({
@@ -335,6 +385,7 @@ export default function CBTPage() {
         endIndex,
         count: enriched.length,
       });
+
       allQuestions = [...allQuestions, ...enriched];
     }
 
@@ -521,7 +572,7 @@ export default function CBTPage() {
           ))}
         </div>
 
-        {/* Question Card */}
+              {/* Question Card */}
         <ErrorBoundary>
           <div className={styles.questionCard}>
             <div className={styles.questionText}>
@@ -571,7 +622,7 @@ export default function CBTPage() {
           )}
         </div>
 
-              {/* Palette */}
+        {/* Palette */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
@@ -608,7 +659,17 @@ export default function CBTPage() {
           className={styles.calcFloatingButton}
           onClick={() => setShowCalculator(true)}
         >
-          🧮
+          {/* Mathematic Icon for Calculator */}
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+            <line x1="6" y1="6" x2="12" y2="6"></line>
+            <line x1="9" y1="3" x2="9" y2="9"></line>
+            <line x1="14" y1="6" x2="20" y2="6"></line>
+            <line x1="5" y1="13" x2="11" y2="19"></line>
+            <line x1="11" y1="13" x2="5" y2="19"></line>
+            <line x1="14" y1="15" x2="20" y2="15"></line>
+            <circle cx="17" cy="11" r="1.2" fill="white" stroke="none"></circle>
+            <circle cx="17" cy="19" r="1.2" fill="white" stroke="none"></circle>
+          </svg>
         </button>
       )}
 
@@ -620,4 +681,4 @@ export default function CBTPage() {
       )}
     </div>
   );
-                }
+              }
