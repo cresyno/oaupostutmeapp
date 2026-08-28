@@ -505,3 +505,26 @@
   width: 18px;
   height: 18px;
 }
+
+/* Restart button */
+.restartRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
+}
+
+.restartButton {
+  padding: 0.4rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  background: white;
+  color: #6b7280;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.restartButton:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
