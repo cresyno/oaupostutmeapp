@@ -5,47 +5,61 @@ import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
 // ------------------------------------------------------------------
-// SVG Icons (self‑contained)
+// SVG Icons (self‑contained, subject‑appropriate)
 // ------------------------------------------------------------------
 const Icons = {
   aptitude: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z" />
+      <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z" />
     </svg>
   ),
   mathematics: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M4 6h16M4 12h16M4 18h16" />
-      <path d="M9 6v12M15 6v12" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <text x="3" y="20" fontSize="16" fontWeight="700" fill="currentColor" stroke="none">+</text>
+      <text x="14" y="20" fontSize="16" fontWeight="700" fill="currentColor" stroke="none">−</text>
+      <text x="3" y="8" fontSize="16" fontWeight="700" fill="currentColor" stroke="none">×</text>
+      <text x="14" y="8" fontSize="16" fontWeight="700" fill="currentColor" stroke="none">÷</text>
     </svg>
   ),
   chemistry: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <ellipse cx="12" cy="6" rx="8" ry="3" />
-      <path d="M4 6v10c0 1.66 3.58 3 8 3s8-1.34 8-3V6" />
-      <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <ellipse cx="12" cy="6" rx="7" ry="3" />
+      <path d="M5 6v9c0 1.66 3.13 3 7 3s7-1.34 7-3V6" />
+      <path d="M5 11c0 1.66 3.13 3 7 3s7-1.34 7-3" />
+      <path d="M12 20v-5" />
+      <path d="M9 15l3 2 3-2" />
     </svg>
   ),
   physics: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H5.78a1.65 1.65 0 0 0-1.51 1 1.65 1.65 0 0 0 .33 1.82l.06.07a1.65 1.65 0 0 0 2.36 0l.06-.07a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H5.78" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="16" rx="1" />
+      <line x1="3" y1="8" x2="21" y2="8" />
+      <line x1="3" y1="12" x2="21" y2="12" />
+      <line x1="3" y1="16" x2="21" y2="16" />
+      <line x1="7" y1="8" x2="7" y2="20" />
+      <line x1="11" y1="8" x2="11" y2="20" />
+      <line x1="15" y1="8" x2="15" y2="20" />
+      <line x1="19" y1="8" x2="19" y2="20" />
     </svg>
   ),
   biology: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-      <path d="M9 12l2 2 4-4" />
+      <path d="M12 8v8" />
+      <path d="M8 10l2 2-2 2" />
+      <path d="M16 10l-2 2 2 2" />
+      <path d="M10 12h4" />
     </svg>
   ),
   lock: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
     </svg>
   ),
   check: (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
       <polyline points="20 6 9 17 4 12" />
     </svg>
   ),
@@ -64,6 +78,7 @@ export default function Home() {
   const router = useRouter();
   const [selectedOptional, setSelectedOptional] = useState([]);
 
+  // Load previously saved selection (if any)
   useEffect(() => {
     const saved = localStorage.getItem("oau-cbt-subjects");
     if (saved) {
@@ -81,10 +96,15 @@ export default function Home() {
 
   const toggleSubject = (key) => {
     setSelectedOptional((prev) => {
+      // If already selected, deselect
       if (prev.includes(key)) {
         return prev.filter((k) => k !== key);
       }
-      if (prev.length >= 3) return prev; // prevent >3
+      // If trying to select more than 3, ignore
+      if (prev.length >= 3) {
+        return prev;
+      }
+      // Add the subject
       return [...prev, key];
     });
   };
@@ -98,7 +118,7 @@ export default function Home() {
 
   // Circular progress (SVG ring)
   const progress = (selectedOptional.length / 3) * 100;
-  const circumference = 2 * Math.PI * 40; // r=40
+  const circumference = 2 * Math.PI * 40;
 
   return (
     <div className={styles.page}>
@@ -182,7 +202,11 @@ export default function Home() {
             </svg>
           </div>
           <div className={styles.progressText}>
-            <span>{selectedOptional.length} of 3 optional selected</span>
+            <span>
+              {selectedOptional.length === 0
+                ? "Select 3 optional subjects"
+                : `${selectedOptional.length} of 3 optional selected`}
+            </span>
             {isReady && <span className={styles.readyBadge}>✅ Ready!</span>}
           </div>
         </div>
