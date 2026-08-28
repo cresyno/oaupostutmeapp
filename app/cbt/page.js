@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Component } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
@@ -54,17 +54,21 @@ function shuffleArray(arr) {
   return a;
 }
 
-// ---------- SAFE MATH RENDERER (FIXED) ----------
+// ---------- SUPER SAFE MATH RENDERER ----------
 function MathRenderer({ text }) {
   if (!text) return null;
 
-  // Split text into plain text and LaTeX segments
-  const parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
+  // Try to split safely
+  let parts;
+  try {
+    parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
+  } catch (e) {
+    return <span>{text}</span>; // fallback completely
+  }
 
   return (
     <>
       {parts.map((part, index) => {
-        // If it's a math block (e.g., $x^2$ or \(x^2\))
         if (
           (part.startsWith("$") && part.endsWith("$")) ||
           (part.startsWith("\\(") && part.endsWith("\\)"))
@@ -76,7 +80,6 @@ function MathRenderer({ text }) {
             return <span key={index}>{part}</span>;
           }
         } else {
-          // Plain text – render as is
           return <span key={index}>{part}</span>;
         }
       })}
@@ -84,6 +87,35 @@ function MathRenderer({ text }) {
   );
 }
 // ------------------------------------------------
+
+// ---------- ERROR BOUNDARY (prevents full crash) ----------
+class ErrorBoundary extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, info) {
+    console.error("ErrorBoundary caught:", error, info);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: "1rem", background: "#fef2f2", borderRadius: "0.5rem", margin: "1rem 0" }}>
+          <p style={{ color: "#b91c1c", fontWeight: "600" }}>⚠️ This question could not be rendered.</p>
+          <button onClick={() => this.setState({ hasError: false })}>Try again</button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+// -------------------------------------------------------
 
 export default function CBTPage() {
   const router = useRouter();
@@ -96,7 +128,6 @@ export default function CBTPage() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
 
-  // Load subjects from localStorage
   useEffect(() => {
     const saved = localStorage.getItem("oau-cbt-subjects");
     if (!saved) {
@@ -115,7 +146,6 @@ export default function CBTPage() {
     }
   }, [router]);
 
-  // Build exam grouped by subject
   useEffect(() => {
     if (subjects.length !== 4) return;
 
@@ -163,7 +193,6 @@ export default function CBTPage() {
     setError(null);
   }, [subjects]);
 
-  // Timer
   useEffect(() => {
     if (examQuestions.length === 0 || submitted) return;
     const timer = setInterval(() => {
@@ -179,7 +208,6 @@ export default function CBTPage() {
     return () => clearInterval(timer);
   }, [examQuestions, submitted]);
 
-  // Auto-submit
   useEffect(() => {
     if (submitted && examQuestions.length > 0) {
       let correct = 0;
@@ -241,7 +269,6 @@ export default function CBTPage() {
     }
   };
 
-  // Jump to a specific question (used by palette and tabs)
   const goToQuestion = (index) => {
     if (index >= 0 && index < totalQuestions) {
       setCurrentIndex(index);
@@ -251,7 +278,6 @@ export default function CBTPage() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        {/* ---------- HEADER ---------- */}
         <div className={styles.header}>
           <div>
             <div className={styles.title}>OAU POST-UTME CBT</div>
@@ -270,7 +296,6 @@ export default function CBTPage() {
           </div>
         </div>
 
-        {/* ---------- PROGRESS BAR ---------- */}
         <div className={styles.progressBarWrapper}>
           <div
             className={styles.progressBar}
@@ -278,7 +303,6 @@ export default function CBTPage() {
           />
         </div>
 
-        {/* ---------- SUBJECT TABS (NEW) ---------- */}
         <div className={styles.subjectTabs}>
           {subjectSections.map((section) => (
             <button
@@ -293,32 +317,32 @@ export default function CBTPage() {
           ))}
         </div>
 
-        {/* ---------- QUESTION CARD ---------- */}
-        <div className={styles.questionCard}>
-          <div className={styles.questionText}>
-            <MathRenderer text={currentQuestion.question} />
+        <ErrorBoundary>
+          <div className={styles.questionCard}>
+            <div className={styles.questionText}>
+              <MathRenderer text={currentQuestion.question} />
+            </div>
+            <div className={styles.options}>
+              {currentQuestion.options.map((option, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => handleAnswer(idx)}
+                  className={`${styles.option} ${
+                    answers[currentIndex] === idx ? styles.selectedOption : ""
+                  }`}
+                >
+                  <span className={styles.optionLetter}>
+                    {String.fromCharCode(65 + idx)}
+                  </span>
+                  <span>
+                    <MathRenderer text={option} />
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className={styles.options}>
-            {currentQuestion.options.map((option, idx) => (
-              <div
-                key={idx}
-                onClick={() => handleAnswer(idx)}
-                className={`${styles.option} ${
-                  answers[currentIndex] === idx ? styles.selectedOption : ""
-                }`}
-              >
-                <span className={styles.optionLetter}>
-                  {String.fromCharCode(65 + idx)}
-                </span>
-                <span>
-                  <MathRenderer text={option} />
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
+        </ErrorBoundary>
 
-        {/* ---------- NAVIGATION BUTTONS ---------- */}
         <div className={styles.navigation}>
           <button
             onClick={() => goToQuestion(currentIndex - 1)}
@@ -341,7 +365,6 @@ export default function CBTPage() {
           )}
         </div>
 
-        {/* ---------- QUESTION PALETTE ---------- */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
@@ -382,4 +405,4 @@ export default function CBTPage() {
       </div>
     </div>
   );
-  }
+}
