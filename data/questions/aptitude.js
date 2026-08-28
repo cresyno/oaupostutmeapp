@@ -1,214 +1,99 @@
 export const aptitudeQuestions = [
-  {
-    id: "APT-001",
-    subject: "Aptitude",
-    question:
-      "A sequence begins 3, 8, 18, 38, 78, ?. What is the next term?",
-    options: ["148", "156", "158", "160"],
-    answer: 2,
-    explanation:
-      "Each term is obtained by multiplying the previous term by 2 and adding 2: 78 × 2 + 2 = 158."
-  },
-  {
-    id: "APT-002",
-    subject: "Aptitude",
-    question:
-      "If CODE is written as DPEF, how would LOGIC be written using the same rule?",
-    options: ["MPHJD", "MPHDB", "KNFHB", "MNFJD"],
-    answer: 0,
-    explanation:
-      "Each letter is shifted forward by one position: L→M, O→P, G→H, I→J, C→D."
-  },
-  {
-    id: "APT-003",
-    subject: "Aptitude",
-    question:
-      "A man walks 8 km north, turns east and walks 6 km, then walks 8 km south. How far is he from his starting point?",
-    options: ["2 km", "6 km", "8 km", "14 km"],
-    answer: 1,
-    explanation:
-      "The northward and southward movements cancel. He is therefore 6 km east of his starting point."
-  },
-  {
-    id: "APT-004",
-    subject: "Aptitude",
-    question:
-      "Find the missing number: 2, 6, 12, 20, 30, 42, ?",
-    options: ["54", "56", "58", "60"],
-    answer: 1,
-    explanation:
-      "The differences are 4, 6, 8, 10, 12. The next difference is 14, giving 42 + 14 = 56."
-  },
-  {
-    id: "APT-005",
-    subject: "Aptitude",
-    question:
-      "All lecturers in a department are graduates. Some graduates are researchers. Which conclusion is necessarily true?",
-    options: [
-      "All lecturers are researchers",
-      "Some lecturers are researchers",
-      "All researchers are lecturers",
-      "All lecturers are graduates"
-    ],
-    answer: 3,
-    explanation:
-      "The statement directly establishes that every lecturer is a graduate. Nothing necessarily establishes that lecturers are researchers."
-  },
-  {
-    id: "APT-006",
-    subject: "Aptitude",
-    question:
-      "A clock gains 5 minutes every hour. If it is set correctly at 8:00 a.m., what time will it show at 2:00 p.m.?",
-    options: ["2:05 p.m.", "2:20 p.m.", "2:30 p.m.", "2:35 p.m."],
-    answer: 2,
-    explanation:
-      "Six hours × 5 minutes = 30 minutes gained. Therefore it displays 2:30 p.m."
-  },
-  {
-    id: "APT-007",
-    subject: "Aptitude",
-    question:
-      "If 5 machines produce 5 units in 5 minutes at the same rate, how many units will 20 machines produce in 20 minutes?",
-    options: ["20", "40", "60", "80"],
-    answer: 3,
-    explanation:
-      "One machine produces one unit in 5 minutes. In 20 minutes, one machine produces 4 units. Twenty machines produce 80 units."
-  },
-  {
-    id: "APT-008",
-    subject: "Aptitude",
-    question:
-      "Choose the word that does NOT belong to the group.",
-    options: ["Mercury", "Venus", "Mars", "Moon"],
-    answer: 3,
-    explanation:
-      "Mercury, Venus and Mars are planets. The Moon is a natural satellite."
-  },
-  {
-    id: "APT-009",
-    subject: "Aptitude",
-    question:
-      "A father is three times as old as his son. In 12 years, he will be twice as old as his son. How old is the son now?",
-    options: ["10 years", "12 years", "14 years", "16 years"],
-    answer: 1,
-    explanation:
-      "Let the son's age be x. Father = 3x. Then 3x + 12 = 2(x + 12), giving x = 12."
-  },
-  {
-    id: "APT-010",
-    subject: "Aptitude",
-    question:
-      "If today is Wednesday, what day of the week will it be 100 days from today?",
-    options: ["Thursday", "Friday", "Saturday", "Sunday"],
-    answer: 1,
-    explanation:
-      "100 ÷ 7 leaves remainder 2. Two days after Wednesday is Friday."
-  },
-  {
-    id: "APT-011",
-    subject: "Aptitude",
-    question:
-      "A, B, C, D and E are arranged from left to right. A is before B, C is after B, D is before A, and E is after C. Which must be first?",
-    options: ["A", "B", "C", "D"],
-    answer: 3,
-    explanation:
-      "The relationships force D < A < B < C < E, so D must be first."
-  },
-  {
-    id: "APT-012",
-    subject: "Aptitude",
-    question:
-      "A number is increased by 20% and then decreased by 20%. What is the overall percentage change?",
-    options: ["No change", "2% decrease", "4% decrease", "4% increase"],
-    answer: 2,
-    explanation:
-      "Using 100: 100 × 1.2 = 120; 120 × 0.8 = 96. The overall change is a 4% decrease."
-  },
-  {
-    id: "APT-013",
-    subject: "Aptitude",
-    question:
-      "Complete the analogy: BOOK : AUTHOR :: BUILDING : ?",
-    options: ["Brick", "Architect", "Builder", "Engineer"],
-    answer: 1,
-    explanation:
-      "An author creates a book; an architect designs a building."
-  },
-  {
-    id: "APT-014",
-    subject: "Aptitude",
-    question:
-      "A bag contains 4 red, 3 blue and 3 green balls. What is the minimum number of balls that must be drawn without looking to guarantee two balls of the same colour?",
-    options: ["2", "3", "4", "5"],
-    answer: 2,
-    explanation:
-      "There are three colours. Drawing four balls guarantees that at least two have the same colour."
-  },
-  {
-    id: "APT-015",
-    subject: "Aptitude",
-    question:
-      "If SOUTH is coded as 12345 and NORTH as 67845, which digit represents H?",
-    options: ["3", "4", "5", "8"],
-    answer: 2,
-    explanation:
-      "From SOUTH, H corresponds to the fifth character, represented by 5."
-  },
-  {
-    id: "APT-016",
-    subject: "Aptitude",
-    question:
-      "A student scored 72, 68, 81 and 79 in four tests. What score must the student obtain in the fifth test to have an average of 76?",
-    options: ["76", "78", "80", "82"],
-    answer: 0,
-    explanation:
-      "Required total = 76 × 5 = 380. Existing total = 300. Required score = 80."
-  },
-  {
-    id: "APT-017",
-    subject: "Aptitude",
-    question:
-      "Which number replaces the question mark? 4, 9, 19, 39, 79, ?",
-    options: ["119", "149", "159", "169"],
-    answer: 2,
-    explanation:
-      "Each term is multiplied by 2 and then increased by 1."
-  },
-  {
-    id: "APT-018",
-    subject: "Aptitude",
-    question:
-      "A train travels 180 km in 3 hours. At the same speed, how far will it travel in 4 hours 30 minutes?",
-    options: ["240 km", "250 km", "270 km", "300 km"],
-    answer: 2,
-    explanation:
-      "Speed = 180/3 = 60 km/h. In 4.5 hours: 60 × 4.5 = 270 km."
-  },
-  {
-    id: "APT-019",
-    subject: "Aptitude",
-    question:
-      "If some doctors are writers and all writers are readers, which statement must be true?",
-    options: [
-      "All doctors are readers",
-      "Some doctors are readers",
-      "All readers are doctors",
-      "No doctor is a reader"
-    ],
-    answer: 1,
-    explanation:
-      "The doctors who are writers must also be readers because all writers are readers."
-  },
-  {
-    id: "APT-020",
-    subject: "Aptitude",
-    question:
-      "A farmer has chickens and goats. There are 20 animals and 56 legs altogether. How many goats are there?",
-    options: ["6", "8", "10", "12"],
-    answer: 1,
-    explanation:
-      "If all 20 were chickens there would be 40 legs. The extra 16 legs come from goats, each contributing 2 extra legs. 16/2 = 8 goats."
-  },
+  // ================== SECTION A: LOGIC & SEQUENCES (1-20) ==================
+  { id: "APT-001", subject: "Aptitude", question: "A sequence begins 3, 8, 18, 38, 78, ?. What is the next term?", options: ["148", "156", "158", "160"], answer: 2, explanation: "Each term is obtained by multiplying the previous term by 2 and adding 2: 78 × 2 + 2 = 158." },
+  { id: "APT-002", subject: "Aptitude", question: "If CODE is written as DPEF, how would LOGIC be written using the same rule?", options: ["MPHJD", "MPHDB", "KNFHB", "MNFJD"], answer: 0, explanation: "Each letter is shifted forward by one position: L→M, O→P, G→H, I→J, C→D." },
+  { id: "APT-003", subject: "Aptitude", question: "A man walks 8 km north, turns east and walks 6 km, then walks 8 km south. How far is he from his starting point?", options: ["2 km", "6 km", "8 km", "14 km"], answer: 1, explanation: "The northward and southward movements cancel. He is therefore 6 km east of his starting point." },
+  { id: "APT-004", subject: "Aptitude", question: "Find the missing number: 2, 6, 12, 20, 30, 42, ?", options: ["54", "56", "58", "60"], answer: 1, explanation: "The differences are 4, 6, 8, 10, 12. The next difference is 14, giving 42 + 14 = 56." },
+  { id: "APT-005", subject: "Aptitude", question: "All lecturers in a department are graduates. Some graduates are researchers. Which conclusion is necessarily true?", options: ["All lecturers are researchers", "Some lecturers are researchers", "All researchers are lecturers", "All lecturers are graduates"], answer: 3, explanation: "The statement directly establishes that every lecturer is a graduate. Nothing necessarily establishes that lecturers are researchers." },
+  { id: "APT-006", subject: "Aptitude", question: "A clock gains 5 minutes every hour. If it is set correctly at 8:00 a.m., what time will it show at 2:00 p.m.?", options: ["2:05 p.m.", "2:20 p.m.", "2:30 p.m.", "2:35 p.m."], answer: 2, explanation: "Six hours × 5 minutes = 30 minutes gained. Therefore it displays 2:30 p.m." },
+  { id: "APT-007", subject: "Aptitude", question: "If 5 machines produce 5 units in 5 minutes at the same rate, how many units will 20 machines produce in 20 minutes?", options: ["20", "40", "60", "80"], answer: 3, explanation: "One machine produces one unit in 5 minutes. In 20 minutes, one machine produces 4 units. Twenty machines produce 80 units." },
+  { id: "APT-008", subject: "Aptitude", question: "Choose the word that does NOT belong to the group.", options: ["Mercury", "Venus", "Mars", "Moon"], answer: 3, explanation: "Mercury, Venus and Mars are planets. The Moon is a natural satellite." },
+  { id: "APT-009", subject: "Aptitude", question: "A father is three times as old as his son. In 12 years, he will be twice as old as his son. How old is the son now?", options: ["10 years", "12 years", "14 years", "16 years"], answer: 1, explanation: "Let the son's age be x. Father = 3x. Then 3x + 12 = 2(x + 12), giving x = 12." },
+  { id: "APT-010", subject: "Aptitude", question: "If today is Wednesday, what day of the week will it be 100 days from today?", options: ["Thursday", "Friday", "Saturday", "Sunday"], answer: 1, explanation: "100 ÷ 7 leaves remainder 2. Two days after Wednesday is Friday." },
+  { id: "APT-011", subject: "Aptitude", question: "A, B, C, D and E are arranged from left to right. A is before B, C is after B, D is before A, and E is after C. Which must be first?", options: ["A", "B", "C", "D"], answer: 3, explanation: "The relationships force D < A < B < C < E, so D must be first." },
+  { id: "APT-012", subject: "Aptitude", question: "A number is increased by 20% and then decreased by 20%. What is the overall percentage change?", options: ["No change", "2% decrease", "4% decrease", "4% increase"], answer: 2, explanation: "Using 100: 100 × 1.2 = 120; 120 × 0.8 = 96. The overall change is a 4% decrease." },
+  { id: "APT-013", subject: "Aptitude", question: "Complete the analogy: BOOK : AUTHOR :: BUILDING : ?", options: ["Brick", "Architect", "Builder", "Engineer"], answer: 1, explanation: "An author creates a book; an architect designs a building." },
+  { id: "APT-014", subject: "Aptitude", question: "A bag contains 4 red, 3 blue and 3 green balls. What is the minimum number of balls that must be drawn without looking to guarantee two balls of the same colour?", options: ["2", "3", "4", "5"], answer: 2, explanation: "There are three colours. Drawing four balls guarantees that at least two have the same colour." },
+  { id: "APT-015", subject: "Aptitude", question: "If SOUTH is coded as 12345 and NORTH as 67845, which digit represents H?", options: ["3", "4", "5", "8"], answer: 2, explanation: "From SOUTH, H corresponds to the fifth character, represented by 5." },
+  { id: "APT-016", subject: "Aptitude", question: "A student scored 72, 68, 81 and 79 in four tests. What score must the student obtain in the fifth test to have an average of 76?", options: ["76", "78", "80", "82"], answer: 2, explanation: "Required total = 76 × 5 = 380. Existing total = 300. Required score = 80." },
+  { id: "APT-017", subject: "Aptitude", question: "Which number replaces the question mark? 4, 9, 19, 39, 79, ?", options: ["119", "149", "159", "169"], answer: 2, explanation: "Each term is multiplied by 2 and then increased by 1: 79 × 2 + 1 = 159." },
+  { id: "APT-018", subject: "Aptitude", question: "A train travels 180 km in 3 hours. At the same speed, how far will it travel in 4 hours 30 minutes?", options: ["240 km", "250 km", "270 km", "300 km"], answer: 2, explanation: "Speed = 180/3 = 60 km/h. In 4.5 hours: 60 × 4.5 = 270 km." },
+  { id: "APT-019", subject: "Aptitude", question: "If some doctors are writers and all writers are readers, which statement must be true?", options: ["All doctors are readers", "Some doctors are readers", "All readers are doctors", "No doctor is a reader"], answer: 1, explanation: "The doctors who are writers must also be readers because all writers are readers." },
+  { id: "APT-020", subject: "Aptitude", question: "A farmer has chickens and goats. There are 20 animals and 56 legs altogether. How many goats are there?", options: ["6", "8", "10", "12"], answer: 1, explanation: "If all 20 were chickens there would be 40 legs. The extra 16 legs come from goats, each contributing 2 extra legs. 16/2 = 8 goats." },
 
-  // Continue APT-021 through APT-100 here.
-];
+  // ================== SECTION B: NIGERIAN HISTORY & CIVICS (21-40) ==================
+  { id: "APT-021", subject: "Aptitude", question: "In 1987, the University of Ife was officially renamed Obafemi Awolowo University. What was the name of the university before this change?", options: ["University of Lagos", "University of Ibadan", "University of Ife", "Ahmadu Bello University"], answer: 2, explanation: "OAU was originally known as the University of Ife. It was renamed Obafemi Awolowo University in 1987 to honour the late Chief Obafemi Awolowo." },
+  { id: "APT-022", subject: "Aptitude", question: "In Nigeria, the Presidential system of government is one where the President serves as both the Head of State and the Head of Government. Which of the following is NOT a feature of this system?", options: ["Separation of powers", "The President is directly elected by the people", "The Prime Minister is the Head of Government", "The President appoints the Federal Ministers"], answer: 2, explanation: "In a Presidential system, there is no Prime Minister. The President holds both the ceremonial (Head of State) and executive (Head of Government) roles." },
+  { id: "APT-023", subject: "Aptitude", question: "If the word NIGERIA is written as OHJFSJB, how would the word YORUBA be written using the same rule?", options: ["ZPSVCB", "XNSVCB", "ZPSUCB", "YPTVCB"], answer: 0, explanation: "The rule shifts each letter forward by one (A→B, B→C...). Y→Z, O→P, R→S, U→V, B→C, A→B. Therefore, YORUBA becomes ZPSVCB." },
+  { id: "APT-024", subject: "Aptitude", question: "In a class of 40 students, 20 play football, 15 play basketball, and 5 play both games. How many students play neither game?", options: ["5", "10", "15", "20"], answer: 1, explanation: "Total playing at least one game = 20 + 15 - 5 = 30. Therefore, students playing neither = 40 - 30 = 10." },
+  { id: "APT-025", subject: "Aptitude", question: "A student spends 1/4 of his pocket money on food and 1/5 on transport. If he has ₦220 left, how much pocket money did he start with?", options: ["₦300", "₦400", "₦500", "₦600"], answer: 1, explanation: "Total spent = 1/4 + 1/5 = 9/20. Remaining fraction = 11/20. If 11/20 = 220, then 1/20 = 20. So the whole money = 20 × 20 = ₦400." },
+  { id: "APT-026", subject: "Aptitude", question: "In a certain code, 'MUSIC' is written as 'NVTJD' and 'CHORD' is written as 'DIPSE'. How will 'PIANO' be written in that code?", options: ["QJBPO", "QJCPO", "QJBPN", "QIBPO"], answer: 0, explanation: "Every letter is shifted forward by one position: P→Q, I→J, A→B, N→O, O→P. Thus PIANO becomes QJBPO." },
+  { id: "APT-027", subject: "Aptitude", question: "If the 2nd of March is a Tuesday, what day of the week will the 30th of March be?", options: ["Monday", "Tuesday", "Wednesday", "Thursday"], answer: 1, explanation: "From 2nd to 30th is 28 days (a complete 4 weeks). So the 30th falls exactly on the same day as the 2nd. Therefore it is also a Tuesday." },
+  { id: "APT-028", subject: "Aptitude", question: "A father is currently 40 years old and his son is 10 years old. In how many years will the father be exactly twice as old as his son?", options: ["10 years", "15 years", "20 years", "25 years"], answer: 2, explanation: "Let 'x' be the number of years. (40 + x) = 2(10 + x). Solving: 40 + x = 20 + 2x, which gives x = 20 years." },
+  { id: "APT-029", subject: "Aptitude", question: "A point X is in the middle of A and B. A is 8km north of X. If B is 6km east of X, how far is A from B?", options: ["10 km", "12 km", "14 km", "15 km"], answer: 0, explanation: "This forms a right-angled triangle with legs 8 and 6. Using Pythagoras' theorem: √(8² + 6²) = √(64 + 36) = √100 = 10 km." },
+  { id: "APT-030", subject: "Aptitude", question: "In a class test, the average score of 8 students is 65. If the scores of 7 of the students are 60, 70, 55, 80, 50, 90, and 75, what is the score of the 8th student?", options: ["50", "45", "40", "55"], answer: 2, explanation: "Total score for 8 students = 8 × 65 = 520. Sum of 7 known scores = 480. Therefore, 8th student score = 520 - 480 = 40." },
+  { id: "APT-031", subject: "Aptitude", question: "Rita is the mother of David. If Chidi is the son of David, how is Rita related to Chidi?", options: ["Aunt", "Mother", "Grandmother", "Sister"], answer: 2, explanation: "Rita gave birth to David, and David gave birth to Chidi. Therefore, Rita is Chidi's grandmother." },
+  { id: "APT-032", subject: "Aptitude", question: "A car moving at 60 km/h is followed by a police van moving at 80 km/h in the same direction. What is the relative speed of the police van with respect to the car?", options: ["20 km/h", "60 km/h", "140 km/h", "80 km/h"], answer: 0, explanation: "When moving in the same direction, relative speed is the difference: 80 - 60 = 20 km/h. The police van is gaining on the car at 20 km/h." },
+  { id: "APT-033", subject: "Aptitude", question: "A can finish a project in 12 days while B can finish the same project in 6 days. If they work together, how many days will it take them?", options: ["3 days", "4 days", "5 days", "6 days"], answer: 1, explanation: "A does 1/12 of the work in a day, B does 1/6. Together: 1/12 + 1/6 = 3/12 = 1/4. So they finish 1/4 of the work daily, meaning the whole job takes 4 days." },
+  { id: "APT-034", subject: "Aptitude", question: "A trader marks his goods 20% above cost price and allows a discount of 10% on the marked price. What is his percentage profit?", options: ["5%", "6%", "8%", "10%"], answer: 2, explanation: "Assume CP = 100. Marked Price = 120. Discount of 10% on 120 = 12. Selling Price = 120 - 12 = 108. Profit = 108 - 100 = 8%. So, 8% profit." },
+  { id: "APT-035", subject: "Aptitude", question: "If the first day of a leap year is a Sunday, what day will it be on the last day of that year?", options: ["Monday", "Sunday", "Saturday", "Friday"], answer: 0, explanation: "A leap year has 366 days. 366 ÷ 7 = 52 weeks and 2 days. The year shifts by 2 days. Sunday + 2 days = Tuesday. Wait, let me correct that: Day 1 is Sunday. Day 366 is 365 days later. 365 = 52*7 + 1. So it shifts by 1 day. Sunday + 1 = Monday. Correct answer is Monday." },
+  { id: "APT-036", subject: "Aptitude", question: "Choose the word that does NOT belong to the group:", options: ["Saliva", "Sweat", "Urine", "Blood"], answer: 3, explanation: "Saliva, sweat, and urine are excretory products or secretions that leave the body. Blood is a vital internal fluid that does not routinely leave the body in the same way." },
+  { id: "APT-037", subject: "Aptitude", question: "A car travels a distance of 500 km in 8 hours. If it travels the first 200 km in 4 hours, what is the average speed for the remaining journey?", options: ["60 km/h", "70 km/h", "75 km/h", "80 km/h"], answer: 2, explanation: "Remaining distance = 500 - 200 = 300 km. Remaining time = 8 - 4 = 4 hours. Average speed for remaining distance = 300 ÷ 4 = 75 km/h." },
+  { id: "APT-038", subject: "Aptitude", question: "In a certain year, the Federal Government banned the use of certain plastic bags to protect the environment. This type of law is under which main objective of the state?", options: ["Economic stability", "Ecological preservation", "Foreign relations", "Public education"], answer: 1, explanation: "Laws protecting the environment, such as banning harmful plastics, fall under the state's main purpose of ecological preservation to ensure a safe environment." },
+  { id: "APT-039", subject: "Aptitude", question: "A student walks 2 km east, then 1 km north, then 2 km west. What is the shortest distance from his starting point?", options: ["1 km", "2 km", "3 km", "√5 km"], answer: 0, explanation: "East and West movements cancel out (2 km east, 2 km west = 0). He is left with only the 1 km northward movement. So his distance from the start is 1 km." },
+  { id: "APT-040", subject: "Aptitude", question: "If 5√2 + 2√2 = x√2, what is the value of x?", options: ["6", "7", "8", "10"], answer: 1, explanation: "Just like adding like terms in algebra, you add the coefficients of the common √2. So 5 + 2 = 7. Thus x = 7." },
+
+  // ================== SECTION C: PERCENTAGES & PROFITS (41-60) ==================
+  { id: "APT-041", subject: "Aptitude", question: "A student scored 72% in a test with 50 questions. If each question carries 2 marks, how many marks did the student get?", options: ["60 marks", "72 marks", "80 marks", "90 marks"], answer: 1, explanation: "Total marks = 50 × 2 = 100. Student got 72% of 100 = 72 marks." },
+  { id: "APT-042", subject: "Aptitude", question: "If 30% of a number is 45, what is the number?", options: ["120", "135", "150", "180"], answer: 2, explanation: "0.3 × x = 45. Therefore x = 45 / 0.3 = 150." },
+  { id: "APT-043", subject: "Aptitude", question: "A seller buys a pen for ₦200 and sells it for ₦250. What is his percentage profit?", options: ["20%", "22%", "25%", "30%"], answer: 2, explanation: "Profit = 250 - 200 = 50. Percentage profit = (50/200) × 100 = 25%." },
+  { id: "APT-044", subject: "Aptitude", question: "A man gives 20% of his salary to his wife, 15% to his parents, and saves the rest. If his salary is ₦80,000, how much does he save?", options: ["₦42,000", "₦48,000", "₦52,000", "₦60,000"], answer: 2, explanation: "Total given out = 20% + 15% = 35%. Remaining = 65% of 80,000 = 0.65 × 80,000 = ₦52,000." },
+  { id: "APT-045", subject: "Aptitude", question: "If 15% of x = 25% of y, then x : y is equal to:", options: ["3:5", "5:3", "4:5", "5:4"], answer: 1, explanation: "0.15x = 0.25y. Dividing both sides by 0.15y: x/y = 0.25/0.15 = 25/15 = 5/3. Therefore x:y = 5:3." },
+  { id: "APT-046", subject: "Aptitude", question: "A trader buys 50 items for ₦5,000. If he sells each item for ₦150, what is his total profit?", options: ["₦1,500", "₦2,000", "₦2,500", "₦3,000"], answer: 2, explanation: "Cost per item = 5000/50 = ₦100. Selling price per item = ₦150. Profit per item = ₦50. Total profit = 50 × ₦50 = ₦2,500." },
+  { id: "APT-047", subject: "Aptitude", question: "A bag contains 40 balls, of which 25% are red and the rest are blue. How many blue balls are there?", options: ["25", "28", "30", "35"], answer: 2, explanation: "Red balls = 25% of 40 = 10. Blue balls = 40 - 10 = 30." },
+  { id: "APT-048", subject: "Aptitude", question: "If a number is multiplied by 3 and then reduced by 5, the result is 22. What is the number?", options: ["8", "9", "10", "11"], answer: 1, explanation: "Let x be the number. 3x - 5 = 22. Therefore 3x = 27, giving x = 9." },
+  { id: "APT-049", subject: "Aptitude", question: "A car's price increases from ₦2 million to ₦2.5 million. What is the percentage increase?", options: ["20%", "22%", "25%", "30%"], answer: 2, explanation: "Increase = 2.5 - 2 = 0.5 million. Percentage increase = (0.5/2) × 100 = 25%." },
+  { id: "APT-050", subject: "Aptitude", question: "When a number is divided by 8, the result is 12. What is the number?", options: ["80", "88", "96", "104"], answer: 2, explanation: "x / 8 = 12. Therefore x = 12 × 8 = 96." },
+  { id: "APT-051", subject: "Aptitude", question: "If 3/5 of a bag of rice is 18 kg, how many kilograms of rice are in the full bag?", options: ["25 kg", "28 kg", "30 kg", "35 kg"], answer: 2, explanation: "0.6 × x = 18. Therefore x = 18 / 0.6 = 30 kg." },
+  { id: "APT-052", subject: "Aptitude", question: "A student earns ₦5,000 per week. If she saves 30% of it, how much does she save in 4 weeks?", options: ["₦5,000", "₦6,000", "₦7,500", "₦8,000"], answer: 1, explanation: "Savings per week = 30% of 5,000 = ₦1,500. In 4 weeks: 4 × 1,500 = ₦6,000." },
+  { id: "APT-053", subject: "Aptitude", question: "What is 40% of 250?", options: ["80", "90", "100", "120"], answer: 2, explanation: "0.4 × 250 = 100." },
+  { id: "APT-054", subject: "Aptitude", question: "A student gets 45 marks out of 60. What is his percentage score?", options: ["70%", "72%", "75%", "80%"], answer: 2, explanation: "Percentage = (45/60) × 100 = 75%." },
+  { id: "APT-055", subject: "Aptitude", question: "A man spends ₦12,000 per month on rent. If this is 30% of his monthly salary, what is his monthly salary?", options: ["₦30,000", "₦35,000", "₦40,000", "₦45,000"], answer: 2, explanation: "0.3 × salary = 12,000. Therefore salary = 12,000 / 0.3 = ₦40,000." },
+  { id: "APT-056", subject: "Aptitude", question: "A store reduces a product by 15%. If the product originally cost ₦20,000, what is the new price?", options: ["₦16,000", "₦17,000", "₦18,000", "₦19,000"], answer: 1, explanation: "Discount = 15% of 20,000 = ₦3,000. New price = 20,000 - 3,000 = ₦17,000." },
+  { id: "APT-057", subject: "Aptitude", question: "A substance is made of 5 parts of A to 3 parts of B. If there are 40 kg of the mixture, how many kg of A is used?", options: ["20 kg", "25 kg", "30 kg", "35 kg"], answer: 1, explanation: "Total parts = 5 + 3 = 8. A = (5/8) × 40 = 25 kg." },
+  { id: "APT-058", subject: "Aptitude", question: "If 24 students are 60% of a class, how many students are in the whole class?", options: ["36", "38", "40", "44"], answer: 2, explanation: "0.6 × total = 24. Therefore total = 24 / 0.6 = 40 students." },
+  { id: "APT-059", subject: "Aptitude", question: "A man's salary was ₦50,000. He received a 12% increase. What is his new salary?", options: ["₦55,000", "₦56,000", "₦60,000", "₦62,000"], answer: 1, explanation: "Increase = 12% of 50,000 = ₦6,000. New salary = 50,000 + 6,000 = ₦56,000." },
+    { id: "APT-060", subject: "Aptitude", question: "A mixture contains 40% water and 60% milk. If there are 5 litres of mixture, how many litres of water are there?", options: ["1 litre", "1.5 litres", "2 litres", "2.5 litres"], answer: 2, explanation: "Water = 40% of 5 litres = 0.4 × 5 = 2 litres." },
+
+  // ================== SECTION D: SPEED, DISTANCE & TIME (61-80) ==================
+  { id: "APT-061", subject: "Aptitude", question: "A car travels at 80 km/h for 3 hours. What distance does it cover?", options: ["200 km", "220 km", "240 km", "260 km"], answer: 2, explanation: "Distance = Speed × Time = 80 × 3 = 240 km." },
+  { id: "APT-062", subject: "Aptitude", question: "A cyclist covers 15 km in 45 minutes. What is his speed in km/h?", options: ["10 km/h", "15 km/h", "20 km/h", "25 km/h"], answer: 2, explanation: "45 minutes = 0.75 hours. Speed = 15 / 0.75 = 20 km/h." },
+  { id: "APT-063", subject: "Aptitude", question: "A train leaves station A at 8:00 a.m. and arrives at station B at 11:30 a.m. If the distance is 210 km, what is the average speed?", options: ["60 km/h", "65 km/h", "70 km/h", "75 km/h"], answer: 0, explanation: "Time taken = 3.5 hours. Average speed = 210 / 3.5 = 60 km/h." },
+  { id: "APT-064", subject: "Aptitude", question: "If a man walks at 5 km/h, how long will it take him to walk 12.5 km?", options: ["2 hours", "2.5 hours", "3 hours", "3.5 hours"], answer: 1, explanation: "Time = Distance / Speed = 12.5 / 5 = 2.5 hours." },
+  { id: "APT-065", subject: "Aptitude", question: "Two cars start from the same point and travel in opposite directions at 60 km/h and 90 km/h respectively. How far apart are they after 2 hours?", options: ["150 km", "200 km", "250 km", "300 km"], answer: 3, explanation: "In opposite directions, distances add up: (60 × 2) + (90 × 2) = 120 + 180 = 300 km." },
+  { id: "APT-066", subject: "Aptitude", question: "A bus travels 120 km in 2 hours 30 minutes. What is its speed in km/h?", options: ["40 km/h", "45 km/h", "48 km/h", "50 km/h"], answer: 2, explanation: "2 hours 30 minutes = 2.5 hours. Speed = 120 / 2.5 = 48 km/h." },
+  { id: "APT-067", subject: "Aptitude", question: "A man walks for 1 hour at 4 km/h and then runs for 30 minutes at 10 km/h. What total distance does he cover?", options: ["6 km", "8 km", "9 km", "10 km"], answer: 2, explanation: "Walking distance = 4 × 1 = 4 km. Running distance = 10 × 0.5 = 5 km. Total = 4 + 5 = 9 km." },
+  { id: "APT-068", subject: "Aptitude", question: "A cyclist goes from point A to B at 15 km/h and returns at 10 km/h. What is the average speed for the whole journey?", options: ["12 km/h", "12.5 km/h", "13 km/h", "14 km/h"], answer: 0, explanation: "Average speed for round trip = (2 × V1 × V2) / (V1 + V2) = (2 × 15 × 10) / (15 + 10) = 300 / 25 = 12 km/h." },
+  { id: "APT-069", subject: "Aptitude", question: "A plane flies at 600 km/h. How long will it take to cover 1,800 km?", options: ["2 hours", "3 hours", "4 hours", "5 hours"], answer: 1, explanation: "Time = 1,800 / 600 = 3 hours." },
+  { id: "APT-070", subject: "Aptitude", question: "A car travels at 72 km/h for 45 minutes. What distance does it cover?", options: ["50 km", "54 km", "60 km", "64 km"], answer: 1, explanation: "45 minutes = 0.75 hours. Distance = 72 × 0.75 = 54 km." },
+  { id: "APT-071", subject: "Aptitude", question: "If a runner completes a 10 km race in 40 minutes, what is his average speed in km/h?", options: ["12 km/h", "15 km/h", "18 km/h", "20 km/h"], answer: 1, explanation: "40 minutes = 2/3 hours. Speed = 10 / (2/3) = 10 × (3/2) = 15 km/h." },
+  { id: "APT-072", subject: "Aptitude", question: "Two trains leave the same station in opposite directions at 60 km/h and 80 km/h. After 3 hours, what is the distance between them?", options: ["240 km", "300 km", "360 km", "420 km"], answer: 3, explanation: "Distances add: (60 × 3) + (80 × 3) = 180 + 240 = 420 km." },
+  { id: "APT-073", subject: "Aptitude", question: "A man can cycle at 12 km/h. How many minutes will it take him to cycle 3 km?", options: ["12 minutes", "15 minutes", "20 minutes", "25 minutes"], answer: 1, explanation: "Time = 3 / 12 = 0.25 hours = 0.25 × 60 = 15 minutes." },
+  { id: "APT-074", subject: "Aptitude", question: "A bus takes 2 hours to travel 120 km. If it increases its speed by 20 km/h, how long will it take to travel the same distance?", options: ["1 hour", "1.5 hours", "2 hours", "2.5 hours"], answer: 1, explanation: "Original speed = 60 km/h. New speed = 80 km/h. New time = 120 / 80 = 1.5 hours." },
+  { id: "APT-075", subject: "Aptitude", question: "A motorist drives for 2 hours at 50 km/h and then for 1 hour at 70 km/h. What is his total distance?", options: ["140 km", "160 km", "170 km", "200 km"], answer: 2, explanation: "First part: 50 × 2 = 100 km. Second part: 70 × 1 = 70 km. Total = 100 + 70 = 170 km." },
+  { id: "APT-076", subject: "Aptitude", question: "A train passes a pole in 10 seconds. If the train is 150 metres long, what is its speed in m/s?", options: ["10 m/s", "15 m/s", "20 m/s", "25 m/s"], answer: 1, explanation: "Speed = Distance / Time = 150 / 10 = 15 m/s." },
+  { id: "APT-077", subject: "Aptitude", question: "A car covers 300 km in 5 hours. What is its average speed in km/h?", options: ["50 km/h", "55 km/h", "60 km/h", "70 km/h"], answer: 2, explanation: "Average speed = 300 / 5 = 60 km/h." },
+  { id: "APT-078", subject: "Aptitude", question: "A jogger moves at 6 km/h. How many minutes will it take to jog 4 km?", options: ["30 minutes", "36 minutes", "40 minutes", "45 minutes"], answer: 2, explanation: "Time = 4 / 6 = 2/3 hours = 40 minutes." },
+  { id: "APT-079", subject: "Aptitude", question: "A boat travels 36 km downstream in 2 hours. If the boat's speed in still water is 15 km/h, what is the speed of the current?", options: ["2 km/h", "3 km/h", "4 km/h", "5 km/h"], answer: 1, explanation: "Downstream speed = 36 / 2 = 18 km/h. Boat speed = 15 km/h. Current speed = 18 - 15 = 3 km/h." },
+  { id: "APT-080", subject: "Aptitude", question: "A man walks from home to work at 4 km/h and arrives in 45 minutes. How far is his workplace from home?", options: ["2 km", "3 km", "4 km", "5 km"], answer: 1, explanation: "45 minutes = 0.75 hours. Distance = 4 × 0.75 = 3 km." },
+
+  // ================== SECTION E: LOGICAL REASONING & DATA (81-100) ==================
+  { id: "APT-081", subject: "Aptitude", question: "If A is taller than B, and C is shorter than B, who is the tallest?", options: ["A", "B", "C", "Cannot be determined"], answer: 0, explanation: "A > B and B > C. Therefore A is the tallest." },
+  { id: "APT-082", subject: "Aptitude", question: "In a certain code, 'CAT' is written as 'DBU'. How would 'DOG' be written?", options: ["EPH", "EPI", "FPH", "FQH"], answer: 0, explanation: "Each letter shifts forward by one: D→E, O→P, G→H. Therefore DOG becomes EPH." },
+  { id: "APT-083", subject: "Aptitude", question: "If 20% of a number is 36, what is the number?", options: ["140", "160", "180", "200"], answer: 2, explanation: "0.2 × x = 36. Therefore x = 36 / 0.2 = 180." },
+  { id: "APT-084", subject: "Aptitude", question: "A woman has 3 sons and 2 daughters. Each son has 1 sister. How many children does the woman have in total?", options: ["3", "4", "5", "6"], answer: 2, explanation: "The 3 sons share one sister (the same daughter). Therefore total children = 3 sons + 2 daughters = 5." },
+  { id: "APT-085", subject: "Aptitude", question: "If a 10 kg bag of rice costs ₦8,000, how much will a 15 kg bag cost?", options: ["₦10,000", "₦12,000", "₦15,000", "₦20,000"], answer: 1, explanation: "Cost per kg = 8,000 / 10 = ₦800. Cost of 15 kg = 15 × 800 = ₦12,000." },
+  { id: "APT-086", subject: "Aptitude", question: "In a class of 50 students, 30 are boys. What percentage of the class is girls?", options: ["30%", "40%", "50%", "60%"], answer: 1, explanation: "Girls = 50 - 30 = 20. Percentage = (20/50) × 100 = 40%." },
+  { id: "APT-087", subject: "Aptitude", question: "A shirt that costs ₦2,500 is discounted by 15%. What is the new price?", options: ["₦2,000", "₦2,125", "₦2,250", "₦2,375"], answer: 1, explanation: "Discount = 15% of 2,500 = ₦375. New price = 2,500 - 375 = ₦2,125." },
+  { id: "APT-088", subject: "Aptitude", question: "A student gets 36 out of 60 in a test. What is her percentage score?", options: ["55%", "60%", "65%", "70%"], answer: 1, explanation: "Percentage = (36/60) × 100 = 60%." },
+  { id: "APT-089", subject: "Aptitude", question: "If 8 men can complete a job in 12 days, how many men would complete the same job in 6 days?", options: ["12 men", "14 men", "16 men", "20 men"], answer: 2, explanation: "Total work = 8 × 12 = 96 man-days. To complete in 6 days: 96 / 6 = 16 men." },
