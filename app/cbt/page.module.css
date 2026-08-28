@@ -430,3 +430,78 @@
   color: #1a3a7a;
   box-shadow: 0 0 0 2px #2563eb;
 }
+
+.subjectIcon {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---------- Interactive Modern Subject Icons ---------- */
+.subjectIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+}
+
+.subjectIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Interactive - hover (desktop) & tap (mobile) feedback */
+.subjectIcon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+.subjectIcon:active {
+  transform: scale(0.9);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Make the tabs look great too */
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background: #f3f4f6;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+  color: #1f2937;
+}
+
+.tab:hover {
+  background: #e5e7eb;
+}
+
+.tab.activeTab {
+  background: #1a3a7a;
+  color: white;
+  border-color: #1a3a7a;
+  box-shadow: 0 4px 12px rgba(26, 58, 122, 0.3);
+}
+
+/* Ensure the math icon stays perfect inside the tab */
+.tab .subjectIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+}
+
+.tab .subjectIcon svg {
+  width: 18px;
+  height: 18px;
+}
