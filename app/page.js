@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
-// ---------- SVG ICONS (same style as CBT page) ----------
+// ---------- SVG ICONS ----------
 const SubjectIcon = ({ subjectKey }) => {
   const icons = {
     aptitude: (
@@ -135,124 +135,188 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        {/* Header / Logo */}
-        <div className={styles.header}>
-          <div className={styles.crest}>
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"></path>
-            </svg>
+        {/* ---------- HERO SECTION ---------- */}
+        <div className={styles.hero}>
+          <div className={styles.heroContent}>
+            <span className={styles.badge}>📚 OAU Post-UTME Practice</span>
+            <h1 className={styles.heroTitle}>
+              Master Your <span className={styles.heroHighlight}>OAU</span> Post-UTME
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Prepare with 2,000+ real exam-style questions, detailed solutions, and
+              instant performance tracking.
+            </p>
           </div>
-          <div>
-            <h1 className={styles.title}>OAU POST-UTME CBT</h1>
-            <p className={styles.subtitle}>Practice Examination • 2026 Session</p>
+          <div className={styles.heroStats}>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>40</span>
+              <span className={styles.statLabel}>Questions Per Test</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>2,000+</span>
+              <span className={styles.statLabel}>Question Bank</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>5</span>
+              <span className={styles.statLabel}>Subjects Covered</span>
+            </div>
           </div>
         </div>
 
-        {/* Name input */}
-        <div className={styles.nameInputWrapper}>
-          <label className={styles.nameLabel}>Enter Your Name</label>
-          <input
-            type="text"
-            value={studentName}
-            onChange={(e) => setStudentName(e.target.value)}
-            placeholder="e.g., Adebayo O."
-            className={styles.nameInput}
-          />
-        </div>
-
-        {/* Compulsory subject card */}
-        <div className={styles.compulsoryCard}>
-          <SubjectIcon subjectKey="aptitude" />
-          <div className={styles.compulsoryInfo}>
-            <span className={styles.compulsoryLabel}>Aptitude</span>
-            <span className={styles.badge}>Compulsory</span>
-            <span className={styles.questionCount}>10 questions</span>
+        {/* ---------- FEATURES ---------- */}
+        <div className={styles.features}>
+          <div className={styles.featureCard}>
+            <span className={styles.featureIcon}>🎯</span>
+            <h3>Real Exam Format</h3>
+            <p>Timed CBT simulation with the exact question patterns you'll face.</p>
           </div>
-          <LockIcon />
+          <div className={styles.featureCard}>
+            <span className={styles.featureIcon}>💡</span>
+            <h3>Step-by-Step Solutions</h3>
+            <p>Detailed explanations for every question so you learn from your mistakes.</p>
+          </div>
+          <div className={styles.featureCard}>
+            <span className={styles.featureIcon}>📊</span>
+            <h3>Performance Tracking</h3>
+            <p>See your score by subject and identify your weak areas instantly.</p>
+          </div>
         </div>
 
-        <p className={styles.instruction}>
-          Select <strong>any 3</strong> of the 4 optional subjects:
+        {/* ---------- SUBJECT SELECTION ---------- */}
+        <div className={styles.selectionSection}>
+          <h2 className={styles.sectionTitle}>Select Your Subjects</h2>
+          <p className={styles.sectionSubtitle}>
+            Aptitude is compulsory. Choose any 3 optional subjects.
+          </p>
+
+          {/* Name input */}
+          <div className={styles.nameInputWrapper}>
+            <label className={styles.nameLabel}>Enter Your Name</label>
+            <input
+              type="text"
+              value={studentName}
+              onChange={(e) => setStudentName(e.target.value)}
+              placeholder="e.g., Adebayo O."
+              className={styles.nameInput}
+            />
+          </div>
+
+          {/* Compulsory subject card */}
+          <div className={styles.compulsoryCard}>
+            <SubjectIcon subjectKey="aptitude" />
+            <div className={styles.compulsoryInfo}>
+              <span className={styles.compulsoryLabel}>Aptitude</span>
+              <span className={styles.badge}>Compulsory</span>
+              <span className={styles.questionCount}>10 questions</span>
+            </div>
+            <LockIcon />
+          </div>
+
+          {/* Optional subjects grid */}
+          <div className={styles.grid}>
+            {OPTIONAL_KEYS.map((key) => {
+              const isSelected = selected.includes(key);
+              return (
+                <div
+                  key={key}
+                  onClick={() => toggleSubject(key)}
+                  className={`${styles.optionalCard} ${isSelected ? styles.selected : ""}`}
+                >
+                  <SubjectIcon subjectKey={key} />
+                  <div className={styles.optionalInfo}>
+                    <div className={styles.optionalLabel}>
+                      {SUBJECT_LABELS[key]}
+                    </div>
+                    <div className={styles.questionCount}>10 questions</div>
+                  </div>
+                  {isSelected && <span className={styles.checkmark}><CheckIcon /></span>}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Progress ring */}
+          <div className={styles.progressArea}>
+            <div className={styles.progressRing}>
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
+                <circle
+                  cx="50" cy="50" r="40" fill="none" stroke="#2563eb" strokeWidth="8"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={circumference - (progress / 100) * circumference}
+                  strokeLinecap="round"
+                  transform="rotate(-90 50 50)"
+                  className={styles.progressCircle}
+                />
+                <text x="50" y="56" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1f2937">
+                  {selected.length}/3
+                </text>
+              </svg>
+            </div>
+            <div className={styles.progressText}>
+              <span>
+                {selected.length === 0
+                  ? "Select 3 optional subjects"
+                  : `${selected.length} of 3 optional selected`}
+              </span>
+              {selected.length === 3 && studentName.trim() !== "" && (
+                <span className={styles.readyBadge}>✅ Ready!</span>
+              )}
+              {studentName.trim() === "" && (
+                <span className={styles.nameWarning}>Enter your name to start</span>
+              )}
+            </div>
+          </div>
+
+          {/* Start button */}
+          <button
+            onClick={startExam}
+            disabled={!isReady}
+            className={`${styles.startButton} ${isReady ? styles.active : ""}`}
+          >
+            {isReady ? (
+              <>
+                <span>Begin {TOTAL_QUESTIONS}-Question CBT</span>
+                <span className={styles.arrow}><ArrowIcon /></span>
+              </>
+            ) : (
+              <span>
+                {studentName.trim() === ""
+                  ? "Enter your name first"
+                  : `Select ${3 - selected.length} more subject${3 - selected.length !== 1 ? "s" : ""}`}
+              </span>
+            )}
+          </button>
+        </div>
+
+              {/* ---------- FOOTER ---------- */}
+      <div className={styles.footer}>
+        <div className={styles.footerBrand}>
+          <span className={styles.footerLogo}>🎓</span>
+          <span>OAU CBT Prep</span>
+        </div>
+        <p className={styles.footerText}>
+          Built for OAU aspirants who aim to excel, not just pass.
         </p>
 
-        {/* Optional subjects grid */}
-        <div className={styles.grid}>
-          {OPTIONAL_KEYS.map((key) => {
-            const isSelected = selected.includes(key);
-            return (
-              <div
-                key={key}
-                onClick={() => toggleSubject(key)}
-                className={`${styles.optionalCard} ${isSelected ? styles.selected : ""}`}
-              >
-                <SubjectIcon subjectKey={key} />
-                <div className={styles.optionalInfo}>
-                  <div className={styles.optionalLabel}>
-                    {SUBJECT_LABELS[key]}
-                  </div>
-                  <div className={styles.questionCount}>10 questions</div>
-                </div>
-                {isSelected && <span className={styles.checkmark}><CheckIcon /></span>}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Progress ring */}
-        <div className={styles.progressArea}>
-          <div className={styles.progressRing}>
-            <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
-              <circle
-                cx="50" cy="50" r="40" fill="none" stroke="#2563eb" strokeWidth="8"
-                strokeDasharray={circumference}
-                strokeDashoffset={circumference - (progress / 100) * circumference}
-                strokeLinecap="round"
-                transform="rotate(-90 50 50)"
-                className={styles.progressCircle}
-              />
-              <text x="50" y="56" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1f2937">
-                {selected.length}/3
-              </text>
+        {/* Contact Information */}
+        <div className={styles.contactCard}>
+          <div className={styles.contactIcon}>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect>
+              <line x1="2" y1="6" x2="12" y2="14" stroke="white" strokeWidth="2.5"></line>
+              <line x1="22" y1="6" x2="12" y2="14" stroke="white" strokeWidth="2.5"></line>
+              <path d="M22 18l-5-4" stroke="white" strokeWidth="2.5" strokeLinecap="round"></path>
             </svg>
           </div>
-          <div className={styles.progressText}>
-            <span>
-              {selected.length === 0
-                ? "Select 3 optional subjects"
-                : `${selected.length} of 3 optional selected`}
-            </span>
-            {selected.length === 3 && studentName.trim() !== "" && (
-              <span className={styles.readyBadge}>✅ Ready!</span>
-            )}
-            {studentName.trim() === "" && (
-              <span className={styles.nameWarning}>Enter your name to start</span>
-            )}
+          <div className={styles.contactInfo}>
+            <span className={styles.contactName}>Taiwo Abraham Feranmi</span>
+            <span className={styles.contactPhone}>📞 09164971382</span>
           </div>
         </div>
 
-        {/* Start button */}
-        <button
-          onClick={startExam}
-          disabled={!isReady}
-          className={`${styles.startButton} ${isReady ? styles.active : ""}`}
-        >
-          {isReady ? (
-            <>
-              <span>Begin {TOTAL_QUESTIONS}-Question CBT</span>
-              <span className={styles.arrow}><ArrowIcon /></span>
-            </>
-          ) : (
-            <span>
-              {studentName.trim() === ""
-                ? "Enter your name first"
-                : `Select ${3 - selected.length} more subject${3 - selected.length !== 1 ? "s" : ""}`}
-            </span>
-          )}
-        </button>
-
-        <p className={styles.footer}>
-          Aptitude is compulsory. Total: 4 subjects × 10 questions = {TOTAL_QUESTIONS} questions.
+        <p className={styles.footerCopyright}>
+          © {new Date().getFullYear()} OAU CBT Prep. All rights reserved.
         </p>
       </div>
     </div>
