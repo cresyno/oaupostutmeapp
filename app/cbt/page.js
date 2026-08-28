@@ -1,297 +1,256 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { questions } from "../../data/questions";
-import { createExam, scoreExam } from "../../lib/exam";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import styles from "./page.module.css";
+
+// IMPORT EACH SUBJECT'S QUESTION BANK - USING RELATIVE PATHS
+import aptitudeQuestions from "../../data/questions/aptitude";
+import mathematicsQuestions from "../../data/questions/mathematics";
+import chemistryQuestions from "../../data/questions/chemistry";
+import physicsQuestions from "../../data/questions/physics";
+import biologyQuestions from "../../data/questions/biology";
+
+// Map subject keys to their question array and display name
+const SUBJECT_DATA = {
+  aptitude: {
+    name: "Aptitude",
+    questions: aptitudeQuestions,
+  },
+  mathematics: {
+    name: "Mathematics",
+    questions: mathematicsQuestions,
+  },
+  chemistry: {
+    name: "Chemistry",
+    questions: chemistryQuestions,
+  },
+  physics: {
+    name: "Physics",
+    questions: physicsQuestions,
+  },
+  biology: {
+    name: "Biology",
+    questions: biologyQuestions,
+  },
+};
+
+const QUESTIONS_PER_SUBJECT = 10;
 
 export default function CBTPage() {
-  const [subjects, setSubjects] = useState(null);
-  const [exam, setExam] = useState(null);
-  const [current, setCurrent] = useState(0);
+  const router = useRouter();
+  const [subjects, setSubjects] = useState([]);
+  const [examQuestions, setExamQuestions] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [timeLeft, setTimeLeft] = useState(45 * 60);
   const [submitted, setSubmitted] = useState(false);
 
+  // Load subjects from localStorage
   useEffect(() => {
+    const saved = localStorage.getItem("oau-cbt-subjects");
+    if (!saved) {
+      router.push("/");
+      return;
+    }
     try {
-      const saved = localStorage.getItem("oau-cbt-subjects");
-
-      if (!saved) {
-        setSubjects([]);
+      const parsed = JSON.parse(saved);
+      if (parsed.length !== 4 || !parsed.includes("aptitude")) {
+        router.push("/");
         return;
       }
-
-      const parsed = JSON.parse(saved);
       setSubjects(parsed);
-    } catch {
-      setSubjects([]);
+    } catch (_) {
+      router.push("/");
     }
-  }, []);
+  }, [router]);
 
+  // Build exam from questions
   useEffect(() => {
-    if (!subjects || subjects.length !== 4) return;
+    if (subjects.length !== 4) return;
 
-    try {
-      const generatedExam = createExam(questions, subjects);
-      setExam(generatedExam);
-    } catch (error) {
-      console.error(error);
-      setExam([]);
+    let selectedQuestions = [];
+    for (const subjectKey of subjects) {
+      const data = SUBJECT_DATA[subjectKey];
+      if (!data) continue;
+
+      const pool = data.questions;
+      if (!Array.isArray(pool) || pool.length === 0) {
+        console.warn(`No questions found for ${data.name}`);
+        continue;
+      }
+
+      // Enrich questions with subject info
+      const enriched = pool.map((q) => ({
+        ...q,
+        subject: data.name,
+        subjectKey: subjectKey,
+      }));
+
+      // Shuffle and pick 10
+      const shuffled = [...enriched].sort(() => Math.random() - 0.5);
+      const picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
+      selectedQuestions = [...selectedQuestions, ...picked];
     }
+
+    // Shuffle overall order
+    selectedQuestions.sort(() => Math.random() - 0.5);
+    setExamQuestions(selectedQuestions);
   }, [subjects]);
 
+  // Timer
   useEffect(() => {
-    if (!exam || submitted) return;
-
+    if (examQuestions.length === 0 || submitted) return;
     const timer = setInterval(() => {
-      setTimeLeft((time) => {
-        if (time <= 1) {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
           clearInterval(timer);
           setSubmitted(true);
           return 0;
         }
-
-        return time - 1;
+        return prev - 1;
       });
     }, 1000);
-
     return () => clearInterval(timer);
-  }, [exam, submitted]);
+  }, [examQuestions, submitted]);
 
-  if (subjects === null || exam === null) {
-    return (
-      <main className="loading-page">
-        <h1>Preparing your CBT...</h1>
-        <p>Please wait.</p>
-      </main>
-    );
-  }
-
-  if (subjects.length !== 4 || exam.length !== 40) {
-    return (
-      <main className="error-page">
-        <h1>CBT setup incomplete</h1>
-        <p>
-          Please return to the subject selection page and
-          select exactly 3 optional subjects.
-        </p>
-
-        <button
-          className="primary-button"
-          onClick={() => {
-            localStorage.removeItem("oau-cbt-subjects");
-            window.location.href = "/";
-          }}
-        >
-          Choose Subjects
-        </button>
-      </main>
-    );
-  }
-
-  const question = exam[current];
-
-  const answeredCount = Object.keys(answers).length;
-  const minutes = Math.floor(timeLeft / 60)
-    .toString()
-    .padStart(2, "0");
-  const seconds = (timeLeft % 60)
-    .toString()
-    .padStart(2, "0");
-
-  function chooseAnswer(index) {
-    if (submitted) return;
-
-    setAnswers((previous) => ({
-      ...previous,
-      [question.id]: index,
-    }));
-  }
-
-  function submitExam() {
-    setSubmitted(true);
-
-    const score = scoreExam(exam, answers);
-
-    localStorage.setItem(
-      "oau-cbt-last-result",
-      JSON.stringify({
-        score,
+  // Auto-submit when time runs out
+  useEffect(() => {
+    if (submitted && examQuestions.length > 0) {
+      let correct = 0;
+      const total = examQuestions.length;
+      for (let i = 0; i < total; i++) {
+        if (answers[i] === examQuestions[i].answer) correct++;
+      }
+      const result = {
+        correct,
+        total,
         answers,
-        exam,
+        questions: examQuestions,
         subjects,
-        completedAt: new Date().toISOString(),
-      })
+        timestamp: new Date().toISOString(),
+      };
+      localStorage.setItem("oau-cbt-result", JSON.stringify(result));
+      router.push("/results");
+    }
+  }, [submitted, examQuestions, answers, subjects, router]);
+
+  if (subjects.length === 0 || examQuestions.length === 0) {
+    return (
+      <div className={styles.loading}>
+        <p>Loading your exam...</p>
+      </div>
     );
   }
 
-  if (submitted) {
-    const score = scoreExam(exam, answers);
+  const currentQuestion = examQuestions[currentIndex];
+  const totalQuestions = examQuestions.length;
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  const answeredCount = Object.keys(answers).length;
 
-    return (
-      <main className="result-page">
-        <div className="result-card">
-          <p className="eyebrow">EXAM COMPLETED</p>
+  const handleAnswer = (idx) => {
+    if (submitted) return;
+    setAnswers((prev) => ({ ...prev, [currentIndex]: idx }));
+  };
 
-          <h1>
-            {score} <span>/ 40</span>
-          </h1>
+  const handleSubmit = () => {
+    if (window.confirm("Are you sure you want to submit your exam?")) {
+      setSubmitted(true);
+    }
+  };
 
-          <p className="percentage">
-            {Math.round((score / 40) * 100)}%
-          </p>
+  const subjectDisplay = currentQuestion.subject || "General";
 
-          <div className="subject-results">
-            {subjects.map((subject) => {
-              const subjectQuestions = exam.filter(
-                (item) => item.subject === subject
-              );
+  return (
+    <div className={styles.page}>
+      <div className={styles.container}>
+        {/* Header */}
+        <div className={styles.header}>
+          <div>
+            <div className={styles.title}>OAU POST-UTME CBT</div>
+            <div className={styles.questionCounter}>
+              Question {currentIndex + 1} of {totalQuestions}
+            </div>
+          </div>
+          <div className={styles.timer}>
+            <span className={styles.timerIcon}>⏱️</span>
+            <span className={styles.timerText}>
+              {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
+            </span>
+            <span className={styles.answeredCount}>
+              {answeredCount}/{totalQuestions}
+            </span>
+          </div>
+        </div>
 
-              const subjectScore = subjectQuestions.reduce(
-                (total, item) =>
-                  total +
-                  (answers[item.id] === item.answer ? 1 : 0),
-                0
-              );
+        {/* Question */}
+        <div className={styles.questionCard}>
+          <div className={styles.subjectTag}>{subjectDisplay}</div>
+          <div className={styles.questionText}>{currentQuestion.question}</div>
+          <div className={styles.options}>
+            {currentQuestion.options.map((option, idx) => (
+              <div
+                key={idx}
+                onClick={() => handleAnswer(idx)}
+                className={`${styles.option} ${
+                  answers[currentIndex] === idx ? styles.selectedOption : ""
+                }`}
+              >
+                <span className={styles.optionLetter}>
+                  {String.fromCharCode(65 + idx)}
+                </span>
+                <span>{option}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
+        {/* Navigation */}
+        <div className={styles.navigation}>
+          <button
+            onClick={() => setCurrentIndex((prev) => prev - 1)}
+            disabled={currentIndex === 0}
+            className={styles.navButton}
+          >
+            ← Previous
+          </button>
+          {currentIndex < totalQuestions - 1 ? (
+            <button
+              onClick={() => setCurrentIndex((prev) => prev + 1)}
+              className={styles.navButton}
+            >
+              Next →
+            </button>
+          ) : (
+            <button onClick={handleSubmit} className={styles.submitButton}>
+              Submit Exam
+            </button>
+          )}
+        </div>
+
+        {/* Question Palette */}
+        <div className={styles.palette}>
+          <div className={styles.paletteLabel}>Question Navigator</div>
+          <div className={styles.paletteGrid}>
+            {examQuestions.map((_, idx) => {
+              const isAnswered = answers[idx] !== undefined;
+              const isCurrent = idx === currentIndex;
               return (
-                <div
-                  className="subject-result"
-                  key={subject}
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`${styles.paletteItem} ${
+                    isAnswered ? styles.paletteAnswered : ""
+                  } ${isCurrent ? styles.paletteCurrent : ""}`}
                 >
-                  <span>{subject}</span>
-                  <strong>
-                    {subjectScore}/10
-                  </strong>
-                </div>
+                  {idx + 1}
+                </button>
               );
             })}
           </div>
-
-          <button
-            className="primary-button"
-            onClick={() => {
-              localStorage.removeItem("oau-cbt-subjects");
-              window.location.href = "/";
-            }}
-          >
-            Start New CBT
-          </button>
         </div>
-      </main>
-    );
-  }
-
-  return (
-    <main className="cbt-page">
-      <header className="cbt-header">
-        <div>
-          <p className="brand">OAU POST-UTME CBT</p>
-          <span>
-            Question {current + 1} of 40
-          </span>
-        </div>
-
-        <div className="timer">
-          {minutes}:{seconds}
-        </div>
-      </header>
-
-      <section className="progress-section">
-        <div className="progress-info">
-          <span>{answeredCount}/40 answered</span>
-          <span>{question.subject}</span>
-        </div>
-
-        <div className="progress-track">
-          <div
-            className="progress-bar"
-            style={{
-              width: `${((current + 1) / 40) * 100}%`,
-            }}
-          />
-        </div>
-      </section>
-
-      <section className="question-card">
-        <p className="question-number">
-          QUESTION{" "}
-          {String(current + 1).padStart(2, "0")}
-        </p>
-
-        <h1>{question.question}</h1>
-
-        <div className="options">
-          {question.options.map((option, index) => {
-            const selected =
-              answers[question.id] === index;
-
-            return (
-              <button
-                key={index}
-                className={`option ${
-                  selected ? "selected" : ""
-                }`}
-                onClick={() => chooseAnswer(index)}
-              >
-                <span className="option-letter">
-                  {String.fromCharCode(65 + index)}
-                </span>
-
-                <span>{option}</span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
-
-      <nav className="question-navigation">
-        <button
-          className="secondary-button"
-          disabled={current === 0}
-          onClick={() =>
-            setCurrent((value) => value - 1)
-          }
-        >
-          Previous
-        </button>
-
-        {current < 39 ? (
-          <button
-            className="primary-button"
-            onClick={() =>
-              setCurrent((value) => value + 1)
-            }
-          >
-            Next
-          </button>
-        ) : (
-          <button
-            className="submit-button"
-            onClick={submitExam}
-          >
-            Submit Exam
-          </button>
-        )}
-      </nav>
-
-      <section className="question-grid">
-        {exam.map((item, index) => (
-          <button
-            key={item.id}
-            className={[
-              "question-dot",
-              index === current ? "current" : "",
-              answers[item.id] !== undefined
-                ? "answered"
-                : "",
-            ].join(" ")}
-            onClick={() => setCurrent(index)}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </section>
-    </main>
+      </div>
+    </div>
   );
-                    }
+      }
