@@ -3,6 +3,42 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
+import katex from "katex";
+import "katex/dist/katex.min.css";
+
+// Reusable Math Renderer (so math doesn't crash on results page too)
+function MathRenderer({ text }) {
+  if (!text) return null;
+  const parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
+  return (
+    <>
+      {parts.map((part, index) => {
+        const isMath =
+          (part.startsWith("$") && part.endsWith("$")) ||
+          (part.startsWith("\\(") && part.endsWith("\\)"));
+        if (isMath) {
+          try {
+            let mathString = part;
+            if (part.startsWith("$") && part.endsWith("$")) {
+              mathString = part.slice(1, -1);
+            } else if (part.startsWith("\\(") && part.endsWith("\\)")) {
+              mathString = part.slice(2, -2);
+            }
+            const html = katex.renderToString(mathString, {
+              throwOnError: false,
+              displayMode: false,
+            });
+            return <span key={index} dangerouslySetInnerHTML={{ __html: html }} />;
+          } catch {
+            return <span key={index}>{part}</span>;
+          }
+        } else {
+          return <span key={index}>{part}</span>;
+        }
+      })}
+    </>
+  );
+}
 
 export default function ResultsPage() {
   const router = useRouter();
@@ -50,36 +86,13 @@ export default function ResultsPage() {
         </div>
 
         <div className={styles.scoreCard}>
-          <div className={styles.scoreCircle}>
-            <svg viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#e5e7eb" strokeWidth="8" />
-              <circle
-                cx="60"
-                cy="60"
-                r="50"
-                fill="none"
-                stroke={percentage >= 70 ? "#22c55e" : percentage >= 50 ? "#eab308" : "#ef4444"}
-                strokeWidth="8"
-                strokeDasharray={2 * Math.PI * 50}
-                strokeDashoffset={2 * Math.PI * 50 * (1 - percentage / 100)}
-                strokeLinecap="round"
-                transform="rotate(-90 60 60)"
-                className={styles.scoreCircleProgress}
-              />
-              <text x="60" y="68" textAnchor="middle" fontSize="28" fontWeight="bold" fill="#1f2937">
-                {percentage}%
-              </text>
-            </svg>
+          <div className={styles.scoreBig}>
+            {correct} / {total}
           </div>
-          <div className={styles.scoreDetails}>
-            <div className={styles.scoreBig}>
-              {correct} / {total}
-            </div>
-            <div className={styles.scoreStats}>
-              <span className={styles.scoreCorrect}>✅ {correct} Correct</span>
-              <span className={styles.scoreIncorrect}>❌ {incorrect} Incorrect</span>
-              <span className={styles.scoreAttempted}>📝 {attempted} Attempted</span>
-            </div>
+          <div className={styles.scoreStats}>
+            <span className={styles.scoreCorrect}>✅ {correct} Correct</span>
+            <span className={styles.scoreIncorrect}>❌ {incorrect} Incorrect</span>
+            <span className={styles.scoreAttempted}>📝 {attempted} Attempted</span>
           </div>
         </div>
 
@@ -95,7 +108,62 @@ export default function ResultsPage() {
         <div className={styles.footer}>
           <p>Review your answers below to improve your score.</p>
         </div>
+
+        {/* -------- New Answer Review Section -------- */}
+        <div className={styles.reviewSection}>
+          <h2>Detailed Answer Review</h2>
+          {questions.map((q, index) => {
+            const userAnswer = answers[index];
+            const correctAnswer = q.answer;
+            const isCorrect = userAnswer === correctAnswer;
+
+            return (
+              <div
+                key={index}
+                className={styles.reviewCard}
+                style={{
+                  borderLeft: isCorrect ? "5px solid #22c55e" : "5px solid #ef4444"
+                }}
+              >
+                <div className={styles.reviewHeader}>
+                  <span className={styles.reviewNumber}>Q{index + 1}</span>
+                  <span className={isCorrect ? styles.reviewCorrect : styles.reviewIncorrect}>
+                    {isCorrect ? "Correct" : "Wrong"}
+                  </span>
+                </div>
+
+                <div className={styles.reviewQuestion}>
+                  <MathRenderer text={q.question} />
+                </div>
+
+                <div className={styles.reviewOptions}>
+                  {q.options.map((opt, optIndex) => {
+                    let optionClass = styles.reviewOption;
+                    if (optIndex === correctAnswer) {
+                      optionClass += " " + styles.reviewOptionCorrect;
+                    } else if (optIndex === userAnswer) {
+                      optionClass += " " + styles.reviewOptionWrong;
+                    }
+                    return (
+                      <div key={optIndex} className={optionClass}>
+                        <span>{String.fromCharCode(65 + optIndex)}. </span>
+                        <MathRenderer text={opt} />
+                        {optIndex === userAnswer && <span> (Your Answer)</span>}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {q.explanation && (
+                  <div className={styles.reviewExplanation}>
+                    <strong>Explanation:</strong> <MathRenderer text={q.explanation} />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
-    }
+      }
