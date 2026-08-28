@@ -1,301 +1,332 @@
 export const biologyQuestions = [
-  {
-    id: "BIO-001",
-    subject: "Biology",
-    question:
-      "A plant cell is placed in a concentrated sucrose solution. What is most likely to happen?",
-    options: [
-      "The cell becomes turgid",
-      "The cell undergoes plasmolysis",
-      "The cell bursts",
-      "There is no movement of water"
-    ],
-    answer: 1,
-    explanation:
-      "The concentrated solution has a lower water potential than the cell sap, so water leaves the cell by osmosis, causing plasmolysis."
-  },
+  // ---------- SECTION 1: CELL BIOLOGY & ORGANIZATION (001-020) ----------
+  { id: "BIO-001", subject: "Biology", question: "Which organelle is responsible for the modification and packaging of proteins for secretion?", options: ["Ribosome", "Golgi apparatus", "Mitochondrion", "Lysosome"], answer: 1, explanation: "The Golgi apparatus modifies, sorts, and packages proteins from the endoplasmic reticulum into vesicles for transport to other parts of the cell or outside." },
+  { id: "BIO-002", subject: "Biology", question: "A plant cell is placed in a concentrated sucrose solution. What is most likely to happen?", options: ["The cell becomes turgid", "The cell undergoes plasmolysis", "The cell bursts", "There is no movement of water"], answer: 1, explanation: "The concentrated solution has a lower water potential than the cell sap, so water leaves the cell by osmosis, causing the cell membrane to pull away from the cell wall (plasmolysis)." },
+  { id: "BIO-003", subject: "Biology", question: "Which organelle is the site of aerobic respiration in eukaryotic cells?", options: ["Nucleus", "Ribosome", "Mitochondrion", "Chloroplast"], answer: 2, explanation: "The mitochondrion is the powerhouse of the cell, carrying out aerobic respiration to generate ATP via the electron transport chain and Krebs cycle." },
+  { id: "BIO-004", subject: "Biology", question: "Which of the following is a difference between plant and animal cells?", options: ["Animal cells have chloroplasts", "Plant cells have a large central vacuole", "Animal cells have a cell wall", "Plant cells lack a nucleus"], answer: 1, explanation: "Plant cells typically have a large central vacuole for storage and maintaining turgor pressure, a cell wall, and chloroplasts, which are absent in animal cells." },
+  { id: "BIO-005", subject: "Biology", question: "The site of protein synthesis in a cell is the:", options: ["Golgi apparatus", "Ribosome", "Lysosome", "Vacuole"], answer: 1, explanation: "Ribosomes are the sites of protein synthesis, where mRNA is translated into a sequence of amino acids." },
+  { id: "BIO-006", subject: "Biology", question: "During mitosis, the stage where chromosomes align at the equator is called:", options: ["Prophase", "Metaphase", "Anaphase", "Telophase"], answer: 1, explanation: "In metaphase, the replicated chromosomes line up at the cell's equator (metaphase plate) before being separated in anaphase." },
+  { id: "BIO-007", subject: "Biology", question: "Which of the following is a function of the lysosome?", options: ["Photosynthesis", "Intracellular digestion", "ATP production", "Protein synthesis"], answer: 1, explanation: "Lysosomes contain hydrolytic enzymes that break down waste materials, cellular debris, and foreign particles within the cell." },
+  { id: "BIO-008", subject: "Biology", question: "The movement of water molecules across a semi-permeable membrane from a dilute to a concentrated solution is called:", options: ["Diffusion", "Osmosis", "Active transport", "Filtration"], answer: 1, explanation: "Osmosis is the passive movement of water molecules across a selectively permeable membrane from a region of higher water potential to a region of lower water potential." },
+  { id: "BIO-009", subject: "Biology", question: "Which structure is found in both prokaryotic and eukaryotic cells?", options: ["Nucleus", "Mitochondrion", "Ribosome", "Chloroplast"], answer: 2, explanation: "Ribosomes are the common organelles in all cells, performing the essential function of protein synthesis." },
+  { id: "BIO-010", subject: "Biology", question: "The process of cell division that produces two identical daughter cells is called:", options: ["Meiosis", "Mitosis", "Binary fission", "Fertilization"], answer: 1, explanation: "Mitosis is the type of cell division that produces two genetically identical daughter cells with the same number of chromosomes as the parent cell." },
+  { id: "BIO-011", subject: "Biology", question: "Which of the following is NOT a characteristic of living things?", options: ["Growth", "Reproduction", "Movement", "Stability"], answer: 3, explanation: "Living things are characterized by growth, reproduction, movement, nutrition, and response to stimuli. 'Stability' is not a primary characteristic of living things." },
+  { id: "BIO-012", subject: "Biology", question: "In which stage of mitosis do the sister chromatids separate and move to opposite poles?", options: ["Prophase", "Metaphase", "Anaphase", "Telophase"], answer: 2, explanation: "In anaphase, the centromeres split, and the sister chromatids are pulled to opposite poles by the spindle fibers." },
+  { id: "BIO-013", subject: "Biology", question: "What is the primary function of the chloroplast?", options: ["To synthesize proteins", "To perform aerobic respiration", "To carry out photosynthesis", "To store waste materials"], answer: 2, explanation: "Chloroplasts contain chlorophyll, which captures light energy for the process of photosynthesis to convert carbon dioxide and water into glucose." },
+  { id: "BIO-014", subject: "Biology", question: "Enzymes are biological catalysts that function by:", options: ["Increasing the activation energy of a reaction", "Decreasing the activation energy of a reaction", "Being consumed in the reaction", "Changing the final product of a reaction"], answer: 1, explanation: "Enzymes lower the activation energy required for a reaction, thereby increasing the rate at which the reaction occurs without being consumed." },
+  { id: "BIO-015", subject: "Biology", question: "Which of the following cell structures controls all cellular activities and contains genetic material?", options: ["Cell membrane", "Cytoplasm", "Nucleus", "Ribosome"], answer: 2, explanation: "The nucleus houses the cell's genetic material (DNA) and controls cellular activities such as growth, metabolism, and reproduction." },
+  { id: "BIO-016", subject: "Biology", question: "A cell with many mitochondria is most likely to be involved in which process?", options: ["Photosynthesis", "Active transport", "Protein synthesis", "Digestion"], answer: 1, explanation: "Active transport requires energy in the form of ATP, which is produced by mitochondria. Cells with high energy demands have more mitochondria." },
+  { id: "BIO-017", subject: "Biology", question: "During meiosis, crossing over occurs in which stage?", options: ["Prophase I", "Metaphase I", "Anaphase II", "Telophase II"], answer: 0, explanation: "Crossing over, the exchange of genetic material between homologous chromosomes, occurs during prophase I of meiosis, creating genetic variation." },
+  { id: "BIO-018", subject: "Biology", question: "The process by which a cell loses water and shrinks in a hypertonic solution is called:", options: ["Plasmolysis", "Turgidity", "Lysis", "Osmoregulation"], answer: 0, explanation: "Plasmolysis is the process in which a plant cell loses water and the cell membrane pulls away from the cell wall in a hypertonic environment." },
+  { id: "BIO-019", subject: "Biology", question: "Which of the following is a function of the cell membrane?", options: ["Regulating the movement of substances into and out of the cell", "Carrying out photosynthesis", "Storing genetic information", "Synthesizing proteins"], answer: 0, explanation: "The cell membrane is selectively permeable, controlling which substances enter and exit the cell, maintaining homeostasis." },
+  { id: "BIO-020", subject: "Biology", question: "Cytokinesis in plant cells is facilitated by the formation of a:", options: ["Cleavage furrow", "Cell plate", "Centriole pair", "Spindle fiber"], answer: 1, explanation: "In plant cells, cytokinesis involves the formation of a cell plate at the equator, which develops into a new cell wall separating the two daughter cells." },
 
-  {
-    id: "BIO-002",
-    subject: "Biology",
-    question:
-      "Which feature of the small intestine is most directly responsible for its high efficiency in absorbing digested nutrients?",
-    options: [
-      "Presence of bile",
-      "Large surface area provided by villi and microvilli",
-      "Production of hydrochloric acid",
-      "Presence of red blood cells in the lumen"
-    ],
-    answer: 1,
-    explanation:
-      "Villi and microvilli greatly increase the absorptive surface area. Their thin epithelium and rich blood supply further facilitate absorption."
-  },
+  // ---------- SECTION 2: GENETICS & HEREDITY (021-040) ----------
+  { id: "BIO-021", subject: "Biology", question: "A heterozygous tall pea plant is crossed with a dwarf plant. If tallness is dominant, what proportion of the offspring is expected to be dwarf?", options: ["0%", "25%", "50%", "75%"], answer: 2, explanation: "The cross is Tt × tt. The possible offspring are Tt (tall) and tt (dwarf) in a 1:1 ratio, meaning 50% of the offspring are expected to be dwarf." },
+  { id: "BIO-022", subject: "Biology", question: "The unit of heredity that determines a particular characteristic is called a:", options: ["Chromosome", "Gene", "Protein", "Allele"], answer: 1, explanation: "A gene is the basic unit of heredity—a segment of DNA that codes for a specific protein and determines a particular characteristic." },
+  { id: "BIO-023", subject: "Biology", question: "If a man with blood group A (IAi) and a woman with blood group B (IBi) have a child, what is the probability that the child has blood group O?", options: ["0%", "25%", "50%", "75%"], answer: 1, explanation: "The cross is IAi × IBi. The possible genotypes are IAIB (AB), IAi (A), IBi (B), and ii (O), each with a 25% probability." },
+  { id: "BIO-024", subject: "Biology", question: "Which of the following is a sex-linked characteristic?", options: ["Blood group", "Sickle cell anemia", "Color blindness", "Tongue rolling"], answer: 2, explanation: "Color blindness is a sex-linked trait carried on the X chromosome, affecting males more frequently than females." },
+  { id: "BIO-025", subject: "Biology", question: "The process by which genetic information is copied from DNA to mRNA is called:", options: ["Translation", "Transcription", "Replication", "Mutation"], answer: 1, explanation: "Transcription is the process where a segment of DNA is used as a template to synthesize a complementary strand of messenger RNA (mRNA)." },
+  { id: "BIO-026", subject: "Biology", question: "Mutations can be caused by:", options: ["Ionizing radiation", "Certain chemicals", "Errors in DNA replication", "All of the above"], answer: 3, explanation: "Mutations can be caused by various factors including radiation (UV, X-rays), chemicals (mutagens), and errors during DNA replication." },
+  { id: "BIO-027", subject: "Biology", question: "In Mendelian genetics, the phenotype of an organism refers to its:", options: ["Genetic makeup", "Observable traits", "Chromosome number", "Species"], answer: 1, explanation: "The phenotype is the observable physical or biochemical characteristics of an organism, determined by the genotype and environmental factors." },
+  { id: "BIO-028", subject: "Biology", question: "Which of the following is the process by which the number of chromosomes is halved to produce gametes?", options: ["Mitosis", "Meiosis", "Binary fission", "Cloning"], answer: 1, explanation: "Meiosis is a type of cell division that reduces the number of chromosomes by half, producing four haploid gametes (sperm and eggs)." },
+  { id: "BIO-029", subject: "Biology", question: "The physical location of a specific gene on a chromosome is called its:", options: ["Locus", "Allele", "Phenotype", "Genotype"], answer: 0, explanation: "The locus is the specific position of a gene on a chromosome." },
+  { id: "BIO-030", subject: "Biology", question: "Which of the following is an example of a homozygous dominant genotype for the trait of tallness (T)?", options: ["Tt", "tt", "TT", "tT"], answer: 2, explanation: "Homozygous dominant means having two identical dominant alleles for the trait, which is represented as TT." },
+  { id: "BIO-031", subject: "Biology", question: "The process of DNA replication occurs during which phase of the cell cycle?", options: ["G1 phase", "S phase", "G2 phase", "M phase"], answer: 1, explanation: "DNA replication occurs during the S (synthesis) phase of interphase, before the cell divides." },
+  { id: "BIO-032", subject: "Biology", question: "Which of the following is a Mendelian ratio for a dihybrid cross?", options: ["3:1", "9:3:3:1", "1:1", "1:2:1"], answer: 1, explanation: "The classic Mendelian ratio for a dihybrid cross (two traits) is 9:3:3:1, representing the phenotypic ratio of the offspring." },
+  { id: "BIO-033", subject: "Biology", question: "What is the genetic disorder caused by the presence of three copies of chromosome 21?", options: ["Turner syndrome", "Klinefelter syndrome", "Down syndrome", "Sickle cell anemia"], answer: 2, explanation: "Down syndrome (trisomy 21) is caused by an extra copy of chromosome 21, leading to physical and intellectual disabilities." },
+  { id: "BIO-034", subject: "Biology", question: "The molecule that carries genetic information from one generation to the next is:", options: ["Protein", "RNA", "DNA", "Lipid"], answer: 2, explanation: "DNA (deoxyribonucleic acid) is the hereditary molecule that carries genetic instructions for the development, functioning, and reproduction of all living organisms." },
+  { id: "BIO-035", subject: "Biology", question: "Genetic variation in a population is primarily generated by:", options: ["Mutation", "Crossing over", "Random fertilization", "All of the above"], answer: 3, explanation: "Genetic variation arises from mutations, crossing over during meiosis, and the random fertilization of gametes." },
+  { id: "BIO-036", subject: "Biology", question: "What is the genotype of a person with blood group O?", options: ["IAIA", "IAi", "IBi", "ii"], answer: 3, explanation: "Blood group O is determined by two recessive alleles, so the genotype is ii." },
+  { id: "BIO-037", subject: "Biology", question: "Which of the following bases is found ONLY in RNA, and not in DNA?", options: ["Adenine", "Thymine", "Guanine", "Uracil"], answer: 3, explanation: "Uracil (U) is the nitrogenous base that replaces Thymine (T) in RNA, pairing with Adenine (A) during transcription." },
+  { id: "BIO-038", subject: "Biology", question: "A child inherits an allele from:", options: ["Only the father", "Only the mother", "Both parents", "Neither parent"], answer: 2, explanation: "A child receives one allele for each gene from each parent, giving them two alleles per gene." },
+  { id: "BIO-039", subject: "Biology", question: "A codon consists of how many nitrogenous bases?", options: ["2", "3", "4", "6"], answer: 1, explanation: "A codon is a sequence of three nitrogenous bases on mRNA that codes for one specific amino acid." },
+  { id: "BIO-040", subject: "Biology", question: "What is the correct order of the cell cycle?", options: ["G2, G1, S, M", "G1, S, G2, M", "M, G1, S, G2", "S, G1, G2, M"], answer: 1, explanation: "The cell cycle progresses in the order: G1 (growth), S (DNA synthesis), G2 (preparation for division), and M (mitosis)." },
 
-  {
-    id: "BIO-003",
-    subject: "Biology",
-    question:
-      "A heterozygous tall pea plant is crossed with a dwarf plant. If tallness is dominant, what proportion of the offspring is expected to be dwarf?",
-    options: ["0%", "25%", "50%", "75%"],
-    answer: 2,
-    explanation:
-      "The cross is Tt × tt. The offspring are expected to be 50% Tt (tall) and 50% tt (dwarf)."
-  },
+  // ---------- SECTION 3: DIGESTION & NUTRITION (041-060) ----------
+  { id: "BIO-041", subject: "Biology", question: "Which enzyme begins the digestion of starch in the human digestive system?", options: ["Pepsin", "Lipase", "Amylase", "Trypsin"], answer: 2, explanation: "Salivary amylase (ptyalin) is present in saliva and begins the hydrolysis of starch into smaller carbohydrates in the mouth." },
+  { id: "BIO-042", subject: "Biology", question: "Which feature of the small intestine is most directly responsible for its high efficiency in absorbing digested nutrients?", options: ["Presence of bile", "Large surface area provided by villi and microvilli", "Production of hydrochloric acid", "Presence of red blood cells in the lumen"], answer: 1, explanation: "Villi and microvilli greatly increase the absorptive surface area of the small intestine, allowing efficient absorption of digested nutrients." },
+  { id: "BIO-043", subject: "Biology", question: "The digestion of proteins begins in which organ?", options: ["Mouth", "Stomach", "Small intestine", "Large intestine"], answer: 1, explanation: "Protein digestion begins in the stomach, where the enzyme pepsin breaks down proteins into smaller peptides." },
+  { id: "BIO-044", subject: "Biology", question: "Bile, which emulsifies fats, is produced by the:", options: ["Stomach", "Pancreas", "Liver", "Gall bladder"], answer: 2, explanation: "Bile is produced by the liver and stored in the gall bladder. It emulsifies fats, increasing their surface area for digestion by enzymes." },
+  { id: "BIO-045", subject: "Biology", question: "What is the primary function of the large intestine?", options: ["Absorption of nutrients", "Absorption of water", "Digestion of proteins", "Production of bile"], answer: 1, explanation: "The large intestine absorbs water and electrolytes from the undigested food, forming feces." },
+  { id: "BIO-046", subject: "Biology", question: "Vitamins are essential for the body because they:", options: ["Provide energy", "Act as coenzymes in metabolic reactions", "Build muscles", "Are structural components of cells"], answer: 1, explanation: "Many vitamins act as coenzymes, helping enzymes catalyze essential biochemical reactions in the body." },
+  { id: "BIO-047", subject: "Biology", question: "The disease caused by the deficiency of Vitamin C is:", options: ["Rickets", "Night blindness", "Scurvy", "Beriberi"], answer: 2, explanation: "Scurvy is caused by a deficiency of Vitamin C (ascorbic acid), leading to bleeding gums and poor wound healing." },
+  { id: "BIO-048", subject: "Biology", question: "Which of the following is a function of hydrochloric acid in the stomach?", options: ["Digest proteins", "Emulsify fats", "Activate pepsinogen and kill bacteria", "Absorb nutrients"], answer: 2, explanation: "Hydrochloric acid creates an acidic environment that activates pepsinogen to pepsin and helps kill harmful bacteria in the stomach." },
+  { id: "BIO-049", subject: "Biology", question: "What is the main site of nutrient absorption in the human digestive system?", options: ["Stomach", "Large intestine", "Small intestine", "Esophagus"], answer: 2, explanation: "The small intestine is the primary site for the absorption of digested nutrients into the bloodstream." },
+  { id: "BIO-050", subject: "Biology", question: "Emulsification of fats in the digestive system is achieved by:", options: ["Pepsin", "Bile", "Amylase", "Mucus"], answer: 1, explanation: "Bile salts emulsify fats, breaking them into smaller droplets to increase the surface area for lipase action." },
+  { id: "BIO-051", subject: "Biology", question: "The process by which undigested food is expelled from the body is called:", options: ["Ingestion", "Egestion", "Absorption", "Assimilation"], answer: 1, explanation: "Egestion is the process of removing undigested waste material from the body." },
+  { id: "BIO-052", subject: "Biology", question: "Which of the following is a result of protein deficiency in children?", options: ["Marasmus", "Kwashiorkor", "Anaemia", "Rickets"], answer: 1, explanation: "Kwashiorkor is a form of severe protein malnutrition, characterized by swelling (edema), usually seen in children." },
+  { id: "BIO-053", subject: "Biology", question: "Which part of the human digestive system produces trypsin?", options: ["Salivary gland", "Stomach", "Liver", "Pancreas"], answer: 3, explanation: "The pancreas produces trypsin, a protease enzyme that continues the digestion of proteins in the small intestine." },
+  { id: "BIO-054", subject: "Biology", question: "Villi are found in the small intestine and serve to:", options: ["Increase surface area for absorption", "Produce digestive enzymes", "Store undigested food", "Absorb water"], answer: 0, explanation: "Villi are small, finger-like projections that increase the surface area of the small intestine for efficient nutrient absorption." },
+  { id: "BIO-055", subject: "Biology", question: "The enzyme that digests maltose into glucose is:", options: ["Amylase", "Maltase", "Pepsin", "Lipase"], answer: 1, explanation: "Maltase is a specific enzyme that catalyzes the hydrolysis of maltose (a disaccharide) into two molecules of glucose." },
+  { id: "BIO-056", subject: "Biology", question: "Nutritional disorders such as obesity are caused by:", options: ["Excess intake of food", "Lack of essential minerals", "Water deficiency", "Vitamin deficiency"], answer: 0, explanation: "Obesity is a nutritional disorder resulting from an excessive intake of calories (energy), leading to the accumulation of body fat." },
+  { id: "BIO-057", subject: "Biology", question: "The pancreas is crucial for digestion because it secretes:", options: ["Amylase", "Trypsin", "Lipase", "All of the above"], answer: 3, explanation: "The pancreas secretes a variety of digestive enzymes including amylase (carbohydrates), trypsin (proteins), and lipase (fats)." },
+  { id: "BIO-058", subject: "Biology", question: "Which of the following is an essential nutrient for the body?", options: ["Carbohydrates", "Proteins", "Fats", "All of the above"], answer: 3, explanation: "Carbohydrates, proteins, and fats are all essential macronutrients required by the body for energy, growth, and repair." },
+  { id: "BIO-059", subject: "Biology", question: "The involuntary muscular contractions that move food through the alimentary canal are called:", options: ["Peristalsis", "Sphincter action", "Diffusion", "Osmosis"], answer: 0, explanation: "Peristalsis is the wave-like muscular contractions that propel food through the esophagus, stomach, and intestines." },
+  { id: "BIO-060", subject: "Biology", question: "The digestion of fats primarily occurs in the:", options: ["Stomach", "Small intestine", "Large intestine", "Mouth"], answer: 1, explanation: "Fats are primarily digested in the small intestine, where bile emulsifies them and lipase breaks them down into fatty acids and glycerol." },
 
-  {
-    id: "BIO-004",
-    subject: "Biology",
-    question:
-      "Which stage of aerobic respiration produces the greatest amount of ATP per glucose molecule?",
-    options: [
-      "Glycolysis",
-      "Krebs cycle",
-      "Electron transport chain",
-      "Link reaction"
-    ],
-    answer: 2,
-    explanation:
-      "Most ATP is generated during oxidative phosphorylation through the electron transport chain and chemiosmosis."
-  },
+  // ---------- SECTION 4: TRANSPORT & CIRCULATION (061-080) ----------
+  { id: "BIO-061", subject: "Biology", question: "Which blood component is primarily responsible for transporting oxygen?", options: ["Plasma", "Platelets", "Red blood cells", "Lymphocytes"], answer: 2, explanation: "Red blood cells (erythrocytes) contain haemoglobin, which binds reversibly with oxygen for transport around the body." },
+  { id: "BIO-062", subject: "Biology", question: "Which of the following blood cells is responsible for clotting?", options: ["Red blood cells", "White blood cells", "Platelets", "Plasma"], answer: 2, explanation: "Platelets (thrombocytes) are essential for blood clotting, forming a plug to prevent blood loss from wounds." },
+  { id: "BIO-063", subject: "Biology", question: "Why is the left ventricle of the mammalian heart more muscular than the right ventricle?", options: ["It receives oxygenated blood", "It pumps blood to the lungs", "It pumps blood around the entire body", "It receives blood directly from the vena cava"], answer: 2, explanation: "The left ventricle pumps blood to the entire systemic circulation, requiring higher pressure and thus a thicker muscular wall." },
+  { id: "BIO-064", subject: "Biology", question: "The blood vessel that carries blood away from the heart is:", options: ["Artery", "Vein", "Capillary", "Venule"], answer: 0, explanation: "Arteries carry oxygenated blood away from the heart to the body tissues (except the pulmonary artery)." },
+  { id: "BIO-065", subject: "Biology", question: "What is the main function of the transport system in plants?", options: ["To transport water and nutrients", "To produce food", "To absorb sunlight", "To protect the plant"], answer: 0, explanation: "The plant transport system, made of xylem and phloem, is responsible for conducting water, minerals, and food throughout the plant." },
+  { id: "BIO-066", subject: "Biology", question: "Which of the following is the process of blood clotting?", options: ["Osmosis", "Coagulation", "Agglutination", "Transpiration"], answer: 1, explanation: "Coagulation is the process by which blood forms a clot to stop bleeding, involving platelets, fibrinogen, and thrombin." },
+  { id: "BIO-067", subject: "Biology", question: "Which blood vessel has the thinnest wall?", options: ["Artery", "Vein", "Capillary", "Venule"], answer: 2, explanation: "Capillaries are only one cell thick, allowing for efficient exchange of gases, nutrients, and waste between blood and body tissues." },
+  { id: "BIO-068", subject: "Biology", question: "The tissue responsible for the transport of water and minerals in plants is:", options: ["Phloem", "Xylem", "Epidermis", "Parenchyma"], answer: 1, explanation: "The xylem is the vascular tissue that transports water and dissolved minerals from the roots to the rest of the plant." },
+  { id: "BIO-069", subject: "Biology", question: "What is the main function of the phloem?", options: ["Transport water", "Transport minerals", "Transport food (sucrose)", "Provide support"], answer: 2, explanation: "The phloem transports the products of photosynthesis (sugars like sucrose) from the leaves to other parts of the plant." },
+  { id: "BIO-070", subject: "Biology", question: "The structure in the heart that prevents the backflow of blood from the ventricles to the atria is called the:", options: ["Semilunar valve", "Atrioventricular valve", "Septum", "Pacemaker"], answer: 1, explanation: "The atrioventricular (AV) valves (tricuspid and bicuspid) close during ventricular contraction to prevent backflow into the atria." },
+  { id: "BIO-071", subject: "Biology", question: "Which of the following is NOT a component of blood?", options: ["Plasma", "Red blood cells", "White blood cells", "Lymph"], answer: 3, explanation: "Lymph is a different fluid (tissue fluid) that flows through the lymphatic system, not a component of blood." },
+  { id: "BIO-072", subject: "Biology", question: "What is the primary cause of atherosclerosis?", options: ["High blood pressure", "The buildup of cholesterol on artery walls", "Low blood sugar", "Excessive blood clotting"], answer: 1, explanation: "Atherosclerosis is the hardening and narrowing of arteries due to the buildup of plaques (cholesterol and fatty deposits) on their inner walls." },
+  { id: "BIO-073", subject: "Biology", question: "The human circulatory system is referred to as a:", options: ["Single circulation", "Double circulation", "Open circulation", "No circulation"], answer: 1, explanation: "Humans have a double circulation system, where blood passes through the heart twice per complete cycle: pulmonary and systemic circuits." },
+  { id: "BIO-074", subject: "Biology", question: "Which of the following is a function of the lymphatic system?", options: ["Absorption of fats", "Transport of red blood cells", "Production of insulin", "Storage of glycogen"], answer: 0, explanation: "The lymphatic system is involved in the absorption of fats from the small intestine and plays a role in immune defense." },
+  { id: "BIO-075", subject: "Biology", question: "In a plant, transpiration primarily occurs through which structure?", options: ["Xylem", "Phloem", "Stomata", "Roots"], answer: 2, explanation: "Transpiration, the loss of water vapor from plants, occurs primarily through the stomata found on the leaves." },
+  { id: "BIO-076", subject: "Biology", question: "The organ that filters the blood and removes waste products to form urine is the:", options: ["Heart", "Lung", "Kidney", "Liver"], answer: 2, explanation: "The kidneys filter blood, removing metabolic waste (like urea) and excess water to produce urine." },
+  { id: "BIO-077", subject: "Biology", question: "Which blood group is known as the universal donor?", options: ["O negative", "AB positive", "A negative", "B positive"], answer: 0, explanation: "O negative blood has no A, B, or Rh antigens, making it the universal donor that can be given to patients with any blood type." },
+  { id: "BIO-078", subject: "Biology", question: "Which of the following is a function of the liver?", options: ["Producing insulin", "Storing glycogen", "Digesting proteins", "Filtering blood"], answer: 1, explanation: "The liver is involved in many metabolic functions, including the storage of glycogen, detoxification of drugs, and production of bile." },
+  { id: "BIO-079", subject: "Biology", question: "The main organ of the excretory system is the:", options: ["Liver", "Lungs", "Kidney", "Heart"], answer: 2, explanation: "The kidneys are the primary excretory organs, filtering blood to remove metabolic wastes and maintain homeostasis." },
+  { id: "BIO-080", subject: "Biology", question: "The part of the human heart that receives deoxygenated blood from the body is the:", options: ["Left atrium", "Left ventricle", "Right atrium", "Right ventricle"], answer: 2, explanation: "The right atrium receives deoxygenated blood from the body via the vena cava and pumps it into the right ventricle." },
 
-  {
-    id: "BIO-005",
-    subject: "Biology",
-    question:
-      "Why is the left ventricle of the mammalian heart more muscular than the right ventricle?",
-    options: [
-      "It receives oxygenated blood",
-      "It pumps blood to the lungs",
-      "It pumps blood around the entire body",
-      "It receives blood directly from the vena cava"
-    ],
-    answer: 2,
-    explanation:
-      "The left ventricle must generate sufficient pressure to pump blood through the systemic circulation, which has greater resistance than the pulmonary circulation."
-  },
+  // ---------- SECTION 5: RESPIRATION & GASEOUS EXCHANGE (081-100) ----------
+  { id: "BIO-081", subject: "Biology", question: "Which gas is released by plants during the process of photosynthesis?", options: ["Carbon dioxide", "Nitrogen", "Oxygen", "Methane"], answer: 2, explanation: "During photosynthesis, plants take in carbon dioxide and water and produce glucose and oxygen as a byproduct." },
+  { id: "BIO-082", subject: "Biology", question: "In humans, the exchange of gases occurs in the:", options: ["Trachea", "Bronchi", "Alveoli", "Larynx"], answer: 2, explanation: "Gaseous exchange occurs in the alveoli, tiny air sacs in the lungs with thin walls that facilitate the diffusion of oxygen and carbon dioxide." },
+  { id: "BIO-083", subject: "Biology", question: "Which structure controls the amount of air entering and leaving the human lungs?", options: ["Alveoli", "Diaphragm", "Trachea", "Bronchioles"], answer: 1, explanation: "The diaphragm, a dome-shaped muscle, contracts and relaxes to change the volume of the thoracic cavity and regulate breathing." },
+  { id: "BIO-084", subject: "Biology", question: "Cellular respiration in plants occurs in which organelle?", options: ["Chloroplast", "Mitochondrion", "Ribosome", "Nucleus"], answer: 1, explanation: "Cellular respiration occurs in the mitochondria, where glucose and oxygen are converted into ATP, carbon dioxide, and water." },
+  { id: "BIO-085", subject: "Biology", question: "What is the primary function of the respiratory system?", options: ["To produce energy", "To exchange gases", "To transport nutrients", "To remove waste"], answer: 1, explanation: "The respiratory system is responsible for the exchange of gases (oxygen and carbon dioxide) between the body and the environment." },
+  { id: "BIO-086", subject: "Biology", question: "The process of breaking down glucose to produce energy is called:", options: ["Photosynthesis", "Respiration", "Transpiration", "Fermentation"], answer: 1, explanation: "Respiration is the process by which cells break down glucose to release energy in the form of ATP." },
+  { id: "BIO-087", subject: "Biology", question: "Which part of the human respiratory system is the site of gas exchange?", options: ["Trachea", "Alveoli", "Bronchi", "Pharynx"], answer: 1, explanation: "The alveoli are the functional units of the lungs where oxygen and carbon dioxide are exchanged with the blood." },
+  { id: "BIO-088", subject: "Biology", question: "What is the equation for aerobic respiration?", options: ["C6H12O6 + 6O2 → 6CO2 + 6H2O + energy", "6CO2 + 6H2O → C6H12O6 + 6O2", "C6H12O6 → 2C2H5OH + 2CO2 + energy", "2C2H5OH + 2CO2 → C6H12O6 + energy"], answer: 0, explanation: "Aerobic respiration is the complete breakdown of glucose in the presence of oxygen, producing carbon dioxide, water, and energy (ATP)." },
+  { id: "BIO-089", subject: "Biology", question: "Which of the following is a waste product of aerobic respiration?", options: ["Oxygen", "Glucose", "Carbon dioxide", "Nitrogen"], answer: 2, explanation: "Carbon dioxide (CO2) is a byproduct of aerobic respiration and is exhaled by organisms." },
+  { id: "BIO-090", subject: "Biology", question: "In plants, stomata allow for the exchange of which gases?", options: ["Oxygen and carbon dioxide", "Nitrogen and oxygen", "Carbon dioxide and water vapor", "All of the above"], answer: 3, explanation: "Stomata regulate the exchange of oxygen, carbon dioxide, and water vapor (via transpiration) between the plant and the environment." },
+  { id: "BIO-091", subject: "Biology", question: "The larynx is also known as the:", options: ["Windpipe", "Voice box", "Throat", "Food pipe"], answer: 1, explanation: "The larynx is commonly called the voice box because it contains the vocal cords responsible for producing sound." },
+  { id: "BIO-092", subject: "Biology", question: "The trachea is also called the:", options: ["Windpipe", "Food pipe", "Voice box", "Lungs"], answer: 0, explanation: "The trachea, commonly called the windpipe, is the tube that carries air from the larynx to the bronchi." },
+  { id: "BIO-093", subject: "Biology", question: "Anaerobic respiration in yeast produces:", options: ["Ethanol and carbon dioxide", "Lactic acid", "Oxygen and glucose", "Glucose and carbon dioxide"], answer: 0, explanation: "Yeast undergoes anaerobic respiration (fermentation), producing ethanol and carbon dioxide as byproducts." },
+  { id: "BIO-094", subject: "Biology", question: "Anaerobic respiration in muscles produces:", options: ["Ethanol and carbon dioxide", "Lactic acid", "Oxygen", "Glucose"], answer: 1, explanation: "During anaerobic respiration in muscles, glucose is broken down to produce lactic acid, which causes muscle fatigue." },
+  { id: "BIO-095", subject: "Biology", question: "Which of the following is a feature that helps the lungs carry out gas exchange?", options: ["Thin walls", "Large surface area", "Moist surface", "All of the above"], answer: 3, explanation: "The lungs are adapted for gas exchange through their thin walls, large surface area, and moist surfaces, all of which facilitate diffusion." },
+  { id: "BIO-096", subject: "Biology", question: "The epiglottis serves to:", options: ["Produce sound", "Prevent food from entering the trachea", "Carry air to the lungs", "Exchange gases"], answer: 1, explanation: "The epiglottis is a flap that closes over the trachea during swallowing to prevent food and liquid from entering the airway." },
+  { id: "BIO-097", subject: "Biology", question: "In plants, the exchange of gases during photosynthesis is:  ", options: ["Absorb CO2 and release O2", "Absorb O2 and release CO2", "Absorb both gases", "Release both gases"], answer: 0, explanation: "During photosynthesis, plants absorb carbon dioxide and release oxygen. During respiration, they absorb oxygen and release carbon dioxide." },
+  { id: "BIO-098", subject: "Biology", question: "What is the main purpose of the pleural membranes?", options: ["To protect the heart", "To reduce friction during breathing", "To produce mucus", "To exchange gases"], answer: 1, explanation: "The pleural membranes surround the lungs and secrete a lubricating fluid that reduces friction during breathing movements." },
+  { id: "BIO-099", subject: "Biology", question: "The process of breathing involves which two main steps?", options: ["Inhalation and exhalation", "Inspiration and expiration", "Respiration and circulation", "Digestion and absorption"], answer: 1, explanation: "Breathing, also called ventilation, consists of inspiration (inhaling air) and expiration (exhaling air)." },
+  { id: "BIO-100", subject: "Biology", question: "Which of the following structures is the site of oxygen diffusion into the blood?", options: ["Trachea", "Bronchi", "Alveoli", "Diaphragm"], answer: 2, explanation: "Oxygen diffuses from the alveoli into the surrounding capillaries, where it binds to haemoglobin in red blood cells." },
 
-  {
-    id: "BIO-006",
-    subject: "Biology",
-    question:
-      "Which hormone is primarily responsible for lowering blood glucose concentration after a carbohydrate-rich meal?",
-    options: ["Glucagon", "Insulin", "Adrenaline", "Thyroxine"],
-    answer: 1,
-    explanation:
-      "Insulin promotes glucose uptake by cells and conversion of excess glucose to glycogen, thereby lowering blood glucose."
-  },
+  // ---------- SECTION 6: NERVOUS & ENDOCRINE SYSTEMS (101-120) ----------
+  { id: "BIO-101", subject: "Biology", question: "The basic unit of the nervous system is the:", options: ["Neuron", "Nerve", "Brain", "Synapse"], answer: 0, explanation: "The neuron (nerve cell) is the structural and functional unit of the nervous system, conducting electrical impulses." },
+  { id: "BIO-102", subject: "Biology", question: "Which part of the brain controls body balance and coordination?", options: ["Cerebrum", "Cerebellum", "Medulla oblongata", "Thalamus"], answer: 1, explanation: "The cerebellum is responsible for body balance, muscle coordination, and fine motor control." },
+  { id: "BIO-103", subject: "Biology", question: "The medulla oblongata controls which of the following?", options: ["Walking", "Breathing and heart rate", "Memory and learning", "Speech"], answer: 1, explanation: "The medulla oblongata is the control center for involuntary functions such as breathing, heart rate, and blood pressure." },
+  { id: "BIO-104", subject: "Biology", question: "The gap between two neurons is called the:", options: ["Axon", "Dendrite", "Synapse", "Myelin sheath"], answer: 2, explanation: "A synapse is the junction between two neurons where chemical neurotransmitters transmit the impulse." },
+  { id: "BIO-105", subject: "Biology", question: "Which hormone is responsible for regulating blood sugar levels?", options: ["Insulin", "Adrenaline", "Oestrogen", "Thyroxine"], answer: 0, explanation: "Insulin, produced by the pancreas, regulates blood sugar levels by promoting the uptake of glucose by cells." },
+  { id: "BIO-106", subject: "Biology", question: "The 'fight or flight' response is triggered by the release of:", options: ["Insulin", "Adrenaline", "Thyroxine", "Oestrogen"], answer: 1, explanation: "Adrenaline (epinephrine), released by the adrenal glands, prepares the body for a 'fight or flight' response to stress." },
+  { id: "BIO-107", subject: "Biology", question: "Which of the following is a function of the endocrine system?", options: ["Muscle contraction", "Secretion of hormones", "Transport of oxygen", "Digestion of food"], answer: 1, explanation: "The endocrine system consists of glands that secrete hormones directly into the bloodstream to regulate various bodily functions." },
+  { id: "BIO-108", subject: "Biology", question: "Which part of the brain is responsible for higher thought processes such as memory and reasoning?", options: ["Cerebellum", "Cerebrum", "Medulla oblongata", "Pons"], answer: 1, explanation: "The cerebrum is the largest part of the brain and is responsible for higher functions such as thought, memory, reasoning, and voluntary movement." },
+  { id: "BIO-109", subject: "Biology", question: "Which of the following glands is located in the brain and produces the hormone melatonin?", options: ["Pineal gland", "Pituitary gland", "Thyroid gland", "Adrenal gland"], answer: 0, explanation: "The pineal gland, located deep in the brain, secretes melatonin, which regulates sleep-wake cycles." },
+  { id: "BIO-110", subject: "Biology", question: "The relay center for sensory and motor information is the:", options: ["Thalamus", "Hypothalamus", "Pons", "Medulla"], answer: 0, explanation: "The thalamus acts as a relay center, transmitting sensory and motor signals to the cerebral cortex." },
+  { id: "BIO-111", subject: "Biology", question: "Which of the following hormones is produced by the pituitary gland?", options: ["Growth hormone", "Insulin", "Adrenaline", "Thyroxine"], answer: 0, explanation: "The pituitary gland, known as the 'master gland', secretes several hormones including growth hormone (GH)." },
+  { id: "BIO-112", subject: "Biology", question: "The myelin sheath, which increases the speed of nerve impulses, is formed by:", options: ["Dendrites", "Schwann cells", "Axons", "Synapses"], answer: 1, explanation: "Schwann cells produce the myelin sheath, an insulating layer that surrounds and speeds up conduction along the axon." },
+  { id: "BIO-113", subject: "Biology", question: "Which of the following controls the body's internal environment (homeostasis)?", options: ["Hypothalamus", "Cerebrum", "Cerebellum", "Medulla"], answer: 0, explanation: "The hypothalamus regulates homeostasis, controlling temperature, thirst, hunger, and hormonal release." },
+  { id: "BIO-114", subject: "Biology", question: "The transmission of a nerve impulse across a synapse depends on:", options: ["Neurotransmitters", "Myelin sheaths", "Electrical signals", "Blood flow"], answer: 0, explanation: "Neurotransmitters are chemicals that diffuse across the synaptic cleft to carry the impulse to the next neuron." },
+  { id: "BIO-115", subject: "Biology", question: "The gland that produces thyroxine is the:", options: ["Thyroid gland", "Pituitary gland", "Pancreas", "Adrenal gland"], answer: 0, explanation: "The thyroid gland, located in the neck, produces thyroxine, which regulates metabolism and growth." },
+  { id: "BIO-116", subject: "Biology", question: "What is the main function of the peripheral nervous system?", options: ["Connecting the CNS to the rest of the body", "Controlling voluntary movements", "Regulating heart rate", "Memory storage"], answer: 0, explanation: "The peripheral nervous system connects the central nervous system (brain and spinal cord) to the organs, limbs, and skin." },
+  { id: "BIO-117", subject: "Biology", question: "Which of the following is an involuntary action controlled by the autonomic nervous system?", options: ["Kicking a ball", "The heartbeat", "Writing", "Running"], answer: 1, explanation: "The autonomic nervous system controls involuntary functions like heartbeat, breathing, and digestion." },
+  { id: "BIO-118", subject: "Biology", question: "A reflex action is a rapid, automatic response mediated by the:", options: ["Cerebrum", "Spinal cord", "Cerebellum", "Hypothalamus"], answer: 1, explanation: "A reflex action is a quick, involuntary response that involves the spinal cord, bypassing the brain for faster reaction." },
+  { id: "BIO-119", subject: "Biology", question: "Which hormone is responsible for the development of secondary sexual characteristics in males?", options: ["Testosterone", "Oestrogen", "Progesterone", "Insulin"], answer: 0, explanation: "Testosterone, produced by the testes, is the primary male sex hormone responsible for the development of secondary sexual characteristics." },
+  { id: "BIO-120", subject: "Biology", question: "The pancreas is an example of an organ that functions in both the endocrine and exocrine systems because it:", options: ["Produces insulin and digestive enzymes", "Only produces hormones", "Only produces enzymes", "Stores glycogen"], answer: 0, explanation: "The pancreas has both endocrine functions (producing insulin and glucagon into the blood) and exocrine functions (producing digestive enzymes into the small intestine)." },
 
-  {
-    id: "BIO-007",
-    subject: "Biology",
-    question:
-      "A mutation changes one DNA nucleotide from G to A. Which type of mutation does this represent?",
-    options: [
-      "Chromosomal deletion",
-      "Point mutation",
-      "Chromosomal duplication",
-      "Polyploidy"
-    ],
-    answer: 1,
-    explanation:
-      "A change involving a single nucleotide is a point mutation."
-  },
+    // ---------- SECTION 7: REPRODUCTION & DEVELOPMENT (121-135) ----------
+  { id: "BIO-121", subject: "Biology", question: "In flowering plants, pollen is produced in the:", options: ["Ovary", "Stamen", "Pistil", "Petal"], answer: 1, explanation: "The stamen (male reproductive organ) produces pollen, which contains the male gametes necessary for fertilization." },
+  { id: "BIO-122", subject: "Biology", question: "Which process in a flower allows for the production of seeds?", options: ["Pollination", "Germination", "Transpiration", "Photosynthesis"], answer: 0, explanation: "Pollination is the transfer of pollen from the anther to the stigma, which is necessary for fertilization and seed production." },
+  { id: "BIO-123", subject: "Biology", question: "The process where a seed begins to grow and develop into a new plant is called:", options: ["Fertilization", "Pollination", "Germination", "Sublimation"], answer: 2, explanation: "Germination is the growth of a seed after a period of dormancy, involving water absorption and the emergence of a radicle and plumule." },
+  { id: "BIO-124", subject: "Biology", question: "The hormone responsible for regulating the female reproductive cycle is:", options: ["Oestrogen", "Testosterone", "Adrenaline", "Insulin"], answer: 0, explanation: "Oestrogen, produced by the ovaries, regulates the female reproductive cycle and development of secondary sexual characteristics." },
+  { id: "BIO-125", subject: "Biology", question: "The process of fertilization in mammals occurs in the:", options: ["Ovary", "Uterus", "Fallopian tube", "Vagina"], answer: 2, explanation: "Fertilization typically occurs in the fallopian tube (oviduct) where the sperm meets and fuses with the egg." },
+  { id: "BIO-126", subject: "Biology", question: "In plants, seeds are dispersed by:", options: ["Wind", "Water", "Animals", "All of the above"], answer: 3, explanation: "Seeds are dispersed through various agents including wind, water, and animals, ensuring the survival and spread of plant species." },
+  { id: "BIO-127", subject: "Biology", question: "Which of the following is an example of a viviparous animal?", options: ["Bird", "Fish", "Cow", "Snake"], answer: 2, explanation: "Viviparous animals (e.g., cows, humans, dogs) give birth to live young, unlike oviparous animals that lay eggs." },
+  { id: "BIO-128", subject: "Biology", question: "The part of the embryo that develops into the roots is called:", options: ["Plumule", "Radicle", "Cotyledon", "Endosperm"], answer: 1, explanation: "The radicle is the embryonic root that grows downward into the soil during germination." },
+  { id: "BIO-129", subject: "Biology", question: "Which of the following is a characteristic of a dicotyledonous plant?", options: ["One cotyledon", "Two cotyledons", "Parallel venation", "Fibrous roots"], answer: 1, explanation: "Dicotyledonous plants have two cotyledons in their seeds, net-like (reticulate) venation, and a taproot system." },
+  { id: "BIO-130", subject: "Biology", question: "The organ responsible for producing the male gamete (sperm) is the:", options: ["Ovary", "Testis", "Uterus", "Fallopian tube"], answer: 1, explanation: "The testes are the male reproductive organs that produce sperm and the hormone testosterone." },
+  { id: "BIO-131", subject: "Biology", question: "In flowering plants, the ovary develops into the:", options: ["Seed", "Fruit", "Stem", "Pollen"], answer: 1, explanation: "After fertilization, the ovary develops into the fruit, which encloses and protects the seeds." },
+  { id: "BIO-132", subject: "Biology", question: "The development of a fertilized egg without fertilization is called:", options: ["Parthenogenesis", "Metamorphosis", "Fertilization", "Pollination"], answer: 0, explanation: "Parthenogenesis is the development of an embryo from an unfertilized egg, seen in some insects and reptiles." },
+  { id: "BIO-133", subject: "Biology", question: "What is the main function of the placenta in mammals?", options: ["To produce eggs", "To provide oxygen and nutrients to the fetus", "To protect the fetus from infection", "To produce hormones"], answer: 1, explanation: "The placenta provides oxygen, nutrients, and waste removal for the developing fetus, while preventing the mixing of maternal and fetal blood." },
+  { id: "BIO-134", subject: "Biology", question: "The stage of development that occurs between the embryo and a new individual is called:", options: ["Gestation", "Fertilization", "Germination", "Maturation"], answer: 0, explanation: "Gestation is the period of development of the embryo and fetus within the mother's womb." },
+  { id: "BIO-135", subject: "Biology", question: "Which of the following is an example of a vegetative reproduction?", options: ["Leaf cuttings in plants", "Sperm production", "Pollination", "Seed germination"], answer: 0, explanation: "Vegetative reproduction is an asexual form of reproduction in plants where new individuals grow from parts like leaves, stems, or roots (e.g., leaf cuttings)." },
 
-  {
-    id: "BIO-008",
-    subject: "Biology",
-    question:
-      "Which process ensures that genetic variation can arise during meiosis even before fertilization occurs?",
-    options: [
-      "Binary fission",
-      "Crossing over",
-      "DNA replication only",
-      "Cytokinesis"
-    ],
-    answer: 1,
-    explanation:
-      "Crossing over between homologous chromosomes during prophase I exchanges genetic material and produces new allele combinations."
-  },
+  // ---------- SECTION 8: ECOLOGY & ENVIRONMENT (136-150) ----------
+  { id: "BIO-136", subject: "Biology", question: "The study of the interrelationships between living organisms and their environment is called:", options: ["Genetics", "Ecology", "Biotechnology", "Taxonomy"], answer: 1, explanation: "Ecology is the scientific study of the interactions between organisms and their physical and biological environment." },
+  { id: "BIO-137", subject: "Biology", question: "A community of living organisms and their physical environment interacting as a unit is called an:", options: ["Ecosystem", "Habitat", "Biosphere", "Biodiversity"], answer: 0, explanation: "An ecosystem is a biological community of interacting organisms and their physical environment, functioning together as a unit." },
+  { id: "BIO-138", subject: "Biology", question: "The position an organism occupies in a food web, determined by its feeding relationships, is called its:", options: ["Habitat", "Niche", "Ecosystem", "Population"], answer: 1, explanation: "A niche is the functional role of an organism in its ecosystem, including what it eats, how it behaves, and where it lives." },
+  { id: "BIO-139", subject: "Biology", question: "Which of the following is an example of a biotic factor in an environment?", options: ["Temperature", "Sunlight", "Predation", "Soil pH"], answer: 2, explanation: "Biotic factors are living components of an ecosystem (e.g., predators, plants, bacteria). Temperature, sunlight, and soil pH are abiotic (non-living) factors." },
+  { id: "BIO-140", subject: "Biology", question: "The process of ecological succession that begins on an area where no previous ecosystem existed is called:", options: ["Secondary succession", "Primary succession", "Decomposition", "Climax community"], answer: 1, explanation: "Primary succession begins in lifeless areas such as bare rock or newly formed volcanic islands where no soil exists." },
+  { id: "BIO-141", subject: "Biology", question: "In a food chain, energy is transferred from:", options: ["Producers to consumers", "Consumers to producers", "Decomposers to producers", "Producers to producers"], answer: 0, explanation: "In a food chain, energy flows from producers (plants) to primary consumers (herbivores) to secondary consumers (carnivores)." },
+  { id: "BIO-142", subject: "Biology", question: "Which of the following is a nitrogen-fixing bacterium?", options: ["Nitrobacter", "Rhizobium", "Escherichia coli", "Staphylococcus"], answer: 1, explanation: "Rhizobium is a nitrogen-fixing bacterium that lives in the root nodules of legumes, converting atmospheric nitrogen into usable forms." },
+  { id: "BIO-143", subject: "Biology", question: "The gradual change in the species composition of a community over time is called:", options: ["Ecological succession", "Evolution", "Mutation", "Adaptation"], answer: 0, explanation: "Ecological succession is the gradual process of change in the species structure of an ecological community over time." },
+  { id: "BIO-144", subject: "Biology", question: "Which of the following is a limiting factor in an ecosystem?", options: ["Food", "Water", "Shelter", "All of the above"], answer: 3, explanation: "Limiting factors are resources or conditions that limit the growth, abundance, or distribution of a population. Food, water, and shelter are all limiting factors." },
+  { id: "BIO-145", subject: "Biology", question: "The process by which green plants make their own food using sunlight is called:", options: ["Respiration", "Photosynthesis", "Transpiration", "Digestion"], answer: 1, explanation: "Photosynthesis is the process by which green plants convert light energy, carbon dioxide, and water into glucose and oxygen." },
+  { id: "BIO-146", subject: "Biology", question: "The pyramid of energy in an ecosystem is always:", options: ["Upright", "Inverted", "Irregular", "Circular"], answer: 0, explanation: "The pyramid of energy is always upright because energy decreases at each trophic level due to losses in respiration and heat." },
+  { id: "BIO-147", subject: "Biology", question: "Which of the following is a primary consumer?", options: ["Lion", "Grasshopper", "Hawk", "Fungi"], answer: 1, explanation: "A primary consumer (herbivore) feeds directly on producers (plants). Grasshoppers are herbivores that eat grass, making them primary consumers." },
+  { id: "BIO-148", subject: "Biology", question: "The living part of an ecosystem includes:", options: ["Water", "Producers", "Rocks", "Air"], answer: 1, explanation: "Producers (plants) are the living components of an ecosystem. Water, rocks, and air are abiotic (non-living) factors." },
+  { id: "BIO-149", subject: "Biology", question: "Which of the following is an example of a mutualistic relationship?", options: ["Lion and zebra", "Bee and flower", "Tapeworm and human", "Tick and dog"], answer: 1, explanation: "Mutualism is a symbiotic relationship where both organisms benefit. Bees and flowers are an example where the bee gets nectar while the flower gets pollinated." },
+  { id: "BIO-150", subject: "Biology", question: "Energy flow in an ecosystem is:", options: ["Cyclic", "Unidirectional", "Reversible", "Random"], answer: 1, explanation: "Energy flow in an ecosystem is unidirectional (one-way), moving from producers to consumers and eventually lost as heat, unlike nutrients which cycle." },
 
-  {
-    id: "BIO-009",
-    subject: "Biology",
-    question:
-      "Which statement best explains why antibiotics are ineffective against viruses?",
-    options: [
-      "Viruses are always larger than bacteria",
-      "Viruses lack the bacterial cellular structures and metabolic pathways targeted by antibiotics",
-      "Viruses cannot mutate",
-      "Antibiotics increase viral reproduction"
-    ],
-    answer: 1,
-    explanation:
-      "Antibiotics target structures or processes such as bacterial cell walls and bacterial ribosomes. Viruses lack these independent cellular structures."
-  },
+      // ---------- SECTION 9: EXCRETION & HOMEOSTASIS (151-170) ----------
+  { id: "BIO-151", subject: "Biology", question: "Which organ in the human body is primarily responsible for the excretion of urea?", options: ["Liver", "Kidney", "Lung", "Skin"], answer: 1, explanation: "The kidneys filter blood to remove metabolic waste (like urea) and excess water, producing urine for excretion." },
+  { id: "BIO-152", subject: "Biology", question: "The liver produces urea in a process called:", options: ["Deamination", "Hydrolysis", "Oxidation", "Reduction"], answer: 0, explanation: "Deamination is the process in the liver where the amino group is removed from excess amino acids, producing ammonia which is converted to less toxic urea." },
+  { id: "BIO-153", subject: "Biology", question: "In a mammal, the primary excretory product of nitrogen metabolism is:", options: ["Ammonia", "Urea", "Uric acid", "Creatinine"], answer: 1, explanation: "Mammals excrete nitrogen waste primarily as urea, which is less toxic than ammonia and requires less water to excrete." },
+  { id: "BIO-154", subject: "Biology", question: "The functional unit of the kidney is the:", options: ["Neuron", "Nephron", "Alveolus", "Villus"], answer: 1, explanation: "The nephron is the basic structural and functional unit of the kidney, responsible for filtering blood and forming urine." },
+  { id: "BIO-155", subject: "Biology", question: "Which process occurs in the Bowman's capsule of the nephron?", options: ["Reabsorption", "Filtration", "Secretion", "Diffusion"], answer: 1, explanation: "Filtration occurs in the Bowman's capsule, where blood pressure forces water and small solutes out of the glomerulus and into the capsule." },
+  { id: "BIO-156", subject: "Biology", question: "The hormone ADH (antidiuretic hormone) regulates the reabsorption of which substance in the kidneys?", options: ["Glucose", "Water", "Urea", "Sodium ions"], answer: 1, explanation: "ADH (vasopressin) increases the reabsorption of water by the kidneys, reducing urine output and concentrating the urine." },
+  { id: "BIO-157", subject: "Biology", question: "Which of the following is a function of the skin in excretion?", options: ["Producing urea", "Excreting sweat", "Storing glucose", "Filtering blood"], answer: 1, explanation: "The skin excretes excess water and salts through sweat, which helps regulate body temperature and maintain fluid balance." },
+  { id: "BIO-158", subject: "Biology", question: "Which of the following is an excretory product of the lungs?", options: ["Urea", "Water vapor and carbon dioxide", "Sweat", "Bile"], answer: 1, explanation: "The lungs excrete water vapor (from respiration) and carbon dioxide (a waste product of cellular respiration)." },
+  { id: "BIO-159", subject: "Biology", question: "The process by which the body maintains a stable internal environment is called:", options: ["Osmosis", "Homeostasis", "Diffusion", "Excretion"], answer: 1, explanation: "Homeostasis is the process by which living organisms maintain a stable internal condition (temperature, pH, blood sugar) despite external changes." },
+  { id: "BIO-160", subject: "Biology", question: "The pancreas helps regulate blood sugar levels by secreting the hormone:", options: ["Insulin", "Glucagon", "Thyroxine", "Adrenaline"], answer: 0, explanation: "Insulin, produced by the islets of Langerhans in the pancreas, lowers blood glucose levels by promoting glucose uptake by cells." },
+  { id: "BIO-161", subject: "Biology", question: "Glucagon, which raises blood glucose levels, is produced by the:", options: ["Liver", "Adrenal gland", "Pancreas", "Pituitary gland"], answer: 2, explanation: "Glucagon is produced by the alpha cells of the islets of Langerhans in the pancreas, and it increases blood glucose levels by stimulating the breakdown of glycogen." },
+  { id: "BIO-162", subject: "Biology", question: "The principle of counter-current flow in the medulla of the kidney is essential for:", options: ["Producing concentrated urine", "Filtration of blood", "Reabsorption of glucose", "Excretion of salts"], answer: 0, explanation: "The counter-current multiplier in the loop of Henle establishes an osmotic gradient in the renal medulla, allowing the kidney to produce concentrated urine." },
+  { id: "BIO-163", subject: "Biology", question: "What is the role of the ureter in the human excretory system?", options: ["Carry urine from the kidney to the bladder", "Carry urine out of the body", "Filter blood", "Store urine temporarily"], answer: 0, explanation: "The ureter is a muscular tube that transports urine from the kidney to the urinary bladder." },
+  { id: "BIO-164", subject: "Biology", question: "The urinary bladder serves to:", options: ["Filter waste from the blood", "Store urine temporarily", "Carry urine to the kidneys", "Regulate blood pressure"], answer: 1, explanation: "The urinary bladder is a muscular sac that stores urine until it is expelled from the body through the urethra." },
+  { id: "BIO-165", subject: "Biology", question: "Which of the following is a characteristic of the excretory system in birds?", options: ["They excrete urea", "They excrete uric acid", "They do not excrete nitrogen", "They excrete ammonia"], answer: 1, explanation: "Birds excrete nitrogen waste as uric acid, a semi-solid paste that minimizes water loss, adapting them to dry environments." },
+  { id: "BIO-166", subject: "Biology", question: "Which of the following is an example of a salt-excreting organ in many marine fish?", options: ["Gills", "Kidneys", "Skin", "Lungs"], answer: 0, explanation: "Marine fish excrete excess salt through their gills to maintain osmotic balance in their highly saline environment." },
+  { id: "BIO-167", subject: "Biology", question: "The main nitrogenous waste product in freshwater fish is:", options: ["Urea", "Uric acid", "Ammonia", "Creatinine"], answer: 2, explanation: "Freshwater fish excrete nitrogenous waste primarily as ammonia (NH₃) because they have abundant water available to dilute it." },
+  { id: "BIO-168", subject: "Biology", question: "The organ that filters blood and produces urine is the:", options: ["Liver", "Kidney", "Pancreas", "Spleen"], answer: 1, explanation: "The kidney filters blood to remove metabolic wastes and produces urine, which is then transported to the bladder." },
+  { id: "BIO-169", subject: "Biology", question: "Which of the following is a component of homeostasis in the human body?", options: ["Thermoregulation", "Osmoregulation", "Blood sugar regulation", "All of the above"], answer: 3, explanation: "Homeostasis involves the regulation of multiple factors including body temperature (thermoregulation), water balance (osmoregulation), and blood glucose levels." },
+  { id: "BIO-170", subject: "Biology", question: "The loop of Henle in the nephron is primarily responsible for:", options: ["Filtration of blood", "Concentrating the urine", "Reabsorbing glucose", "Secreting urea"], answer: 1, explanation: "The loop of Henle maintains a counter-current gradient in the medulla, allowing the kidney to reabsorb water and produce concentrated urine." },
 
-  {
-    id: "BIO-010",
-    subject: "Biology",
-    question:
-      "A person moves from a dark room into bright sunlight. Which change occurs in the eye to reduce the amount of light entering?",
-    options: [
-      "The pupil dilates",
-      "The pupil constricts",
-      "The lens becomes opaque",
-      "The retina moves backward"
-    ],
-    answer: 1,
-    explanation:
-      "Bright light stimulates the circular muscles of the iris, causing the pupil to constrict and reduce light entering the eye."
-  },
+  // ---------- SECTION 10: NERVOUS SYSTEM & SENSE ORGANS (171-190) ----------
+  { id: "BIO-171", subject: "Biology", question: "The part of the brain responsible for muscle coordination and balance is the:", options: ["Cerebrum", "Cerebellum", "Medulla", "Thalamus"], answer: 1, explanation: "The cerebellum is responsible for the coordination of voluntary movements, balance, and muscle tone." },
+  { id: "BIO-172", subject: "Biology", question: "The main function of the myelin sheath is to:", options: ["Increase the speed of nerve impulses", "Produce neurotransmitters", "Store glucose", "Protect the nerve cell"], answer: 0, explanation: "The myelin sheath insulates the axon and speeds up the transmission of nerve impulses through saltatory conduction." },
+  { id: "BIO-173", subject: "Biology", question: "A reflex action such as withdrawing the hand from a hot object is controlled by the:", options: ["Cerebrum", "Cerebellum", "Spinal cord", "Hypothalamus"], answer: 2, explanation: "Reflex actions are controlled by the spinal cord, allowing a rapid response without waiting for the brain to process the information." },
+  { id: "BIO-174", subject: "Biology", question: "Which neurotransmitter is associated with the transmission of nerve impulses across the synapse?", options: ["Acetylcholine", "Adrenaline", "Insulin", "Thyroxine"], answer: 0, explanation: "Acetylcholine is a neurotransmitter released at the synapse to transmit nerve impulses from one neuron to another or to a muscle." },
+  { id: "BIO-175", subject: "Biology", question: "The smallest unit of a nervous system is the:", options: ["Nerve", "Neuron", "Brain", "Synapse"], answer: 1, explanation: "The neuron is the basic structural and functional unit of the nervous system, responsible for transmitting electrical signals." },
+  { id: "BIO-176", subject: "Biology", question: "Which part of the brain regulates body temperature, hunger, and thirst?", options: ["Cerebrum", "Cerebellum", "Hypothalamus", "Medulla"], answer: 2, explanation: "The hypothalamus is the control center for many vital functions such as body temperature, hunger, thirst, and the secretion of hormones from the pituitary gland." },
+  { id: "BIO-177", subject: "Biology", question: "The human eye detects light using photoreceptor cells located in the:", options: ["Cornea", "Retina", "Lens", "Iris"], answer: 1, explanation: "The retina contains photoreceptor cells (rods and cones) that detect light and convert it into electrical signals for the brain." },
+  { id: "BIO-178", subject: "Biology", question: "The human ear contains the Cochlea, which is responsible for:", options: ["Balance", "Hearing", "Pressure regulation", "Smell"], answer: 1, explanation: "The cochlea is a spiral-shaped structure in the inner ear that converts sound vibrations into nerve impulses for hearing." },
+  { id: "BIO-179", subject: "Biology", question: "The part of the ear responsible for body balance is called the:", options: ["Eardrum", "Cochlea", "Semicircular canals", "Ossicles"], answer: 2, explanation: "The semicircular canals in the inner ear are filled with fluid and help maintain body balance by detecting rotational movements." },
+  { id: "BIO-180", subject: "Biology", question: "The human nervous system is divided into the central nervous system (CNS) and the:", options: ["Peripheral nervous system", "Autonomic nervous system", "Somatic nervous system", "Sympathetic nervous system"], answer: 0, explanation: "The nervous system is composed of the CNS (brain and spinal cord) and the peripheral nervous system (nerves and ganglia outside the CNS)." },
+  { id: "BIO-181", subject: "Biology", question: "The iris of the eye controls the amount of light entering by:", options: ["Changing the lens shape", "Adjusting the pupil size", "Refracting light", "Absorbing light"], answer: 1, explanation: "The iris is a thin, circular muscle that controls the diameter and size of the pupil, thereby regulating the amount of light entering the eye." },
+  { id: "BIO-182", subject: "Biology", question: "The middle ear contains three small bones collectively called the:", options: ["Ossicles", "Otoliths", "Semicircular canals", "Cochlea"], answer: 0, explanation: "The ossicles are three tiny bones (malleus, incus, and stapes) in the middle ear that transmit sound vibrations from the eardrum to the inner ear." },
+  { id: "BIO-183", subject: "Biology", question: "The main function of the cornea is to:", options: ["Detect light", "Refract light into the eye", "Regulate the pupil", "Control lens shape"], answer: 1, explanation: "The cornea is the transparent outer layer of the eye that refracts incoming light and helps focus it on the retina." },
+  { id: "BIO-184", subject: "Biology", question: "In the human eye, the part that contains the highest concentration of cones is the:", options: ["Blind spot", "Fovea centralis", "Optic nerve", "Sclera"], answer: 1, explanation: "The fovea centralis is a tiny pit in the retina with a high concentration of cone cells, providing the sharpest color vision." },
+  { id: "BIO-185", subject: "Biology", question: "The olfactory organ in humans is responsible for the sense of:", options: ["Taste", "Smell", "Hearing", "Touch"], answer: 1, explanation: "The olfactory organ (nose) contains receptors that detect chemicals in the air, allowing the sense of smell." },
+  { id: "BIO-186", subject: "Biology", question: "The sensory receptors for taste are located in the:", options: ["Tongue", "Nose", "Ears", "Skin"], answer: 0, explanation: "The tongue contains taste buds (specialized sensory receptors) that detect different flavors—sweet, sour, salty, bitter, and umami." },
+  { id: "BIO-187", subject: "Biology", question: "Which of the following is the largest part of the human brain?", options: ["Cerebellum", "Cerebrum", "Medulla", "Pons"], answer: 1, explanation: "The cerebrum is the largest part of the human brain, responsible for higher functions such as thought, memory, and voluntary movement." },
+  { id: "BIO-188", subject: "Biology", question: "The pons is a part of the brainstem that:", options: ["Controls sleep and respiration", "Regulates body balance", "Coordinates movement", "Processes visual information"], answer: 0, explanation: "The pons is a part of the brainstem that relays signals between the cerebellum and the cerebrum and regulates sleep and respiration." },
+  { id: "BIO-189", subject: "Biology", question: "Which part of the nervous system controls the 'rest and digest' response?", options: ["Sympathetic nervous system", "Parasympathetic nervous system", "Central nervous system", "Somatic nervous system"], answer: 1, explanation: "The parasympathetic nervous system is responsible for 'rest and digest' functions, including slowing the heart rate and promoting digestion." },
+  { id: "BIO-190", subject: "Biology", question: "Which part of the nervous system controls the 'fight or flight' response?", options: ["Parasympathetic nervous system", "Sympathetic nervous system", "Central nervous system", "Peripheral nervous system"], answer: 1, explanation: "The sympathetic nervous system activates the 'fight or flight' response by increasing heart rate, blood pressure, and energy expenditure." },
 
-  {
-    id: "BIO-011",
-    subject: "Biology",
-    question:
-      "Which structure prevents backflow of blood from the ventricles into the atria?",
-    options: [
-      "Semilunar valves",
-      "Atrioventricular valves",
-      "Septum",
-      "Chordae tendineae alone"
-    ],
-    answer: 1,
-    explanation:
-      "The atrioventricular valves close during ventricular contraction and prevent blood from flowing back into the atria."
-  },
+  // ---------- SECTION 11: REPRODUCTION & DEVELOPMENT (191-210) ----------
+  { id: "BIO-191", subject: "Biology", question: "In mammals, the fertilization of the ovum typically occurs in the:", options: ["Ovary", "Fallopian tube (oviduct)", "Uterus", "Vagina"], answer: 1, explanation: "Fertilization occurs in the fallopian tube (oviduct), where the sperm meets and fuses with the ovum to form a zygote." },
+  { id: "BIO-192", subject: "Biology", question: "The hormone responsible for ovulation in humans is the:", options: ["Luteinizing hormone (LH)", "Follicle-stimulating hormone (FSH)", "Progesterone", "Oestrogen"], answer: 0, explanation: "Luteinizing hormone (LH) triggers ovulation—the release of a mature egg from the ovary." },
+  { id: "BIO-193", subject: "Biology", question: "In flowering plants, the transfer of pollen from the anther to the stigma is called:", options: ["Pollination", "Germination", "Fertilization", "Dispersal"], answer: 0, explanation: "Pollination is the transfer of pollen grains from the anther to the stigma, which is essential for fertilization and seed formation." },
+  { id: "BIO-194", subject: "Biology", question: "The process of seed dispersal involves the transport of seeds by:", options: ["Wind", "Water", "Animals", "All of the above"], answer: 3, explanation: "Seeds are dispersed through various agents including wind, water, animals, and mechanical mechanisms to reduce competition with the parent plant." },
+  { id: "BIO-195", subject: "Biology", question: "The fetus develops in the mother's reproductive system within the:", options: ["Ovary", "Fallopian tube", "Uterus", "Vagina"], answer: 2, explanation: "The fetus develops in the uterus, a muscular organ where it receives nutrients and oxygen through the placenta." },
+  { id: "BIO-196", subject: "Biology", question: "Which part of a seed develops into the shoot of a new plant during germination?", options: ["Radicle", "Plumule", "Cotyledon", "Endosperm"], answer: 1, explanation: "The plumule is the embryonic shoot that grows upward during germination and develops into the stem and leaves." },
+  { id: "BIO-197", subject: "Biology", question: "The placenta in mammals is responsible for the exchange of:", options: ["Oxygen, nutrients, and waste products", "Only oxygen and waste products", "Only nutrients and hormones", "Only hormones"], answer: 0, explanation: "The placenta facilitates the exchange of oxygen, nutrients, and waste products between the maternal blood and the fetal blood." },
+  { id: "BIO-198", subject: "Biology", question: "Which of the following is an example of a viviparous animal?", options: ["Lizard", "Frog", "Cow", "Bird"], answer: 2, explanation: "Viviparous animals (e.g., cows, humans) give birth to live young. Most reptiles, birds, and frogs are oviparous." },
+  { id: "BIO-199", subject: "Biology", question: "The ovary in a flowering plant matures into the:", options: ["Seed", "Fruit", "Pollen grain", "Stem"], answer: 1, explanation: "The ovary develops into the fruit after fertilization, enclosing and protecting the seeds." },
+  { id: "BIO-200", subject: "Biology", question: "The part of the embryo that develops into the root is the:", options: ["Radicle", "Plumule", "Hilum", "Cotyledon"], answer: 0, explanation: "The radicle is the embryonic root which grows downward during germination to anchor the plant and absorb water and minerals." },
+  { id: "BIO-201", subject: "Biology", question: "Which hormone is responsible for the development of secondary sexual characteristics in females?", options: ["Oestrogen", "Testosterone", "Insulin", "Adrenaline"], answer: 0, explanation: "Oestrogen, produced by the ovaries, drives the development of female secondary sexual characteristics such as breast development and menstrual cycle regulation." },
+  { id: "BIO-202", subject: "Biology", question: "The process by which an embryo develops into a new individual is called:", options: ["Gestation", "Fertilization", "Puberty", "Metamorphosis"], answer: 0, explanation: "Gestation is the period of development of the embryo and fetus within the mother's womb until birth." },
+  { id: "BIO-203", subject: "Biology", question: "The stage of the male gamete that is capable of fertilizing the ovum is the:", options: ["Spermatogonium", "Spermatid", "Spermatozoon", "Sertoli cell"], answer: 2, explanation: "The spermatozoon (mature sperm) is the fully developed male gamete capable of fertilizing the ovum." },
+  { id: "BIO-204", subject: "Biology", question: "Which of the following is the site of ovulation in the female reproductive system?", options: ["Uterus", "Fallopian tube", "Ovary", "Cervix"], answer: 2, explanation: "Ovulation occurs in the ovary, where a mature follicle releases an egg into the fallopian tube." },
+  { id: "BIO-205", subject: "Biology", question: "Which of the following structures are found in plant seeds for storing nutrients?", options: ["Cotyledons", "Endosperm", "Plumule", "Both A and B"], answer: 3, explanation: "The cotyledons and endosperm serve as nutrient storage tissues in plant seeds, providing the embryo with food during germination." },
+  { id: "BIO-206", subject: "Biology", question: "What is the function of the menstrual cycle in humans?", options: ["To prepare the uterus for pregnancy", "To produce ova", "To regulate the release of hormones", "All of the above"], answer: 3, explanation: "The menstrual cycle performs several functions including preparing the uterus for a potential pregnancy, producing ova, and regulating hormonal secretions." },
+    { id: "BIO-207", subject: "Biology", question: "In plants, vegetative propagation is a form of:", options: ["Sexual reproduction", "Asexual reproduction", "Fertilization", "Pollination"], answer: 1, explanation: "Vegetative propagation is a type of asexual reproduction where new plants grow from vegetative parts such as stems, leaves, or roots." },
+  { id: "BIO-208", subject: "Biology", question: "Which of the following is an example of a plant that reproduces by vegetative propagation?", options: ["Potato (tuber)", "Pea (seed)", "Wheat (grain)", "Maize (kernel)"], answer: 0, explanation: "The potato is a tuber—an underground stem that can develop into a new plant through vegetative propagation." },
+  { id: "BIO-209", subject: "Biology", question: "The stage of development of a frog that undergoes metamorphosis from a tadpole is called:", options: ["Puberty", "Metamorphosis", "Gestation", "Fertilization"], answer: 1, explanation: "Metamorphosis is the process of transformation from a larval stage (tadpole) into the adult form (frog) through significant morphological changes." },
+  { id: "BIO-210", subject: "Biology", question: "The part of the flower that receives the pollen during pollination is the:", options: ["Anther", "Stigma", "Ovary", "Petal"], answer: 1, explanation: "The stigma is the receptive part of the female reproductive organ (pistil) that receives pollen during pollination." },
 
-  {
-    id: "BIO-012",
-    subject: "Biology",
-    question:
-      "Which component of blood is primarily responsible for transporting oxygen?",
-    options: ["Plasma", "Platelets", "Red blood cells", "Lymphocytes"],
-    answer: 2,
-    explanation:
-      "Red blood cells contain haemoglobin, which binds reversibly with oxygen for transport."
-  },
+  // ---------- SECTION 12: ECOLOGY & ECOSYSTEMS (211-230) ----------
+  { id: "BIO-211", subject: "Biology", question: "The study of the interactions between organisms and their environment is known as:", options: ["Genetics", "Ecology", "Taxonomy", "Anatomy"], answer: 1, explanation: "Ecology is the study of the interactions between living organisms and their physical and biological environment, including how these interactions affect distribution and abundance." },
+  { id: "BIO-212", subject: "Biology", question: "A community of living organisms and their non-living environment interacting as a functional unit is called an:", options: ["Ecosystem", "Habitat", "Biome", "Population"], answer: 0, explanation: "An ecosystem is a biological community of interacting organisms and their physical environment (e.g., a forest, a lake), functioning as a unit." },
+  { id: "BIO-213", subject: "Biology", question: "Which of the following is a biotic factor in an ecosystem?", options: ["Sunlight", "Temperature", "Predators", "Soil type"], answer: 2, explanation: "Biotic factors are the living components of an ecosystem (e.g., predators, competitors, parasites). Sunlight, temperature, and soil type are abiotic factors." },
+  { id: "BIO-214", subject: "Biology", question: "The process by which plants make their own food is called:", options: ["Respiration", "Photosynthesis", "Transpiration", "Fermentation"], answer: 1, explanation: "Photosynthesis is the process by which green plants convert light energy, carbon dioxide, and water into glucose and oxygen, producing their own food." },
+  { id: "BIO-215", subject: "Biology", question: "In a food chain, the initial source of energy for all living organisms is:", options: ["The sun", "Producers", "Consumers", "Decomposers"], answer: 0, explanation: "The sun is the ultimate source of energy for almost all ecosystems. Producers (plants) capture solar energy through photosynthesis and pass it along the food chain." },
+  { id: "BIO-216", subject: "Biology", question: "Which of the following is an example of a producer?", options: ["Grass", "Lion", "Fungi", "Rabbit"], answer: 0, explanation: "Grass is a green plant that produces its own food through photosynthesis, making it a producer in the ecosystem." },
+  { id: "BIO-217", subject: "Biology", question: "The organism that breaks down dead organic matter and recycles nutrients back into the soil is:", options: ["Producer", "Consumer", "Decomposer", "Predator"], answer: 2, explanation: "Decomposers (e.g., bacteria, fungi) break down dead organic matter, releasing nutrients back into the soil for reuse by producers." },
+  { id: "BIO-218", subject: "Biology", question: "The gradual change in species composition of a community over time is known as:", options: ["Evolution", "Succession", "Mutation", "Adaptation"], answer: 1, explanation: "Ecological succession is the gradual, directional change in the species composition of a community over time, such as a field becoming a forest." },
+  { id: "BIO-219", subject: "Biology", question: "Which of the following is a nitrogen-fixing bacterium?", options: ["Nitrobacter", "Rhizobium", "Escherichia coli", "Staphylococcus"], answer: 1, explanation: "Rhizobium is a symbiotic nitrogen-fixing bacterium found in the root nodules of legumes, converting atmospheric nitrogen into ammonia for the plant ." },
+  { id: "BIO-220", subject: "Biology", question: "The process by which nitrifying bacteria convert ammonia to nitrate is called:", options: ["Nitrogen fixation", "Nitrification", "Denitrification", "Deamination"], answer: 1, explanation: "Nitrification is the process where nitrifying bacteria convert ammonia into nitrites (Nitrosomonas) and then nitrates (Nitrobacter) ." },
+  { id: "BIO-221", subject: "Biology", question: "Which of the following is a renewable resource in an ecosystem?", options: ["Coal", "Trees", "Petroleum", "Natural gas"], answer: 1, explanation: "Trees are a renewable resource that can be replanted and replenished. Coal, petroleum, and natural gas are non-renewable fossil fuels." },
+  { id: "BIO-222", subject: "Biology", question: "A mutualistic relationship where both organisms benefit is called:", options: ["Parasitism", "Commensalism", "Mutualism", "Predation"], answer: 2, explanation: "Mutualism is a symbiotic relationship in which both partners benefit, such as the relationship between bees and flowers or Rhizobium and legumes." },
+  { id: "BIO-223", subject: "Biology", question: "What is the main cause of the greenhouse effect?", options: ["Increase in oxygen", "Increase in carbon dioxide", "Decrease in water vapor", "Decrease in nitrogen"], answer: 1, explanation: "The greenhouse effect is primarily caused by the accumulation of greenhouse gases like carbon dioxide, methane, and water vapor, which trap heat in the atmosphere." },
+  { id: "BIO-224", subject: "Biology", question: "Which of the following is an example of secondary succession?", options: ["Growth on a new island", "Growth after a forest fire", "Growth on bare rock", "Growth on volcanic ash"], answer: 1, explanation: "Secondary succession occurs on land that was previously occupied by a community but has been disturbed (e.g., after a forest fire), where soil is already present." },
+  { id: "BIO-225", subject: "Biology", question: "The main source of atmospheric nitrogen is:", options: ["N₂ gas", "Ammonia", "Nitrates", "Urea"], answer: 0, explanation: "The atmosphere is composed of about 78% nitrogen gas (N₂). This form is inert and must be fixed into usable forms for living organisms." },
+  { id: "BIO-226", subject: "Biology", question: "What is the importance of the ozone layer?", options: ["It blocks harmful ultraviolet radiation", "It regulates temperature", "It produces oxygen", "It forms clouds"], answer: 0, explanation: "The ozone layer in the stratosphere absorbs and blocks most of the harmful ultraviolet (UV) radiation from the sun, protecting life on Earth." },
+  { id: "BIO-227", subject: "Biology", question: "All organisms within a species that live in a specific area form a:", options: ["Community", "Population", "Ecosystem", "Biome"], answer: 1, explanation: "A population is a group of individuals of the same species living in a specific geographical area." },
+  { id: "BIO-228", subject: "Biology", question: "Which of the following is an example of an adaptation for survival in an aquatic environment?", options: ["Gills", "Fur", "Stomata", "Lungs"], answer: 0, explanation: "Gills are a specialized respiratory structure in aquatic animals that extract oxygen from water for breathing." },
+  { id: "BIO-229", subject: "Biology", question: "What is the study of the relationship between organisms and their distribution called?", options: ["Ecology", "Biogeography", "Botany", "Genetics"], answer: 1, explanation: "Biogeography is the study of the distribution of species and ecosystems in geographic space and through geological time." },
+  { id: "BIO-230", subject: "Biology", question: "A food web is made up of interconnected:", options: ["Food chains", "Ecosystems", "Populations", "Communities"], answer: 0, explanation: "A food web is a complex network of interconnected food chains that shows the feeding relationships among organisms in an ecosystem ." },
 
-  {
-    id: "BIO-013",
-    subject: "Biology",
-    question:
-      "What is the principal advantage of the counter-current arrangement in the nephron?",
-    options: [
-      "It prevents filtration",
-      "It allows the kidney to produce concentrated urine",
-      "It stops glucose reabsorption",
-      "It increases urea production"
-    ],
-    answer: 1,
-    explanation:
-      "The counter-current mechanism establishes an osmotic gradient in the medulla, allowing water reabsorption and concentration of urine."
-  },
+  // ---------- SECTION 13: HEREDITY & EVOLUTION (231-250) ----------
+  { id: "BIO-231", subject: "Biology", question: "The process of meiosis produces cells with:", options: ["Half the number of chromosomes", "The same number of chromosomes", "Double the number of chromosomes", "No chromosomes"], answer: 0, explanation: "Meiosis is a type of cell division that produces four gametes (sperm or eggs), each with half the number of chromosomes as the parent cell." },
+  { id: "BIO-232", subject: "Biology", question: "The genetic material in organisms is stored in the:", options: ["Ribosome", "Chloroplast", "DNA", "Mitochondrion"], answer: 2, explanation: "DNA (deoxyribonucleic acid) is the genetic material that carries the hereditary instructions for all living organisms ." },
+  { id: "BIO-233", subject: "Biology", question: "In a monohybrid cross, the genotypic ratio for a heterozygous self-cross (Tt × Tt) is:", options: ["1:2:1", "3:1", "9:3:3:1", "1:1"], answer: 0, explanation: "For Tt × Tt, the genotypic ratio is 1TT:2Tt:1tt (1:2:1), while the phenotypic ratio is 3 tall: 1 dwarf (3:1)." },
+  { id: "BIO-234", subject: "Biology", question: "Who is considered the father of modern genetics?", options: ["Charles Darwin", "Gregor Mendel", "Louis Pasteur", "Robert Hooke"], answer: 1, explanation: "Gregor Mendel is known as the father of modern genetics due to his pioneering experiments on inheritance in pea plants." },
+  { id: "BIO-235", subject: "Biology", question: "The physical expression of an organism's genes is known as the:", options: ["Genotype", "Phenotype", "Karyotype", "Genome"], answer: 1, explanation: "The phenotype is the observable physical or biochemical characteristics of an organism, determined by its genotype and environment." },
+  { id: "BIO-236", subject: "Biology", question: "The change in the genetic composition of a population over time is called:", options: ["Evolution", "Mutation", "Adaptation", "Natural selection"], answer: 0, explanation: "Evolution is the gradual change in the genetic composition of a population over successive generations, driven by processes like natural selection." },
+  { id: "BIO-237", subject: "Biology", question: "The theory of natural selection was proposed by:", options: ["Gregor Mendel", "Charles Darwin", "Watson and Crick", "Jean-Baptiste Lamarck"], answer: 1, explanation: "Charles Darwin proposed the theory of natural selection in his book 'On the Origin of Species' (1859)." },
+  { id: "BIO-238", subject: "Biology", question: "The process by which organisms better adapted to their environment tend to survive and reproduce is called:", options: ["Natural selection", "Mutation", "Genetic drift", "Gene flow"], answer: 0, explanation: "Natural selection is the process where organisms with favorable heritable traits are more likely to survive, reproduce, and pass on their genes." },
+  { id: "BIO-239", subject: "Biology", question: "A change in the DNA sequence of an organism is called:", options: ["Mutation", "Evolution", "Adaptation", "Selection"], answer: 0, explanation: "A mutation is a change in the DNA sequence of an organism, which can be spontaneous or caused by external factors like radiation." },
+  { id: "BIO-240", subject: "Biology", question: "The two strands of a DNA molecule are held together by:", options: ["Hydrogen bonds", "Covalent bonds", "Ionic bonds", "Peptide bonds"], answer: 0, explanation: "The two strands of DNA are held together by hydrogen bonds between complementary nitrogenous bases (A-T and G-C) ." },
+  { id: "BIO-241", subject: "Biology", question: "In DNA, the base that pairs with Adenine is:", options: ["Thymine", "Cytosine", "Guanine", "Uracil"], answer: 0, explanation: "In DNA, Adenine (A) pairs with Thymine (T) through two hydrogen bonds." },
+  { id: "BIO-242", subject: "Biology", question: "In DNA, the base that pairs with Guanine is:", options: ["Adenine", "Cytosine", "Thymine", "Uracil"], answer: 1, explanation: "In DNA, Guanine (G) pairs with Cytosine (C) through three hydrogen bonds." },
+  { id: "BIO-243", subject: "Biology", question: "The process of transcription in genetics involves:", options: ["Copying DNA to mRNA", "Copying mRNA to protein", "Replicating DNA", "Creating new DNA molecules"], answer: 0, explanation: "Transcription is the process where a segment of DNA is used as a template to synthesize a complementary strand of messenger RNA ." },
+  { id: "BIO-244", subject: "Biology", question: "What is the process of converting mRNA into a sequence of amino acids called?", options: ["Transcription", "Translation", "Replication", "Mutation"], answer: 1, explanation: "Translation is the process where the mRNA sequence is decoded by ribosomes to synthesize a specific sequence of amino acids (protein) ." },
+  { id: "BIO-245", subject: "Biology", question: "The set of all genes in an organism is referred to as its:", options: ["Genome", "Phenotype", "Proteome", "Transcriptome"], answer: 0, explanation: "The genome is the complete set of genes (genetic material) present in a cell or organism." },
+  { id: "BIO-246", subject: "Biology", question: "The blood group AB indicates:", options: ["An individual is a universal donor", "An individual has a rare genotype", "An individual has no antigen", "An individual is a universal recipient"], answer: 3, explanation: "Blood group AB has both A and B antigens, so it can receive blood from all other blood groups, making it a universal recipient." },
+  { id: "BIO-247", subject: "Biology", question: "A person with sickle cell anemia has a mutation in the gene coding for:", options: ["Insulin", "Haemoglobin", "Pepsin", "Myoglobin"], answer: 1, explanation: "Sickle cell anemia is caused by a mutation in the gene coding for the beta chain of haemoglobin, resulting in abnormally shaped red blood cells." },
+  { id: "BIO-248", subject: "Biology", question: "Chromosomes are composed mainly of:", options: ["DNA and proteins", "RNA and lipids", "Proteins only", "DNA and RNA"], answer: 0, explanation: "Chromosomes are composed of DNA (deoxyribonucleic acid) and proteins (histones), which help package and organize the DNA ." },
+  { id: "BIO-249", subject: "Biology", question: "A characteristic that can be passed from parents to offspring is called a(n):", options: ["Acquired trait", "Inherited trait", "Environmental trait", "Learned trait"], answer: 1, explanation: "Inherited traits are characteristics encoded in the genes passed from parents to offspring through sexual or asexual reproduction." },
+  { id: "BIO-250", subject: "Biology", question: "The exchange of genetic material between homologous chromosomes during meiosis is called:", options: ["Transcription", "Crossing over", "Transformation", "Mutation"], answer: 1, explanation: "Crossing over is the process where homologous chromosomes exchange genetic material during prophase I of meiosis, creating genetic variation in gametes ." },
+  // ---------- SECTION 14: PLANT & ANIMAL STRUCTURE (251-270) ----------
+  { id: "BIO-251", subject: "Biology", question: "In plants, the tissue responsible for the transport of water and minerals is the:", options: ["Xylem", "Phloem", "Epidermis", "Parenchyma"], answer: 0, explanation: "The xylem is the vascular tissue in plants that transports water and dissolved minerals from roots to leaves." },
+  { id: "BIO-252", subject: "Biology", question: "The tissue responsible for transporting sugars in plants is the:", options: ["Xylem", "Phloem", "Cambium", "Cortex"], answer: 1, explanation: "The phloem transports sugars (mainly sucrose) from the leaves to other parts of the plant in a process called translocation." },
+  { id: "BIO-253", subject: "Biology", question: "In a stem, the vascular bundles are arranged in a ring in:", options: ["Monocots", "Dicots", "Ferns", "Mosses"], answer: 1, explanation: "In dicot stems, vascular bundles are arranged in a ring, while in monocots they are scattered throughout the stem." },
+  { id: "BIO-254", subject: "Biology", question: "What is the main function of the root cap in plants?", options: ["To protect the root tip as it grows through soil", "To absorb water", "To conduct photosynthesis", "To store food"], answer: 0, explanation: "The root cap is a protective layer of cells at the tip of the root that protects the delicate growing point as it pushes through soil particles." },
+  { id: "BIO-255", subject: "Biology", question: "The primary function of the stomata in plant leaves is to:", options: ["Facilitate gas exchange", "Absorb water", "Transport minerals", "Anchor the plant"], answer: 0, explanation: "Stomata are tiny pores on the leaf surface that allow for the exchange of gases (CO₂ and O₂) and the release of water vapor during transpiration." },
+  { id: "BIO-256", subject: "Biology", question: "Which of the following is a mammal?", options: ["Shark", "Eagle", "Dolphin", "Crocodile"], answer: 2, explanation: "Dolphins are marine mammals that give birth to live young and produce milk. Sharks are fish, eagles are birds, and crocodiles are reptiles." },
+  { id: "BIO-257", subject: "Biology", question: "What is the function of the vertebrae in vertebrates?", options: ["Protect the spinal cord", "Produce red blood cells", "Facilitate photosynthesis", "Absorb nutrients"], answer: 0, explanation: "The vertebrae are bones that form the spinal column, which protects the spinal cord and supports the body." },
+  { id: "BIO-258", subject: "Biology", question: "The temperature regulation mechanism in mammals that involves sweating is called:", options: ["Thermoregulation", "Osmosis", "Homeostasis", "Diffusion"], answer: 0, explanation: "Thermoregulation is the process by which an organism maintains its body temperature within a certain range. Sweating is one of the mechanisms mammals use." },
+  { id: "BIO-259", subject: "Biology", question: "The main function of the dermis in the skin is to:", options: ["Produce cells for hair growth", "Act as a barrier", "Store fats and contain blood vessels", "Sense the environment"], answer: 2, explanation: "The dermis lies beneath the epidermis and contains blood vessels, nerve endings, sweat glands, hair follicles, and fat cells." },
+  { id: "BIO-260", subject: "Biology", question: "Which of the following is an example of a vestigial organ in humans?", options: ["Appendix", "Heart", "Kidney", "Liver"], answer: 0, explanation: "The appendix is considered a vestigial organ—a structure with little or no function in humans that was more functional in our ancestors." },
+  { id: "BIO-261", subject: "Biology", question: "The process of shedding the outer skin or exoskeleton in animals is called:", options: ["Metamorphosis", "Molting", "Camouflage", "Hibernation"], answer: 1, explanation: "Molting is the process in which animals shed their outer skin, feathers, or exoskeleton to allow for growth." },
+  { id: "BIO-262", subject: "Biology", question: "In the human body, the liver is responsible for:", options: ["Producing bile", "Filtering blood", "Storing glycogen", "All of the above"], answer: 3, explanation: "The liver performs numerous functions including producing bile, detoxifying blood, storing glycogen, and synthesizing proteins." },
+  { id: "BIO-263", subject: "Biology", question: "The animal group characterized by feathers, beaks, and laying hard-shelled eggs is:", options: ["Mammals", "Reptiles", "Birds", "Amphibians"], answer: 2, explanation: "Birds are vertebrates with feathers, beaks (no teeth), and lay hard-shelled eggs. They are warm-blooded." },
+  { id: "BIO-264", subject: "Biology", question: "Which of the following is a characteristic of all vertebrates?", options: ["They have an outer skeleton", "They have a backbone", "They have feathers", "They lay eggs"], answer: 1, explanation: "All vertebrates possess a backbone (vertebral column) as a defining characteristic, regardless of other features." },
+  { id: "BIO-265", subject: "Biology", question: "The structure of the human eye that controls the amount of light entering is the:", options: ["Cornea", "Lens", "Iris", "Retina"], answer: 2, explanation: "The iris is the colored part of the eye that adjusts the size of the pupil, controlling the amount of light entering the eye." },
+  { id: "BIO-266", subject: "Biology", question: "Plants that grow on other plants without harming them are known as:", options: ["Parasites", "Epiphytes", "Saprophytes", "Carnivorous plants"], answer: 1, explanation: "Epiphytes are plants that grow on other plants (like trees) for support, without deriving nutrients from the host. They are not parasitic." },
+  { id: "BIO-267", subject: "Biology", question: "The main function of red blood cells is to:", options: ["Transport oxygen", "Fight infection", "Clot blood", "Produce antibodies"], answer: 0, explanation: "Red blood cells (erythrocytes) contain haemoglobin, which binds to oxygen and transports it from the lungs to body tissues." },
+  { id: "BIO-268", subject: "Biology", question: "The study of the structure of the human body is called:", options: ["Physiology", "Anatomy", "Ecology", "Genetics"], answer: 1, explanation: "Anatomy is the scientific study of the structure of living organisms and the relationships between their parts." },
+  { id: "BIO-269", subject: "Biology", question: "The organ that pumps blood through the circulatory system is the:", options: ["Liver", "Heart", "Lungs", "Kidney"], answer: 1, explanation: "The heart is a muscular organ that pumps blood throughout the body via the circulatory system." },
+  { id: "BIO-270", subject: "Biology", question: "The main component of the plant cell wall is:", options: ["Cellulose", "Starch", "Protein", "Lipid"], answer: 0, explanation: "The plant cell wall is primarily composed of cellulose, a complex carbohydrate that provides structural support and protection." },
 
-  {
-    id: "BIO-014",
-    subject: "Biology",
-    question:
-      "Which ecological pyramid is always upright?",
-    options: [
-      "Pyramid of biomass",
-      "Pyramid of numbers",
-      "Pyramid of energy",
-      "All of the above"
-    ],
-    answer: 2,
-    explanation:
-      "The pyramid of energy is always upright because energy is lost at each trophic level, mainly through respiration and heat loss."
-  },
+  // ---------- SECTION 15: DISEASES & HEALTH (271-290) ----------
+  { id: "BIO-271", subject: "Biology", question: "Malaria is transmitted by the female:", options: ["Mosquito", "Tsetse fly", "Housefly", "Sandfly"], answer: 0, explanation: "Malaria is caused by the Plasmodium parasite and is transmitted to humans by the bite of an infected female Anopheles mosquito." },
+  { id: "BIO-272", subject: "Biology", question: "Which of the following diseases is caused by a virus?", options: ["Tuberculosis", "Cholera", "Influenza", "Malaria"], answer: 2, explanation: "Influenza (flu) is caused by the influenza virus. Tuberculosis is bacterial, cholera is bacterial, and malaria is parasitic." },
+  { id: "BIO-273", subject: "Biology", question: "The disease caused by the deficiency of Vitamin D is:", options: ["Scurvy", "Rickets", "Night blindness", "Beriberi"], answer: 1, explanation: "Rickets is caused by a deficiency of Vitamin D, leading to weak bones and skeletal deformities, particularly in children." },
+  { id: "BIO-274", subject: "Biology", question: "Which of the following is a vector for the transmission of malaria?", options: ["Anopheles mosquito", "Aedes mosquito", "Tsetse fly", "Housefly"], answer: 0, explanation: "The female Anopheles mosquito is the specific vector for the Plasmodium parasite that causes malaria." },
+  { id: "BIO-275", subject: "Biology", question: "Typhoid fever is caused by the bacteria:", options: ["Salmonella typhi", "Vibrio cholerae", "Mycobacterium tuberculosis", "Plasmodium falciparum"], answer: 0, explanation: "Typhoid fever is caused by the bacterium Salmonella typhi, typically transmitted through contaminated food or water." },
+  { id: "BIO-276", subject: "Biology", question: "The disease that is caused by a deficiency of iodine in the diet is:", options: ["Goitre", "Obesity", "Anaemia", "Diabetes"], answer: 0, explanation: "Goitre is an enlargement of the thyroid gland caused by a deficiency of iodine, which is essential for the production of thyroxine." },
+  { id: "BIO-277", subject: "Biology", question: "Which of the following is a method of preventing cholera?", options: ["Clean water supply", "Mosquito control", "Vaccination", "Proper hygiene"], answer: 0, explanation: "Cholera is a waterborne disease, so ensuring a clean water supply is the primary method of prevention." },
+  { id: "BIO-278", subject: "Biology", question: "The HIV virus primarily attacks which cells in the immune system?", options: ["Red blood cells", "Helper T cells", "Platelets", "Nerve cells"], answer: 1, explanation: "The Human Immunodeficiency Virus (HIV) targets Helper T cells (CD4+ T cells), weakening the immune system and making the body vulnerable to infections." },
+  { id: "BIO-279", subject: "Biology", question: "Which of the following is a common symptom of malaria?", options: ["Yellow skin", "Fever and chills", "Blurred vision", "Joint pain"], answer: 1, explanation: "Malaria is characterized by recurrent episodes of fever, chills, and sweating, often accompanied by headache and fatigue." },
+  { id: "BIO-280", subject: "Biology", question: "The disease sickle cell anemia is caused by a defect in:", options: ["Red blood cells", "White blood cells", "Platelets", "Plasma"], answer: 0, explanation: "Sickle cell anemia is a genetic disorder where red blood cells become abnormally shaped (crescent or sickle shape), leading to anemia and other health problems." },
+  { id: "BIO-281", subject: "Biology", question: "Which of the following is a bacterial disease?", options: ["Smallpox", "Cholera", "Measles", "AIDS"], answer: 1, explanation: "Cholera is caused by the bacterium Vibrio cholerae. Smallpox, measles, and AIDS are viral diseases." },
+  { id: "BIO-282", subject: "Biology", question: "The vector for the transmission of sleeping sickness is:", options: ["Mosquito", "Tsetse fly", "Housefly", "Flea"], answer: 1, explanation: "Sleeping sickness (African trypanosomiasis) is caused by the Trypanosoma parasite and is transmitted by the tsetse fly." },
+  { id: "BIO-283", subject: "Biology", question: "Which of the following is a symptom of diabetes mellitus?", options: ["Excessive thirst", "High blood pressure", "Blurred vision", "All of the above"], answer: 3, explanation: "Common symptoms of diabetes mellitus include excessive thirst, frequent urination, high blood sugar, weight loss, and blurred vision." },
+  { id: "BIO-284", subject: "Biology", question: "The disease that causes hardening of the arteries is called:", options: ["Atherosclerosis", "Arthritis", "Asthma", "Anaemia"], answer: 0, explanation: "Atherosclerosis is a condition where plaque (cholesterol and fat) builds up in the arterial walls, narrowing and hardening them, leading to cardiovascular problems." },
+  { id: "BIO-285", subject: "Biology", question: "The main cause of cholera is:", options: ["Consuming contaminated water", "Bites from mosquitoes", "Lack of vitamin C", "Exposure to sunlight"], answer: 0, explanation: "Cholera is caused by ingesting the Vibrio cholerae bacterium, which is typically found in contaminated water or food." },
+  { id: "BIO-286", subject: "Biology", question: "Which of the following is a method of protecting against malaria?", options: ["Using insecticide-treated nets", "Washing hands", "Vaccination", "Drinking clean water"], answer: 0, explanation: "Using insecticide-treated bed nets and mosquito repellents are key methods of preventing mosquito bites and thus malaria." },
+  { id: "BIO-287", subject: "Biology", question: "The human immunodeficiency virus (HIV) is transmitted through:", options: ["Unprotected sexual contact", "Sharing needles", "Blood transfusion", "All of the above"], answer: 3, explanation: "HIV is transmitted through unprotected sexual contact, sharing contaminated needles, blood transfusions, and from mother to child during pregnancy or breastfeeding." },
+  { id: "BIO-288", subject: "Biology", question: "Which of the following is a viral disease?", options: ["Tuberculosis", "Cholera", "Measles", "Malaria"], answer: 2, explanation: "Measles is a highly contagious viral infection. Tuberculosis and cholera are bacterial diseases, and malaria is parasitic." },
+  { id: "BIO-289", subject: "Biology", question: "Anaemia is caused by the deficiency of:", options: ["Iron", "Iodine", "Vitamin D", "Calcium"], answer: 0, explanation: "Anaemia is a condition characterized by a deficiency of iron, which is essential for the production of haemoglobin in red blood cells." },
+  { id: "BIO-290", subject: "Biology", question: "The disease that is caused by Plasmodium is:", options: ["Malaria", "Typhoid", "Cholera", "Yellow fever"], answer: 0, explanation: "Malaria is caused by the Plasmodium parasite, which is transmitted to humans through the bite of infected female Anopheles mosquitoes." },
 
-  {
-    id: "BIO-015",
-    subject: "Biology",
-    question:
-      "Why does the rate of photosynthesis eventually stop increasing when light intensity is continuously increased?",
-    options: [
-      "Light becomes poisonous immediately",
-      "Another factor becomes limiting",
-      "Chlorophyll disappears",
-      "Water can no longer enter the plant"
-    ],
-    answer: 1,
-    explanation:
-      "Once light is no longer the limiting factor, factors such as carbon dioxide concentration or temperature limit the rate."
-  },
-
-  {
-    id: "BIO-016",
-    subject: "Biology",
-    question:
-      "Which enzyme begins the digestion of starch in the human digestive system?",
-    options: ["Pepsin", "Lipase", "Amylase", "Trypsin"],
-    answer: 2,
-    explanation:
-      "Salivary amylase begins the hydrolysis of starch into smaller carbohydrates in the mouth."
-  },
-
-  {
-    id: "BIO-017",
-    subject: "Biology",
-    question:
-      "A population grows rapidly when resources are abundant. As resources become limited, which factor most directly causes growth to slow?",
-    options: [
-      "Reduced competition",
-      "Increased carrying capacity",
-      "Increased competition for resources",
-      "Increased birth rate"
-    ],
-    answer: 2,
-    explanation:
-      "Limited food, space, water and other resources increase competition, reducing population growth as the population approaches carrying capacity."
-  },
-
-  {
-    id: "BIO-018",
-    subject: "Biology",
-    question:
-      "Which organelle is primarily responsible for modifying, sorting and packaging proteins for secretion?",
-    options: [
-      "Ribosome",
-      "Golgi apparatus",
-      "Mitochondrion",
-      "Lysosome"
-    ],
-    answer: 1,
-    explanation:
-      "The Golgi apparatus modifies proteins received from the endoplasmic reticulum and sorts them into vesicles for transport."
-  },
-
-  {
-    id: "BIO-019",
-    subject: "Biology",
-    question:
-      "Which statement correctly describes natural selection?",
-    options: [
-      "Organisms consciously develop useful traits because they need them",
-      "Individuals with advantageous heritable traits tend to leave more offspring",
-      "All mutations are beneficial",
-      "Every organism in a population has exactly the same reproductive success"
-    ],
-    answer: 1,
-    explanation:
-      "Natural selection favours heritable variations that improve survival or reproduction, causing those traits to become more common over generations."
-  },
-
-  {
-    id: "BIO-020",
-    subject: "Biology",
-    question:
-      "A man with blood group A and a woman with blood group B have a child with blood group O. Which genotypes must the parents have?",
-    options: [
-      "IAIA and IBIB",
-      "IAi and IBi",
-      "IAIA and IBi",
-      "IAi and IBIB"
-    ],
-    answer: 1,
-    explanation:
-      "A group O child has genotype ii, so each parent must contribute an i allele. Therefore the parents must be IAi and IBi."
-  }
+  // ---------- SECTION 16: PLANT & ANIMAL PHYSIOLOGY (291-300) ----------
+  { id: "BIO-291", subject: "Biology", question: "The process of transpiration in plants primarily occurs through:", options: ["Stomata", "Root hairs", "Xylem", "Cell walls"], answer: 0, explanation: "Transpiration, the loss of water vapor from plants, mainly occurs through the stomata on leaves." },
+  { id: "BIO-292", subject: "Biology", question: "Which of the following is a function of the liver in the human body?", options: ["Producing insulin", "Storing bile", "Detoxifying blood", "Producing red blood cells"], answer: 2, explanation: "The liver is the primary detoxification organ in the body, breaking down harmful substances such as drugs and toxins." },
+  { id: "BIO-293", subject: "Biology", question: "The primary gas exchange surface in the human lungs is the:", options: ["Trachea", "Bronchi", "Alveoli", "Diaphragm"], answer: 2, explanation: "The alveoli are tiny air sacs in the lungs where the exchange of oxygen and carbon dioxide takes place between the air and the blood." },
+  { id: "BIO-294", subject: "Biology", question: "The role of the pancreas in digestion is to:", options: ["Produce bile", "Secrete digestive enzymes", "Absorb nutrients", "Store food"], answer: 1, explanation: "The pancreas secretes digestive enzymes (amylase, trypsin, lipase) into the small intestine to break down carbohydrates, proteins, and fats." },
+  { id: "BIO-295", subject: "Biology", question: "The primary mechanism by which oxygen is transported in the blood is:", options: ["Dissolved in plasma", "Bound to haemoglobin", "As bicarbonate ions", "Bound to albumin"], answer: 1, explanation: "Oxygen is transported in the blood primarily bound to haemoglobin, a protein in red blood cells that carries oxygen from the lungs to the tissues." },
+  { id: "BIO-296", subject: "Biology", question: "Which of the following is the correct sequence of the human digestive tract?", options: ["Mouth → oesophagus → stomach → small intestine → large intestine", "Mouth → stomach → oesophagus → large intestine → small intestine", "Stomach → mouth → oesophagus → large intestine → small intestine", "Small intestine → stomach → mouth → large intestine"], answer: 0, explanation: "The correct sequence of the digestive tract is mouth → oesophagus → stomach → small intestine → large intestine → rectum." },
+  { id: "BIO-297", subject: "Biology", question: "The process of photosynthesis in plants takes place in which organelle?", options: ["Chloroplast", "Mitochondrion", "Ribosome", "Nucleus"], answer: 0, explanation: "Photosynthesis occurs in the chloroplasts, which contain chlorophyll—the green pigment that captures light energy." },
+  { id: "BIO-298", subject: "Biology", question: "Which of the following is responsible for the perception of light in the human eye?", options: ["Cornea", "Retina", "Lens", "Sclera"], answer: 1, explanation: "The retina is the light-sensitive layer at the back of the eye that contains photoreceptor cells (rods and cones) that detect light and convert it into nerve impulses." },
+  { id: "BIO-299", subject: "Biology", question: "The main function of the kidney in the human body is to:", options: ["Filter blood to produce urine", "Produce bile", "Facilitate digestion", "Regulate breathing"], answer: 0, explanation: "The kidneys are the primary excretory organs, filtering the blood to remove nitrogenous waste (urea) and excess water to produce urine." },
+  { id: "BIO-300", subject: "Biology", question: "A student prepares a slide of onion epidermal cells. What is the correct process for examining it?", options: ["Place the slide on the stage and focus with the low-power objective first", "Use the high-power objective immediately", "Add oil to the slide", "Observe with the naked eye"], answer: 0, explanation: "When examining a prepared slide, the correct procedure is to focus it using the low-power objective first before switching to a higher power objective for better detail." }
 ];
