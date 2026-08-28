@@ -17,54 +17,65 @@ import { biologyQuestions } from "../../data/questions/biology";
 const SubjectIcon = ({ subjectKey }) => {
   const icons = {
     aptitude: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="3"></circle>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path>
-        <circle cx="12" cy="12" r="9"></circle>
+        <circle cx="12" cy="12" r="7"></circle>
       </svg>
     ),
     mathematics: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19h4V5h4v14h4"></path>
-        <path d="M8 12h8"></path>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+        {/* + */}
+        <line x1="6" y1="6" x2="12" y2="6"></line>
+        <line x1="9" y1="3" x2="9" y2="9"></line>
+        {/* - */}
+        <line x1="14" y1="6" x2="20" y2="6"></line>
+        {/* × */}
+        <line x1="5" y1="13" x2="11" y2="19"></line>
+        <line x1="11" y1="13" x2="5" y2="19"></line>
+        {/* ÷ */}
+        <line x1="14" y1="15" x2="20" y2="15"></line>
+        <circle cx="17" cy="11" r="1.2" fill="currentColor" stroke="none"></circle>
+        <circle cx="17" cy="19" r="1.2" fill="currentColor" stroke="none"></circle>
       </svg>
     ),
     chemistry: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M10 2v6L4 20h16L14 8V2"></path>
         <line x1="8" y1="16" x2="16" y2="16"></line>
       </svg>
     ),
     physics: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"></path>
       </svg>
     ),
     biology: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22V12"></path>
         <path d="M12 12C12 8 9 6 5 6C5 10 8 12 12 12Z"></path>
         <path d="M12 12C12 8 15 6 19 6C19 10 16 12 12 12Z"></path>
-        <path d="M12 2V4"></path>
       </svg>
     )
   };
-  return <span className={styles.subjectIcon}>{icons[subjectKey] || null}</span>;
+  
+  // Add subject-specific gradient backgrounds for a "3D" look
+  const gradients = {
+    aptitude: "linear-gradient(135deg, #3b82f6, #1e3a8a)",
+    mathematics: "linear-gradient(135deg, #f59e0b, #b45309)",
+    chemistry: "linear-gradient(135deg, #ec4899, #be185d)",
+    physics: "linear-gradient(135deg, #ef4444, #b91c1c)",
+    biology: "linear-gradient(135deg, #22c55e, #15803d)"
+  };
+
+  return (
+    <span
+      className={styles.subjectIcon}
+      style={{ background: gradients[subjectKey] || "#333" }}
+    >
+      {icons[subjectKey] || null}
+    </span>
+  );
 };
-
-const TimerIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="13" r="8"></circle>
-    <path d="M12 9v4l2 2"></path>
-    <path d="M9 2h6"></path>
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="20 6 9 17 4 12"></polyline>
-  </svg>
-);
 
 // ---------- SAFE MATH RENDERER ----------
 function MathRenderer({ text }) {
