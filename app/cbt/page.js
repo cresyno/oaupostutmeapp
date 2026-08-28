@@ -3,6 +3,7 @@
 import { useState, useEffect, Component } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
+import katex from "katex";
 
 // Imports for LaTeX rendering
 import Latex from "react-katex";
@@ -58,25 +59,29 @@ function shuffleArray(arr) {
 function MathRenderer({ text }) {
   if (!text) return null;
 
-  // Try to split safely
-  let parts;
-  try {
-    parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
-  } catch (e) {
-    return <span>{text}</span>; // fallback completely
-  }
+  const parts = text.split(/(\$[^$]+\$|\\\([^)]+\\\))/g);
 
   return (
     <>
       {parts.map((part, index) => {
-        if (
+        const isMath =
           (part.startsWith("$") && part.endsWith("$")) ||
-          (part.startsWith("\\(") && part.endsWith("\\)"))
-        ) {
+          (part.startsWith("\\(") && part.endsWith("\\)"));
+
+        if (isMath) {
           try {
-            return <Latex key={index}>{part}</Latex>;
+            const html = katex.renderToString(part, {
+              throwOnError: false, // This is the magic line - it prevents crashing
+              displayMode: false,
+            });
+            return (
+              <span
+                key={index}
+                dangerouslySetInnerHTML={{ __html: html }}
+              />
+            );
           } catch (error) {
-            console.warn("KaTeX failed, showing raw:", part);
+            // If even the core katex library fails, just show the raw text
             return <span key={index}>{part}</span>;
           }
         } else {
