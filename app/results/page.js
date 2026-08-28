@@ -66,10 +66,28 @@ export default function ResultsPage() {
     );
   }
 
-  const { correct, total, answers, questions } = result;
+  const { correct, total, answers, questions, subjects } = result;
   const percentage = Math.round((correct / total) * 100);
   const incorrect = total - correct;
   const attempted = Object.keys(answers).length;
+
+  // Calculate per-subject stats
+  const subjectStats = {};
+  questions.forEach((q, idx) => {
+    const key = q.subjectKey; // e.g., 'mathematics'
+    if (!subjectStats[key]) {
+      subjectStats[key] = {
+        label: q.subjectLabel,
+        icon: q.subjectIcon,
+        correct: 0,
+        total: 0,
+      };
+    }
+    subjectStats[key].total++;
+    if (answers[idx] === q.answer) {
+      subjectStats[key].correct++;
+    }
+  });
 
   const handleRetake = () => {
     localStorage.removeItem("oau-cbt-result");
@@ -96,6 +114,34 @@ export default function ResultsPage() {
           </div>
         </div>
 
+        {/* -------- NEW: Subject Breakdown -------- */}
+        <div className={styles.subjectBreakdown}>
+          <h2>Performance by Subject</h2>
+          {Object.entries(subjectStats).map(([key, stats]) => {
+            const subPct = Math.round((stats.correct / stats.total) * 100);
+            return (
+              <div key={key} className={styles.subjectRow}>
+                <div className={styles.subjectInfo}>
+                  <span className={styles.subjectIcon}>{stats.icon}</span>
+                  <span className={styles.subjectName}>{stats.label}</span>
+                  <span className={styles.subjectScore}>
+                    {stats.correct}/{stats.total} ({subPct}%)
+                  </span>
+                </div>
+                <div className={styles.subjectProgressTrack}>
+                  <div
+                    className={styles.subjectProgressFill}
+                    style={{
+                      width: `${subPct}%`,
+                      backgroundColor: subPct >= 70 ? "#22c55e" : subPct >= 50 ? "#eab308" : "#ef4444"
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
         <div className={styles.actions}>
           <button onClick={handleRetake} className={styles.retakeButton}>
             🔄 Retake Exam
@@ -109,7 +155,7 @@ export default function ResultsPage() {
           <p>Review your answers below to improve your score.</p>
         </div>
 
-        {/* -------- New Answer Review Section -------- */}
+        {/* -------- Answer Review Section -------- */}
         <div className={styles.reviewSection}>
           <h2>Detailed Answer Review</h2>
           {questions.map((q, index) => {
@@ -166,4 +212,4 @@ export default function ResultsPage() {
       </div>
     </div>
   );
-      }
+    }
