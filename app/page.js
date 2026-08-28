@@ -4,28 +4,25 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./page.module.css";
 
-const SUBJECTS = {
-  aptitude: { label: "Aptitude", icon: "🧠", compulsory: true },
-  mathematics: { label: "Mathematics", icon: "📐" },
-  chemistry: { label: "Chemistry", icon: "🧪" },
-  physics: { label: "Physics", icon: "⚡" },
-  biology: { label: "Biology", icon: "🌿" },
-};
-
 const OPTIONAL_KEYS = ["mathematics", "chemistry", "physics", "biology"];
+const SUBJECT_LABELS = {
+  aptitude: "Aptitude",
+  mathematics: "Mathematics",
+  chemistry: "Chemistry",
+  physics: "Physics",
+  biology: "Biology",
+};
 const TOTAL_QUESTIONS = 40;
 
 export default function Home() {
   const router = useRouter();
   const [selected, setSelected] = useState([]);
 
-  // Load saved state
   useEffect(() => {
     const saved = localStorage.getItem("oau-cbt-subjects");
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
-        // Only keep optional subjects
         const optional = parsed.filter((s) => OPTIONAL_KEYS.includes(s));
         if (optional.length <= 3) setSelected(optional);
       } catch (_) {}
@@ -34,15 +31,10 @@ export default function Home() {
 
   const toggleSubject = (key) => {
     setSelected((prev) => {
-      // If already selected, remove it
       if (prev.includes(key)) {
         return prev.filter((k) => k !== key);
       }
-      // If already have 3 selected, don't add more
-      if (prev.length >= 3) {
-        return prev;
-      }
-      // Add the new subject
+      if (prev.length >= 3) return prev;
       return [...prev, key];
     });
   };
@@ -62,16 +54,14 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        {/* Header */}
         <div className={styles.header}>
-          <div className={styles.crest}>🏛️</div>
+          <span className={styles.crest}>🏛️</span>
           <div>
             <h1 className={styles.title}>OAU POST-UTME CBT</h1>
             <p className={styles.subtitle}>Practice Examination • 2026 Session</p>
           </div>
         </div>
 
-        {/* Compulsory Subject */}
         <div className={styles.compulsoryCard}>
           <span className={styles.compulsoryIcon}>🧠</span>
           <div className={styles.compulsoryInfo}>
@@ -82,16 +72,19 @@ export default function Home() {
           <span className={styles.lockIcon}>🔒</span>
         </div>
 
-        {/* Instruction */}
         <p className={styles.instruction}>
           Select <strong>any 3</strong> of the 4 optional subjects:
         </p>
 
-        {/* Optional Subjects Grid */}
         <div className={styles.grid}>
           {OPTIONAL_KEYS.map((key) => {
             const isSelected = selected.includes(key);
-            const subject = SUBJECTS[key];
+            const icons = {
+              mathematics: "📐",
+              chemistry: "🧪",
+              physics: "⚡",
+              biology: "🌿",
+            };
             return (
               <div
                 key={key}
@@ -100,9 +93,11 @@ export default function Home() {
                   isSelected ? styles.selected : ""
                 }`}
               >
-                <span className={styles.optionalIcon}>{subject.icon}</span>
+                <span className={styles.optionalIcon}>{icons[key]}</span>
                 <div className={styles.optionalInfo}>
-                  <div className={styles.optionalLabel}>{subject.label}</div>
+                  <div className={styles.optionalLabel}>
+                    {SUBJECT_LABELS[key]}
+                  </div>
                   <div className={styles.questionCount}>10 questions</div>
                 </div>
                 {isSelected && <span className={styles.checkmark}>✓</span>}
@@ -111,11 +106,17 @@ export default function Home() {
           })}
         </div>
 
-        {/* Progress */}
         <div className={styles.progressArea}>
           <div className={styles.progressRing}>
             <svg viewBox="0 0 100 100">
-              <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
+              <circle
+                cx="50"
+                cy="50"
+                r="40"
+                fill="none"
+                stroke="#e5e7eb"
+                strokeWidth="8"
+              />
               <circle
                 cx="50"
                 cy="50"
@@ -124,12 +125,21 @@ export default function Home() {
                 stroke="#2563eb"
                 strokeWidth="8"
                 strokeDasharray={circumference}
-                strokeDashoffset={circumference - (progress / 100) * circumference}
+                strokeDashoffset={
+                  circumference - (progress / 100) * circumference
+                }
                 strokeLinecap="round"
                 transform="rotate(-90 50 50)"
                 className={styles.progressCircle}
               />
-              <text x="50" y="56" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1f2937">
+              <text
+                x="50"
+                y="56"
+                textAnchor="middle"
+                fontSize="20"
+                fontWeight="bold"
+                fill="#1f2937"
+              >
                 {selected.length}/3
               </text>
             </svg>
@@ -144,7 +154,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Start Button */}
         <button
           onClick={startExam}
           disabled={!isReady}
@@ -156,13 +165,15 @@ export default function Home() {
               <span className={styles.arrow}>→</span>
             </>
           ) : (
-            `Select ${3 - selected.length} more subject${3 - selected.length !== 1 ? "s" : ""}`
+            `Select ${3 - selected.length} more subject${
+              3 - selected.length !== 1 ? "s" : ""
+            }`
           )}
         </button>
 
-        {/* Footer */}
         <p className={styles.footer}>
-          Aptitude is compulsory. Total: 4 subjects × 10 questions = {TOTAL_QUESTIONS} questions.
+          Aptitude is compulsory. Total: 4 subjects × 10 questions ={" "}
+          {TOTAL_QUESTIONS} questions.
         </p>
       </div>
     </div>
