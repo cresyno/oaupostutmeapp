@@ -24,15 +24,11 @@ const SubjectIcon = ({ subjectKey }) => {
     ),
     mathematics: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-        {/* + */}
         <line x1="6" y1="6" x2="12" y2="6"></line>
         <line x1="9" y1="3" x2="9" y2="9"></line>
-        {/* - */}
         <line x1="14" y1="6" x2="20" y2="6"></line>
-        {/* × */}
         <line x1="5" y1="13" x2="11" y2="19"></line>
         <line x1="11" y1="13" x2="5" y2="19"></line>
-        {/* ÷ */}
         <line x1="14" y1="15" x2="20" y2="15"></line>
         <circle cx="17" cy="11" r="1.2" fill="currentColor" stroke="none"></circle>
         <circle cx="17" cy="19" r="1.2" fill="currentColor" stroke="none"></circle>
@@ -156,6 +152,16 @@ function BasicCalculator({ onClose }) {
     }
   };
 
+  const calculate = (a, b, op) => {
+    switch (op) {
+      case "+": return a + b;
+      case "-": return a - b;
+      case "×": return a * b;
+      case "÷": return b === 0 ? 0 : a / b;
+      default: return b;
+    }
+  };
+
   const handleOperator = (op) => {
     const currentNumber = parseFloat(display);
     if (previous !== null && operator && !waitingForNewNumber) {
@@ -167,16 +173,6 @@ function BasicCalculator({ onClose }) {
     }
     setOperator(op);
     setWaitingForNewNumber(true);
-  };
-
-  const calculate = (a, b, op) => {
-    switch (op) {
-      case "+": return a + b;
-      case "-": return a - b;
-      case "×": return a * b;
-      case "÷": return b === 0 ? 0 : a / b;
-      default: return b;
-    }
   };
 
   const handleEquals = () => {
@@ -242,8 +238,8 @@ const SUBJECT_DATA = {
   biology: { label: "Biology", questions: biologyQuestions || [], iconKey: "biology" },
 };
 
-const QUESTIONS_PER_SUBJECT = 10;
-const EXAM_DURATION_SECONDS = 3600;
+const OPTIONAL_QUESTIONS_PER_SUBJECT = 10;
+const EXAM_DURATION_SECONDS = 3600; // 60 minutes
 
 function shuffleArray(arr) {
   const a = [...arr];
@@ -257,17 +253,20 @@ function shuffleArray(arr) {
 // ---------- BALANCED APTITUDE SELECTION ----------
 function categorizeAptitudeQuestion(question) {
   const text = question.question.toLowerCase();
-  
-  const historyKeywords = ["nigeria", "oau", "president", "year", "government", "civic", "independence", "abuja", "lagos", "minister", "senate", "state", "current affairs", "history"];
+
+  const historyKeywords = ["nigeria", "oau", "president", "year", "government", "civic", "independence", "abuja", "lagos", "minister", "senate", "state", "current affairs", "history", "slogan", "vice chancellor", "chancellor", "registrar", "bursar", "librarian"];
   if (historyKeywords.some(k => text.includes(k))) return "history";
 
-  const mathsKeywords = ["sequence", "number", "percentage", "profit", "speed", "distance", "average", "ratio", "algebra", "equation", "solve", "calculate", "km", "sum", "product"];
+  const mathsKeywords = ["sequence", "number", "percentage", "profit", "speed", "distance", "average", "ratio", "algebra", "equation", "solve", "calculate", "km", "sum", "product", "complete", "next", "code", "coded"];
   if (mathsKeywords.some(k => text.includes(k))) return "maths";
 
   return "logic";
 }
 
 function selectBalancedAptitudeQuestions(questionBank, total = 10) {
+  // If we can't get enough questions, just return a shuffled selection
+  const safeTotal = Math.min(total, questionBank.length);
+
   const history = questionBank.filter(q => categorizeAptitudeQuestion(q) === "history");
   const maths = questionBank.filter(q => categorizeAptitudeQuestion(q) === "maths");
   const logic = questionBank.filter(q => categorizeAptitudeQuestion(q) === "logic");
@@ -283,9 +282,9 @@ function selectBalancedAptitudeQuestions(questionBank, total = 10) {
   if (shufMaths.length > 0) selected.push(shufMaths[0]);
   if (shufLogic.length > 0) selected.push(shufLogic[0]);
 
-  // Fill remaining randomly
+  // Fill remaining randomly from the whole pool
   const remainingPool = shuffleArray(questionBank).filter(q => !selected.includes(q));
-  selected = [...selected, ...remainingPool.slice(0, total - selected.length)];
+  selected = [...selected, ...remainingPool.slice(0, safeTotal - selected.length)];
 
   return shuffleArray(selected);
 }
@@ -304,14 +303,17 @@ export default function CBTPage() {
   const [isRestored, setIsRestored] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
 
-  // Load saved progress
+  // ---------- LOAD SAVED PROGRESS ----------
   useEffect(() => {
     const savedProgress = localStorage.getItem("oau-cbt-progress");
     if (savedProgress) {
       try {
         const parsed = JSON.parse(savedProgress);
         const savedSubjects = JSON.parse(localStorage.getItem("oau-cbt-subjects") || "[]");
-        if (parsed.subjects && JSON.stringify(parsed.subjects) === JSON.stringify(savedSubjects)) {
+        if (
+          parsed.subjects &&
+          JSON.stringify(parsed.subjects) === JSON.stringify(savedSubjects)
+        ) {
           setSubjects(parsed.subjects || []);
           setExamQuestions(parsed.examQuestions || []);
           setSubjectSections(parsed.subjectSections || []);
@@ -319,6 +321,7 @@ export default function CBTPage() {
           setAnswers(parsed.answers || {});
           setTimeLeft(parsed.timeLeft || EXAM_DURATION_SECONDS);
           setIsRestored(true);
+          return;
         } else {
           localStorage.removeItem("oau-cbt-progress");
         }
@@ -327,28 +330,41 @@ export default function CBTPage() {
       }
     }
 
-    if (!isRestored) {
-      const saved = localStorage.getItem("oau-cbt-subjects");
-      if (!saved) {
+    // No saved progress → load subjects from localStorage
+    const saved = localStorage.getItem("oau-cbt-subjects");
+    if (!saved) {
+      router.push("/");
+      return;
+    }
+    try {
+      const parsed = JSON.parse(saved);
+      // Accept 1 to 4 subjects as long as aptitude is included
+      if (
+        !Array.isArray(parsed) ||
+        parsed.length < 1 ||
+        parsed.length > 4 ||
+        !parsed.includes("aptitude")
+      ) {
         router.push("/");
         return;
       }
-      try {
-        const parsed = JSON.parse(saved);
-        if (parsed.length !== 4 || !parsed.includes("aptitude")) {
-          router.push("/");
-          return;
-        }
-        setSubjects(parsed);
-      } catch (_) {
-        router.push("/");
-      }
+      setSubjects(parsed);
+    } catch (_) {
+      router.push("/");
     }
   }, [router]);
 
-  // Build exam
+  // ---------- BUILD EXAM ----------
   useEffect(() => {
-    if (subjects.length !== 4 || isRestored) return;
+    if (subjects.length === 0 || isRestored) return;
+
+    // Read dynamic aptitude count
+    const aptitudeCount = (() => {
+      if (typeof window === "undefined") return 10;
+      const saved = localStorage.getItem("oau-cbt-aptitude-count");
+      const n = saved ? parseInt(saved, 10) : 10;
+      return [10, 20, 30, 40].includes(n) ? n : 10;
+    })();
 
     let allQuestions = [];
     let sections = [];
@@ -362,10 +378,10 @@ export default function CBTPage() {
 
       let picked;
       if (subjectKey === "aptitude") {
-        picked = selectBalancedAptitudeQuestions(data.questions, QUESTIONS_PER_SUBJECT);
+        picked = selectBalancedAptitudeQuestions(data.questions, aptitudeCount);
       } else {
         const shuffled = shuffleArray(data.questions);
-        picked = shuffled.slice(0, QUESTIONS_PER_SUBJECT);
+        picked = shuffled.slice(0, OPTIONAL_QUESTIONS_PER_SUBJECT);
       }
 
       const enriched = picked.map((q) => ({
@@ -400,9 +416,9 @@ export default function CBTPage() {
     setIsRestored(true);
   }, [subjects, isRestored]);
 
-  // Save progress
+  // ---------- SAVE PROGRESS ----------
   useEffect(() => {
-    if (!isRestored || examQuestions.length === 0) return;
+    if (!isRestored || examQuestions.length === 0 || submitted) return;
     const progress = {
       subjects,
       examQuestions,
@@ -412,9 +428,9 @@ export default function CBTPage() {
       timeLeft,
     };
     localStorage.setItem("oau-cbt-progress", JSON.stringify(progress));
-  }, [subjects, examQuestions, subjectSections, currentIndex, answers, timeLeft, isRestored]);
+  }, [subjects, examQuestions, subjectSections, currentIndex, answers, timeLeft, isRestored, submitted]);
 
-  // Timer
+  // ---------- TIMER ----------
   useEffect(() => {
     if (examQuestions.length === 0 || submitted) return;
     const timer = setInterval(() => {
@@ -430,7 +446,7 @@ export default function CBTPage() {
     return () => clearInterval(timer);
   }, [examQuestions, submitted]);
 
-  // Auto-submit
+  // ---------- AUTO-SUBMIT ----------
   useEffect(() => {
     if (submitted && examQuestions.length > 0) {
       let correct = 0;
@@ -451,7 +467,7 @@ export default function CBTPage() {
     }
   }, [submitted, examQuestions, answers, subjects, router]);
 
-  // Refresh protection
+  // ---------- REFRESH PROTECTION ----------
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       if (!submitted) {
@@ -463,6 +479,7 @@ export default function CBTPage() {
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [submitted]);
 
+  // ---------- EARLY RETURNS ----------
   if (error) {
     return (
       <div className={styles.errorContainer}>
@@ -483,6 +500,7 @@ export default function CBTPage() {
     );
   }
 
+  // ---------- DERIVED VALUES ----------
   const currentQuestion = examQuestions[currentIndex];
   const totalQuestions = examQuestions.length;
   const minutes = Math.floor(timeLeft / 60);
@@ -493,6 +511,7 @@ export default function CBTPage() {
     (s) => currentIndex >= s.startIndex && currentIndex <= s.endIndex
   );
 
+  // ---------- HANDLERS ----------
   const handleAnswer = (idx) => {
     if (submitted) return;
     setAnswers((prev) => ({ ...prev, [currentIndex]: idx }));
@@ -515,6 +534,7 @@ export default function CBTPage() {
     if (index >= 0 && index < totalQuestions) setCurrentIndex(index);
   };
 
+  // ---------- RENDER ----------
   return (
     <div className={styles.page}>
       <div className={styles.container}>
@@ -549,7 +569,7 @@ export default function CBTPage() {
           />
         </div>
 
-        {/* Restart button */}
+        {/* Restart Button */}
         <div className={styles.restartRow}>
           <button onClick={handleRestart} className={styles.restartButton}>
             🔄 Restart Exam
@@ -572,7 +592,7 @@ export default function CBTPage() {
           ))}
         </div>
 
-              {/* Question Card */}
+        {/* Question Card */}
         <ErrorBoundary>
           <div className={styles.questionCard}>
             <div className={styles.questionText}>
@@ -622,7 +642,7 @@ export default function CBTPage() {
           )}
         </div>
 
-        {/* Palette */}
+        {/* Question Palette */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
@@ -653,14 +673,14 @@ export default function CBTPage() {
         </div>
       </div>
 
-      {/* Floating Calculator Button */}
+      {/* Floating Calculator */}
       {!showCalculator && (
         <button
           className={styles.calcFloatingButton}
           onClick={() => setShowCalculator(true)}
+          aria-label="Open calculator"
         >
-          {/* Mathematic Icon for Calculator */}
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round">
             <line x1="6" y1="6" x2="12" y2="6"></line>
             <line x1="9" y1="3" x2="9" y2="9"></line>
             <line x1="14" y1="6" x2="20" y2="6"></line>
@@ -673,7 +693,6 @@ export default function CBTPage() {
         </button>
       )}
 
-      {/* Calculator Panel */}
       {showCalculator && (
         <div className={styles.calcOverlay}>
           <BasicCalculator onClose={() => setShowCalculator(false)} />
@@ -681,4 +700,4 @@ export default function CBTPage() {
       )}
     </div>
   );
-              }
+          }
