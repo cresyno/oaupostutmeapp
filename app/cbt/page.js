@@ -127,7 +127,7 @@ class ErrorBoundary extends Component {
   }
 }
 
-// ---------- BASIC CALCULATOR COMPONENT ----------
+// ---------- BASIC CALCULATOR ----------
 function BasicCalculator({ onClose }) {
   const [display, setDisplay] = useState("0");
   const [previous, setPrevious] = useState(null);
@@ -240,7 +240,9 @@ const SUBJECT_DATA = {
 
 const OPTIONAL_QUESTIONS_PER_SUBJECT = 10;
 const EXAM_DURATION_SECONDS = 3600; // 60 minutes
+const COOLDOWN_SESSIONS = 3;
 
+// ---------- UTILITIES ----------
 function shuffleArray(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -250,43 +252,119 @@ function shuffleArray(arr) {
   return a;
 }
 
-// ---------- BALANCED APTITUDE SELECTION ----------
+function getSessionCount() {
+  if (typeof window === "undefined") return 0;
+  const n = parseInt(localStorage.getItem("oau-cbt-session-count") || "0", 10);
+  return isNaN(n) ? 0 : n;
+}
+
+function saveSessionCount(n) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem("oau-cbt-session-count", String(n));
+}
+
+function getQuestionHistory() {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = localStorage.getItem("oau-cbt-question-history");
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return typeof parsed === "object" && parsed !== null ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveQuestionHistory(history) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem("oau-cbt-question-history", JSON.stringify(history));
+}
+
+// ---------- CATEGORIZATION ----------
 function categorizeAptitudeQuestion(question) {
   const text = question.question.toLowerCase();
-
-  const historyKeywords = ["nigeria", "oau", "president", "year", "government", "civic", "independence", "abuja", "lagos", "minister", "senate", "state", "current affairs", "history", "slogan", "vice chancellor", "chancellor", "registrar", "bursar", "librarian"];
+  const historyKeywords = ["nigeria", "oau", "president", "year", "government", "civic", "independence", "abuja", "lagos", "minister", "senate", "state", "current affairs", "history", "slogan", "vice chancellor", "chancellor", "registrar", "bursar", "librarian", "centenary", "gross"];
   if (historyKeywords.some(k => text.includes(k))) return "history";
 
-  const mathsKeywords = ["sequence", "number", "percentage", "profit", "speed", "distance", "average", "ratio", "algebra", "equation", "solve", "calculate", "km", "sum", "product", "complete", "next", "code", "coded"];
+  const mathsKeywords = ["sequence", "number", "percentage", "profit", "speed", "distance", "average", "ratio", "algebra", "equation", "solve", "calculate", "km", "sum", "product", "complete", "next", "code", "coded", "gigabyte", "megabyte"];
   if (mathsKeywords.some(k => text.includes(k))) return "maths";
 
   return "logic";
 }
 
-function selectBalancedAptitudeQuestions(questionBank, total = 10) {
-  // If we can't get enough questions, just return a shuffled selection
-  const safeTotal = Math.min(total, questionBank.length);
+// ---------- COOLDOWN TIER SCORING ----------
+// Tier 1 = fresh (never seen OR cooldown passed)
+// Tier 2 = last seen 2 sessions ago
+// Tier 3 = last seen 1 session ago
+// Tier 4 = seen in current session (fallback only)
+function getTier(q, currentSession, history) {
+  const lastSeen = history[q.id] || 0;
+  if (lastSeen === 0) return 1;
+  const diff = currentSession - lastSeen;
+  if (diff >= COOLDOWN_SESSIONS) return 1;
+  if (diff === 2) return 2;
+  if (diff === 1) return 3;
+  return 4;
+}
 
-  const history = questionBank.filter(q => categorizeAptitudeQuestion(q) === "history");
-  const maths = questionBank.filter(q => categorizeAptitudeQuestion(q) === "maths");
-  const logic = questionBank.filter(q => categorizeAptitudeQuestion(q) === "logic");
+// ---------- STANDARD PICK (for non-aptitude subjects) ----------
+function pickWithCooldown(pool, count, currentSession, history) {
+  if (pool.length === 0) return [];
+  const safeCount = Math.min(count, pool.length);
 
-  const shufHistory = shuffleArray(history);
-  const shufMaths = shuffleArray(maths);
-  const shufLogic = shuffleArray(logic);
+  const tiers = { 1: [], 2: [], 3: [], 4: [] };
+  for (const q of pool) {
+    tiers[getTier(q, currentSession, history)].push(q);
+  }
+  Object.keys(tiers).forEach(k => { tiers[k] = shuffleArray(tiers[k]); });
 
-  let selected = [];
+  const ordered = [...tiers[1], ...tiers[2], ...tiers[3], ...tiers[4]];
+  return ordered.slice(0, safeCount);
+}
 
-  // Guarantee at least 1 from each category (if available)
-  if (shufHistory.length > 0) selected.push(shufHistory[0]);
-  if (shufMaths.length > 0) selected.push(shufMaths[0]);
-  if (shufLogic.length > 0) selected.push(shufLogic[0]);
+// ---------- BALANCED APTITUDE PICK ----------
+function pickAptitudeBalanced(pool, count, currentSession, history) {
+  if (pool.length === 0) return [];
+  const safeCount = Math.min(count, pool.length);
 
-  // Fill remaining randomly from the whole pool
-  const remainingPool = shuffleArray(questionBank).filter(q => !selected.includes(q));
-  selected = [...selected, ...remainingPool.slice(0, safeTotal - selected.length)];
+  const tiers = { 1: [], 2: [], 3: [], 4: [] };
+  for (const q of pool) {
+    tiers[getTier(q, currentSession, history)].push(q);
+  }
+  Object.keys(tiers).forEach(k => { tiers[k] = shuffleArray(tiers[k]); });
 
-  return shuffleArray(selected);
+  const result = [];
+  const usedIds = new Set();
+
+  const tryPickFromTier = (tierPool) => {
+    const byCat = { history: [], maths: [], logic: [] };
+    for (const q of tierPool) {
+      if (usedIds.has(q.id)) continue;
+      byCat[categorizeAptitudeQuestion(q)].push(q);
+    }
+
+    let cats = Object.keys(byCat).filter(k => byCat[k].length > 0);
+    let i = 0;
+    let safety = 0;
+    while (result.length < safeCount && cats.length > 0 && safety < 10000) {
+      const cat = cats[i % cats.length];
+      if (byCat[cat] && byCat[cat].length > 0) {
+        const q = byCat[cat].shift();
+        result.push(q);
+        usedIds.add(q.id);
+      }
+      cats = cats.filter(k => byCat[k].length > 0);
+      i++;
+      safety++;
+    }
+  };
+
+  tryPickFromTier(tiers[1]);
+  if (result.length < safeCount) tryPickFromTier(tiers[2]);
+  if (result.length < safeCount) tryPickFromTier(tiers[3]);
+  if (result.length < safeCount) tryPickFromTier(tiers[4]);
+
+  return shuffleArray(result.slice(0, safeCount));
 }
 
 // ---------- MAIN COMPONENT ----------
@@ -330,7 +408,6 @@ export default function CBTPage() {
       }
     }
 
-    // No saved progress → load subjects from localStorage
     const saved = localStorage.getItem("oau-cbt-subjects");
     if (!saved) {
       router.push("/");
@@ -338,7 +415,6 @@ export default function CBTPage() {
     }
     try {
       const parsed = JSON.parse(saved);
-      // Accept 1 to 4 subjects as long as aptitude is included
       if (
         !Array.isArray(parsed) ||
         parsed.length < 1 ||
@@ -358,7 +434,10 @@ export default function CBTPage() {
   useEffect(() => {
     if (subjects.length === 0 || isRestored) return;
 
-    // Read dynamic aptitude count
+    const sessionCount = getSessionCount();
+    const currentSession = sessionCount + 1;
+    const history = getQuestionHistory();
+
     const aptitudeCount = (() => {
       if (typeof window === "undefined") return 10;
       const saved = localStorage.getItem("oau-cbt-aptitude-count");
@@ -378,10 +457,14 @@ export default function CBTPage() {
 
       let picked;
       if (subjectKey === "aptitude") {
-        picked = selectBalancedAptitudeQuestions(data.questions, aptitudeCount);
+        picked = pickAptitudeBalanced(data.questions, aptitudeCount, currentSession, history);
       } else {
-        const shuffled = shuffleArray(data.questions);
-        picked = shuffled.slice(0, OPTIONAL_QUESTIONS_PER_SUBJECT);
+        picked = pickWithCooldown(
+          data.questions,
+          OPTIONAL_QUESTIONS_PER_SUBJECT,
+          currentSession,
+          history
+        );
       }
 
       const enriched = picked.map((q) => ({
@@ -409,6 +492,14 @@ export default function CBTPage() {
       setError("No questions could be loaded.");
       return;
     }
+
+    // Update history with picked questions
+    const newHistory = { ...history };
+    for (const q of allQuestions) {
+      newHistory[q.id] = currentSession;
+    }
+    saveQuestionHistory(newHistory);
+    saveSessionCount(currentSession);
 
     setExamQuestions(allQuestions);
     setSubjectSections(sections);
@@ -538,7 +629,6 @@ export default function CBTPage() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        {/* Header */}
         <div className={styles.header}>
           <div>
             <div className={styles.title}>OAU POST-UTME CBT</div>
@@ -561,7 +651,6 @@ export default function CBTPage() {
           </div>
         </div>
 
-        {/* Progress Bar */}
         <div className={styles.progressBarWrapper}>
           <div
             className={styles.progressBar}
@@ -569,14 +658,12 @@ export default function CBTPage() {
           />
         </div>
 
-        {/* Restart Button */}
         <div className={styles.restartRow}>
           <button onClick={handleRestart} className={styles.restartButton}>
             🔄 Restart Exam
           </button>
         </div>
 
-        {/* Subject Tabs */}
         <div className={styles.subjectTabs}>
           {subjectSections.map((section) => (
             <button
@@ -592,7 +679,6 @@ export default function CBTPage() {
           ))}
         </div>
 
-        {/* Question Card */}
         <ErrorBoundary>
           <div className={styles.questionCard}>
             <div className={styles.questionText}>
@@ -619,7 +705,6 @@ export default function CBTPage() {
           </div>
         </ErrorBoundary>
 
-        {/* Navigation */}
         <div className={styles.navigation}>
           <button
             onClick={() => goToQuestion(currentIndex - 1)}
@@ -642,7 +727,6 @@ export default function CBTPage() {
           )}
         </div>
 
-        {/* Question Palette */}
         <div className={styles.palette}>
           <div className={styles.paletteLabel}>Question Navigator</div>
           <div className={styles.paletteGrid}>
@@ -673,7 +757,6 @@ export default function CBTPage() {
         </div>
       </div>
 
-      {/* Floating Calculator */}
       {!showCalculator && (
         <button
           className={styles.calcFloatingButton}
@@ -700,4 +783,4 @@ export default function CBTPage() {
       )}
     </div>
   );
-          }
+              }
