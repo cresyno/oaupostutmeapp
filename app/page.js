@@ -89,17 +89,26 @@ const SUBJECT_LABELS = {
   physics: "Physics",
   biology: "Biology",
 };
-const TOTAL_QUESTIONS = 40;
+
+const APTITUDE_SLOTS = [10, 20, 30, 40];
+const OPTIONAL_COUNT = 10;
 
 export default function Home() {
   const router = useRouter();
   const [selected, setSelected] = useState([]);
   const [studentName, setStudentName] = useState("");
+  const [aptitudeCount, setAptitudeCount] = useState(10);
 
-  // Load saved name and subjects on mount
+  // Load saved values
   useEffect(() => {
     const savedName = localStorage.getItem("oau-cbt-name");
     if (savedName) setStudentName(savedName);
+
+    const savedAptCount = localStorage.getItem("oau-cbt-aptitude-count");
+    if (savedAptCount) {
+      const n = parseInt(savedAptCount, 10);
+      if (APTITUDE_SLOTS.includes(n)) setAptitudeCount(n);
+    }
 
     const saved = localStorage.getItem("oau-cbt-subjects");
     if (saved) {
@@ -119,13 +128,15 @@ export default function Home() {
     });
   };
 
-  const isReady = selected.length === 3 && studentName.trim().length > 0;
+  const isReady = studentName.trim().length > 0;
+  const totalQuestions = aptitudeCount + selected.length * OPTIONAL_COUNT;
 
   const startExam = () => {
     if (!isReady) return;
     const subjects = ["aptitude", ...selected];
     localStorage.setItem("oau-cbt-subjects", JSON.stringify(subjects));
     localStorage.setItem("oau-cbt-name", studentName.trim());
+    localStorage.setItem("oau-cbt-aptitude-count", String(aptitudeCount));
     router.push("/cbt");
   };
 
@@ -135,7 +146,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <div className={styles.container}>
-        {/* ---------- HERO SECTION ---------- */}
+        {/* HERO */}
         <div className={styles.hero}>
           <div className={styles.heroContent}>
             <span className={styles.badge}>📚 OAU Post-UTME Practice</span>
@@ -143,153 +154,144 @@ export default function Home() {
               Master Your <span className={styles.heroHighlight}>OAU</span> Post-UTME
             </h1>
             <p className={styles.heroSubtitle}>
-              Prepare with 2,000+ real exam-style questions, detailed solutions, and
+              Prepare with real exam-style questions, detailed solutions, and
               instant performance tracking.
             </p>
           </div>
           <div className={styles.heroStats}>
-            <div className={styles.statItem}>
-              <span className={styles.statNumber}>40</span>
-              <span className={styles.statLabel}>Questions Per Test</span>
-            </div>
             <div className={styles.statItem}>
               <span className={styles.statNumber}>2,000+</span>
               <span className={styles.statLabel}>Question Bank</span>
             </div>
             <div className={styles.statItem}>
               <span className={styles.statNumber}>5</span>
-              <span className={styles.statLabel}>Subjects Covered</span>
+              <span className={styles.statLabel}>Subjects</span>
+            </div>
+            <div className={styles.statItem}>
+              <span className={styles.statNumber}>60</span>
+              <span className={styles.statLabel}>Minutes</span>
             </div>
           </div>
         </div>
 
-        {/* ---------- FEATURES ---------- */}
-        <div className={styles.features}>
-          <div className={styles.featureCard}>
-            <span className={styles.featureIcon}>🎯</span>
-            <h3>Real Exam Format</h3>
-            <p>Timed CBT simulation with the exact question patterns you'll face.</p>
+        {/* NAME INPUT */}
+        <div className={styles.nameInputWrapper}>
+          <label className={styles.nameLabel}>Enter Your Name</label>
+          <input
+            type="text"
+            value={studentName}
+            onChange={(e) => setStudentName(e.target.value)}
+            placeholder="e.g., Adebayo O."
+            className={styles.nameInput}
+          />
+        </div>
+
+        {/* APTITUDE (Always Included) */}
+        <div className={styles.compulsoryCard}>
+          <SubjectIcon subjectKey="aptitude" />
+          <div className={styles.compulsoryInfo}>
+            <span className={styles.compulsoryLabel}>Aptitude</span>
+            <span className={styles.badge}>Included</span>
           </div>
-          <div className={styles.featureCard}>
-            <span className={styles.featureIcon}>💡</span>
-            <h3>Step-by-Step Solutions</h3>
-            <p>Detailed explanations for every question so you learn from your mistakes.</p>
-          </div>
-          <div className={styles.featureCard}>
-            <span className={styles.featureIcon}>📊</span>
-            <h3>Performance Tracking</h3>
-            <p>See your score by subject and identify your weak areas instantly.</p>
+          <LockIcon />
+        </div>
+
+        {/* APTITUDE QUESTION SELECTOR */}
+        <div className={styles.aptitudeSelector}>
+          <label className={styles.aptitudeSelectorLabel}>Aptitude Questions</label>
+          <div className={styles.aptitudeSelectorRow}>
+            {APTITUDE_SLOTS.map((slot) => (
+              <button
+                key={slot}
+                onClick={() => setAptitudeCount(slot)}
+                className={`${styles.aptitudeSlotBtn} ${aptitudeCount === slot ? styles.aptitudeSlotActive : ""}`}
+              >
+                {slot}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* ---------- SUBJECT SELECTION ---------- */}
-        <div className={styles.selectionSection}>
-          <h2 className={styles.sectionTitle}>Select Your Subjects</h2>
-          <p className={styles.sectionSubtitle}>
-            Aptitude is compulsory. Choose any 3 optional subjects.
-          </p>
+        {/* INSTRUCTION */}
+        <p className={styles.instruction}>
+          Add up to <strong>3 optional subjects</strong> ({OPTIONAL_COUNT} questions each):
+        </p>
 
-          {/* Name input */}
-          <div className={styles.nameInputWrapper}>
-            <label className={styles.nameLabel}>Enter Your Name</label>
-            <input
-              type="text"
-              value={studentName}
-              onChange={(e) => setStudentName(e.target.value)}
-              placeholder="e.g., Adebayo O."
-              className={styles.nameInput}
-            />
-          </div>
-
-          {/* Compulsory subject card */}
-          <div className={styles.compulsoryCard}>
-            <SubjectIcon subjectKey="aptitude" />
-            <div className={styles.compulsoryInfo}>
-              <span className={styles.compulsoryLabel}>Aptitude</span>
-              <span className={styles.badge}>Compulsory</span>
-              <span className={styles.questionCount}>10 questions</span>
-            </div>
-            <LockIcon />
-          </div>
-
-          {/* Optional subjects grid */}
-          <div className={styles.grid}>
-            {OPTIONAL_KEYS.map((key) => {
-              const isSelected = selected.includes(key);
-              return (
-                <div
-                  key={key}
-                  onClick={() => toggleSubject(key)}
-                  className={`${styles.optionalCard} ${isSelected ? styles.selected : ""}`}
-                >
-                  <SubjectIcon subjectKey={key} />
-                  <div className={styles.optionalInfo}>
-                    <div className={styles.optionalLabel}>
-                      {SUBJECT_LABELS[key]}
-                    </div>
-                    <div className={styles.questionCount}>10 questions</div>
+        {/* OPTIONAL SUBJECTS GRID */}
+        <div className={styles.grid}>
+          {OPTIONAL_KEYS.map((key) => {
+            const isSelected = selected.includes(key);
+            return (
+              <div
+                key={key}
+                onClick={() => toggleSubject(key)}
+                className={`${styles.optionalCard} ${isSelected ? styles.selected : ""}`}
+              >
+                <SubjectIcon subjectKey={key} />
+                <div className={styles.optionalInfo}>
+                  <div className={styles.optionalLabel}>
+                    {SUBJECT_LABELS[key]}
                   </div>
-                  {isSelected && <span className={styles.checkmark}><CheckIcon /></span>}
+                  <div className={styles.questionCount}>{OPTIONAL_COUNT} questions</div>
                 </div>
-              );
-            })}
-          </div>
+                {isSelected && <span className={styles.checkmark}><CheckIcon /></span>}
+              </div>
+            );
+          })}
+        </div>
 
-          {/* Progress ring */}
-          <div className={styles.progressArea}>
-            <div className={styles.progressRing}>
-              <svg viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
-                <circle
-                  cx="50" cy="50" r="40" fill="none" stroke="#2563eb" strokeWidth="8"
-                  strokeDasharray={circumference}
-                  strokeDashoffset={circumference - (progress / 100) * circumference}
-                  strokeLinecap="round"
-                  transform="rotate(-90 50 50)"
-                  className={styles.progressCircle}
-                />
-                <text x="50" y="56" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1f2937">
-                  {selected.length}/3
-                </text>
-              </svg>
-            </div>
-            <div className={styles.progressText}>
-              <span>
-                {selected.length === 0
-                  ? "Select 3 optional subjects"
-                  : `${selected.length} of 3 optional selected`}
-              </span>
-              {selected.length === 3 && studentName.trim() !== "" && (
-                <span className={styles.readyBadge}>✅ Ready!</span>
-              )}
-              {studentName.trim() === "" && (
-                <span className={styles.nameWarning}>Enter your name to start</span>
-              )}
-            </div>
+        {/* PROGRESS */}
+        <div className={styles.progressArea}>
+          <div className={styles.progressRing}>
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
+              <circle
+                cx="50" cy="50" r="40" fill="none" stroke="#2563eb" strokeWidth="8"
+                strokeDasharray={circumference}
+                strokeDashoffset={circumference - (progress / 100) * circumference}
+                strokeLinecap="round"
+                transform="rotate(-90 50 50)"
+                className={styles.progressCircle}
+              />
+              <text x="50" y="56" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1f2937">
+                {selected.length}/3
+              </text>
+            </svg>
           </div>
-
-          {/* Start button */}
-          <button
-            onClick={startExam}
-            disabled={!isReady}
-            className={`${styles.startButton} ${isReady ? styles.active : ""}`}
-          >
-            {isReady ? (
-              <>
-                <span>Begin {TOTAL_QUESTIONS}-Question CBT</span>
-                <span className={styles.arrow}><ArrowIcon /></span>
-              </>
-            ) : (
-              <span>
-                {studentName.trim() === ""
-                  ? "Enter your name first"
-                  : `Select ${3 - selected.length} more subject${3 - selected.length !== 1 ? "s" : ""}`}
+          <div className={styles.progressText}>
+            <span>
+              {selected.length === 0
+                ? "Aptitude only — or add optional subjects"
+                : `${selected.length} of 3 optional selected`}
+            </span>
+            {isReady && (
+              <span className={styles.readyBadge}>
+                ✅ Ready — {totalQuestions} questions total
               </span>
             )}
-          </button>
+            {studentName.trim() === "" && (
+              <span className={styles.nameWarning}>Enter your name to start</span>
+            )}
+          </div>
         </div>
 
-        {/* ---------- FOOTER ---------- */}
+        {/* START BUTTON */}
+        <button
+          onClick={startExam}
+          disabled={!isReady}
+          className={`${styles.startButton} ${isReady ? styles.active : ""}`}
+        >
+          {isReady ? (
+            <>
+              <span>Begin {totalQuestions}-Question CBT</span>
+              <span className={styles.arrow}><ArrowIcon /></span>
+            </>
+          ) : (
+            <span>Enter your name to start</span>
+          )}
+        </button>
+
+        {/* FOOTER */}
         <div className={styles.footer}>
           <div className={styles.footerBrand}>
             <span className={styles.footerLogo}>🎓</span>
@@ -299,7 +301,6 @@ export default function Home() {
             Built for OAU aspirants who aim to excel, not just pass.
           </p>
 
-          {/* Contact Information */}
           <div className={styles.contactCard}>
             <div className={styles.contactIcon}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -322,4 +323,4 @@ export default function Home() {
       </div>
     </div>
   );
-  }
+      }
